@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clifftop Cabin | Calm Waters Plett</title>
+  <!-- Existing CSS -->
+  <link rel="stylesheet" href="../prop.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <!-- Lightbox2 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"/>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Meta tags for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clifftop Cabin at Calm Waters Plett - Experience stunning views and modern comforts.">
+  <meta name="keywords" content="clifftop cabin, luxury cabin, seaside retreat, Calm Waters Plett">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <!-- Logo Box for "Calm Waters" -->
+      <div class="logo-box">
+        <span>Calm Waters</span>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <div class="nav-container">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../../index.html">HOME</a></li>
+            <li><a href="../../ABOUT/about.html">ABOUT US</a></li>
+            <li><a href="../../Property/property.html">PROPERTIES</a></li>
+            <li><a href="../../LOCAL-AREA/local-area.html">LOCAL AREA</a></li>
+            <li><a href="../../CONTACT/contact.html">CONTACT</a></li>
+          </ul>
+          <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Property Details -->
+  <section class="property-detail">
+    <div class="container">
+      <!-- Main Heading -->
+      <div class="property-heading">
+        <h2>WELCOME TO</h2>
+        <h1>Clifftop Cabin</h1>
+      </div>
+
+      <!-- Property Gallery -->
+      <div class="property-gallery">
+        <!-- Swiper -->
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <a href="../../Resources/pics/clifftop1.jpg" data-lightbox="property-gallery">
+                <img src="../../Resources/pics/clifftop1.jpg" alt="Property Image 1">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="../../Resources/pics/clifftop2.jpg" data-lightbox="property-gallery">
+                <img src="../../Resources/pics/clifftop2.jpg" alt="Property Image 2">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="../../Resources/pics/clifftop3.jpg" data-lightbox="property-gallery">
+                <img src="../../Resources/pics/clifftop3.jpg" alt="Property Image 3">
+              </a>
+            </div>
+            <!-- Add more slides as needed -->
+          </div>
+          <!-- Navigation Buttons -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+
+      <!-- Property Information -->
+      <div class="property-info">
+        <!-- Property Description -->
+        <div class="property-description">
+          <h2>Description</h2>
+          <p>
+            Nestled on Plettenberg Bay cliffs, this retreat offers tranquility and breathtaking coastal views, perfect for couples or solo adventurers. Located in quiet farmland, it's within a 10km radius of Plettenberg Bay's natural beauty, including beaches and hiking trails.
+          </p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="property-features">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Stunning ocean views</li>
+            <li>Private hiking trail</li>
+            <li>Communal outdoor pool</li>
+            <li>Fully-equipped kitchen</li>
+            <li>Deck for relaxation</li>
+          </ul>
+        </div>
+
+        <!-- Property Details -->
+        <div class="property-details">
+          <h2>Details</h2>
+          <ul>
+            <li><strong>Location:</strong> Plettenberg Bay</li>
+            <li><strong>Bedrooms:</strong> 1</li>
+            <li><strong>Bathrooms:</strong> 1</li>
+            <li><strong>Sleeps:</strong> 2 guests</li>
+            <li><strong>Amenities:</strong> Wi-Fi, Shared Outdoor Pool, Ocean View</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Book Now Button -->
+      <div class="book-now">
+        <a href="../../CONTACT/contact.html" class="btn-book-now">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Calm Waters Plett. All rights reserved.</p>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <!-- Lightbox2 JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        480: {
+          slidesPerView: 1,
+        }
+      }
+    });
+  </script>
+</body>
+</html>

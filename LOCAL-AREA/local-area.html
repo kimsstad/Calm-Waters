@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Area | Calm Waters Plett</title>
+  <!-- Link to Global Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Link to Local Area Page Specific Stylesheet -->
+  <link rel="stylesheet" href="local-area.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Meta Tags for Responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the beauty and attractions of Plettenberg Bay, South Africa. Discover what the local area has to offer with Calm Waters Plett.">
+  <meta name="keywords" content="Plettenberg Bay, Local Area, Calm Waters Plett, South Africa, Attractions">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <!-- Logo Box for "Calm Waters" -->
+      <div class="logo-box">
+        <span>Calm Waters</span>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <div class="nav-container">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="../ABOUT/about.html">ABOUT US</a></li>
+            <li><a href="local-area.html">LOCAL AREA</a></li>
+            <li><a href="../Property/property.html">PROPERTIES</a></li>
+            <li><a href="../CONTACT/contact.html">CONTACT</a></li>
+          </ul>
+          <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Plettenberg Bay</h1>
+      <p>Discover the Jewel of the Garden Route</p>
+      <a href="#explore" class="btn">Explore Now</a>
+    </div>
+  </section>
+
+<!-- Introduction Section -->
+<section class="introduction">
+  <div class="container">
+    <div class="intro-card">
+      <div class="text-content">
+        <div class="section-heading">
+          <h3>WELCOME TO</h3>
+          <h2>Plettenberg Bay</h2>
+        </div>
+        <p>
+          Plettenberg Bay, known for its stunning beaches and vibrant wildlife, is a coastal paradise in South Africa. Whether you're here to relax or explore outdoor activities, you'll find everything you need for a memorable stay.
+        </p>
+      </div>
+      <div class="image-container">
+        <img src="../Resources/pics/local2.png" alt="Plettenberg Bay">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Attractions Section -->
+  <section class="attractions">
+    <div class="container">
+      <div class="section-heading">
+        <h3>EXPLORE</h3>
+        <h2>Top Attractions</h2>
+      </div>
+      <div class="attractions-grid">
+        <!-- Attraction Item -->
+        <div class="attraction-item">
+          <img src="../Resources/pics/robberg-nature-reserve.png" alt="Robberg Nature Reserve">
+          <h3>Robberg Nature Reserve</h3>
+          <p>Experience breathtaking hikes along the peninsula with stunning ocean views and wildlife sightings.</p>
+        </div>
+        <!-- Attraction Item -->
+        <div class="attraction-item">
+          <img src="images/plett-beach.jpg" alt="Plettenberg Bay Beaches">
+          <h3>Beautiful Beaches</h3>
+          <p>Relax on pristine sandy beaches like Central Beach and Keurbooms Beach.</p>
+        </div>
+        <!-- Attraction Item -->
+        <div class="attraction-item">
+          <img src="images/tsitsikamma.jpg" alt="Tsitsikamma National Park">
+          <h3>Tsitsikamma National Park</h3>
+          <p>Adventure awaits with ziplining, kayaking, and canopy tours in the indigenous forest.</p>
+        </div>
+        <!-- Attraction Item -->
+        <div class="attraction-item">
+          <img src="images/whale-watching.jpg" alt="Whale Watching">
+          <h3>Whale & Dolphin Watching</h3>
+          <p>Take a boat tour to see majestic whales and playful dolphins in their natural habitat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-content">
+        <h2>Getting Here</h2>
+        <p>Plettenberg Bay is easily accessible by car and has its own regional airport. Located along the N2 highway, it's approximately 600 km from Cape Town and 210 km from Port Elizabeth.</p>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.6693760193655!2d23.35386851510717!3d-34.073211180581665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dccb9999999999%3A0x123456789abcdef!2sPlettenberg%20Bay%2C%20South%20Africa!5e0!3m2!1sen!2s!4v1616157891234!5m2!1sen!2s"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            title="Plettenberg Bay Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Calm Waters Plett. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Mobile Navigation Toggle -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
