@@ -1,3 +1,5 @@
+/* Global Styles (style.css) */
+
 /* Import Custom Fonts */
 @font-face {
     font-family: 'YourCustomFont';
@@ -38,7 +40,7 @@ body {
 
 /* Header Styles */
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -147,7 +149,7 @@ header .container {
 .hero h1 {
     font-size: 4rem;
     font-family: 'Cardo', serif;
-    margin-bottom: 20px;
+    margin-bottom: -20px;
 }
 
 .hero p {
@@ -169,36 +171,7 @@ header .container {
     background-color: var(--secondary-color);
 }
 
-/* Section Heading for Introduction */
-.section-heading h3 {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-align: left;
-    font-weight: 500;
-}
-
-.section-heading h2 {
-    font-size: 3em;
-    color: var(--text-color);
-    font-family: 'Cardo', serif;
-    margin: 0;
-    text-align: left;
-   
-}
-
-.section-heading h2::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 80px;
-    height: 2px;
-    background-color: var(--accent-color);
-}
+/* Introduction Section Styles */
 
 /* Introduction Section */
 .introduction {
@@ -227,17 +200,20 @@ header .container {
     justify-content: center;
 }
 
-.text-content .section-heading h3 {
+/* Heading Styles for Introduction */
+.intro-subtitle {
     font-size: 1.5rem;
-    color: var(--accent-color);
+    color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
     text-align: left;
+    font-weight: 500;
 }
 
-.text-content .section-heading h2 {
+.intro-title {
+    position: relative;
     font-size: 3rem;
     color: var(--text-color);
     font-family: 'Cardo', serif;
@@ -245,8 +221,15 @@ header .container {
     text-align: left;
 }
 
-.text-content .section-heading h2::before {
-    content: none;
+.intro-title::before {
+    content: "WELCOME";
+    position: absolute;
+    font-weight: 900;
+    top: -63px; /* Adjust this value to align vertically */
+    left: 0;    /* Adjust this value to align horizontally */
+    font-size: 4rem; /* Adjust the size as needed */
+    color: rgba(0, 0, 0, 0.05); /* Light, subtle text */
+    z-index: 1; /* Ensure it sits behind the heading text */
 }
 
 .text-content p {
@@ -264,87 +247,28 @@ header .container {
 
 .image-container img {
     width: 100%;
-    height: 100%; /* This ensures it fills the height */
-    object-fit: cover; /* Ensures the image covers the entire area */
+    height: 100%; 
+    object-fit: cover;
 }
 
-
-  /* Adjusting the Hero Section z-index */
-  .hero {
+/* Adjusting the Hero Section z-index */
+.hero {
     position: relative;
     z-index: 1;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .intro-card {
-      flex-direction: column;
-    }
-  
-    .image-container img {
-      height: auto;
-    }
-  
-    .text-content {
-      padding: 20px;
-      text-align: center;
-    }
-  
-    .text-content .section-heading h3,
-    .text-content .section-heading h2,
-    .text-content p {
-      text-align: center;
-    }
-  }
-  
-
-
-/* Default Section Heading for Other Sections */
-.section-heading {
-    text-align: center;
 }
 
-.section-heading h3 {
-    font-size: 1.2rem;
-    color: var(--accent-color);
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-align: center; /* Center for other sections */
-}
-
-.section-heading h2 {
-    font-size: 2.5rem;
-    color: var(--text-color);
-    font-family: 'Cardo', serif;
-    margin: 0;
-    text-align: center; /* Center for other sections */
-}
-
-.section-heading h2::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 2px;
-    background-color: var(--accent-color);
-}
-
-/* Attractions Section */
+/* Attractions Section Styles */
 .attractions {
     padding: 60px 0;
-  }
-  
-  .attractions-grid {
+}
+
+.attractions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust grid for single images */
     gap: 30px;
-  }
-  
-  .attraction-item {
+}
+
+.attraction-item {
     background-color: var(--white-color);
     border-radius: 12px;
     overflow: hidden;
@@ -352,32 +276,148 @@ header .container {
     display: flex;
     flex-direction: column;
     align-items: stretch; /* Ensures the image fills the card space */
-  }
-  
-  .attraction-item:hover {
+}
+
+.attraction-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Image Container */
-  .attraction-item img {
-    width: 100%;
+}
+
+/* Image Container */
+.attraction-item img {
+    width: 380px;
     height: 200px; /* Set a specific height for the image */
-    object-fit: cover; /* Ensures the image covers the area */
-  }
-  
-  .attraction-item h3 {
+    object-fit: cover;
+}
+
+.attraction-item h3 {
     font-size: 1.5rem;
     color: var(--text-color);
     margin: 15px;
-  }
-  
-  .attraction-item p {
+}
+
+.attraction-item p {
     font-size: 1rem;
     color: var(--body-text-color);
     margin: 0 15px 20px;
-  }
-  
+}
+
+/* Heading Styles for Attractions Section */
+.attractions-subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.attractions-title {
+    position: relative;
+    font-size: 3rem;
+    color: var(--text-color);
+    font-family: 'Cardo', serif;
+    margin: 0;
+    text-align: center;
+}
+
+.attractions-title::before {
+    content: "EXPLORE";
+    position: absolute;
+    font-weight: 900;
+    font-size: 4rem;
+    top: -66px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0, 0, 0, 0.05);
+    z-index: -1;
+}
+
+
+/* History Section Styles */
+.history {
+    background-color: #7C96A6; /* Set the desired background color */
+    color: #F5F5F5; /* Light text */
+    padding: 60px 0; /* Control padding to avoid too much empty space */
+    height: auto; /* Remove fixed viewport height */
+}
+
+.history-content {
+    display: flex;
+    align-items: stretch; /* Ensure content fills the container */
+    justify-content: space-between;
+    max-height: 500px; /* Limit the height of the section */
+}
+
+.history .image-container {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    height: 100%; /* Ensure image container takes full height */
+}
+
+.history .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+}
+
+.history .text-content {
+    flex: 1;
+    padding: 40px; /* Add space around the text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
+    align-items: center; /* Center the text horizontally */
+    text-align: center;
+}
+
+.history .history-subtitle {
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #F2CF66; /* Accent color */
+    margin-bottom: 10px;
+}
+
+.history .history-title {
+    font-size: 2.5rem;
+    font-family: 'Cardo', serif;
+    margin-bottom: 20px;
+    color: #F5F5F5;
+}
+
+.history p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 600px; /* Limit width of the text */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .history {
+        flex-direction: column;
+        height: auto; /* Let it adjust height based on content */
+    }
+    .history-content {
+        flex-direction: column;
+    }
+    .history .image-container,
+    .history .text-content {
+        width: 100%;
+        flex: none;
+    }
+    .history .image-container img {
+        height: auto;
+    }
+    .history .text-content {
+        padding: 20px;
+    }
+}
+
 
 /* Map Section */
 .map-section {
@@ -390,7 +430,7 @@ header .container {
 }
 
 .map-content h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-family: 'Cardo', serif;
     color: var(--text-color);
     margin-bottom: 20px;
@@ -407,25 +447,6 @@ header .container {
     width: 100%;
     border: none;
     border-radius: 8px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero p {
-        font-size: 1.2rem;
-    }
-    .introduction {
-        margin-top: -80px;
-    }
-    .intro-card h2 {
-        font-size: 2rem;
-    }
-    .section-heading h2 {
-        font-size: 2rem;
-    }
 }
 
 /* Footer Styles */
@@ -464,40 +485,66 @@ footer p {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font: size 0.9em;
+    font-size: 0.9em;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .intro-card {
+        flex-direction: column;
+    }
+
+    .image-container img {
+        height: auto;
+    }
+
+    .text-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .text-content .intro-subtitle,
+    .text-content .intro-title,
+    .text-content p {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
     .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--white-color);
-      position: absolute;
-      top: 65px;
-      right: 0;
-      width: 200px;
-      border-left: 1px solid #ccc;
+        display: none;
+        flex-direction: column;
+        background: var(--white-color);
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 200px;
+        border-left: 1px solid #ccc;
     }
-  
+
     .nav-links.active {
-      display: flex;
+        display: flex;
     }
-  
+
     .nav-links li {
-      margin: 15px 0;
+        margin: 15px 0;
     }
-  
+
     .nav-toggle {
-      display: block;
+        display: block;
     }
-  
+
     .hero-content h1 {
-      font-size: 2.5rem;
+        font-size: 2.5rem;
     }
-  
+
     .listings-grid {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
-  
+}
