@@ -316,11 +316,12 @@ header .container {
 
 .attractions-title {
     position: relative;
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--text-color);
     font-family: 'Cardo', serif;
     margin: 0;
     text-align: center;
+    margin-bottom: 0.5em;
 }
 
 .attractions-title::before {
@@ -340,15 +341,15 @@ header .container {
 .history {
     background-color: #7C96A6; /* Set the desired background color */
     color: #F5F5F5; /* Light text */
-    padding: 60px 0; /* Control padding to avoid too much empty space */
-    height: auto; /* Remove fixed viewport height */
+    padding: 0; /* Remove extra padding */
+    height: 100%; /* Set height to auto so it fits content */
 }
 
 .history-content {
     display: flex;
     align-items: stretch; /* Ensure content fills the container */
-    justify-content: space-between;
-    max-height: 500px; /* Limit the height of the section */
+    width: 100%; /* Make sure the container stretches to full width */
+    height: 100%; /* Let the container adjust to content height */
 }
 
 .history .image-container {
@@ -370,8 +371,7 @@ header .container {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center the text vertically */
-    align-items: center; /* Center the text horizontally */
-    text-align: center;
+    text-align: left; /* Align text to the left */
 }
 
 .history .history-subtitle {
@@ -395,15 +395,11 @@ header .container {
     max-width: 600px; /* Limit width of the text */
 }
 
-
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .history {
-        flex-direction: column;
-        height: auto; /* Let it adjust height based on content */
-    }
     .history-content {
         flex-direction: column;
+        height: auto; /* Adjust height based on content */
     }
     .history .image-container,
     .history .text-content {
@@ -411,7 +407,7 @@ header .container {
         flex: none;
     }
     .history .image-container img {
-        height: auto;
+        height: auto; /* Let the image adjust naturally */
     }
     .history .text-content {
         padding: 20px;

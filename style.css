@@ -38,7 +38,7 @@ body {
 
 /* Header Styles */
 header {
-  position:absolute;
+  position:fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -325,9 +325,9 @@ header .container {
     height: auto;
   }
 
-  /* Adjust "01" size and position for smaller screens */
+
   .discover-container::before {
-    font-size: 2rem; /* Smaller size for mobile */
+    font-size: 2rem;
     top: -10px;
     left: -10px;
   }
@@ -344,7 +344,7 @@ header .container {
 
 .about-us-background {
   background: url('Resources/pics/team.png') no-repeat center center/cover;
-  padding: 80px 0;
+  padding: 100px 0;
   width: 100%;
   height: 800px;
   margin: 0 auto;
