@@ -816,12 +816,12 @@ header .container {
 
 /* Footer Styles */
 footer {
-  background: url('Resources/pics/footer.png') no-repeat center center; /* Set the background image */
+  background: url('Resources/pics/FOOTER\ \(1\).png') no-repeat center center; /* Set the background image */
   background-size: cover; /* Scale the image to cover the entire footer */
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   text-align: center;
-  padding: 125px 0; /* Adjust the overall padding of the footer */
+  padding: 150px 0; /* Adjust the overall padding of the footer */
   position: relative; /* Set relative positioning to use absolute positioning inside */
 }
 
@@ -865,7 +865,7 @@ footer p {
   transform: translateX(-50%); /* Correct horizontal centering */
   font-size: 0.9rem;
   color: var(--white-color);
-  font-weight: bold;
+  font-weight: normal;
   text-shadow: #2A2D36;
 }
 

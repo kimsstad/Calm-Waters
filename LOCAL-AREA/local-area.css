@@ -336,7 +336,16 @@ header .container {
     z-index: -1;
 }
 
-
+.attractions-grid a {
+    text-decoration: none; /* Remove text underline */
+    color: inherit; /* Inherit the text color from parent element */
+    display: block; /* Ensure the entire card is clickable */
+  }
+  
+  .attractions-grid a:hover {
+    text-decoration: none; /* Ensure no underline appears on hover */
+  }
+  
 /* History Section Styles */
 .history {
     background-color: #7C96A6; /* Set the desired background color */
@@ -347,16 +356,17 @@ header .container {
 
 .history-content {
     display: flex;
-    align-items: stretch; /* Ensure content fills the container */
-    width: 100%; /* Make sure the container stretches to full width */
-    height: 100%; /* Let the container adjust to content height */
+    width: 100%;
 }
 
-.history .image-container {
-    flex: 1;
-    padding: 0;
-    margin: 0;
-    height: 100%; /* Ensure image container takes full height */
+.history .image-container,
+.history .text-content {
+    width: 50%;
+}
+
+.history .text-content {
+    padding-left: 80px; /* Adjust this value to move text to the right */
+    box-sizing: border-box;
 }
 
 .history .image-container img {
@@ -365,24 +375,19 @@ header .container {
     object-fit: cover; /* Ensure the image covers the container without stretching */
 }
 
-.history .text-content {
-    flex: 1;
-    padding: 40px; /* Add space around the text */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center the text vertically */
-    text-align: left; /* Align text to the left */
-}
 
 .history .history-subtitle {
+    position: relative;
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    color: #F2CF66; /* Accent color */
+    color: var(--background-color); /* Accent color */
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .history .history-title {
+    position: relative; 
     font-size: 2.5rem;
     font-family: 'Cardo', serif;
     margin-bottom: 20px;
@@ -395,6 +400,17 @@ header .container {
     max-width: 600px; /* Limit width of the text */
 }
 
+.history-title::before {
+    content: "DID YOU KNOW?";
+    position: absolute;
+    font-weight: 900;
+    font-size: 3rem;
+    top: -78px;
+    left: 30%;
+    transform: translateX(-50%);
+    color: rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
     .history-content {
@@ -411,6 +427,29 @@ header .container {
     }
     .history .text-content {
         padding: 20px;
+    }
+}
+/* Responsive Styles for Screens Larger than 1200px */
+@media (min-width: 1200px) {
+    .history-content {
+        max-width: 1600px; /* Expand the max width for larger screens */
+        margin: 0 auto; /* Center the content */
+    }
+
+    .history-content .text-content {
+        flex: 2; /* Allow the text to take up more space */
+        padding: 50px; /* Adjust padding for a more spacious feel */
+        width: 50%; /* Set width to half for balanced layout */
+    }
+
+    .history .image-container {
+        flex: 1;
+        width: 50%; /* Ensure the image takes up half the screen */
+        height: 100%;
+    }
+
+    .history .image-container img {
+        object-fit: cover; /* Keep the image covering the container without distortion */
     }
 }
 
