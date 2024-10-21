@@ -50,7 +50,6 @@ header {
     background: var(--background-color);
     border-radius: 0 0 2px 2px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    opacity: 0.9;
     z-index: 1000;
 }
 
@@ -346,38 +345,53 @@ header .container {
     text-decoration: none; /* Ensure no underline appears on hover */
   }
   
-/* History Section Styles */
+
+
+/* History Section Styles */ 
 .history {
     background-color: #7C96A6; /* Set the desired background color */
     color: #F5F5F5; /* Light text */
     padding: 0; /* Remove extra padding */
-    height: 100%; /* Set height to auto so it fits content */
+    position: relative;
+    overflow: hidden; /* Prevent any overflow issues */
 }
 
 .history-content {
     display: flex;
     width: 100%;
+    height: 70vh; /* Keep height at 70% of the viewport */
+    position: relative;
 }
 
-.history .image-container,
-.history .text-content {
-    width: 50%;
-}
-
-.history .text-content {
-    padding-left: 80px; /* Adjust this value to move text to the right */
-    box-sizing: border-box;
+.history .image-container {
+    width: calc(50vw + 100px); /* Keep the image container as it is */
+    height: 100%; /* Full height */
+    position: absolute;
+    left: -352px; /* Maintain the left positioning */
+    top: 0;
+    overflow: hidden; /* Ensure no overflow issues */
 }
 
 .history .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image covers the container without stretching */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
 }
 
+/* Adjusted Text Content */
+.history .text-content {
+    margin-left: calc(50vw + 100px - 352px); /* Adjust margin to account for the image's position */
+    width: calc(50vw + 600px);   
+    padding-left: 50px; 
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
 
 .history .history-subtitle {
-    position: relative;
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -387,17 +401,17 @@ header .container {
 }
 
 .history .history-title {
-    position: relative; 
     font-size: 2.5rem;
     font-family: 'Cardo', serif;
     margin-bottom: 20px;
     color: #F5F5F5;
+    position: relative;
 }
 
 .history p {
     font-size: 1.2rem;
     line-height: 1.8;
-    max-width: 600px; /* Limit width of the text */
+    max-width: 100%; /* Ensure the paragraph takes full width */
 }
 
 .history-title::before {
@@ -406,58 +420,38 @@ header .container {
     font-weight: 900;
     font-size: 3rem;
     top: -78px;
-    left: 30%;
-    transform: translateX(-50%);
+    left: 0; /* Adjusted to align with text */
+    transform: translateX(0);
     color: rgba(0, 0, 0, 0.05);
-    z-index: 1;
+    z-index: -1; /* Ensure this stays behind the text */
 }
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .history-content {
         flex-direction: column;
-        height: auto; /* Adjust height based on content */
-    }
-    .history .image-container,
-    .history .text-content {
-        width: 100%;
-        flex: none;
-    }
-    .history .image-container img {
-        height: auto; /* Let the image adjust naturally */
-    }
-    .history .text-content {
-        padding: 20px;
-    }
-}
-/* Responsive Styles for Screens Larger than 1200px */
-@media (min-width: 1200px) {
-    .history-content {
-        max-width: 1600px; /* Expand the max width for larger screens */
-        margin: 0 auto; /* Center the content */
-    }
-
-    .history-content .text-content {
-        flex: 2; /* Allow the text to take up more space */
-        padding: 50px; /* Adjust padding for a more spacious feel */
-        width: 50%; /* Set width to half for balanced layout */
     }
 
     .history .image-container {
-        flex: 1;
-        width: 50%; /* Ensure the image takes up half the screen */
-        height: 100%;
+        position: relative;
+        width: 100vw; /* Full width for mobile screens */
+        left: 0; /* Reset the position */
+        height: 50vh; /* Adjust the height for smaller screens */
     }
 
-    .history .image-container img {
-        object-fit: cover; /* Keep the image covering the container without distortion */
+    .history .text-content {
+        margin-left: 0; /* Reset margin for stacking */
+        width: 100%; /* Full width */
+        padding: 20px;
     }
 }
-
 
 /* Map Section */
 .map-section {
     padding: 60px 0;
     background-color: var(--background-color);
+    z-index: 100;
 }
 
 .map-content {
@@ -479,49 +473,73 @@ header .container {
 }
 
 .map iframe {
+    display: block;
     width: 100%;
+    height: 600px; /* Set desired height */
     border: none;
     border-radius: 8px;
+    position: relative;
+    z-index: 100;
 }
 
 /* Footer Styles */
 footer {
     background: url('../Resources/pics/footer.png') no-repeat center center;
     background-size: cover;
+    height: 100%;
     color: var(--background-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     text-align: center;
-    padding: 125px 0;
+    padding: 250px 0;
     position: relative;
-}
-
-.footer-links a {
-    color: var(--white-color);
-    margin-right: 15px;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: var(--primary-color);
-}
-
-.footer-social a {
-    color: var(--white-color);
-    margin-right: 15px;
-    font-size: 1.5rem;
-}
-
-.footer-social a:hover {
-    color: var(--secondary-color);
-}
-
-footer p {
+    z-index: 1; /* Lower than the map */
+    margin-top: -300px;
+  }
+  
+  .footer-container {
+    margin-top: 200px;
+  }
+  
+  footer p {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.9em;
-}
+    font-size: 0.9rem;
+    color: var(--white-color);
+    font-weight: 500;
+    text-shadow: #2A2D36;
+  }
+  
+  .footer-logo img {
+    height: 50px;
+  }
+  
+  .footer-links {
+    margin-top: 20px;
+  }
+  
+  .footer-links a {
+    color: var(--white-color);
+    margin-right: 15px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+  .footer-links a:hover {
+    color: var(--primary-color);
+  }
+  
+  .footer-social a {
+    color: var(--white-color);
+    margin-right: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .footer-social a:hover {
+    color: var(--secondary-color);
+  }
+  
 
 /* Responsive Styles */
 @media (max-width: 768px) {

@@ -38,7 +38,7 @@ body {
 
 /* Header Styles */
 header {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -48,7 +48,6 @@ header {
   background: var(--background-color);
   border-radius: 0 0 2px 2px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-
   z-index: 1000;
 }
 
@@ -174,8 +173,6 @@ header .container {
   z-index: 3; /* Higher z-index to appear above the logo */
 }
 
-
-
 .hero-content h1 {
   font-size: 4rem; /* Increase the font size */
   margin-bottom: 20px;
@@ -209,6 +206,7 @@ header .container {
   padding: 80px 0;
   background-color: var(--background-color);
   margin-bottom: 50px;
+
 }
 
 .about-content {
@@ -231,30 +229,30 @@ header .container {
 
 .about-text {
   flex: 1;
-  position: relative; /* Establishes a positioning context for absolute elements */
-  padding: 20px; /* Optional: Adds padding around the text */
+  position: relative;
+  padding: 20px;
   right: -5%;
 }
 
 /* Discover Container Styles */
 .discover-container {
-  position: relative; 
-  display: inline-block; 
+  position: relative;
+  display: inline-block;
 }
 
 /* Insert "01" as a background element behind DISCOVER */
 .about-text::before {
   content: "01";
   position: absolute;
-  top: -15px; 
-  left: 32px; 
+  top: -15px;
+  left: 32px;
   font-size: 4rem;
-  color: rgba(0, 0, 0, 0.05); 
-  z-index: 0; 
-  pointer-events: none; 
+  color: rgba(0, 0, 0, 0.05);
+  z-index: 0;
+  pointer-events: none;
   font-family: "Cardo", serif;
   font-weight: 900;
-  display: inline-block; 
+  display: inline-block;
   transform: scaleX(1.5);
 }
 
@@ -275,12 +273,12 @@ header .container {
   color: var(--text-color);
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  margin-top: -10px; 
+  margin-top: -10px;
   margin-bottom: 20px;
   padding: 0;
   letter-spacing: 2px;
   line-height: 1.2;
-  position: relative; 
+  position: relative;
 }
 
 .about-text h2,
@@ -309,7 +307,70 @@ header .container {
 }
 
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  header {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .logo-box {
+    margin-left: -40px;
+    height: 80px;
+    padding: 15px 20px;
+    font-size: 1.5em;
+  }
+
+  .nav-links {
+    gap: 20px;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .about-image img {
+    width: 150%;
+    left: -25%;
+  }
+
+  .about-text {
+    right: 0;
+  }
+
+  .about-text h2 {
+    font-size: 3rem;
+  }
+
+  .about-text h3 {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Header Adjustments */
+  header {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .nav-container {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Hero Section Adjustments */
+  .hero-content h1 {
+    font-size: 2.5rem;
+    padding: 0 20px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  /* About Preview Section */
   .about-content {
     flex-direction: column;
     text-align: center;
@@ -318,18 +379,30 @@ header .container {
   .about-image,
   .about-text {
     width: 100%;
+    flex: none;
   }
 
   .about-image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    left: 0;
   }
 
+  .about-text {
+    right: 0;
+  }
 
-  .discover-container::before {
+  .about-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-text h3 {
+    font-size: 1rem;
+  }
+
+  .about-text::before {
     font-size: 2rem;
     top: -10px;
-    left: -10px;
+    left: 10px;
   }
 }
 
@@ -341,7 +414,6 @@ header .container {
 }
 
 /* Inner Background Container */
-
 .about-us-background {
   background: url('Resources/pics/team.png') no-repeat center center/cover;
   padding: 100px 0;
@@ -378,7 +450,6 @@ header .container {
   height: auto;
   border-radius: 8px;
 }
-
 
 /* Experience Container Styles */
 .experience-container {
@@ -444,11 +515,11 @@ header .container {
   background-color: var(--accent-color);
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+/* Responsive Styles for About Us Preview */
+@media (max-width: 1024px) {
   .about-us-background {
-    width: 100%;     /* Make background full width on mobile */
-    padding: 60px 20px;
+    padding: 80px 20px;
+    height: auto;
   }
 
   .about-us-content {
@@ -456,31 +527,32 @@ header .container {
     text-align: center;
   }
 
-  .about-us-text,
-  .about-us-image {
-    width: 100%;
+  .about-us-text {
+    padding: 80px 20px 20px 20px;
+    max-width: none;
   }
 
   .about-us-image {
     justify-content: center;
-  }
-
-  .about-us-image img {
     width: 100%;
   }
 
-  /* Adjust brown tab position */
-  .brown-tab {
-    top: -15px;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%);
+  .about-us-image img {
+    width: 80%;
   }
 
-  /* Adjust "02" size and position for smaller screens */
+  .about-us-text h2 {
+    font-size: 3rem;
+  }
+
+  .about-us-text h3 {
+    font-size: 1.2rem;
+  }
+
   .about-us-text::before {
     font-size: 2rem;
     top: -10px;
-    left: -10px;
+    left: 10px;
   }
 }
 
@@ -499,9 +571,9 @@ header .container {
 }
 
 .listings-text::before {
-  content: "03"; 
+  content: "03";
   position: absolute;
-  top: -30px; 
+  top: -30px;
   left: 50%;
   transform: translateX(-50%) scaleX(1.5);
   font-size: 4.2rem;
@@ -522,7 +594,7 @@ header .container {
   letter-spacing: 2px;
   line-height: 1.2;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .listings-text h2 {
@@ -576,7 +648,6 @@ header .container {
 .listing-images img {
   width: 50%;
   height: auto; /* Ensure the images keep their aspect ratio */
-  
 }
 
 /* Correctly position the price over the images */
@@ -627,6 +698,30 @@ header .container {
   color: var(--primary-color);
 }
 
+/* Responsive Styles for Listings */
+@media (max-width: 1024px) {
+  .listings-text h2 {
+    font-size: 3rem;
+  }
+
+  .listings-text h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .listings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .listings-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .listings-text h3 {
+    font-size: 1rem;
+  }
+}
 
 /* Contact Preview Section */
 .contact-preview {
@@ -671,7 +766,7 @@ header .container {
   display: flex;
   flex-direction: column; /* Arrange content vertically */
   justify-content: flex-start;
-  margin-top: -50px
+  margin-top: -50px;
 }
 
 .contact-image {
@@ -698,7 +793,6 @@ header .container {
   font-family: "Cardo", serif;
   font-weight: 900;
   transform: scaleX(1.5);
-  
 }
 
 .contact-text h3 {
@@ -732,6 +826,7 @@ header .container {
   letter-spacing: 1px;
   font-weight: 500;
 }
+
 .contact-text p {
   font-size: 1rem;
   color: var(--background-color);
@@ -776,12 +871,10 @@ header .container {
   vertical-align: middle;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+/* Responsive Styles for Contact Preview */
+@media (max-width: 1024px) {
   .contact-background {
-    width: 100%;
     padding: 60px 20px;
-    background-position: center center;
   }
 
   .contact-content {
@@ -789,22 +882,28 @@ header .container {
     text-align: center;
   }
 
-  .contact-text,
-  .contact-image {
-    flex: none;
-    width: 100%;
-    min-height: auto;
+  .contact-text {
+    padding: 40px 20px;
+    max-width: none;
+    margin-top: 0;
   }
 
   .contact-image {
-    height: 300px; /* Set a fixed height for the background image on mobile */
+    min-height: 300px;
   }
 
-  /* Adjust the ::before number on smaller screens */
+  .contact-text h2 {
+    font-size: 3rem;
+  }
+
+  .contact-text h3 {
+    font-size: 1.2rem;
+  }
+
   .contact-text::before {
     font-size: 2rem;
     top: -10px;
-    left: -10px;
+    left: 10px;
   }
 
   .contact-text .btn {
@@ -812,11 +911,27 @@ header .container {
   }
 }
 
+@media (max-width: 768px) {
+  .contact-background {
+    padding: 40px 10px;
+  }
 
+  .contact-image {
+    min-height: 200px;
+  }
+
+  .contact-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .contact-text h3 {
+    font-size: 1rem;
+  }
+}
 
 /* Footer Styles */
 footer {
-  background: url('Resources/pics/FOOTER\ \(1\).png') no-repeat center center; /* Set the background image */
+  background: url('Resources/pics/footer.png') no-repeat center center; /* Set the background image */
   background-size: cover; /* Scale the image to cover the entire footer */
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -869,36 +984,55 @@ footer p {
   text-shadow: #2A2D36;
 }
 
-/* Responsive Styles */
+/* Responsive Styles for Footer */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: var(--white-color);
-    position: absolute;
-    top: 65px;
-    right: 0;
-    width: 200px;
-    border-left: 1px solid #ccc;
+  footer {
+    padding: 100px 0;
   }
 
-  .nav-links.active {
-    display: flex;
+  .footer-container {
+    margin-top: 50px;
   }
 
-  .nav-links li {
-    margin: 15px 0;
+  .footer-logo img {
+    height: 40px;
   }
 
-  .nav-toggle {
-    display: block;
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* General Responsive Styles */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
-  .listings-grid {
-    grid-template-columns: 1fr;
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .about-text h2,
+  .about-us-text h2,
+  .listings-text h2,
+  .contact-text h2 {
+    font-size: 2rem;
+  }
+
+  .about-text h3,
+  .about-us-text h3,
+  .listings-text h3,
+  .contact-text h3 {
+    font-size: 0.9rem;
   }
 }

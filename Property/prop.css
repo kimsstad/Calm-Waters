@@ -1,367 +1,164 @@
-:root {
-    --primary-color: #405F73;    /* Deep Blue */
-    --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
-    --accent-color: #8C6751;     /* Soft Orange */
-    --background-color: #F5F5F5; /* Light Gray */
-    --text-color: #2A2D36;       /* Dark Gray for Headings */
-    --body-text-color: #5F6364;  /* Medium Gray for Body Text */
-    --white-color: #FFFFFF;
-  }
-  
-  body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    color: var(--body-text-color);
-    background-color: var(--background-color);
-    padding-top: 120px; /* Ensures content doesn't overlap with fixed header */
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  /* Header Styles */
 /* Import Custom Fonts */
 @font-face {
-    font-family: 'YourCustomFont';
-    src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-  
-  :root {
-    --primary-color: #375163;    /* Logo color - Deep Blue */
-    --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
-    --accent-color: #8C6751;     /* Accent Color - Soft Orange */
-    --background-color: #F5F5F5; /* Light Gray Background */
-    --text-color: #2A2D36;       /* Dark Gray for Headings */
-    --body-text-color: #5F6364;  /* Medium Gray for Body Text */
-    --white-color: #FFFFFF;
-  }
-  
-  body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-    color: var(--body-text-color);
-    background-color: var(--background-color);
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  /* Header Styles */
-  header {
-    position:absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 1200px;
-    padding: 0px;
-    background: var(--background-color);
-    border-radius: 0 0 2px 2px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    opacity: 0.9;
-    z-index: 1000;
-  }
-  
-  /* Container inside the header */
-  header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    position: relative; /* Required for absolute positioning of the logo box */
-  }
-  
-  /* Logo Box */
-  .logo-box {
-    background-color: var(--primary-color); /* Navy background */
-    color: var(--background-color); /* White text */
-    padding: 20px 30px; /* Adjust padding to make the box larger */
-    font-size: 2em;
-    font-weight: normal;
-    font-family: "Cardo", serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-style: normal;
-    position: absolute;
-    top: 0; /* Stick to the top of the page */
-    left: 0;
-    margin-left: -60px;
-    height: 95px; /* Adjust the height to make it wider */
-    display: flex;
-    align-items: center; /* Center text vertically */
-    border-radius: 0 0 2px 2px; /* Curved bottom corners */
-    z-index: 1010; /* Ensure the logo box stays above other elements */
-  }
-  
-  /* Logo on Hero Section */
-  .logo-on-hero {
-    position: absolute;
-    top: 44%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust position to center perfectly */
-    width: 500px; /* Adjust size as needed */
-    opacity: 0.2; /* Set transparency (0 = fully transparent, 1 = fully opaque) */
-    z-index: 2; /* Ensure it stays on top of other content */
-  }
-  
-  /* Navigation Menu */
-  .nav-container {
-    margin-left: auto; /* Push the nav menu to the right of the header */
-    padding: 0 2em;
-    box-sizing: border-box;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 40px; /* Space between nav items */
-    padding-left: 20px;
-    margin-left: 20px;
-  }
-  
-  .nav-links li {
-    margin: 0 20px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-  }
-  
-  .nav-links a:hover {
-    color: var(--accent-color);
-  }
-  
-  /* Nav Toggle (for mobile view) */
-  .nav-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  
-
-/* Hero Section */
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  background-color: var(--primary-color);
-  overflow: hidden;
+  font-family: 'YourCustomFont';
+  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--white-color);
+:root {
+  --primary-color: #375163;    /* Logo color - Deep Blue */
+  --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
+  --accent-color: #8C6751;     /* Accent Color - Soft Orange */
+  --background-color: #F5F5F5; /* Light Gray Background */
+  --text-color: #2A2D36;       /* Dark Gray for Headings */
+  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
+  --white-color: #FFFFFF;
 }
 
-.hero-text h1 {
-  font-size: 3rem;
-  font-family: "Cardo", serif;
-  color: var(--text-color);
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.btn-book-now {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  padding: 12px 24px;
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-}
-
-.btn-book-now:hover {
-  background-color: var(--accent-color);
-}
-
-/* Room Details Section */
-.details-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 0;
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--body-text-color);
   background-color: var(--background-color);
 }
 
-.details-section .room-info {
-  flex: 1;
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.details-section .room-info h2 {
-  font-size: 2rem;
+/* Header Styles */
+header {
+  position:fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1200px;
+  padding: 0px;
+  background: var(--background-color);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+
+  z-index: 1000;
+}
+
+/* Container inside the header */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  position: relative; /* Required for absolute positioning of the logo box */
+}
+
+/* Logo Box */
+.logo-box {
+  background-color: var(--primary-color); /* Navy background */
+  color: var(--background-color); /* White text */
+  padding: 20px 30px; /* Adjust padding to make the box larger */
+  font-size: 2em;
+  font-weight: normal;
   font-family: "Cardo", serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: absolute;
+  top: 0; /* Stick to the top of the page */
+  left: 0;
+  margin-left: -60px;
+  height: 95px; /* Adjust the height to make it wider */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  border-radius: 0 0 2px 2px; /* Curved bottom corners */
+  z-index: 1010; /* Ensure the logo box stays above other elements */
 }
 
-.details-section .room-info ul {
-  list-style-type: none;
-  padding: 0;
+/* Logo on Hero Section */
+.logo-on-hero {
+  position: absolute;
+  top: 44%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center perfectly */
+  width: 500px; /* Adjust size as needed */
+  opacity: 0.2; /* Set transparency (0 = fully transparent, 1 = fully opaque) */
+  z-index: 2; /* Ensure it stays on top of other content */
 }
 
-.details-section .room-info ul li {
-  margin-bottom: 10px;
+/* Navigation Menu */
+.nav-container {
+  margin-left: auto; /* Push the nav menu to the right of the header */
+  padding: 0 2em;
+  box-sizing: border-box;
 }
 
-/* Facilities Grid */
-.facilities-section {
-  background-color: var(--white-color);
-  padding: 40px 0;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px; /* Space between nav items */
+  padding-left: 20px;
+  margin-left: 20px;
 }
 
-.facilities-section .facilities-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+.nav-links li {
+  margin: 0 20px;
 }
 
-.facility-item {
-  text-align: center;
-}
-
-.facility-item i {
-  font-size: 2rem;
-  color: var(--primary-color);
-}
-
-.facility-item p {
-  margin-top: 10px;
-  font-size: 1rem;
+.nav-links a {
+  text-decoration: none;
   color: var(--text-color);
+  font-weight: 500;
 }
 
-/* Swiper Gallery */
-.swiper-container {
-    width: 100%;
-    height: 300px;
-    margin-bottom: 40px;
-  }
-  
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.nav-links a:hover {
+  color: var(--accent-color);
+}
 
-  /* Footer Styles */
-footer {
-    background: url('../Resources/pics/footer.png') no-repeat center center; /* Set the background image */
-    background-size: cover; /* Scale the image to cover the entire footer */
-    color: var(--background-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    padding: 140px 0; /* Adjust the overall padding of the footer */
-    position: relative; /* Set relative positioning to use absolute positioning inside */
-  }
-  
-  .footer-container {
-    margin-top: 100px; /* Add space from the top of the footer */
-  }
-  
-  .footer-logo img {
-    height: 50px;
-  }
-  
-  .footer-links {
-    margin-top: 20px;
-  }
-  
-  .footer-links a {
-    color: var(--white-color);
-    margin-right: 15px;
-    text-decoration: none;
-    margin-top: 20px;
-  }
-  
-  .footer-links a:hover {
-    color: var(--primary-color);
-  }
-  
-  .footer-social a {
-    color: var(--white-color);
-    margin-right: 15px;
-    font-size: 1.5rem;
-  }
-  
-  .footer-social a:hover {
-    color: var(--secondary-color);
-  }
-  
-  footer p {
-    position: absolute; /* Use absolute positioning */
-    bottom: 20px; /* Adjust this value to move the paragraph up or down */
-    left: 50%; /* Center the paragraph horizontally */
-    transform: translateX(-50%); /* Correct horizontal centering */
-    font-size: 0.9rem;
-    color: var(--white-color);
-    font-weight: normal;
-    text-shadow: #2A2D36;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--white-color);
-      position: absolute;
-      top: 65px;
-      right: 0;
-      width: 200px;
-      border-left: 1px solid #ccc;
-    }
-  
-    .nav-links.active {
-      display: flex;
-    }
-  
-    .nav-links li {
-      margin: 15px 0;
-    }
-  
-    .nav-toggle {
-      display: block;
-    }
-  
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
-  
-    .listings-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  
+/* Nav Toggle (for mobile view) */
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('Resources/pics/lookout.png') no-repeat center center/cover;
+  z-index: 1;
+  background-size: cover;
+}
+
+/* Overlapping Content */
+.overlap-content {
+  position: absolute;
+  top: 80%; /* Adjust this value based on how much overlap you want */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; /* Make sure it appears above the hero section */
+  background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a background */
+  padding: 20px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 70%,
+    #F5F5F5 100%
+  );
+}

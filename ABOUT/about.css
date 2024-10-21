@@ -48,7 +48,6 @@ header {
   background: var(--background-color);
   border-radius: 0 0 2px 2px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-  opacity: 0.9;
   z-index: 1000;
 }
 
@@ -173,6 +172,19 @@ header .container {
   color: #ffffff;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
 
 /* Ensure full height and centering on larger screens */
 @media (min-width: 1200px) {
@@ -214,6 +226,7 @@ header .container {
   align-items: center;
   padding: 60px 0;
   position: relative;
+  margin-bottom: 250px;
 }
 
 .our-story .story-content {
@@ -228,14 +241,26 @@ header .container {
   color: var(--text-color);
   position: relative;
   margin-bottom: 20px;
+  margin-top: -20px;
   z-index: 1;
 }
-
-.our-story h2::before {
+.our-story h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  margin-top: 5px; 
+  padding: 0;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  position: relative; 
+}
+.our-story h3::before {
   content: "OUR STORY";
   position: absolute;
+  font-family: 'Cardo', serif;
   top: 50%;
-  left:12.5%;
+  left: 13.25%;
   transform: translate(-50%, -50%);
   font-size: 4.5rem;
   font-weight: bold;
@@ -246,15 +271,17 @@ header .container {
 .our-story p {
   font-size: 1.2rem;
   line-height: 1.8;
+  width: 900px;
+
 }
 
 .our-story .story-image {
   flex: 1;
   position: absolute;
   right: 0;
-  top: 0;
-  width: 50vw;
-  height: 100%;
+  top: 400px;
+  width: 70vw;
+  height: 80%;
 }
 
 .our-story .story-image img {
@@ -266,17 +293,47 @@ header .container {
 
 /* Our Team Section */
 .our-team {
-  background-color: var(--background-color);
+  background-color: var(--white-color);
   padding: 80px 0;
 }
 
-.team-heading {
-  text-align: center;
-  font-size: 3rem;
-  font-family: 'Cardo', serif;
+
+.our-team h3 {
+  font-size: 1.5rem;
   color: var(--text-color);
-  margin-bottom: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  position: relative;
+  text-align: center; 
 }
+
+.our-team h3::before {
+  content: 'MEET';
+  position: absolute;
+  font-family: 'Cardo', serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.05); 
+  z-index: 1; 
+  pointer-events: none;
+}
+
+.team-heading {
+  font-size: 4rem;
+  color: var(--text-color);
+  font-family: 'Cardo', serif;
+  margin-bottom: 40px;
+  position: relative;
+  line-height: 1.2;
+  text-align: center;
+  margin-top: -10px;
+}
+
 
 .team-content {
   display: flex;
@@ -306,45 +363,36 @@ header .container {
   color: var(--body-text-color);
 }
 
-/* Our Values Section */
-.our-values {
-  padding: 60px 0;
-  text-align: center;
-}
-
-.values-content {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-}
-
-.value-item {
-  text-align: center;
-}
-
-.value-item i {
-  font-size: 3rem;
-  color: var(--accent-color);
-  margin-bottom: 15px;
-}
-
-.value-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: var(--text-color);
-}
-
-.value-item p {
-  font-size: 1rem;
-  color: var(--body-text-color);
-}
 
 /* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust h2 headings */
+  .team-heading,
+  .our-location h2 {
+    font-size: 2.5rem;
+  }
+
+  .team-heading::before,
+  .our-location h2::before {
+    font-size: 2.5rem;
+    top: -5px; /* Adjust as needed */
+    transform: translateX(-50%) scaleX(1.2);
+  }
+
+  /* Adjust h3 subheadings */
+  .our-team h3,
+  .our-location h3 {
+    font-size: 1.2rem;
+  }
+
+  .our-team h3::before,
+  .our-location h3::before {
+    font-size: 2.5rem;
+    top: -5px; /* Adjust as needed */
+    transform: translateX(-50%) scaleX(1.2);
+  }
+}
+
 @media (min-width: 768px) {
   .our-story {
     flex-direction: row;
@@ -376,25 +424,60 @@ header .container {
 
 /* Our Location Section */
 .our-location {
-  padding: 80px 0;
+  padding: 40px 0;
+  position: relative; /* Allow relative positioning for the map */
+  height: auto;
+}
+
+/* Our Location Subheading (h3) Styles */
+.our-location h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  position: relative;
+  text-align: center; /* Adjust if needed */
+  margin-bottom: -40px;
+}
+
+.our-location h3::before {
+  content: 'EXPLORE'; /* The text you want behind the h3 */
+  position: absolute;
+  font-family: 'Cardo', serif;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.05); /* Faded background text */
+  z-index: -1; /* Puts the pseudo-element behind the heading */
+  pointer-events: none; /* Prevents the pseudo-element from interfering with interactions */
 }
 
 .our-location h2 {
-  font-size: 3rem;
-  margin-bottom: 40px;
-  text-align: center;
-  font-family: 'Cardo', serif;
+  font-size: 4rem;
   color: var(--text-color);
+  font-family: 'Cardo', serif;
+  margin-bottom: 40px;
+  position: relative;
+  line-height: 1.2;
+  text-align: center; 
+  
 }
+
 
 .location-content {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+  position: relative;
 }
 
 .location-image, .location-map {
   flex: 1 1 50%;
+  z-index: 2; /* Ensure content stays above the footer */
 }
 
 .location-image img {
@@ -402,26 +485,48 @@ header .container {
   border-radius: 10px;
 }
 
+.location-map {
+  position: relative;
+  z-index: 3; /* Higher than the footer */
+  margin-top: -20px; /* Adjust this for desired overlap */
+}
+
 .location-map iframe {
   width: 100%;
+  height: 600px; /* Adjust the height if needed */
   border-radius: 10px;
   border: none;
 }
 
+
+
 /* Footer Styles */
 footer {
-  background: url('../Resources/pics/footer.png') no-repeat center center; 
+  background: url('../Resources/pics/footer.png') no-repeat center center;
   background-size: cover;
+  height: 100%;
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   text-align: center;
-  padding: 150px 0;
+  padding: 250px 0;
   position: relative;
-  margin-top: 50px;
+  z-index: 1; /* Lower than the map */
+  margin-top: -300px;
 }
 
 .footer-container {
   margin-top: 200px;
+}
+
+footer p {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: var(--white-color);
+  font-weight: 500;
+  text-shadow: #2A2D36;
 }
 
 .footer-logo img {
@@ -453,13 +558,4 @@ footer {
   color: var(--secondary-color);
 }
 
-footer p {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  color: var(--white-color);
-  font-weight: bold;
-  text-shadow: #2A2D36;
-}
+
