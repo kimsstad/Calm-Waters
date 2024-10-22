@@ -26,10 +26,14 @@ body {
   padding-top: 120px;
 }
 
+
+
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Header Styles */
@@ -115,7 +119,7 @@ header .container {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('../Resources/pics/waves.png') no-repeat center center/cover;
+  background: url('../Resources/pics/.png') no-repeat center center/cover;
   z-index: 1;
   background-size: cover;
 }

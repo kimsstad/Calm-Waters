@@ -256,11 +256,12 @@ header .container {
   position: relative; 
 }
 .our-story h3::before {
-  content: "OUR STORY";
+  content: "≋";
   position: absolute;
   font-family: 'Cardo', serif;
+  transform: scaleX(1.5);
   top: 50%;
-  left: 13.25%;
+  left: 0%;
   transform: translate(-50%, -50%);
   font-size: 4.5rem;
   font-weight: bold;
@@ -310,17 +311,18 @@ header .container {
 }
 
 .our-team h3::before {
-  content: 'MEET';
+  content: '≋';
   position: absolute;
   font-family: 'Cardo', serif;
-  top: 50%;
-  left: 50%;
+  top: -110%;
+  left: 44%;
   transform: translate(-50%, -50%);
   font-size: 4.5rem;
-  font-weight: bold;
   color: rgba(0, 0, 0, 0.05); 
   z-index: 1; 
   pointer-events: none;
+  font-weight: 900;
+  transform: scaleX(1.5);
 }
 
 .team-heading {
@@ -443,17 +445,18 @@ header .container {
 }
 
 .our-location h3::before {
-  content: 'EXPLORE'; /* The text you want behind the h3 */
+  content: '≋'; /* The text you want behind the h3 */
   position: absolute;
   font-family: 'Cardo', serif;
-  top: 50%;
-  left:50%;
+  top: -110%;
+  left: 42%;
   transform: translate(-50%, -50%);
   font-size: 4.5rem;
-  font-weight: bold;
   color: rgba(0, 0, 0, 0.05); /* Faded background text */
   z-index: -1; /* Puts the pseudo-element behind the heading */
   pointer-events: none; /* Prevents the pseudo-element from interfering with interactions */
+  font-weight: 900;
+  transform: scaleX(1.5);
 }
 
 .our-location h2 {

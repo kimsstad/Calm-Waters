@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clifftop Cabin | Calm Waters Plett</title>
   <meta name="description" content="Clifftop Cabin at Calm Waters Plett - Experience stunning views and modern comforts.">
   <meta name="keywords" content="clifftop cabin, luxury cabin, seaside retreat, Calm Waters Plett">
-  <title>Clifftop Cabin | Calm Waters Plett</title>
   
   <!-- Existing CSS -->
   <link rel="stylesheet" href="../prop.css">
@@ -51,13 +51,10 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="overlay"></div>
-    <!-- Logo on Hero Section -->
-    <img src="../../Resources/pics/logo.png" alt="Calm Waters Logo" class="logo-on-hero">
     <!-- Hero Text -->
     <div class="hero-text">
       <h1>Clifftop Cabin</h1>
-      <p>Experience tranquility with breathtaking views of Plettenberg Bay.</p>
-      <a href="../../CONTACT/contact.html" class="btn-book-now">Book Now</a>
+      <h2>Your tranquil seaside retreat</h2>
     </div>
   </section>
 
@@ -67,20 +64,21 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <a href="../../Resources/pics/clifftop1.jpg" data-lightbox="property-gallery">
+            <a href="Resources/pics/clifftop1.jpg" data-lightbox="property-gallery">
               <img src="../../Resources/pics/clifftop1.jpg" alt="Property Image 1">
             </a>
           </div>
           <div class="swiper-slide">
-            <a href="../../Resources/pics/clifftop2.jpg" data-lightbox="property-gallery">
+            <a href="Resources/pics/clifftop2.jpg" data-lightbox="property-gallery">
               <img src="../../Resources/pics/clifftop2.jpg" alt="Property Image 2">
             </a>
           </div>
           <div class="swiper-slide">
-            <a href="../../Resources/pics/clifftop3.jpg" data-lightbox="property-gallery">
+            <a href="Resources/pics/clifftop3.jpg" data-lightbox="property-gallery">
               <img src="../../Resources/pics/clifftop3.jpg" alt="Property Image 3">
             </a>
           </div>
+          <!-- Add more slides as needed -->
         </div>
         <!-- Swiper navigation buttons -->
         <div class="swiper-button-next"></div>
@@ -89,34 +87,73 @@
     </div>
   </section>
 
-  <!-- Property Info Section -->
-  <section class="details-section">
+  <!-- Property Description Section -->
+  <section class="property-description">
     <div class="container">
-      <div class="room-info">
-        <h2>Description</h2>
-        <p>
-          Nestled on Plettenberg Bay cliffs, this retreat offers tranquility and breathtaking coastal views, perfect for couples or solo adventurers. Located in quiet farmland, it's within a 10km radius of Plettenberg Bay's natural beauty, including beaches and hiking trails.
-        </p>
+      <h2>Description</h2>
+      <p>
+        Nestled on Plettenberg Bay cliffs, this retreat offers tranquility and breathtaking coastal views, perfect for couples or solo adventurers. Located in quiet farmland, it's within a 10km radius of Plettenberg Bay's natural beauty, including beaches and hiking trails.
+      </p>
+    </div>
+  </section>
 
-        <h2>Key Features</h2>
-        <ul>
-          <li>Stunning ocean views</li>
-          <li>Private hiking trail</li>
-          <li>Communal outdoor pool</li>
-          <li>Fully-equipped kitchen</li>
-          <li>Deck for relaxation</li>
-        </ul>
+  <!-- Property Details Section -->
+  <section class="property-details">
+    <div class="container">
+      <div class="three-columns">
+        <!-- First Column -->
+        <div class="column">
+          <div class="icon-heading">
+            <i class="fas fa-info-circle"></i>
+            <h3>Details</h3>
+          </div>
+          <ul>
+            <li><strong>Location:</strong> Plettenberg Bay</li>
+            <li><strong>Bedrooms:</strong> 1</li>
+            <li><strong>Bathrooms:</strong> 1</li>
+            <li><strong>Sleeps:</strong> 2 guests</li>
+            <li><strong>Amenities:</strong> Wi-Fi, Shared Outdoor Pool, Ocean View</li>
+          </ul>
+        </div>
+        <!-- Second Column -->
+        <div class="column">
+          <div class="icon-heading">
+            <i class="fas fa-star"></i>
+            <h3>Key Features</h3>
+          </div>
+          <ul>
+            <li>Stunning ocean views</li>
+            <li>Private hiking trail</li>
+            <li>Communal outdoor pool</li>
+            <li>Fully-equipped kitchen</li>
+            <li>Deck for relaxation</li>
+          </ul>
+        </div>
+        <!-- Third Column -->
+        <div class="column">
+          <div class="icon-heading">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Local Attractions</h3>
+          </div>
+          <ul>
+            <li>Robberg Nature Reserve</li>
+            <li>Adventure Land Water Park</li>
+            <li>Birds of Eden</li>
+            <li>Monkeyland Primate Sanctuary</li>
+            <li>Plettenberg Bay Beaches</li>
+          </ul>
+        </div>
       </div>
-      <div class="room-info">
-        <h2>Details</h2>
-        <ul>
-          <li><strong>Location:</strong> Plettenberg Bay</li>
-          <li><strong>Bedrooms:</strong> 1</li>
-          <li><strong>Bathrooms:</strong> 1</li>
-          <li><strong>Sleeps:</strong> 2 guests</li>
-          <li><strong>Amenities:</strong> Wi-Fi, Shared Outdoor Pool, Ocean View</li>
-        </ul>
-      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Contact Us to Book Your Stay</h2>
+      <p><strong>Email:</strong> info@calmwatersplett.com</p>
+      <p><strong>Phone:</strong> +27 12 345 6789</p>
+      <p><strong>Address:</strong> 123 Coastal Road, Plettenberg Bay, South Africa</p>
     </div>
   </section>
 
@@ -125,38 +162,29 @@
     <p>&copy; 2024 Calm Waters Plett. All rights reserved.</p>
   </footer>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <!-- Lightbox2 JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <!-- Initialize Swiper and Mobile Nav Toggle -->
-  <script>
-    // Initialize Swiper
-    var swiper = new Swiper('.swiper', {
-      loop: true,
-      slidesPerView: 3,
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-        },
-        480: {
-          slidesPerView: 1,
-        }
-      }
-    });
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- Lightbox2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<!-- Initialize Swiper and Mobile Nav Toggle -->
+<script>
+  // Initialize Swiper
+  var swiper = new Swiper('.swiper', {
+    loop: true,
+    slidesPerView: 'auto', // Allow custom slide widths
+    spaceBetween: 10, // Adjust space between slides
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 
-    // Mobile navigation toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+  // Mobile navigation toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
