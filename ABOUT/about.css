@@ -342,6 +342,7 @@ header .container {
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
+  margin-top: -20px;
 }
 
 .team-image {
@@ -357,12 +358,14 @@ header .container {
 .team-description {
   flex: 1;
   padding-left: 100px;
+  width: 50%;
 }
 
 .team-description p {
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--body-text-color);
+  width: 100%;
 }
 
 

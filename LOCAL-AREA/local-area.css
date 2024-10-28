@@ -359,7 +359,7 @@ header .container {
 
 .history-content {
     display: flex;
-    width: 100%;
+    width: 100%; 
     height: 70vh; /* Keep height at 70% of the viewport */
     position: relative;
 }
