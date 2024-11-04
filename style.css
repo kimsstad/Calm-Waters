@@ -42,7 +42,7 @@ header {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   padding: 0px;
   background: var(--background-color);
@@ -57,14 +57,15 @@ header .container {
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
-  position: relative; /* Required for absolute positioning of the logo box */
+  position: relative; 
+  width: 100%;
 }
 
 /* Logo Box */
 .logo-box {
-  background-color: var(--primary-color); /* Navy background */
-  color: var(--background-color); /* White text */
-  padding: 20px 30px; /* Adjust padding to make the box larger */
+  background-color: var(--primary-color); 
+  color: var(--background-color); 
+  padding: 20px 30px; 
   font-size: 2em;
   font-weight: normal;
   font-family: "Cardo", serif;
@@ -72,30 +73,30 @@ header .container {
   letter-spacing: 1px;
   font-style: normal;
   position: absolute;
-  top: 0; /* Stick to the top of the page */
+  top: 0; 
   left: 0;
   margin-left: -60px;
-  height: 95px; /* Adjust the height to make it wider */
+  height: 95px;
   display: flex;
-  align-items: center; /* Center text vertically */
-  border-radius: 0 0 2px 2px; /* Curved bottom corners */
-  z-index: 1010; /* Ensure the logo box stays above other elements */
+  align-items: center; 
+  border-radius: 0 0 2px 2px; 
+  z-index: 1010; 
 }
 
 /* Logo on Hero Section */
 .logo-on-hero {
   position: absolute;
-  top: 44%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position to center perfectly */
-  width: 500px; /* Adjust size as needed */
-  opacity: 0.2; /* Set transparency (0 = fully transparent, 1 = fully opaque) */
-  z-index: 2; /* Ensure it stays on top of other content */
+  top: 44%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 500px; 
+  opacity: 0.2; 
+  z-index: 2; 
 }
 
 /* Navigation Menu */
 .nav-container {
-  margin-left: auto; /* Push the nav menu to the right of the header */
+  margin-left: auto; 
   padding: 0 2em;
   box-sizing: border-box;
 }
@@ -103,7 +104,7 @@ header .container {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 40px; /* Space between nav items */
+  gap: 30px;
   padding-left: 20px;
   margin-left: 20px;
 }
@@ -123,10 +124,16 @@ header .container {
 }
 
 /* Nav Toggle (for mobile view) */
+
+.fa-bars:before {
+  position: relative;
+  right: -60px;
+}
 .nav-toggle {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
+  right: 30px;
 }
 
 /* Hero Section */
@@ -141,11 +148,11 @@ header .container {
 /* Overlapping Content */
 .overlap-content {
   position: absolute;
-  top: 80%; /* Adjust this value based on how much overlap you want */
+  top: 80%; 
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2; /* Make sure it appears above the hero section */
-  background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a background */
+  z-index: 2; 
+  background-color: rgba(255, 255, 255, 0.9); 
   padding: 20px;
 }
 
@@ -164,23 +171,23 @@ header .container {
 
 /* Hero Content */
 .hero-content {
-  position: absolute; /* Position it absolutely within the overlay */
-  top: 50%; /* Adjust to align with the logo image */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center perfectly */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
   color: var(--background-color);
   text-align: center;
-  z-index: 3; /* Higher z-index to appear above the logo */
+  z-index: 3; 
 }
 
 .hero-content h1 {
-  font-size: 4rem; /* Increase the font size */
+  font-size: 4rem;
   margin-bottom: 20px;
   font-family: "Cardo", serif;
-  font-weight: 700; /* Make the text bold */
-  color: #ffffff; /* Set the text color to white */
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Enhance the text shadow */
-  padding: 10px 20px; /* Add padding to give the text more space */
+  font-weight: 700; 
+  color: #ffffff; 
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px; 
 }
 
 .hero-content p {
@@ -200,6 +207,47 @@ header .container {
 .btn:hover {
   background-color: var(--secondary-color);
 }
+
+.hero-content {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  color: var(--background-color);
+  text-align: center;
+  z-index: 3;
+}
+
+/* Text Styling */
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  font-family: "Cardo", serif;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+
 
 /* About Preview Section */
 .about-preview {
@@ -306,105 +354,7 @@ header .container {
   background-color: var(--secondary-color);
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  header {
-    width: 100%;
-    padding: 0 20px;
-  }
 
-  .logo-box {
-    margin-left: -40px;
-    height: 80px;
-    padding: 15px 20px;
-    font-size: 1.5em;
-  }
-
-  .nav-links {
-    gap: 20px;
-    padding-left: 0;
-    margin-left: 0;
-  }
-
-  .about-image img {
-    width: 150%;
-    left: -25%;
-  }
-
-  .about-text {
-    right: 0;
-  }
-
-  .about-text h2 {
-    font-size: 3rem;
-  }
-
-  .about-text h3 {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Header Adjustments */
-  header {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .nav-container {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  /* Hero Section Adjustments */
-  .hero-content h1 {
-    font-size: 2.5rem;
-    padding: 0 20px;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    padding: 0 20px;
-  }
-
-  /* About Preview Section */
-  .about-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-image,
-  .about-text {
-    width: 100%;
-    flex: none;
-  }
-
-  .about-image img {
-    width: 100%;
-    left: 0;
-  }
-
-  .about-text {
-    right: 0;
-  }
-
-  .about-text h2 {
-    font-size: 2.5rem;
-  }
-
-  .about-text h3 {
-    font-size: 1rem;
-  }
-
-  .about-text::before {
-    font-size: 2rem;
-    top: -10px;
-    left: 10px;
-  }
-}
 
 /* About Us Preview Section */
 .about-us-preview {
@@ -515,46 +465,7 @@ header .container {
   background-color: var(--accent-color);
 }
 
-/* Responsive Styles for About Us Preview */
-@media (max-width: 1024px) {
-  .about-us-background {
-    padding: 80px 20px;
-    height: auto;
-  }
 
-  .about-us-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-us-text {
-    padding: 80px 20px 20px 20px;
-    max-width: none;
-  }
-
-  .about-us-image {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .about-us-image img {
-    width: 80%;
-  }
-
-  .about-us-text h2 {
-    font-size: 3rem;
-  }
-
-  .about-us-text h3 {
-    font-size: 1.2rem;
-  }
-
-  .about-us-text::before {
-    font-size: 2rem;
-    top: -10px;
-    left: 10px;
-  }
-}
 
 /* Listings Section */
 .listings {
@@ -698,30 +609,7 @@ header .container {
   color: var(--primary-color);
 }
 
-/* Responsive Styles for Listings */
-@media (max-width: 1024px) {
-  .listings-text h2 {
-    font-size: 3rem;
-  }
 
-  .listings-text h3 {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .listings-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .listings-text h2 {
-    font-size: 2.5rem;
-  }
-
-  .listings-text h3 {
-    font-size: 1rem;
-  }
-}
 
 /* Contact Preview Section */
 .contact-preview {
@@ -797,7 +685,7 @@ header .container {
 
 .contact-text h3 {
   font-size: 1.5rem;
-  color: var(--accent-color);
+  color: var(--white-color);
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   margin-top: -20px;
@@ -871,63 +759,7 @@ header .container {
   vertical-align: middle;
 }
 
-/* Responsive Styles for Contact Preview */
-@media (max-width: 1024px) {
-  .contact-background {
-    padding: 60px 20px;
-  }
 
-  .contact-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .contact-text {
-    padding: 40px 20px;
-    max-width: none;
-    margin-top: 0;
-  }
-
-  .contact-image {
-    min-height: 300px;
-  }
-
-  .contact-text h2 {
-    font-size: 3rem;
-  }
-
-  .contact-text h3 {
-    font-size: 1.2rem;
-  }
-
-  .contact-text::before {
-    font-size: 2rem;
-    top: -10px;
-    left: 10px;
-  }
-
-  .contact-text .btn {
-    align-self: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-background {
-    padding: 40px 10px;
-  }
-
-  .contact-image {
-    min-height: 200px;
-  }
-
-  .contact-text h2 {
-    font-size: 2.5rem;
-  }
-
-  .contact-text h3 {
-    font-size: 1rem;
-  }
-}
 
 /* Footer Styles */
 footer {
@@ -984,55 +816,34 @@ footer p {
   text-shadow: #2A2D36;
 }
 
-/* Responsive Styles for Footer */
-@media (max-width: 768px) {
-  footer {
-    padding: 100px 0;
-  }
+/* Media Queries */
 
-  .footer-container {
-    margin-top: 50px;
+@media (max-width: 1500px) {
+  .nav-container {
+    padding: 0 10px; /* Reduce padding */
   }
-
-  .footer-logo img {
-    height: 40px;
-  }
-
-  footer p {
-    font-size: 0.8rem;
+  .nav-links a {
+    font-size: 0.9rem; /* Decrease font size */
   }
 }
 
-/* General Responsive Styles */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
 
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
+@media (max-width: 1111px) {
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Adjust to a smaller size */
   }
-
-  .hero-content p {
-    font-size: 0.9rem;
+  .hero-content {
+    width: 90%; /* Make the container a bit wider */
   }
+}
 
-  .about-text h2,
-  .about-us-text h2,
-  .listings-text h2,
-  .contact-text h2 {
-    font-size: 2rem;
+
+@media (max-width: 520px) {
+  .logo-on-hero {
+    width: 50%; /* Make the logo smaller */
+    height: auto; /* Maintain aspect ratio */
   }
-
-  .about-text h3,
-  .about-us-text h3,
-  .listings-text h3,
-  .contact-text h3 {
-    font-size: 0.9rem;
+  .hero-content h1 {
+    font-size: 1.8rem; /* Make the main heading smaller */
   }
 }

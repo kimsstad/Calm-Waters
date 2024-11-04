@@ -18,7 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="Resources/pics/favicon.jpg" type="image/jpg">
 </head>
 <body>
 
@@ -30,6 +31,11 @@
         <span>Calm Waters</span>
       </div>
       
+    <!-- Hamburger Menu Icon -->
+    <div class="nav-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
       <!-- Navigation Menu -->
       <div class="nav-container">
         <nav>
@@ -37,6 +43,7 @@
             <li><a href="index.html">HOME</a></li>
             <li><a href="LOCAL-AREA/local-area.html">LOCAL AREA</a></li>
             <li><a href="ABOUT/about.html">ABOUT US</a></li>
+            <li><a href="MANAGEMENT/management.html">MANAGEMENT</a></li>
             <li><a href="Property/property.html">PROPERTIES</a></li>
             <li><a href="CONTACT/contact.html">CONTACT</a></li>
           </ul>
@@ -101,7 +108,6 @@
           </p>
           <a href="ABOUT/about.html" class="btn">Meet Us</a>
         </div>
->
       </div>
     </div>
   </div>
@@ -112,7 +118,7 @@
 <section class="listings">
   <div class="container">
     <div class="listings-text">
-      <a href="Property/property.html"><h3>EXPLORE</h3></a>
+      <a href="Property/property.html"><h3>CLICK TO EXPLORE</h3></a>
       <a href="Property/property.html"><h2>Our Properties</h2></a>
     </div>
     <div class="listings-grid">
@@ -125,7 +131,7 @@
         </div>
         <div class="listing-details">
           <h3>Robberg Studio Suite</h3>
-          <p>Plettenberg Bay</p>
+          <p>Elegant Coastal Retreat with Stunning Views</p>
           <div class="listing-features">
             <span><i class="fas fa-bed"></i> 1 Bed</span>
             <span><i class="fas fa-bath"></i> 1 Bath</span>
@@ -139,11 +145,11 @@
               <div class="listing-images">
                 <img src="Resources/pics/LookoutRoom1.avif" alt="Inside Lookout Studio Suite">
                 <img src="Resources/pics/LookoutRoom2.avif" alt="Inside Lookout Studio Suite">
-                <div class="listing-price">R800 - R1,000t</div>
+                <div class="listing-price">R800 - R1,000</div>
               </div>
               <div class="listing-details">
                 <h3>Lookout Studio Suite</h3>
-                <p>Plettenberg Bay</p>
+                <p>Tranquil Getaway, Mountain and Garden Views</p>
                 <div class="listing-features">
                   <span><i class="fas fa-bed"></i> 1 Bed</span>
                   <span><i class="fas fa-bath"></i> 1 Bath</span>
@@ -210,5 +216,20 @@
 
   <!-- JavaScript -->
   <script src="script.js"></script>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-851ZJ9DJHQ');
+</script>
+
 </body>
 </html>

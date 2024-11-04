@@ -42,7 +42,7 @@ header {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   padding: 0;
   background: var(--white-color);
@@ -58,6 +58,7 @@ header .container {
   align-items: center;
   padding: 15px 0;
   position: relative;
+  width: 100%;
 }
 
 /* Logo Box */
@@ -90,7 +91,7 @@ header .container {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 30px;
   padding-left: 20px;
 }
 

@@ -1,0 +1,496 @@
+/* Global Styles (management.css) */
+
+/* Import Custom Fonts */
+@font-face {
+    font-family: 'YourCustomFont';
+    src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    src: url('fonts/GeorgiaPro-Regular.ttf') format('truetype');
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #375163;    /* Logo color - Deep Blue */
+    --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
+    --accent-color: #8C6751;     /* Accent Color - Soft Orange */
+    --background-color: #F5F5F5; /* Light Gray Background */
+    --text-color: #2A2D36;       /* Dark Gray for Headings */
+    --body-text-color: #5F6364;  /* Medium Gray for Body Text */
+    --white-color: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: var(--body-text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 0px;
+    background: var(--background-color);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    position: relative;
+}
+
+.logo-box {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 20px 30px;
+    font-size: 2em;
+    font-weight: normal;
+    font-family: "Cardo", serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-style: normal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: -60px;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 2px 2px;
+    z-index: 1010;
+}
+
+.nav-container {
+    margin-left: auto;
+    padding: 0 2em;
+    box-sizing: border-box;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Nav Toggle for mobile */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('../Resources/pics/Management-hero.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--white-color);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-family: 'Cardo', serif;
+    margin-bottom: -20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Introduction Section with Three Cards */
+.introduction {
+    position: relative;
+    margin-top: -100px; /* Adjust this value to control overlap */
+    z-index: 2;
+}
+
+.intro-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.intro-card {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-card .card-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.intro-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.intro-card p {
+    font-size: 1rem;
+    color: var(--body-text-color);
+    line-height: 1.6;
+}
+
+/* General Information Section */
+.general-info {
+    padding: 60px 0;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    margin-top: 2em;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the gap as needed */
+}
+
+.text-content {
+    flex: 1; /* Take up available space */
+}
+
+.text-content h2 {
+    font-size: 3rem;
+    font-family: 'Cardo', serif;
+}
+
+.image-content {
+    flex: 1; /* Take up available space */
+}
+
+.image-content img {
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack the columns vertically on smaller screens */
+    }
+
+    .text-content, .image-content {
+        flex: unset; /* Remove the flex property to let both take full width */
+    }
+}
+
+
+/* Motto Section */
+.motto-section {
+    position: relative;
+    background: url('../Resources/pics/motto.png') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.motto-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.motto-section h2 {
+    position: relative;
+    font-size: 5rem;
+    font-family: 'Georgia Pro', serif;
+    font-style: italic;
+    letter-spacing: 5px;
+    color: var(--white-color);
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+}
+
+.motto-section h3 {
+    font-size: 1.5rem;
+    color: var(--white-color);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: 500;
+    padding: 0;
+    z-index: 2;
+}
+/* Detailed Services Section */
+.detailed-services {
+    padding: 60px 0;
+}
+
+.services-subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.services-title {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-family: 'Cardo', serif;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.services-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-item {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: var(--body-text-color);
+    line-height: 1.6;
+}
+
+
+/* Call-to-Action Section */
+
+.cta-section {
+    padding: 60px 0;
+    background-color: var(--background-color);
+    text-align: center;
+    color: var(--text-color);
+    /* Add margin-bottom to separate from footer */
+    margin-bottom: 100px;
+}
+
+
+.cta-section h2 {
+    font-size: 3rem;
+    font-family: 'Cardo', serif;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    background-color: var(--secondary-color);
+    color: var(--whie-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/* Footer Styles */
+footer {
+    background: url('../Resources/pics/footer.png') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    color: var(--background-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+footer p {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: var(--white-color);
+    font-weight: 500;
+    text-shadow: #2A2D36;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--white-color);
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 200px;
+        border-left: 1px solid #ccc;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .intro-cards {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .intro-card {
+        margin-bottom: 20px;
+    }
+
+    .services-details {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .motto-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .general-info h2 {
+        font-size: 2.5rem;
+    }
+}
+
