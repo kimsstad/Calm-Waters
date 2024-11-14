@@ -1,4 +1,4 @@
-/* Global Styles (style.css) */
+/* Global Styles */
 
 /* Import Custom Fonts */
 @font-face {
@@ -87,6 +87,7 @@ header .container {
     margin-left: auto;
     padding: 0 2em;
     box-sizing: border-box;
+    position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
@@ -172,8 +173,6 @@ header .container {
 }
 
 /* Introduction Section Styles */
-
-/* Introduction Section */
 .introduction {
     position: relative;
     margin-top: -50px; /* Adjust this value to control overlap */
@@ -285,7 +284,7 @@ header .container {
 
 /* Image Container */
 .attraction-item img {
-    width: 380px;
+    width: 100%;
     height: 200px; /* Set a specific height for the image */
     object-fit: cover;
 }
@@ -330,7 +329,7 @@ header .container {
     font-weight: 900;
     font-size: 4rem;
     top: -66px;
-    left: 42.5%;
+    left: 50%;
     transform: translateX(-50%);
     color: rgba(0, 0, 0, 0.05);
     z-index: -1;
@@ -341,13 +340,11 @@ header .container {
     text-decoration: none; /* Remove text underline */
     color: inherit; /* Inherit the text color from parent element */
     display: block; /* Ensure the entire card is clickable */
-  }
-  
-  .attractions-grid a:hover {
-    text-decoration: none; /* Ensure no underline appears on hover */
-  }
-  
+}
 
+.attractions-grid a:hover {
+    text-decoration: none;
+}
 
 /* History Section Styles */ 
 .history {
@@ -426,27 +423,6 @@ header .container {
     transform: translateX(0);
     color: rgba(0, 0, 0, 0.05);
     z-index: -1; /* Ensure this stays behind the text */
-}
-
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .history-content {
-        flex-direction: column;
-    }
-
-    .history .image-container {
-        position: relative;
-        width: 100vw; /* Full width for mobile screens */
-        left: 0; /* Reset the position */
-        height: 50vh; /* Adjust the height for smaller screens */
-    }
-
-    .history .text-content {
-        margin-left: 0; /* Reset margin for stacking */
-        width: 100%; /* Full width */
-        padding: 20px;
-    }
 }
 
 /* Map Section */
@@ -534,65 +510,187 @@ footer p {
     color: var(--secondary-color);
 }
 
-  
+/* Media Queries */
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .intro-card {
-        flex-direction: column;
-    }
-
-    .image-container img {
+/* Below 1904px - Adjust history section */ 
+@media (max-width: 1904px) {
+    .history-content {
+        display: flex;
+        flex-direction: row;
+        position: relative;
         height: auto;
     }
 
-    .text-content {
-        padding: 20px;
-        text-align: center;
+    .history .image-container {
+        position: relative;
+        width: 50%;
+        left: 0;
+        height: auto;
+        overflow: hidden;
     }
 
-    .text-content .intro-subtitle,
-    .text-content .intro-title,
-    .text-content p {
-        text-align: center;
+    .history .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    .history .text-content {
+        position: relative;
+        width: 50%;
+        padding-left: 20px;
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+    /* Show the hamburger icon */
+    .nav-toggle {
+        display: block;
     }
 
-    .hero p {
-        font-size: 1.2rem;
-    }
-
+    /* Hide navigation links */
     .nav-links {
         display: none;
         flex-direction: column;
         background: var(--white-color);
         position: absolute;
-        top: 65px;
+        top: 100%;
         right: 0;
         width: 200px;
         border-left: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
+    /* Show navigation when active */
     .nav-links.active {
         display: flex;
     }
 
+    /* Adjust navigation links */
     .nav-links li {
         margin: 15px 0;
+        text-align: right;
+        padding-right: 20px;
     }
 
-    .nav-toggle {
-        display: block;
+    .logo-box {
+        margin-left: 0;    /* Remove negative margin */
+        left: 0px;        /* Move the logo box inward */
+    }
+}
+
+/* Below 860px - Adjust intro card */
+@media (max-width: 860px) {
+    .intro-card {
+        flex-direction: column; /* Stack content vertically */
+        height: auto; /* Allow height to adjust */
     }
 
-    .hero-content h1 {
+    .intro-title::before {
+        content: none;
+    }
+
+    .text-content,
+    .image-container {
+        width: 100%; /* Full width */
+    }
+
+    .text-content {
+        padding: 20px; /* Adjust padding */
+        text-align: center; /* Center text */
+    }
+
+    .image-container img {
+        height: auto; /* Adjust image height */
+        width: 100%; /* Full width */
+        object-fit: cover; /* Maintain aspect ratio */
+    }
+}
+
+.history-title::before {
+    content: none;
+   }
+/* Below 770px - Single column layout */
+@media (max-width: 770px) {
+    /* Intro Card Adjustments */
+    .intro-card {
+        flex-direction: column;
+        height: auto;
+    }
+    .text-content,
+    .image-container {
+        width: 100%;
+    }
+    .text-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* History Section Adjustments */
+    .history-content {
+        flex-direction: column;
+        height: auto;
+        align-items: center; /* Center content horizontally */
+    }
+    .history .image-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px; /* Set a maximum width */
+        margin: 0 auto;
+        left: 0;
+        height: auto;
+    }
+    .history .text-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Adjust the ::before pseudo-element in history title */
+    .history-title::before {
+     content: none;
+    }
+
+    /* Image Adjustments */
+    .history .image-container img,
+    .intro-card .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Use 'contain' to maintain aspect ratio */
+    }
+}
+
+
+/* Additional Adjustments Below 600px */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .intro-title {
         font-size: 2.5rem;
     }
 
-    .listings-grid {
-        grid-template-columns: 1fr;
+    .history .history-title {
+        font-size: 2rem;
+    }
+
+    .attractions-title {
+        font-size: 3rem;
+    }
+
+    .map-content h2 {
+        font-size: 2rem;
     }
 }
