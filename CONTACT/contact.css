@@ -1,3 +1,5 @@
+/* Global Styles */ 
+
 /* Import Custom Fonts */
 @font-face {
   font-family: 'YourCustomFont';
@@ -49,24 +51,21 @@ header {
   border-radius: 0 0 2px 2px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   z-index: 1000;
-  opacity: 90%;
 }
 
-/* Container inside the header */
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 15px 0;
-  position: relative; /* Required for absolute positioning of the logo box */
+  position: relative;
 }
 
-/* Logo Box */
 .logo-box {
-  background-color: var(--primary-color); /* Navy background */
-  color: var(--background-color); /* White text */
-  padding: 20px 30px; /* Adjust padding to make the box larger */
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 20px 30px;
   font-size: 2em;
   font-weight: normal;
   font-family: "Cardo", serif;
@@ -74,38 +73,27 @@ header .container {
   letter-spacing: 1px;
   font-style: normal;
   position: absolute;
-  top: 0; /* Stick to the top of the page */
+  top: 0;
   left: 0;
   margin-left: -60px;
-  height: 95px; /* Adjust the height to make it wider */
+  height: 95px;
   display: flex;
-  align-items: center; /* Center text vertically */
-  border-radius: 0 0 2px 2px; /* Curved bottom corners */
-  z-index: 1010; /* Ensure the logo box stays above other elements */
+  align-items: center;
+  border-radius: 0 0 2px 2px;
+  z-index: 1010;
 }
 
-/* Logo on Hero Section */
-.logo-on-hero {
-  position: absolute;
-  top: 44%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position to center perfectly */
-  width: 500px; /* Adjust size as needed */
-  opacity: 0.2; /* Set transparency (0 = fully transparent, 1 = fully opaque) */
-  z-index: 2; /* Ensure it stays on top of other content */
-}
-
-/* Navigation Menu */
 .nav-container {
-  margin-left: auto; /* Push the nav menu to the right of the header */
+  margin-left: auto;
   padding: 0 2em;
   box-sizing: border-box;
+  position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px; /* Space between nav items */
+  gap: 30px;
   padding-left: 20px;
   margin-left: 20px;
 }
@@ -124,71 +112,11 @@ header .container {
   color: var(--accent-color);
 }
 
-/* Nav Toggle (for mobile view) */
+/* Nav Toggle for mobile */
 .nav-toggle {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
-}
-
-/* Import Custom Fonts */
-@font-face {
-  font-family: 'YourCustomFont';
-  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --primary-color: #375163;    /* Logo color - Deep Blue */
-  --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
-  --accent-color: #8C6751;     /* Accent Color - Soft Orange */
-  --background-color: #F5F5F5; /* Light Gray Background */
-  --text-color: #2A2D36;       /* Dark Gray for Headings */
-  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
-  --white-color: #FFFFFF;
-}
-
-body {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: normal;
-  color: var(--body-text-color);
-  background-color: var(--background-color);
-}
-
-/* Import Custom Fonts */
-@font-face {
-  font-family: 'YourCustomFont';
-  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --primary-color: #375163;    /* Logo color - Deep Blue */
-  --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
-  --accent-color: #8C6751;     /* Accent Color - Soft Orange */
-  --background-color: #F5F5F5; /* Light Gray Background */
-  --text-color: #2A2D36;       /* Dark Gray for Headings */
-  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
-  --white-color: #FFFFFF;
-}
-
-body {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: normal;
-  color: var(--body-text-color);
-  background-color: var(--background-color);
 }
 
 /* Hero Section */
@@ -215,6 +143,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--white-color);
+  padding-top: 120px; /* Added to prevent overlap with navbar */
 }
 
 /* Hero Heading with Pseudo Element */
@@ -264,18 +193,13 @@ body {
   left: 20px;
   font-size: 4rem;
   color: rgba(0, 0, 0, 0.05);
-  z-index: 10; /* Increase z-index to ensure it's visible */
+  z-index: 10;
   pointer-events: none;
-  /* Temporarily comment out font-family to check if this is the issue */
   font-family: "Cardo", serif; 
   font-weight: 900;
   display: inline-block;
   transform: scaleX(1.5);
 }
-
-
-
-
 
 .hero-heading p {
   font-size: 1.2rem;
@@ -288,18 +212,33 @@ body {
 .floating-card {
   background-color: var(--white-color);
   padding: 40px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); /* Floating effect */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
   margin-left: -30px; /* Slight overlap with the image */
   width: 85%;
+  box-sizing: border-box;
 }
 
 .contact-wrapper {
   display: flex;
+  flex-wrap: wrap; /* Allows wrapping to prevent squishing */
   justify-content: space-between;
+  gap: 40px; /* Increased gap between columns */
 }
 
-.contact-item {
+.contact-item,
+.address-section {
+  flex: 1 1 45%; /* Flex items with a base width of 45% */
+  box-sizing: border-box;
   margin-bottom: 20px;
+}
+
+/* Remove individual margins since gap handles spacing */
+.contact-item {
+  margin-right: 0; /* Remove margin-right */
+}
+
+.address-section {
+  margin-left: 0; /* Ensure no unwanted margin */
 }
 
 .contact-item i {
@@ -328,10 +267,12 @@ body {
   width: 243px;
   text-align: center;
 }
+
 .contact-item a.btn span {
   display: inline-block;
   vertical-align: middle;
 }
+
 .contact-item a.btn:hover {
   background-color: var(--secondary-color);
 }
@@ -361,36 +302,6 @@ body {
   line-height: 2em;
 }
 
-/* Responsive Styles */
-@media (max-width: 992px) {
-  .floating-card {
-    margin-left: 0;
-    width: 90%;
-  }
-
-  .contact-wrapper {
-    flex-direction: column;
-  }
-
-  .address-section {
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-heading h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-heading p {
-    font-size: 1rem;
-  }
-
-  .floating-card {
-    padding: 20px;
-  }
-}
-
 /* Map Section */
 .map-section {
   width: 100%;
@@ -404,18 +315,18 @@ body {
 
 /* Footer Styles */
 footer {
-  background: url('../Resources/pics/footer.png') no-repeat center center; /* Set the background image */
-  background-size: cover; /* Scale the image to cover the entire footer */
+  background: url('../Resources/pics/footer.png') no-repeat center center;
+  background-size: cover;
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   text-align: center;
-  padding: 150px 0; /* Adjust the overall padding of the footer */
-  position: relative; /* Set relative positioning to use absolute positioning inside */
+  padding: 150px 0;
+  position: relative;
   margin-top: -50px;
 }
 
 .footer-container {
-  margin-top: 100px; /* Add space from the top of the footer */
+  margin-top: 100px;
 }
 
 .footer-logo img {
@@ -448,18 +359,74 @@ footer {
 }
 
 footer p {
-  position: absolute; /* Use absolute positioning */
-  bottom: 20px; /* Adjust this value to move the paragraph up or down */
-  left: 50%; /* Center the paragraph horizontally */
-  transform: translateX(-50%); /* Correct horizontal centering */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.9rem;
   color: var(--white-color);
   font-weight: normal;
   text-shadow: #2A2D36;
 }
 
-
 /* Responsive Styles */
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+  .nav-toggle {
+      display: block;
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
+
+  .logo-box {
+      margin-left: 0;    
+      left: 0px;      
+  }
+}
+
+/* Adjustments for 1450px and smaller */
+@media (max-width: 1450px) {
+  .floating-card {
+    width: 90%;
+  }
+}
+
+/* Adjustments for 1020px and smaller */
+@media (max-width: 1020px) {
+  .content-side {
+    padding-top: 140px; /* Increase padding to prevent overlap */
+  }
+
+  .hero-heading h1.heading-main {
+    font-size: 3.5rem; /* Reduce font size */
+  }
+
+  .hero-heading h2.heading-sub {
+    font-size: 1.3rem; /* Reduce font size */
+  }
+}
+
+/* Adjustments below 992px */
 @media (max-width: 992px) {
   .contact-hero {
     flex-direction: column;
@@ -473,6 +440,7 @@ footer p {
 
   .content-side {
     width: 100%;
+    padding-top: 120px; /* Ensure padding remains */
   }
 
   .floating-card {
@@ -480,22 +448,44 @@ footer p {
     width: 90%;
   }
 
+  /* Keep contact-wrapper in two columns */
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .contact-item,
+  .address-section {
+    flex: 1 1 45%;
+  }
+
+  .contact-item {
+    margin-right: 5%;
+  }
+
+  .address-section {
+    margin-left: 0;
+  }
+}
+
+/* Below 768px */
+@media (max-width: 768px) {
+  .hero-heading h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-heading p {
+    font-size: 1rem;
+  }
+
   .contact-wrapper {
     flex-direction: column;
   }
 
+  .contact-item,
   .address-section {
-    margin-top: 20px;
+    flex: 1 1 100%;
+    margin-right: 0;
   }
 }
-
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-}
-

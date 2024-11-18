@@ -298,6 +298,7 @@ header .container {
   top: 400px;
   width: 70vw;
   height: auto;
+  
 }
 
 .our-story .story-image img {
@@ -305,6 +306,7 @@ header .container {
   height: auto;
   object-fit: cover;
   border-radius: 0;
+ 
 }
 
 
@@ -314,7 +316,6 @@ header .container {
   padding: 80px 0;
 }
 
-
 .our-team h3 {
   font-size: 1.5rem;
   color: var(--text-color);
@@ -323,7 +324,7 @@ header .container {
   letter-spacing: 2px;
   line-height: 1.2;
   position: relative;
-  text-align: center; 
+  text-align: center;
 }
 
 .our-team h3::before {
@@ -334,8 +335,8 @@ header .container {
   left: 44%;
   transform: translate(-50%, -50%);
   font-size: 4.5rem;
-  color: rgba(0, 0, 0, 0.05); 
-  z-index: 1; 
+  color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
   pointer-events: none;
   font-weight: 900;
   transform: scaleX(1.5);
@@ -346,108 +347,64 @@ header .container {
   color: var(--text-color);
   font-family: 'Cardo', serif;
   margin-bottom: 40px;
-  position: relative;
   line-height: 1.2;
   text-align: center;
-  margin-top: -10px;
 }
-
 
 .team-content {
   display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping on larger screens */
   align-items: center;
-  justify-content: space-between;
-  padding: 0 5%;
-  margin-top: -20px;
+  justify-content: flex-start;
 }
 
 .team-image {
-  flex: 1;
-  height: auto;
-  width:180%;
-
+  flex: 0 0 auto;
+  width: 50%;
+  max-width: 600px; /* Adjust as needed */
+  box-sizing: border-box;
 }
 
 .team-image img {
-  width: 180%;
-
+  width: 100%;
   height: auto;
-  margin-left:-420px;
 }
-
 
 .team-description {
   flex: 1;
-  padding-left: 100px;
-  width: 50%;
+  padding-left: 50px;
+  box-sizing: border-box;
 }
 
 .team-description p {
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--body-text-color);
-  width: 100%;
-  word-wrap: break-word;
 }
 
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-  /* Adjust h2 headings */
-  .team-heading,
-  .our-location h2 {
-    font-size: 2.5rem;
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .team-content {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
   }
 
-  .team-heading::before,
-  .our-location h2::before {
-    font-size: 2.5rem;
-    top: -5px; /* Adjust as needed */
-    transform: translateX(-50%) scaleX(1.2);
-  }
-
-  /* Adjust h3 subheadings */
-  .our-team h3,
-  .our-location h3 {
-    font-size: 1.2rem;
-  }
-
-  .our-team h3::before,
-  .our-location h3::before {
-    font-size: 2.5rem;
-    top: -5px; /* Adjust as needed */
-    transform: translateX(-50%) scaleX(1.2);
-  }
-}
-
-@media (min-width: 768px) {
-  .our-story {
-    flex-direction: row;
-  }
-
-  .story-content {
-    text-align: left;
-    padding-left: 40px;
-  }
-
-  .story-image {
-    width: 50%;
-  }
-
-  .values-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4-column layout for larger screens */
-  }
-}
-
-@media (max-width: 767px) {
-  .story-image img {
+  .team-image,
+  .team-description {
     width: 100%;
+    max-width: none;
   }
 
-  .team-grid, .values-grid {
-    grid-template-columns: 1fr;
+  .team-description {
+    padding-left: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .team-description p {
+    text-align: center;
   }
 }
+
 
 /* Our Location Section */
 .our-location {
@@ -592,54 +549,11 @@ body.menu-active {
 
 
 /* Media Queries */
-
-/* Adjust for screens below 1924px */
-@media (max-width: 1924px) {
-  .team-content {
-    padding-right: 5%; /* Push content more to the right */
-    padding-left: 5%;  /* Optional: adjust left padding if needed */
-  }
-
-  .team-image {
-    position: relative; /* Ensure image does not get cut off */
-    left: 0; /* Reset any absolute positioning offset */
-   
-  }
-}
-
-
-/* Adjust for screens below 1600px */
-@media (max-width: 1600px) {
-  .our-team {
-    padding-top: 5px; /* Remove top padding */
-  }
-  .team-content {
-    padding-right: 8%; /* Increase padding to push content more to the right */
-    padding-left: 5%;
-  }
-
-  .team-image img {
-    width: 180%; /* Reduce the width to prevent overflow */
-
-    height: auto;
-    margin-left: -340px; /* Adjust margin-left to keep image aligned */
-  }
-
-  .team-description {
-    padding-left: 70px; /* Adjust padding as needed */
-  }
-
-}
-
-
 /* Below 1340px - Enable hamburger menu */
 @media (max-width: 1340px) {
-  /* Show the hamburger icon */
   .nav-toggle {
       display: block;
   }
-
-  /* Hide navigation links */
   .nav-links {
       display: none;
       flex-direction: column;
@@ -652,12 +566,10 @@ body.menu-active {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  /* Show navigation when active */
   .nav-links.active {
       display: flex;
   }
 
-  /* Adjust navigation links */
   .nav-links li {
       margin: 15px 0;
       text-align: right;
@@ -665,10 +577,64 @@ body.menu-active {
   }
 
   .logo-box {
-      margin-left: 0;    /* Remove negative margin */
-      left: 0px;        /* Move the logo box inward */
+      margin-left: 0;    
+      left: 0px;        
   }
 }
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust h2 headings */
+  .team-heading,
+  .our-location h2 {
+    font-size: 2.5rem;
+  }
+
+  .team-heading::before,
+  .our-location h2::before {
+    font-size: 2.5rem;
+    top: -5px; /* Adjust as needed */
+    transform: translateX(-50%) scaleX(1.2);
+  }
+
+  /* Adjust h3 subheadings */
+  .our-team h3,
+  .our-location h3 {
+    font-size: 1.2rem;
+  }
+
+  .our-team h3::before,
+  .our-location h3::before {
+    font-size: 2.5rem;
+    top: -5px; /* Adjust as needed */
+    transform: translateX(-50%) scaleX(1.2);
+  }
+}
+
+@media (min-width: 768px) {
+  .our-story {
+    flex-direction: row;
+  }
+
+  .story-content {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  .story-image {
+    width: 50%;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4-column layout for larger screens */
+  }
+  .story-image img {
+    width: 100%;
+  }
+
+}
+
 
 /* Media Query for screens 940px and below */
 @media (max-width: 940px) {
@@ -696,31 +662,6 @@ body.menu-active {
     transform: translate(-50%, -100%); /* Center above the heading */
     font-size: 3.5rem; /* Reduce font size */
     z-index: 1;
-  }
-  .our-team {
-    padding-top: 20px; /* Adjust top padding if necessary */
-  }
-
-  .team-content {
-    flex-direction: column; /* Stack content vertically */
-    align-items: center;    /* Center-align all items */
-    text-align: center;     /* Center-align text */
-  }
-
-  .team-image {
-    order: -1;              /* Move image above the description */
-    width: 100%;            /* Set image width to full */
-    margin-bottom: 20px;    /* Add spacing below the image */
-  }
-
-  .team-image img {
-    width: 100%;            /* Ensure image fills its container */
-    margin-left: 0;         /* Reset margin */
-  }
-
-  .team-description {
-    padding-left: 0;        /* Remove left padding */
-    width: 100%;            /* Full width for the description */
   }
 }
 

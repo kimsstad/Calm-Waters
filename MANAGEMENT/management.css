@@ -20,6 +20,7 @@
 :root {
     --primary-color: #375163;    /* Logo color - Deep Blue */
     --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
+    --secondary-color-dark: #6B8494; /* Darker shade for hover effects */
     --accent-color: #8C6751;     /* Accent Color - Soft Orange */
     --background-color: #F5F5F5; /* Light Gray Background */
     --text-color: #2A2D36;       /* Dark Gray for Headings */
@@ -72,7 +73,6 @@ header .container {
     color: var(--background-color);
     padding: 20px 30px;
     font-size: 2em;
-    font-weight: normal;
     font-family: "Cardo", serif;
     font-weight: 700;
     letter-spacing: 1px;
@@ -92,6 +92,7 @@ header .container {
     margin-left: auto;
     padding: 0 2em;
     box-sizing: border-box;
+    position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
@@ -193,26 +194,36 @@ header .container {
 .intro-card {
     background-color: var(--white-color);
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
     flex: 1;
     padding: 30px 20px;
     text-align: center;
     position: relative;
     z-index: 2;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
 }
 
+/* Hover effect for intro cards */
+.intro-card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+}
+
+/* Icon inside the card */
 .intro-card .card-icon {
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 15px;
 }
 
+/* Card heading */
 .intro-card h3 {
     font-size: 1.5rem;
     color: var(--text-color);
     margin-bottom: 10px;
 }
 
+/* Card paragraph */
 .intro-card p {
     font-size: 1rem;
     color: var(--body-text-color);
@@ -221,7 +232,7 @@ header .container {
 
 /* General Information Section */
 .general-info {
-    padding: 0;
+    padding: 60px 0;
     background-color: var(--primary-color);
     color: var(--white-color);
     margin-top: 2em;
@@ -230,39 +241,52 @@ header .container {
 .content-wrapper {
     display: flex;
     align-items: center;
-    gap: 20px; /* Adjust the gap as needed */
+    gap: 20px;
 }
 
 .text-content {
-    flex: 1; /* Take up available space */
+    flex: 1;
 }
 
 .text-content h2 {
     font-size: 3rem;
     font-family: 'Cardo', serif;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
 .image-content {
-    flex: 1; /* Take up available space */
+    flex: 1;
 }
 
 .image-content img {
-    width: 100%; /* Ensure the image takes up the full width of its container */
-    height: auto; /* Maintain the aspect ratio */
+    width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
-/* Responsive Styles */
+/* Responsive Styles for General Info */
 @media (max-width: 768px) {
     .content-wrapper {
-        flex-direction: column; /* Stack the columns vertically on smaller screens */
+        flex-direction: column;
     }
 
     .text-content, .image-content {
-        flex: unset; /* Remove the flex property to let both take full width */
+        flex: unset;
+    }
+
+    .text-content h2 {
+        text-align: center;
+    }
+
+    .text-content p {
+        text-align: center;
     }
 }
-
 
 /* Motto Section */
 .motto-section {
@@ -373,18 +397,15 @@ header .container {
     line-height: 1.6;
 }
 
-
 /* Call-to-Action Section */
-
 .cta-section {
     position: relative;
-    /* Adjust the top margin to pull the section under the footer */
-    margin-top: -100px;
-    z-index: 1; /* Ensure it appears above the footer */
+    margin-top: -120px;
+    z-index: 1;
 }
 
 .cta-card {
-    background-color: var(--background-color);
+    background-color: var(--white-color);
     padding: 40px;
     margin: 0 auto;
     width: 80%;
@@ -392,7 +413,7 @@ header .container {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
-    top: 150px; /* Adjust this value to control how much the card peeks out */
+    top: 140px;
     text-align: center;
 }
 
@@ -409,7 +430,7 @@ header .container {
 
 .cta-btn {
     background-color: var(--secondary-color);
-    color: var(--white-color); /* Corrected typo from 'whie-color' to 'white-color' */
+    color: var(--white-color);
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
@@ -421,7 +442,6 @@ header .container {
     background-color: var(--secondary-color-dark);
     color: var(--white-color);
 }
-
 
 /* Footer Styles */
 footer {
@@ -446,6 +466,44 @@ footer p {
     color: var(--white-color);
     font-weight: 500;
     text-shadow: #2A2D36;
+}
+
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+    /* Show the hamburger icon */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Hide navigation links */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--white-color);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        border-left: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Show navigation when active */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Adjust navigation links */
+    .nav-links li {
+        margin: 15px 0;
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .logo-box {
+        margin-left: 0;    /* Remove negative margin */
+        left: 0px;        /* Move the logo box inward */
+    }
 }
 
 /* Responsive Styles */
@@ -495,10 +553,6 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-
     .motto-section h2 {
         font-size: 2.5rem;
     }
@@ -507,4 +561,3 @@ footer p {
         font-size: 2.5rem;
     }
 }
-

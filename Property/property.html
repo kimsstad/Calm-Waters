@@ -46,6 +46,8 @@
     </div>
   </header>
 
+  <section class="hero"></section>
+
   <!-- Listings Section -->
   <section class="property-listings">
     <div class="container">
@@ -347,17 +349,25 @@
 
 
 
-  <!-- Footer (Optional) -->
-  <!-- Add your footer here -->
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-851ZJ9DJHQ');
-</script>
-
-</body>
+  <!-- JavaScript for Mobile Navigation Toggle -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+  
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-851ZJ9DJHQ');
+  </script>
+  
+  </body>
 </html>
+

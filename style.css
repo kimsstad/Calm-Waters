@@ -51,21 +51,19 @@ header {
   z-index: 1000;
 }
 
-/* Container inside the header */
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  position: relative; 
   width: 100%;
+  padding: 15px 0;
+  position: relative;
 }
 
-/* Logo Box */
 .logo-box {
-  background-color: var(--primary-color); 
-  color: var(--background-color); 
-  padding: 20px 30px; 
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 20px 30px;
   font-size: 2em;
   font-weight: normal;
   font-family: "Cardo", serif;
@@ -73,32 +71,21 @@ header .container {
   letter-spacing: 1px;
   font-style: normal;
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
   margin-left: -60px;
   height: 95px;
   display: flex;
-  align-items: center; 
-  border-radius: 0 0 2px 2px; 
-  z-index: 1010; 
+  align-items: center;
+  border-radius: 0 0 2px 2px;
+  z-index: 1010;
 }
 
-/* Logo on Hero Section */
-.logo-on-hero {
-  position: absolute;
-  top: 44%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  width: 500px; 
-  opacity: 0.2; 
-  z-index: 2; 
-}
-
-/* Navigation Menu */
 .nav-container {
-  margin-left: auto; 
+  margin-left: auto;
   padding: 0 2em;
   box-sizing: border-box;
+  position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
@@ -123,28 +110,15 @@ header .container {
   color: var(--accent-color);
 }
 
-/* Nav Toggle (for mobile view) */
-
-.fa-bars:before {
-  position: relative;
-  right: -60px;
-}
+/* Nav Toggle for mobile */
 .nav-toggle {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
-  right: 30px;
 }
+
 
 /* Hero Section */
-.hero {
-  position: relative;
-  height: 100vh;
-  background: url('Resources/pics/lookout.png') no-repeat center center/cover;
-  z-index: 1;
-  background-size: cover;
-}
-
 /* Overlapping Content */
 .overlap-content {
   position: absolute;
@@ -154,6 +128,14 @@ header .container {
   z-index: 2; 
   background-color: rgba(255, 255, 255, 0.9); 
   padding: 20px;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('Resources/pics/lookout.png') no-repeat center center/cover;
+  z-index: 1;
+  background-size: cover;
 }
 
 .overlay {
@@ -167,6 +149,20 @@ header .container {
     rgba(0, 0, 0, 0) 70%,
     #F5F5F5 100%
   );
+}
+
+/* Logo on Hero */
+.logo-on-hero {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3; /* Slight transparency */
+  max-width: 40%; /* Adjust as needed for size */
+  min-width: 300px;
+  width: 100%;
+  height: auto;
+  z-index: 2;
 }
 
 /* Hero Content */
@@ -249,7 +245,7 @@ header .container {
 
 
 
-/* About Preview Section */
+/* About Preview Section (Discover)*/
 .about-preview {
   padding: 80px 0;
   background-color: var(--background-color);
@@ -282,13 +278,12 @@ header .container {
   right: -5%;
 }
 
-/* Discover Container Styles */
+
 .discover-container {
   position: relative;
   display: inline-block;
 }
 
-/* Insert "01" as a background element behind DISCOVER */
 .about-text::before {
   content: "01";
   position: absolute;
@@ -304,7 +299,6 @@ header .container {
   transform: scaleX(1.5);
 }
 
-/* Adjusted Heading Styles */
 .about-text h2 {
   font-size: 4rem;
   color: var(--text-color);
@@ -356,49 +350,44 @@ header .container {
 
 
 
-/* About Us Preview Section */
+/* About Us Preview Section (Our Story) */
 .about-us-preview {
   position: relative;
-  z-index: 1; /* Establish a stacking context */
-  background-color: transparent; /* Remove background color */
+  z-index: 1; 
+  background-color: var(--primary-color); 
 }
 
-/* Inner Background Container */
 .about-us-background {
-  background: url('Resources/pics/team.png') no-repeat center center/cover;
-  padding: 100px 0;
-  width: 100%;
-  height: 800px;
-  margin: 0 auto;
+  padding: 80px 0;
   box-sizing: border-box;
 }
 
 .about-us-content {
   display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
   align-items: center;
   gap: 40px;
 }
 
 .about-us-text {
-  flex: 0 0 400px; /* Keeps the fixed width */
-  color: var(--background-color); /* Text color */
+  flex: 1 1 400px; 
+  max-width: 600px;
   position: relative;
-  padding: 110px 20px 20px 20px; /* Increase the top padding to move everything down */
-  max-width: 400px;
+  padding: 110px 20px 20px 20px; 
+  box-sizing: border-box;
+  color: var(--background-color);
 }
 
 .about-us-image {
-  flex: 1;
+  flex: 1 1 400px; 
   display: flex;
-  justify-content: flex-end;
-  position: relative; /* Needed for absolute positioning of the tab */
-  overflow: visible; /* Allow the tab to be visible outside the container */
+  justify-content: center;
+  align-items: center;
 }
 
 .about-us-image img {
-  width: 100%; /* Adjust as needed */
+  width: 100%; 
   height: auto;
-  border-radius: 8px;
 }
 
 /* Experience Container Styles */
@@ -407,11 +396,11 @@ header .container {
   display: inline-block;
 }
 
-/* "02" Background Element Behind EXPERIENCE */
+/* The pseudo-element remains unchanged */
 .about-us-text::before {
   content: "02";
   position: absolute;
-  top: 72px; /* Reset to 0 */
+  top: 72px; /* Keep original position */
   left: 32px;
   font-size: 4rem;
   color: rgba(255, 255, 255, 0.05);
@@ -419,10 +408,10 @@ header .container {
   pointer-events: none;
   font-family: "Cardo", serif;
   font-weight: 900;
-  display: inline-block;
   transform: scaleX(1.5);
 }
 
+/* Writing styles remain unchanged */
 .about-us-text h3 {
   font-size: 1.5rem;
   color: var(--accent-color); /* Accent color */
@@ -437,7 +426,7 @@ header .container {
 
 .about-us-text h2 {
   font-size: 4rem;
-  color: var(--background-color); /* Same as text color */
+  color: var(--background-color); 
   margin-bottom: 10px;
   font-family: "Cardo", serif;
   margin-top: -5px;
@@ -465,6 +454,31 @@ header .container {
   background-color: var(--accent-color);
 }
 
+/* Responsive Styles */
+@media (max-width: 800px) {
+  .about-us-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .about-us-text,
+  .about-us-image {
+    max-width: 100%;
+    flex-basis: auto;
+    text-align: center;
+  }
+
+  .about-us-text {
+    padding: 20px;
+  }
+
+  /* Adjust pseudo-element positioning */
+  .about-us-text::before {
+    left: 50%;
+    top: -10px; /* Adjusted top position */
+    transform: translateX(-50%) scaleX(1.5);
+  }
+}
 
 
 /* Listings Section */
@@ -647,12 +661,12 @@ header .container {
 
 .contact-text {
   flex: 0 0 400px; /* Fixed width */
-  color: var(--background-color);
+  color: var(--none);
   position: relative;
   padding: 40px 90px;
   line-height: 1.8em;
   display: flex;
-  flex-direction: column; /* Arrange content vertically */
+  flex-direction: column; 
   justify-content: flex-start;
   margin-top: -50px;
 }
@@ -660,23 +674,21 @@ header .container {
 .contact-image {
   flex: 1;
   position: relative;
-  min-height: 500px; /* Ensure the container is tall enough */
+  min-height: 500px; 
 }
 
-/* Remove the background image from .contact-image::before */
 .contact-image::before {
   display: none;
 }
 
-/* Add the ::before pseudo-element */
+
 .contact-text::before {
   content: "04";
   position: absolute;
-  top: 18px; /* Adjust as needed */
-  left: 103px; /* Adjust as needed */
+  top: 18px; 
+  left: 103px;
   font-size: 4rem;
-  color: rgba(255, 255, 255, 0.05); /* Light color with low opacity */
-  z-index: 0;
+  color: rgba(255, 255, 255, 0.05); 
   pointer-events: none;
   font-family: "Cardo", serif;
   font-weight: 900;
@@ -862,6 +874,148 @@ footer p {
   }
   .hero-content {
     width: 90%; /* Make the container a bit wider */
+  }
+}
+
+/* Media Query for max-width: 900px */
+@media (max-width: 900px) {
+  .contact-background {
+    background-image: url('Resources/pics/plett-map2.png');
+    max-height: 550px;
+    padding: 0;
+  }
+
+  .contact-text {
+    background-color: var(--primary-color);
+    /* Keep flex properties as they are to maintain the left alignment */
+    margin-top: -100px;
+    padding: 40px 20px;
+  }
+
+  .contact-text h4 {
+    color: var(--accent-color);
+  }
+  
+  .contact-text h3,
+  .contact-text h2,
+  .contact-text p,
+  .contact-text a {
+    color: var(--background-color);
+    /* Keep text aligned to the left */
+  }
+
+  .contact-text .social-link a {
+    color: var(--background-color);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .contact-image {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  /* Adjust pseudo-element positioning if necessary */
+  .contact-text::before {
+    left: 15%;
+    transform: translateX(-50%) scaleX(1.5);
+  }
+
+  /* Keep the button aligned to the left */
+  .contact-text .btn {
+    align-self: flex-start;
+  }
+}
+
+/* Media Query for max-width: 550px */
+@media (max-width: 550px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center; /* Center all children horizontally */
+  }
+
+  .contact-text {
+    flex: none;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 0;
+    padding: 40px 20px;
+    margin-top: -80px;
+  }
+
+  .contact-text h4 {
+    color: var(--accent-color);
+  }
+  
+  .contact-text h3,
+  .contact-text h2,
+  .contact-text p,
+  .contact-text a {
+    color: var(--background-color);
+    text-align: center;
+  }
+
+  .contact-text .social-link {
+    justify-content: center;
+  }
+
+  .contact-text .social-link a {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--background-color);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .contact-image {
+    flex: none;
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .contact-text::before {
+    left: 50%;
+    transform: translateX(-50%) scaleX(1.5);
+  }
+
+  /* Center the button */
+  .contact-text .btn {
+    align-self: center;
+  }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 780px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Reorder elements */
+  .about-text {
+    order: 1;
+    padding: 20px;
+    right: 0;
+  }
+
+  .about-image {
+    order: 2;
+    margin: 20px 0;
+  }
+
+  /* Adjust pseudo-element positioning */
+  .about-text::before {
+    left: 50%;
+    transform: translateX(-50%) scaleX(1.5);
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    left: 0;
   }
 }
 

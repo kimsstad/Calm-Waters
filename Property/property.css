@@ -5,6 +5,12 @@
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
   --primary-color: #405F73;    /* Logo color - Deep Blue */
   --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
@@ -23,10 +29,8 @@ body {
   font-style: normal;
   color: var(--body-text-color);
   background-color: var(--background-color);
-  padding-top: 120px;
+ 
 }
-
-
 
 .container {
   width: 90%;
@@ -44,24 +48,22 @@ header {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
-  padding: 0;
+  padding: 0px;
   background: var(--white-color);
   border-radius: 0 0 2px 2px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   z-index: 1000;
 }
 
-/* Container inside the header */
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 15px 0;
   position: relative;
-  width: 100%;
 }
 
-/* Logo Box */
 .logo-box {
   background-color: var(--primary-color);
   color: var(--background-color);
@@ -70,22 +72,24 @@ header .container {
   font-family: "Cardo", serif;
   font-weight: 700;
   letter-spacing: 1px;
+  font-style: normal;
   position: absolute;
   top: 0;
   left: 0;
   margin-left: -60px;
-  height: 70px;
+  height: 95px;
+  max-height: 95px !important;
   display: flex;
   align-items: center;
   border-radius: 0 0 2px 2px;
   z-index: 1010;
 }
 
-/* Navigation Menu */
 .nav-container {
   margin-left: auto;
   padding: 0 2em;
   box-sizing: border-box;
+  position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
@@ -93,6 +97,7 @@ header .container {
   display: flex;
   gap: 30px;
   padding-left: 20px;
+  margin-left: 20px;
 }
 
 .nav-links li {
@@ -106,23 +111,14 @@ header .container {
 }
 
 .nav-links a:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
-/* Nav Toggle (for mobile view) */
+/* Nav Toggle for mobile */
 .nav-toggle {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
-}
-
-/* Hero Section */
-.hero {
-  position: relative;
-  height: 100vh;
-  background: url('../Resources/pics/.png') no-repeat center center/cover;
-  z-index: 1;
-  background-size: cover;
 }
 
 /* Overlapping Content */
@@ -149,6 +145,17 @@ header .container {
   );
 }
 
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 0vh;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+}
 .hero-content {
   position: relative;
   color: var(--white-color);
@@ -205,6 +212,7 @@ header .container {
   text-align: center;
   text-decoration: none;
   font-weight: 500;
+  padding-top: 120px;
 }
 
 .property-listings-heading h2 {
@@ -487,35 +495,77 @@ footer p {
   text-shadow: #2A2D36;
 }
 
+
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+  /* Show the hamburger icon */
+  .nav-toggle {
+      display: block;
+  }
+
+  /* Hide navigation links */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Show navigation when active */
+  .nav-links.active {
+      display: flex;
+  }
+
+  /* Adjust navigation links */
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
+
+  .logo-box {
+      margin-left: 0;    /* Remove negative margin */
+      left: 0px;        /* Move the logo box inward */
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .nav-links {
-    display: none;
-    flex-direction: column;
-    background: var(--white-color);
-    position: absolute;
-    top: 65px;
-    right: 0;
-    width: 200px;
-    border-left: 1px solid #ccc;
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 65px;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
   }
 
   .nav-links.active {
-    display: flex;
+      display: flex;
   }
 
   .nav-links li {
-    margin: 15px 0;
+      margin: 15px 0;
   }
 
   .nav-toggle {
-    display: block;
+      display: block;
   }
 
-  .hero-content h1 {
-    font-size: 2.5rem;
+  .hero h1 {
+      font-size: 2.5rem;
   }
 
+  .hero p {
+      font-size: 1.2rem;
+  }
   .listings-grid {
     grid-template-columns: 1fr;
   }
