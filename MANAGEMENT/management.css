@@ -128,7 +128,7 @@ header .container {
 .hero {
     position: relative;
     height: 100vh;
-    background: url('../Resources/pics/Management-hero.png') no-repeat center center/cover;
+    background: url('../Resources/pics/Management-hero.webp') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -291,7 +291,7 @@ header .container {
 /* Motto Section */
 .motto-section {
     position: relative;
-    background: url('../Resources/pics/motto.png') no-repeat center center/cover;
+    background: url('../Resources/pics/motto.webp') no-repeat center center/cover;
     height: 300px;
     display: flex;
     align-items: center;
@@ -445,7 +445,7 @@ header .container {
 
 /* Footer Styles */
 footer {
-    background: url('../Resources/pics/footer.png') no-repeat center center;
+    background: url('../Resources/pics/footer.webp') no-repeat center center;
     background-size: cover;
     height: 300px;
     color: var(--background-color);

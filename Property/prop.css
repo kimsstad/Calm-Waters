@@ -571,7 +571,7 @@ header .container {
 
 /* Footer Styles */
 footer {
-  background: url('../Resources/pics/footer.png') no-repeat center center; /* Set the background image */
+  background: url('../Resources/pics/footer.webp') no-repeat center center; /* Set the background image */
   background-size: cover; /* Scale the image to cover the entire footer */
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);

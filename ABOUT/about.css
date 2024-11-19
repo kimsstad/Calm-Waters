@@ -122,7 +122,7 @@ header .container {
 
 /* Hero Section */
 .about-hero {
-  background: url('../Resources/pics/ABOUT-PAGE-COVER.png') no-repeat center center/cover;
+  background: url('../Resources/pics/ABOUT-PAGE-COVER.webp') no-repeat center center/cover;
   height: 100vh;
   max-height: 100vh;
   display: flex;
@@ -460,15 +460,12 @@ header .container {
   position: relative;
 }
 
-.location-image, .location-map {
+.location-map {
   flex: 1 1 50%;
   z-index: 2; /* Ensure content stays above the footer */
 }
 
-.location-image img {
-  width: 100%;
-  border-radius: 10px;
-}
+
 
 .location-map {
   position: relative;
@@ -487,7 +484,7 @@ header .container {
 
 /* Footer Styles */
 footer {
-  background: url('../Resources/pics/footer.png') no-repeat center center;
+  background: url('../Resources/pics/footer.webp') no-repeat center center;
   background-size: cover;
   height: 100%;
   color: var(--background-color);

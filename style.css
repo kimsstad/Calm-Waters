@@ -133,7 +133,7 @@ header .container {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('Resources/pics/lookout.png') no-repeat center center/cover;
+  background: url('Resources/pics/lookout.webp') no-repeat center center/cover;
   z-index: 1;
   background-size: cover;
 }
@@ -635,7 +635,7 @@ header .container {
 
 /* Inner Background Container */
 .contact-background {
-  background: url('Resources/pics/plett-map.png') no-repeat center center;
+  background: url('Resources/pics/plett-map.webp') no-repeat center center;
   background-size: cover;
   padding: 80px 0;
   width: 100%;
@@ -775,7 +775,7 @@ header .container {
 
 /* Footer Styles */
 footer {
-  background: url('Resources/pics/footer.png') no-repeat center center; /* Set the background image */
+  background: url('Resources/pics/footer.webp') no-repeat center center; /* Set the background image */
   background-size: cover; /* Scale the image to cover the entire footer */
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -880,7 +880,7 @@ footer p {
 /* Media Query for max-width: 900px */
 @media (max-width: 900px) {
   .contact-background {
-    background-image: url('Resources/pics/plett-map2.png');
+    background-image: url('Resources/pics/plett-map2.webp');
     max-height: 550px;
     padding: 0;
   }
