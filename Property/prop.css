@@ -568,6 +568,24 @@ header .container {
   }
 }
 
+/* Overlap Image Container */
+.overlap-image-container {
+  position: relative; 
+  /* Negative top margin pulls this container *up* so it overlaps the section above. 
+     Adjust -50px to however much overlap you want. */
+  margin-top: -50px;
+  margin-bottom: -150px; 
+  text-align: center;  /* Center the image horizontally */
+  z-index: 10;         /* Higher than the footer's background so it's visible on top */
+}
+
+/* Actual Image Styling */
+.overlap-image-container .overlap-img {
+  max-width: 400px;  /* Or set a fixed width/height if preferred */
+  height: auto;
+  display: inline-block;
+}
+
 
 /* Footer Styles */
 footer {
