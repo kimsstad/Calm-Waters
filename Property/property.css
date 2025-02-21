@@ -188,6 +188,34 @@ header .container {
   background-color: var(--secondary-color);
 }
 
+/* Why Book Directly Section */
+.why-book-direct {
+  background-color: var(--white-color);
+  padding: 30px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  margin: 50px auto;
+  max-width: 900px;
+}
+
+.why-book-direct h2 {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.why-book-direct p {
+  font-size: 1.2rem;
+  color: var(--body-text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+
 /* Heading for individual property pages */
 .property-detail {
   margin-top: 0;
