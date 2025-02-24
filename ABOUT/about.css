@@ -268,20 +268,7 @@ header .container {
   position: relative;
 }
 
-.our-story h3::before {
-  content: "≋";
-  position: absolute;
-  font-family: 'Cardo', serif;
-  transform: scaleX(1.5);
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  font-size: 4.5rem;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.05);
-  z-index: -1;
-  pointer-events: none;
-}
+
 
 .our-story p {
   font-size: 1.2rem;
@@ -327,20 +314,6 @@ header .container {
   text-align: center;
 }
 
-.our-team h3::before {
-  content: '≋';
-  position: absolute;
-  font-family: 'Cardo', serif;
-  top: -110%;
-  left: 44%;
-  transform: translate(-50%, -50%);
-  font-size: 4.5rem;
-  color: rgba(0, 0, 0, 0.05);
-  z-index: 1;
-  pointer-events: none;
-  font-weight: 900;
-  transform: scaleX(1.5);
-}
 
 .team-heading {
   font-size: 4rem;
@@ -349,6 +322,7 @@ header .container {
   margin-bottom: 40px;
   line-height: 1.2;
   text-align: center;
+  margin-top: -20px;
 }
 
 .team-content {
@@ -426,20 +400,7 @@ header .container {
   margin-bottom: -40px;
 }
 
-.our-location h3::before {
-  content: '≋'; /* The text you want behind the h3 */
-  position: absolute;
-  font-family: 'Cardo', serif;
-  top: -110%;
-  left: 42%;
-  transform: translate(-50%, -50%);
-  font-size: 4.5rem;
-  color: rgba(0, 0, 0, 0.05); /* Faded background text */
-  z-index: -1; /* Puts the pseudo-element behind the heading */
-  pointer-events: none; /* Prevents the pseudo-element from interfering with interactions */
-  font-weight: 900;
-  transform: scaleX(1.5);
-}
+
 
 .our-location h2 {
   font-size: 4rem;
@@ -458,7 +419,11 @@ header .container {
   flex-wrap: wrap;
   gap: 40px;
   position: relative;
+  justify-content: center; /* Centers children horizontally */
+  align-items: center; /* Centers children vertically */
+  text-align: center; /* Ensures text elements align properly */
 }
+
 
 .location-map {
   flex: 1 1 50%;
