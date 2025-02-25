@@ -402,6 +402,7 @@ header .container {
     position: relative;
     margin-top: -120px;
     padding-bottom: 30px;
+    height: 40%;
     z-index: 1;
 }
 
@@ -414,7 +415,7 @@ header .container {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
-    top: 140px;
+    top: 150px;
     text-align: center;
 }
 
@@ -448,12 +449,13 @@ header .container {
 footer {
     background: url('../Resources/pics/footer.webp') no-repeat center center;
     background-size: cover;
-    height: 300px;
+    height: 400px;
     color: var(--background-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     text-align: center;
-    padding: 100px 0;
-    margin-top: 100px;
+    padding: 120px 0;
+    padding-top:200px;
+    margin-top: 120px;
     position: relative;
     z-index: 1;
 }
