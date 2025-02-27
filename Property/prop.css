@@ -196,6 +196,25 @@ header .container {
   color: #FFFFFF;
 }
 
+.booking-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.booking-icons a img {
+  width: 30px; /* Adjust size as needed */
+  height: auto;
+  transition: transform 0.2s ease-in-out, opacity 0.3s;
+}
+
+.booking-icons a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+
 
 /* Main Content Section */
 .main-content {
