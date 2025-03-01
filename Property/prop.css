@@ -230,7 +230,7 @@ header .container {
   }
 
   .hero-card .btn-book {
-    margin-top: 180px; /* Adjust the number for more or less spacing */
+    margin-top: 150px; /* Adjust the number for more or less spacing */
   }
 }
 
@@ -480,6 +480,11 @@ header .container {
   .hero p {
       font-size: 1.2rem;
   }
+  .logo-box {
+    font-size: 1.5rem;
+    height: auto;
+    margin-left: 0;
+}
 }
 
 
@@ -609,8 +614,6 @@ header .container {
 /* Overlap Image Container */
 .overlap-image-container {
   position: relative; 
-  /* Negative top margin pulls this container *up* so it overlaps the section above. 
-     Adjust -50px to however much overlap you want. */
   margin-top: -50px;
   margin-bottom: -150px; 
   text-align: center;  /* Center the image horizontally */
@@ -624,6 +627,20 @@ header .container {
   display: inline-block;
 }
 
+@media screen and (max-width: 768px) {
+  .overlap-image-container {
+    /* Make the image smaller */
+    margin-top: -30px; /* Move the container up 30px (adjust as needed) */
+    margin-bottom: -80px; /* Adjust as needed for spacing below */
+  }
+  
+  /* Also make the image smaller, if not done already */
+  .overlap-image-container .overlap-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+  }
+}
 
 /* Footer Styles */
 footer {
