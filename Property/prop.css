@@ -215,6 +215,25 @@ header .container {
 }
 
 
+@media screen and (max-width: 768px) {
+  .hero-card p,
+  .hero-card h1 {
+    display: none;
+  }
+
+  .hero-card {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-height: unset;
+  }
+
+  .hero-card .btn-book {
+    margin-top: 180px; /* Adjust the number for more or less spacing */
+  }
+}
+
 
 /* Main Content Section */
 .main-content {
