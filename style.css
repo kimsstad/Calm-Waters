@@ -117,6 +117,59 @@ header .container {
   font-size: 1.5rem;
 }
 
+/* Promo Banner Styles */
+.promo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent-color); /* Uses your site's accent color */
+  color: var(--white-color);
+  text-align: center;
+  padding: 10px 20px;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 60px;  /* Fixed height for the banner */
+}
+
+.promo-banner p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.promo-banner .close-banner {
+  margin-left: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Adjust header to sit below the banner (update as needed if you change banner height) */
+header {
+  top: 50px; /* Assuming the banner is approximately 50px tall */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .promo-banner {
+    flex-direction: column;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .promo-banner .close-banner {
+    align-self: flex-end;
+    margin: 5px 0 0 0;
+  }
+  
+  /* Adjust header's top offset for multi-line banners on small screens */
+  header {
+    top: 60px;
+  }
+}
+
 
 /* Hero Section */
 /* Overlapping Content */
