@@ -3,13 +3,20 @@
   font-family: 'YourCustomFont';
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
-/* Promenade Regular */
+
+/* Promenade Regular — alias both names to the SAME file */
 @font-face {
-  font-family: 'Promenade Regular';
-  src: url('fonts/Promenade-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: "Promenade";
+  src: url("/FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
+       url("/FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
+       url("/FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+  font-synthesis: none; /* prevents fake bold/italic */
 }
+
+
 
 /* Paso Robles Regular */
 @font-face {
@@ -78,7 +85,7 @@
   --primary-color: #284584;    /* Logo color - Deep Blue */
   --secondary-color: #aec3d1;  /* Complementary Moderate Blue */
   --accent-color: #e7e5d8;     /* Accent Color - Soft Orange */
-  --background-color: #F5F5F5; /* Light Gray Background */
+  --background-color: #eeede6; /* Light Gray Background */
   --text-color: #2A2D36;       /* Dark Gray for Headings */
   --body-text-color: #5F6364;  /* Medium Gray for Body Text */
   --white-color: #FFFFFF;
@@ -87,9 +94,10 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;       /* Regular */
+  font-weight: 400;       
   font-size: 16px;
   letter-spacing: 0px;
+  line-height:1.4;
   font-optical-sizing: auto;
   font-style: normal;
   color: var(--body-text-color);
@@ -130,12 +138,12 @@ header .container {
   background-color: var(--primary-color);
   color: var(--background-color);
   padding: 20px 30px;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: normal;
-  font-family: "Promenade Regular", serif;
-  font-weight: 700;
+  font-family: "Promenade", serif;
+  font-weight: normal;
   letter-spacing: 1px;
-  line-height: 1.6rem;
+  line-height: 1.4rem;
   font-style: normal;
   position: absolute;
   top: 0;
@@ -220,10 +228,11 @@ header .container {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 70%,
-    #F5F5F5 100%
+    rgba(0, 0, 0, 0) 70%,   /* transparent at the top */
+    #eeede6 100%            /* fade into new background */
   );
 }
+
 
 /* Logo on Hero */
 .logo-on-hero {
@@ -253,9 +262,9 @@ header .container {
 .hero-content h1 {
   font-size: 4rem;
   margin-bottom: 20px;
-  font-family: "Promenade Regular", serif;
-  font-weight: 700; 
-  color: #ffffff; 
+  font-family: "Promenade", serif !important;
+  font-weight: normal; 
+  color: var(--background-color); 
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   padding: 10px 20px; 
 }
@@ -292,11 +301,12 @@ header .container {
 /* Text Styling */
 .hero-content h1 {
   font-size: 6rem;
+
   margin-bottom: 10px;
-  font-family: "Promenade Regular", serif;
+  font-family: "Promenade", serif !important;;
   font-weight: normal;
   font-size: 6rem;            /* scaled size */
-  line-height: 4.8rem;        /* ~0.8 ratio of font-size, matches 145.6px:182px */
+  line-height: 4rem;        /* ~0.8 ratio of font-size, matches 145.6px:182px */
   letter-spacing: 0px;
   color: #ffffff;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -315,17 +325,33 @@ color: #ffffff;
 }
 
 .btn {
-  background-color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* space before arrow, if you add one */
+
+  background-color: transparent;
   color: var(--white-color);
+  border: 2px solid var(--white-color); /* outline border */
   padding: 12px 25px;
+  border-radius: 30px; /* square corners */
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+
+  transition: all 0.3s ease;
 }
 
+/* Hover effect */
 .btn:hover {
-  background-color: var(--secondary-color);
+  background-color: transparent; /* fill in on hover */
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
+
 
 
 
@@ -372,23 +398,26 @@ color: #ffffff;
 
 .about-text h2 {
   font-size: 3.5rem;
-  color: var(--text-color);
+  color: var(--primary-color);
   margin-bottom: 10px;
-  font-family: "Promenade Regular", serif;
-  margin-top: -10px;
+  font-family: "Promenade", serif;
+  letter-spacing: 2px;
+  margin-top: -20px;
+  font-weight: 100;
   padding: 0;
-  line-height: 1.2;
+  line-height: 45px;
   position: relative;
 }
 
 .about-text h3 {
   color: var(--text-color);
   font-family: "Peach Flamingo Script", cursive;
+  font-weight: normal;
   font-size: 4rem;
   line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
   letter-spacing: 3px;
   margin-top: -10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding: 0;
   position: relative;
 }
@@ -399,146 +428,218 @@ color: #ffffff;
 }
 
 .about-text p {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height:1.4;
   color: var(--body-text-color);
   margin-bottom: 30px;
-  line-height: 2em;
     font-family: 'Poppins', sans-serif;
   font-weight: 400;
 
 }
 
 .about-text .btn {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  padding: 12px 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* space between text and arrow */
+  
+  background: none; /* remove button background */
+  border: none;     /* remove button border */
+  padding: 0;       /* remove padding box */
+  
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: color 0.3s ease;
 }
 
+/* Add the arrow */
+.about-text .btn::after {
+  content: "➔";          /* simple right arrow */
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
 .about-text .btn:hover {
-  background-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.about-text .btn:hover::after {
+  transform: translateX(4px); /* slide arrow on hover */
 }
 
 
 
-/* About Us Preview Section (Our Story) */
+
+/* ================================
+   About Us (Our Story)
+   ================================ */
 .about-us-preview {
   position: relative;
-  z-index: 1; 
-  background-color: var(--primary-color); 
+  overflow: visible;
 }
 
+/* Two-layer background:
+   1) Left panel = solid white (width you control)
+   2) Right panel = stripes image, pinned to right
+*/
 .about-us-background {
-  padding: 80px 0;
-  box-sizing: border-box;
+  padding: 40px 0;
+  /* layer 1: solid white left; layer 2: stripes on right */
+  background-image:
+    linear-gradient(to right, #ffffff 0%, #ffffff 56%, transparent 56%),  /* left pane */
+    url("Resources/pics/striped-background-right.png");                         /* right stripes */
+  background-repeat: no-repeat, repeat;       /* gradient doesn't repeat; stripes do */
+  background-position: left top, right top;   /* pin stripes to the right */
+  background-size: 100% 100%, 44% 100%;       /* left 56% white, right 44% stripes */
+  /* tweak 56/44 to taste */
 }
 
+/* CONTENT ROW */
 .about-us-content {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-  align-items: center;
-  gap: 40px;
+  align-items: flex-start;
+  gap: clamp(40px, 8vw, 100px);
+  position: relative;
+  z-index: 1;                                  /* above the bg layers */
+  padding-left: clamp(80px, 10vw, 180px);
+  padding-right: clamp(40px, 6vw, 100px);
 }
 
+/* LEFT: TEXT COLUMN (stays on white) */
 .about-us-text {
-  flex: 1 1 400px; 
-  max-width: 600px;
-  position: relative;
-  padding: 110px 20px 20px 20px; 
-  box-sizing: border-box;
-  color: var(--background-color);
+  flex: 1 1 520px;
+  max-width: 680px;
+  color: var(--text-color);
 }
 
-.about-us-image {
-  flex: 1 1 400px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.about-us-image img {
-  width: 100%; 
-  height: auto;
-}
-
-/* Experience Container Styles */
-.experience-container {
-  position: relative;
-  display: inline-block;
-}
-
-
-
-/* Writing styles remain unchanged */
+/* Headings & copy (unchanged other than your palette) */
 .about-us-text h3 {
-  font-size: 1.5rem;
-  color: var(--accent-color); /* Accent color */
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  padding: 0;
+  color: var(--text-color);
+  font-family: "Peach Flamingo Script", cursive;
+  font-weight: normal;
+  font-size: 4rem;
   letter-spacing: 2px;
   line-height: 1.2;
+  margin: -10px 0 0;
 }
-
 .about-us-text h2 {
-  font-size: 4rem;
-  color: var(--background-color); 
-  margin-bottom: 10px;
-  font-family: "Promenade Regular", serif;
-  margin-top: -5px;
-  padding: 0;
+  font-size: 5rem;
+  font-family: "Promenade", serif;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--primary-color);
   line-height: 1.2;
+  margin: -30px 0 10px;
 }
-
 .about-us-text p {
-  font-size: 1.1rem;
-  color: var(--background-color);
-  line-height: 2em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
   margin-bottom: 30px;
+  color: var(--text-color);
+  max-width: 600px;
 }
 
+/* Link-style button with arrow */
 .about-us-text .btn {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-  padding: 12px 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: color 0.3s ease;
+}
+.about-us-text .btn::after {
+  content: "➔";
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.about-us-text .btn:hover { color: var(--secondary-color); }
+.about-us-text .btn:hover::after { transform: translateX(4px); }
+
+/* RIGHT: Polaroid */
+.polaroid {
+  flex: 0 1 380px;
+  max-width: 440px;
+  margin-left: 200px;
+  margin-right: clamp(20px, 4vw, 60px);
+  background: #fff;
+  padding: 16px 16px 38px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,0.18),
+    0 6px 18px rgba(0,0,0,0.08);
+  transform: rotate(2deg);
+  transform-origin: 50% 50%;
+  position: relative; /* needed for mobile stripes (see below) */
+}
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.polaroid:hover {
+  transform: rotate(2.4deg) translateY(-2px);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,0.2),
+    0 8px 20px rgba(0,0,0,0.1);
 }
 
-.about-us-text .btn:hover {
-  background-color: var(--accent-color);
-}
-
-/* Responsive Styles */
-@media (max-width: 800px) {
+/* ================================
+   Responsive (stacked)
+   ================================ */
+@media (max-width: 900px) {
+  /* Text above photo; keep background plain white here */
   .about-us-content {
     flex-direction: column;
-    align-items: center;
+    gap: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  
-  .about-us-text,
-  .about-us-image {
+
+  /* Remove section-wide stripes on small screens */
+  .about-us-background {
+    background: #ffffff;
+  }
+
+  /* Put stripes only behind the Polaroid */
+  .polaroid::before {
+    content: "";
+    position: absolute;
+    z-index: -1;                     /* behind the Polaroid card */
+    inset: -24px -24px -24px -24px;  /* bleed around the card; tweak to taste */
+    background-image: url("Resources/pics/striped-background-right.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .polaroid {
+    transform: rotate(1deg);
     max-width: 100%;
-    flex-basis: auto;
-    text-align: center;
-  }
-
-  .about-us-text {
-    padding: 20px;
-  }
-
-  /* Adjust pseudo-element positioning */
-  .about-us-text::before {
-    left: 50%;
-    top: -10px; /* Adjusted top position */
-    transform: translateX(-50%) scaleX(1.5);
+    margin-right: 0;
   }
 }
+
+
 
 
 /* Listings Section */
@@ -633,7 +734,7 @@ color: #ffffff;
   border-radius: 8px;
   font-weight: bold;
   color: var(--primary-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   z-index: 2; /* Ensure it stays above the images */
 }
 
