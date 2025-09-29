@@ -111,7 +111,7 @@ header {
   width: 100%;
   max-width: 1200px;
   padding: 0px;
-  background: var(--background-color);
+  background: var(--white-color);
   border-radius: 0 0 2px 2px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   z-index: 1000;
@@ -190,41 +190,7 @@ header .container {
   font-size: 1.5rem;
 }
 
-/*
 
-#promo-banner {
-  position: fixed;
-  top: 50px; 
-  right: -220px; 
-  width: 220px;
-  height: auto;
-  background: var(--secondary-color);
-  padding: 15px;
-  border-radius: 10px 0 0 10px;
-  box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2);
-  transition: right 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-}
-
-#promo-content {
-  flex: 1;
-}
-
-#promo-toggle {
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--secondary-color);
-  padding: 10px;
-  border-radius: 10px 0 0 10px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-*/
 
 /* Hero Section */
 /* Overlapping Content */
@@ -402,42 +368,28 @@ color: #ffffff;
   display: inline-block;
 }
 
-.about-text::before {
-  content: "01";
-  position: absolute;
-  top: -15px;
-  left: 32px;
-  font-size: 4rem;
-  color: rgba(0, 0, 0, 0.05);
-  z-index: 0;
-  pointer-events: none;
-  font-family: "Promenade Regular", serif;
-  font-weight: 900;
-  display: inline-block;
-  transform: scaleX(1.5);
-}
+
 
 .about-text h2 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: var(--text-color);
   margin-bottom: 10px;
   font-family: "Promenade Regular", serif;
-  margin-top: -5px;
+  margin-top: -10px;
   padding: 0;
   line-height: 1.2;
   position: relative;
 }
 
 .about-text h3 {
-  font-size: 1.5rem;
   color: var(--text-color);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: 4rem;
+  line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
+  letter-spacing: 3px;
   margin-top: -10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 0;
-  letter-spacing: 2px;
-  line-height: 1.2;
   position: relative;
 }
 
@@ -451,6 +403,9 @@ color: #ffffff;
   color: var(--body-text-color);
   margin-bottom: 30px;
   line-height: 2em;
+    font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+
 }
 
 .about-text .btn {
@@ -514,20 +469,7 @@ color: #ffffff;
   display: inline-block;
 }
 
-/* The pseudo-element remains unchanged */
-.about-us-text::before {
-  content: "02";
-  position: absolute;
-  top: 72px; /* Keep original position */
-  left: 32px;
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.05);
-  z-index: 0;
-  pointer-events: none;
-  font-family: "Promenade Regular", serif;
-  font-weight: 900;
-  transform: scaleX(1.5);
-}
+
 
 /* Writing styles remain unchanged */
 .about-us-text h3 {
@@ -613,19 +555,7 @@ color: #ffffff;
   margin-bottom: 60px;
 }
 
-.listings-text::before {
-  content: "03";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(1.5);
-  font-size: 4.2rem;
-  color: rgba(0, 0, 0, 0.05);
-  z-index: 0;
-  pointer-events: none;
-  font-family: "Promenade Regular", serif;
-  font-weight: 900;
-}
+
 
 .listings-text h3 {
   font-size: 1.5rem;
@@ -800,18 +730,7 @@ color: #ffffff;
 }
 
 
-.contact-text::before {
-  content: "04";
-  position: absolute;
-  top: 18px; 
-  left: 103px;
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.05); 
-  pointer-events: none;
-  font-family: "Promenade Regular", serif;
-  font-weight: 900;
-  transform: scaleX(1.5);
-}
+
 
 .contact-text h3 {
   font-size: 1.5rem;
