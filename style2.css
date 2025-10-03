@@ -479,31 +479,37 @@ color: #ffffff;
 /* ================================
    About Us (Our Story)
    ================================ */
+:root{
+  /* % of the section reserved for the LEFT (plain white) side */
+  --about-left: 50%;      /* change to 50%, 60%, etc., to adjust the split */
+}
+
 .about-us-preview {
   position: relative;
   overflow: visible;
 }
 
 /* Two-layer background:
-   1) Left panel = solid white (width you control)
-   2) Right panel = stripes image, pinned to right
+   1) left panel = solid white
+   2) right panel = stripes image, pinned to the right
+   NOTE: keep the % in BOTH places in sync with --about-left
 */
 .about-us-background {
   padding: 40px 0;
-  /* layer 1: solid white left; layer 2: stripes on right */
+  background-color: #aec3d1;
   background-image:
-    linear-gradient(to right, #ffffff 0%, #ffffff 56%, transparent 56%),  /* left pane */
-    url("Resources/pics/striped-background-right.png");                         /* right stripes */
-  background-repeat: no-repeat, repeat;       /* gradient doesn't repeat; stripes do */
-  background-position: left top, right top;   /* pin stripes to the right */
-  background-size: 100% 100%, 44% 100%;       /* left 56% white, right 44% stripes */
-  /* tweak 56/44 to taste */
+    linear-gradient(to right, var(--secondary-color) 0 var(--about-left), transparent var(--about-left)),
+    url("Resources/pics/striped-background-right.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right top;
+  /* right pane width = 100% - left pane width */
+  background-size: 100% 100%, calc(100% - var(--about-left)) 100%;
 }
 
 /* CONTENT ROW */
 .about-us-content {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: clamp(40px, 8vw, 100px);
   position: relative;
   z-index: 1;                                  /* above the bg layers */
@@ -518,7 +524,7 @@ color: #ffffff;
   color: var(--text-color);
 }
 
-/* Headings & copy (unchanged other than your palette) */
+/* Headings & copy */
 .about-us-text h3 {
   color: var(--text-color);
   font-family: "Peach Flamingo Script", cursive;
@@ -577,8 +583,7 @@ color: #ffffff;
 .polaroid {
   flex: 0 1 380px;
   max-width: 440px;
-  margin-left: 200px;
-  margin-right: clamp(20px, 4vw, 60px);
+  margin: 0 auto;   /* centers it horizontally */
   background: #fff;
   padding: 16px 16px 38px;
   border: 1px solid rgba(0,0,0,0.06);
@@ -587,7 +592,7 @@ color: #ffffff;
     0 6px 18px rgba(0,0,0,0.08);
   transform: rotate(2deg);
   transform-origin: 50% 50%;
-  position: relative; /* needed for mobile stripes (see below) */
+  position: relative;                           /* needed for mobile ::before stripes */
 }
 .polaroid img {
   display: block;
@@ -607,37 +612,40 @@ color: #ffffff;
    Responsive (stacked)
    ================================ */
 @media (max-width: 900px) {
-  /* Text above photo; keep background plain white here */
   .about-us-content {
     flex-direction: column;
     gap: 24px;
     padding-left: 20px;
     padding-right: 20px;
+    position: relative;
+    align-items: flex-start;  /* text stays left */
+    text-align: left;         /* left align text */
   }
 
-  /* Remove section-wide stripes on small screens */
   .about-us-background {
-    background: #ffffff;
+    background-image:
+      linear-gradient(to top, #ffffff 0 40%, transparent 40%),
+      url("Resources/pics/striped-background-right.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: top, center bottom;
+    background-size: 100% 40%, 100% 60%;
   }
 
-  /* Put stripes only behind the Polaroid */
-  .polaroid::before {
-    content: "";
-    position: absolute;
-    z-index: -1;                     /* behind the Polaroid card */
-    inset: -24px -24px -24px -24px;  /* bleed around the card; tweak to taste */
-    background-image: url("Resources/pics/striped-background-right.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  .about-us-text {
+    max-width: 100%;
+    margin: 0 0 20px 0; /* space below text */
   }
 
   .polaroid {
+    margin: 0 auto;       /* photo centered */
     transform: rotate(1deg);
-    max-width: 100%;
-    margin-right: 0;
+    max-width: 90%;
+    z-index: 1;
   }
 }
+
+
+
 
 
 
