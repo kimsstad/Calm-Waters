@@ -489,6 +489,9 @@ color: #ffffff;
   overflow: visible;
 }
 
+
+
+
 /* Two-layer background:
    1) left panel = solid white
    2) right panel = stripes image, pinned to the right
@@ -570,12 +573,14 @@ color: #ffffff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .about-us-text .btn::after {
   content: "➔";
   font-size: 1.2em;
   line-height: 1;
   transition: transform 0.3s ease;
 }
+
 .about-us-text .btn:hover { color: var(--secondary-color); }
 .about-us-text .btn:hover::after { transform: translateX(4px); }
 
@@ -594,6 +599,7 @@ color: #ffffff;
   transform-origin: 50% 50%;
   position: relative;                           /* needed for mobile ::before stripes */
 }
+
 .polaroid img {
   display: block;
   width: 100%;
@@ -601,6 +607,7 @@ color: #ffffff;
   object-fit: cover;
   border-radius: 2px;
 }
+
 .polaroid:hover {
   transform: rotate(2.4deg) translateY(-2px);
   box-shadow:
@@ -618,30 +625,52 @@ color: #ffffff;
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
-    align-items: flex-start;  /* text stays left */
+    align-items: stretch;  /* text stays left */
     text-align: left;         /* left align text */
   }
 
   .about-us-background {
-    background-image:
-      linear-gradient(to top, #ffffff 0 40%, transparent 40%),
-      url("Resources/pics/striped-background-right.png");
-    background-repeat: no-repeat, no-repeat;
-    background-position: top, center bottom;
-    background-size: 100% 40%, 100% 60%;
+    /* stripes only (no left/right split on mobile) */
+    background-image: url("Resources/pics/striped-background-right.png");
+    
+    background-repeat: no-repeat;
+    background-position: center top;
+    /* make them a bit taller so the polaroid always has stripes behind it */
+    background-size: 100% 130%;
+    padding-bottom: 60px; /* prevents cutoff at the bottom */
   }
 
-  .about-us-text {
-    max-width: 100%;
-    margin: 0 0 20px 0; /* space below text */
-  }
+.about-us-text {
+  background-color: var(--secondary-color);
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 40px 22px 35px; /* reduced bottom padding */
+  margin: -45px 0 18px 0; /* pulls blue up to cover top of stripes */
+  box-sizing: border-box;
+  z-index: 2; /* ensure it sits above the stripes */
+}
+
 
   .polaroid {
-    margin: 0 auto;       /* photo centered */
+    margin-top: clamp(20px, 4vw, 40px);
     transform: rotate(1deg);
     max-width: 90%;
     z-index: 1;
   }
+
+    .about-us-text h2 {
+    font-size: 4rem;     /* slightly smaller than your desktop size */
+    letter-spacing: 1.5px; /* optional: tighten spacing for better fit */
+    line-height: 1.1;
+  }
+
+    .about-us-text h3 {
+    font-size: 3rem;
+    padding-bottom: 10px;
+  }
+
 }
 
 
@@ -682,6 +711,7 @@ color: #ffffff;
 .listings-text h2 {
   font-size: 5rem;
   margin-top: -10px;
+  margin-bottom: 10px;
   font-family: "Promenade", serif;
   font-weight: 100;
   letter-spacing: 2px;
@@ -691,8 +721,13 @@ color: #ffffff;
 }
 
 .listings-text a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  color: var(--primary-color);
   text-decoration: none;
-  color: inherit;
+
 }
 
 .listings-text a:hover {
@@ -709,7 +744,7 @@ color: #ffffff;
 
 .listing-item {
   background-color: var(--white-color);
-  border-radius: 12px;
+  border-radius: px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -719,45 +754,55 @@ color: #ffffff;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Image Container for Two Images Side by Side */
 .listing-images {
   display: flex;
   height: 250px;
-  position: relative; /* Ensure price is correctly positioned */
+  position: relative; 
 }
 
 .listing-images img {
   width: 50%;
-  height: auto; /* Ensure the images keep their aspect ratio */
+  height: auto; 
 }
 
-/* Correctly position the price over the images */
 .listing-price {
   position: absolute;
   bottom: 15px;
   right: 15px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: 2px;
   font-weight: bold;
-  color: var(--primary-color);
+  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  z-index: 2; /* Ensure it stays above the images */
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  text-decoration: none;
+  z-index: 2; 
 }
 
 .listing-details {
-  padding: 20px;
+  padding: 18px 20px 22px;
+  top: -5px; 
 }
 
 .listing-details h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  color: var(--text-color);
+  font-family: "Promenade", serif;
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 2.5rem;
+  margin-top: 6px;
+  margin-bottom: 0px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  top: -5px;
 }
 
 .listing-details p {
-  margin-bottom: 15px;
+  margin-top: 6px;
+  margin-bottom: 8px;
   color: var(--body-text-color);
+  line-height: 1.7;
 }
 
 .listing-features {
@@ -777,6 +822,29 @@ color: #ffffff;
 .listing-features i {
   margin-right: 8px;
   color: var(--primary-color);
+}
+
+/* Listing "View Details" Button */
+.btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  transform: translateY(-2px);
 }
 
 
