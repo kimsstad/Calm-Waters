@@ -110,6 +110,7 @@ body {
   margin: auto;
 }
 
+
 /* Header Styles */
 header {
   position: fixed;
@@ -275,18 +276,7 @@ header .container {
   margin-bottom: 30px;
 }
 
-.btn {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
 
-.btn:hover {
-  background-color: var(--secondary-color);
-}
 
 .hero-content {
   position: absolute; 
@@ -324,34 +314,25 @@ color: #ffffff;
   margin-bottom: 30px;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px; /* space before arrow, if you add one */
-
-  background-color: transparent;
+.hero .btn { 
   color: var(--white-color);
-  border: 2px solid var(--white-color); /* outline border */
+  border: 1.8px solid var(--white-color);
+  border-radius: 30px;
   padding: 12px 25px;
-  border-radius: 30px; /* square corners */
   text-decoration: none;
-
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 2.8px;
   text-transform: uppercase;
-
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
-.btn:hover {
-  background-color: transparent; /* fill in on hover */
+.hero .btn:hover {
+  background-color: transparent;
   color: var(--accent-color);
   border-color: var(--accent-color);
 }
-
 
 
 
@@ -467,7 +448,9 @@ color: #ffffff;
 /* Hover effect */
 .about-text .btn:hover {
   color: var(--secondary-color);
+  background: transparent;
 }
+
 
 .about-text .btn:hover::after {
   transform: translateX(4px); /* slide arrow on hover */
@@ -581,8 +564,13 @@ color: #ffffff;
   transition: transform 0.3s ease;
 }
 
-.about-us-text .btn:hover { color: var(--secondary-color); }
-.about-us-text .btn:hover::after { transform: translateX(4px); }
+.about-us-text .btn:hover { 
+  color: var(--accent-color);
+  background: transparent;
+}
+.about-us-text .btn:hover::after { 
+  transform: translateX(4px); 
+}
 
 /* RIGHT: Polaroid */
 .polaroid {
@@ -731,8 +719,8 @@ color: #ffffff;
 }
 
 .listings-text a:hover {
-  color: var(--accent-color);
-  text-decoration: none;
+  color: var(--secondary-color);
+  background: transparent;
 }
 
 /* Grid Layout for Listings */
@@ -825,7 +813,7 @@ color: #ffffff;
 }
 
 /* Listing "View Details" Button */
-.btn {
+.listing-details .btn {
   background-color: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
@@ -840,150 +828,349 @@ color: #ffffff;
   transition: all 0.3s ease;
   display: inline-block;
 }
-
-.btn:hover {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+.listing-details .btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: transparent;
   transform: translateY(-2px);
 }
 
 
 
-/* Contact Preview Section */
+
+/* ================================
+   CONTACT SECTION
+   ================================ */
 .contact-preview {
   position: relative;
   z-index: 1;
   background-color: transparent;
-  margin-bottom: 100px;
 }
 
-/* Inner Background Container */
 .contact-background {
-  background: url('Resources/pics/plett-map.webp') no-repeat center center;
-  background-size: cover;
-  padding: 80px 0;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  overflow: visible;
-}
-
-/* Override container inside contact-background */
-.contact-background .container {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-.contact-content {
-  display: flex;
-  align-items: stretch; /* Stretch items to full height */
-  gap: 0; /* Remove gap to align text and image closely */
-}
-
-.contact-text {
-  flex: 0 0 400px; /* Fixed width */
-  color: var(--none);
+  background: url("Resources/pics/sand.webp") no-repeat center center / cover;
+  padding: 60px 0 140px; /* slightly less top padding to pull it up */
   position: relative;
-  padding: 40px 90px;
-  line-height: 1.8em;
-  display: flex;
-  flex-direction: column; 
-  justify-content: flex-start;
-  margin-top: -50px;
+  text-align: center;
+  transform: none; /* moved section upward slightly */
+  z-index: 1;
+  overflow: hidden; /* keeps content contained during transform */
+  background-attachment: fixed;
 }
 
-.contact-image {
-  flex: 1;
+.contact-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+/* HEADING */
+.contact-heading {
   position: relative;
-  min-height: 500px; 
-}
-
-.contact-image::before {
-  display: none;
-}
-
-
-
-
-.contact-text h3 {
-  color: var(--accent-color);
-  font-family: "Peach Flamingo Script", cursive;
-  font-weight: normal;
-  font-size: 4rem;
-  line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
-  letter-spacing: 3px;
-  margin-top: -10px;
-  margin-bottom: 0px;
-  z-index: 3;
-}
-
-.contact-text h2 {
-   margin-top: -10px;
-  font-size: 5rem;
+  z-index: 2;
   font-family: "Promenade", serif;
   font-weight: 100;
-  letter-spacing: 2px;
+  font-size: clamp(50px, 12vw, 110px);
+  letter-spacing: 3px;
   color: var(--accent-color);
-  line-height: 1.2;
+  margin-bottom: 80px; /* more space between heading and boxes */
+  margin-top: 10px;
 }
 
-.contact-text h4 {
-  font-size: 1.2rem;
+/* BOX CONTAINER */
+.contact-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* BOXES */
+.contact-box {
+  border: 1px solid var(--accent-color);
+  flex: 1 1 300px;
+  max-width: 350px;
+  box-sizing: border-box;
   color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-box:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
+  transform: translateY(-4px);
+}
+
+/* BOX CONTENT */
+.contact-box h3 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  letter-spacing: 1px;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--accent-color);
 }
 
-.contact-text p {
+.contact-box p {
   font-size: 1rem;
-  color: var(--background-color);
-  margin-bottom: 15px;
+  line-height: 1.4;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--accent-color);
+  margin-bottom: 20px;
 }
 
-.contact-text a {
-  color: var(--background-color);
+.contact-box a {
+  color: var(--accent-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.contact-text a:hover {
-  text-decoration: underline;
+.contact-box a:hover {
+  color: var(--secondary-color);
 }
 
-.contact-text .btn {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-  padding: 12px 25px;
+/* BUTTON */
+.contact-box .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--accent-color);
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  align-self: flex-start; /* Align the button to the left */
-  margin-top: 20px;
+  transition: color 0.3s ease;
+  margin-top: 16px; /* space above button */
 }
 
-.contact-text .btn:hover {
-  background-color: var(--accent-color);
-  text-decoration: none;
+.contact-box .btn::after {
+  content: "➔";
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.3s ease;
 }
 
-/* Facebook Icon Styling */
-.contact-text .social-link {
+.contact-box .btn:hover { 
+  color: var(--secondary-color);
+  background: transparent;
+}
+
+.contact-box .btn:hover::after { 
+  transform: translateX(4px); 
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-background {
+    background: url("Resources/pics/sand.webp") no-repeat center center / cover;
+    padding: 80px 20px 120px; /* gives more vertical space for mobile */
+    transform: none; /* prevent mobile overlap */
+  }
+
+  .contact-heading {
+    font-size: 5rem;     /* slightly smaller than your desktop size */
+    letter-spacing: 1.5px; /* optional: tighten spacing for better fit */
+    line-height: 1.1;
+    margin-top: -20px;
+    margin-bottom: 50px;
+  }
+
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-box {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+/* ================================
+   TESTIMONIAL SECTION
+   ================================ */
+.testimonial-section {
+  background-color: var(--secondary-color); /* soft blue */
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.testimonial-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  box-sizing: border-box;
+}
+
+/* reduce spacing between border and section edge */
+.testimonial-section::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid var(--primary-color);
+  pointer-events: none; /* ensure it doesn’t interfere with content */
+  z-index: 1;
+}
+
+.testimonial-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* TEXT */
+
+.testimonial-heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.testimonial-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+p.testimonial-name {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: 3rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* === Testimonial Slider Extension === */
+.testimonial-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.contact-text .social-link img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
+/* Hide all testimonials by default */
+.testimonial-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  max-width: 700px;
+  margin: 0 40px;
 }
+
+/* Active testimonial visible */
+.testimonial-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Navigation Buttons */
+.testimonial-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  z-index: 3; /* keep above border */
+}
+
+.testimonial-btn:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Button positioning */
+.testimonial-btn.prev {
+  position: absolute;
+  left: -60px; /* Move slightly outside the testimonial area */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.testimonial-btn.next {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Keep everything aligned nicely */
+.testimonial-content h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .testimonial-btn.prev {
+    left: 10px;
+  }
+
+  .testimonial-btn.next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-container {
+    padding: 60px 20px;
+  }
+
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-name {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-wrapper {
+    flex-direction: column;
+  }
+
+  .testimonial-btn {
+    position: static;
+    margin: 10px;
+  }
+}
+
 
 
 
@@ -994,8 +1181,10 @@ footer {
   color: var(--background-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   text-align: center;
-  padding: 150px 0; /* Adjust the overall padding of the footer */
+  padding: 140px 0; /* Adjust the overall padding of the footer */
   position: relative; /* Set relative positioning to use absolute positioning inside */
+  z-index: 3;
+  margin-top: -30px; /* adjust overlap height */
 }
 
 .footer-container {
@@ -1097,11 +1286,7 @@ footer p {
 
 /* Media Query for max-width: 900px */
 @media (max-width: 900px) {
-  .contact-background {
-    background-image: url('Resources/pics/plett-map2.webp');
-    max-height: 550px;
-    padding: 0;
-  }
+
 
   .contact-text {
     background-color: var(--primary-color);

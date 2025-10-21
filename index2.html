@@ -174,35 +174,74 @@
 
 
 
-<!-- Contact Preview Section -->
+<!-- ================================
+     CONTACT SECTION
+     ================================ -->
 <section class="contact-preview">
   <div class="contact-background">
-    <div class="container">
-      <div class="contact-content">
-        <div class="contact-text">
-          <h3>Get In</h3>
-          <h2>CONTACT</h2>
-          <!-- Address -->
-          <h4>ADDRESS</h4>
-          <p>4 Diadem Rd. Plettenberg Bay</p>
-          <!-- Email -->
-          <h4>EMAIL</h4>
-          <p><a href="mailto:keciacbarry@gmail.com">keciacbarry@gmail.com</a></p>
-          <!-- Social -->
-          <h4>CELL</h4>
-          <p class="social-link">
-            <a href="tel: target=+27 84 549 5975">+27 84 549 5975</a>
-          </p>
-          <!-- Button -->
-          <a href="contact.html" class="btn">Send us a message</a>
-        </div>
-        <div class="contact-image">
-          <!-- The background image is set via CSS in .contact-background -->
-        </div>
+    <h2 class="contact-heading">GET IN TOUCH</h2>
+
+    <div class="contact-content">
+      <div class="contact-box">
+        <h3>ADDRESS</h3>
+        <p>4 Diadem Rd<br>Plettenberg Bay, South Africa</p>
+        <a href="https://maps.google.com/?q=4+Diadem+Rd+Plettenberg+Bay" target="_blank" class="btn">View Map</a>
+      </div>
+
+      <div class="contact-box">
+        <h3>CONTACT</h3>
+        <p><a href="mailto:keciacbarry@gmail.com">keciacbarry@gmail.com</a><br>
+        <a href="tel:+27845495975">+27 84 549 5975</a></p>
+        <a href="mailto:keciacbarry@gmail.com" class="btn">Email Us</a>
+      </div>
+
+      <div class="contact-box">
+        <h3>MESSAGE</h3>
+        <p>Have a question or special request?  
+        We’d love to hear from you.</p>
+        <a href="contact.html" class="btn">Send Message</a>
       </div>
     </div>
   </div>
 </section>
+
+
+
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          “It was a really great and beautiful stay! Kecia is super nice!! We can recommend 100%.”
+        </p>
+        <p class="testimonial-name">- Calvin</p>
+      </div>
+
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Clear recommendation. We were welcomed with open arms and felt very comfortable. The surroundings seemed safe to us and you can quickly get to the Robberg.”
+        </p>
+        <p class="testimonial-name">- Timo</p>
+      </div>
+
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Kecia is a seriously amazing host. We felt so at home, and love Plett!”
+        </p>
+        <p class="testimonial-name">- Jessie</p>
+      </div>
+
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+
+
 
 
 
@@ -243,6 +282,29 @@
 
     gtag('config', 'G-851ZJ9DJHQ');
   </script>
+  
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % testimonials.length;
+    showTestimonial(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(index);
+  });
+</script>
+
 
 </body>
 </html>

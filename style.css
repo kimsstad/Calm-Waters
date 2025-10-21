@@ -856,14 +856,15 @@ footer {
 }
 
 footer p {
-  position: absolute; /* Use absolute positioning */
-  bottom: 20px; /* Adjust this value to move the paragraph up or down */
+  position: relative; /* Use absolute positioning */
+  bottom: -70px; /* Adjust this value to move the paragraph up or down */
   left: 50%; /* Center the paragraph horizontally */
   transform: translateX(-50%); /* Correct horizontal centering */
   font-size: 0.9rem;
   color: var(--white-color);
   font-weight: normal;
   text-shadow: #2A2D36;
+  
 }
 
 /* Media Queries */
