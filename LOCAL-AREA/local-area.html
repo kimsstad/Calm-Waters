@@ -1,34 +1,32 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Local Area | Calm Waters Plett</title>
-  <!-- Link to Global Stylesheet -->
+
+  <!-- Use the same global stylesheet tokens as your main site -->
   <link rel="stylesheet" href="local-area.css">
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Meta Tags for Responsiveness -->
+
+  <!-- Fonts & icons (matching main site) -->
+  <link rel="stylesheet" href="fonts/stylesheet.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore the beauty and attractions of Plettenberg Bay, South Africa. Discover what the local area has to offer with Calm Waters Plett.">
   <meta name="keywords" content="Plettenberg Bay, Local Area, Calm Waters Plett, South Africa, Attractions">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
-  <!-- Favicon -->
   <link rel="icon" href="../Resources/pics/favicon.jpg" type="image/jpg">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header (keeps same structure as original page; styled by local-area.css) -->
   <header>
     <div class="container">
-      <!-- Logo Box for "Calm Waters" -->
       <div class="logo-box">
         <span>Calm Waters</span>
       </div>
-      
-      <!-- Navigation Menu -->
+
       <div class="nav-container">
         <nav>
           <ul class="nav-links">
@@ -47,23 +45,26 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero (visual/markup preserved; styling now matches main site) -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Plettenberg Bay</h1>
-      <p>Discover the Jewel of the Garden Route</p>
-      <a href="#explore" class="btn">Explore Now</a>
+    <!-- optional logo-on-hero if you want the faded logo -->
+    <div class="overlay">
+      <div class="hero-content">
+        <h1>Plettenberg Bay</h1>
+        <p>Discover the Jewel of the Garden Route</p>
+        <a href="#explore" class="btn">Explore Now</a>
+      </div>
     </div>
   </section>
 
-  <!-- Introduction Section -->
+  <!-- Introduction (layout unchanged) -->
   <section class="introduction">
     <div class="container">
       <div class="intro-card">
         <div class="text-content">
           <div class="section-heading">
-            <h3 class="intro-subtitle">WELCOME TO</h3>
-            <h2 class="intro-title">Plettenberg Bay</h2>
+            <h3 class="intro-subtitle">Welcome To</h3>
+            <h2 class="intro-title">PLETTENBERG BAY</h2>
           </div>
           <p>
             Plettenberg Bay, known for its stunning beaches and vibrant wildlife, is a coastal paradise in South Africa. Whether you're here to relax or explore outdoor activities, you'll find everything you need for a memorable stay.
@@ -76,141 +77,257 @@
     </div>
   </section>
 
- <!-- Attractions Section -->
+<!-- Attractions (converted to new card format, using your original 6 attractions and images) -->
 <section class="attractions" id="explore">
   <div class="container">
     <div class="section-heading">
-      <h3 class="attractions-subtitle">EXPLORE</h3>
-      <h2 class="attractions-title">Top Attractions</h2>
+      <h3 class="attractions-subtitle">PLETTENBERG BAY, SOUTH AFRICA</h3>
+      <h2 class="attractions-title">LOCAL ATTRACTIONS</h2>
     </div>
+
     <div class="attractions-grid">
-      <!-- Attraction Item 1 -->
-      <a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank">
-        <div class="attraction-item">
+
+      <!-- Robberg Nature Reserve -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/robberg.webp" alt="Robberg Nature Reserve">
-          <h3>Robberg Nature Reserve</h3>
-          <p>Experience breathtaking hikes along the peninsula with stunning ocean views and wildlife sightings.</p>
         </div>
-      </a>
 
-      <!-- Attraction Item 2 -->
-      <a href="https://www.plett-tourism.co.za/about/beaches/" target="_blank">
-        <div class="attraction-item">
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">01.</div>
+            <div class="attraction-title-wrap">
+              <div class="attraction-sub">Coastal peninsula hikes</div>
+              <h3 class="attraction-title">Robberg Nature Reserve</h3>
+              
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Experience breathtaking hikes along the peninsula with stunning ocean views and wildlife sightings. Take water, sunscreen and wear sturdy shoes.</p>
+            <p><a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank" rel="noopener">Visit site</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beautiful Beaches -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/lookout2.webp" alt="Plettenberg Bay Beaches">
-          <h3>Beautiful Beaches</h3>
-          <p>Relax on pristine sandy beaches like Central Beach and Lookout Beach.</p>
         </div>
-      </a>
 
-      <!-- Attraction Item 3 -->
-      <a href="https://www.tsitsikamma.info" target="_blank">
-        <div class="attraction-item">
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">02.</div>
+            <div class="attraction-title-wrap">
+              <div class="attraction-sub">Central Beach & Lookout</div>
+              <h3 class="attraction-title">Beautiful Beaches</h3>
+              
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Relax on pristine sandy beaches like Central Beach and Lookout Beach. Lifeguards are on duty at designated beaches during high season.</p>
+            <p><a href="https://www.plett-tourism.co.za/about/beaches/" target="_blank" rel="noopener">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tsitsikamma National Park -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/tsitsikama.webp" alt="Tsitsikamma National Park">
-          <h3>Tsitsikamma National Park</h3>
-          <p>Adventure awaits with ziplining, kayaking, and canopy tours in the indigenous forest.</p>
         </div>
-      </a>
 
-      <!-- Attraction Item 4 -->
-      <a href="https://oceansafaris.co.za/" target="_blank">
-        <div class="attraction-item">
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">03.</div>
+            <div class="attraction-title-wrap">
+              <div class="attraction-sub">Forest & adventure</div>
+              <h3 class="attraction-title">Tsitsikamma National Park</h3>
+              
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Adventure awaits with ziplining, kayaking, and canopy tours in the indigenous forest. Book activities in advance for best availability.</p>
+            <p><a href="https://www.tsitsikamma.info" target="_blank" rel="noopener">Visit site</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Whale & Dolphin Watching -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/whales.webp" alt="Whale Watching">
-          <h3>Whale & Dolphin Watching</h3>
-          <p>Take a boat tour to see majestic whales and playful dolphins in their natural habitat.</p>
         </div>
-      </a>
 
-      <!-- Attraction Item 5 -->
-      <a href="https://www.tripadvisor.co.za/Restaurants-g312558-Plettenberg_Bay_Western_Cape.html" target="_blank">
-        <div class="attraction-item">
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">04.</div>
+            <div class="attraction-title-wrap">
+              <div class="attraction-sub">Boat tours from the harbour</div>
+              <h3 class="attraction-title">Whale & Dolphin Watching</h3>
+              
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Take a boat tour to see majestic whales and playful dolphins in their natural habitat. Wear a windproof layer and bring binoculars.</p>
+            <p><a href="https://oceansafaris.co.za/" target="_blank" rel="noopener">Book a tour</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Local Restaurants -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/fat fish.webp" alt="Top Local Restaurants">
-          <h3>Top Local Restaurants</h3>
-          <p>Enjoy dining at The Fat Fish, Emily Moon, Enrico's, Nguni, The Lookout Deck, Surf Café, and more!</p>
         </div>
-      </a>
 
-      <!-- Attraction Item 6 -->
-      <a href="https://www.flashbacks.co.za/" target="_blank">
-        <div class="attraction-item">
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">05.</div>
+            <div class="attraction-title-wrap">
+              <div class="attraction-sub">Local dining favourites</div>
+              <h3 class="attraction-title">Top Local Restaurants</h3>
+              
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Enjoy dining at The Fat Fish, Emily Moon, Enrico's, Nguni, The Lookout Deck, Surf Café, and more. Book ahead for weekends.</p>
+            <p><a href="https://www.tripadvisor.co.za/Restaurants-g312558-Plettenberg_Bay_Western_Cape.html" target="_blank" rel="noopener">See restaurants</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vibrant Nightlife -->
+      <div class="attraction-card">
+        <div class="attraction-thumb">
           <img src="../Resources/pics/flashies.webp" alt="Vibrant Nightlife">
-          <h3>Vibrant Nightlife</h3>
-          <p>Experience Plett's nightlife at Flashbacks Pub and Lounge or Zanzibar, known for great music and lively atmospheres.</p>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- History Section -->
-<section class="history">
-  <div class="container">
-    <div class="history-content">
-      <div class="image-container">
-        <img src="../Resources/pics/old-plett-collage.webp" alt="Old Plettenberg Bay">
-      </div>
-      <div class="text-content">
-        <div class="section-heading">
-          <h3 class="history-subtitle">Did You Know?</h3>
-          <h2 class="history-title">The Interesting History of Plettenberg Bay</h2>
+        <div class="attraction-main">
+          <div class="attraction-head">
+            <div class="attraction-num">06.</div>
+            <div class="attraction-title-wrap">
+               <div class="attraction-sub">Local pubs & lounges</div>
+              <h3 class="attraction-title">Vibrant Nightlife</h3>
+             
+            </div>
+            <button class="learn-btn" aria-expanded="false">LEARN MORE ▸</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="attraction-extra" aria-hidden="true">
+            <p>Experience Plett's nightlife at Flashbacks Pub and Lounge or Zanzibar, known for great music and lively atmospheres.</p>
+            <p><a href="https://www.flashbacks.co.za/" target="_blank" rel="noopener">Learn more</a></p>
+          </div>
         </div>
-        <p>
-          Originally named Bahia Formosa, or "Beautiful Bay," by Portuguese explorers, Plettenberg Bay has a fascinating history. In 1778, it was renamed after Baron Joachim van Plettenberg, a Dutch governor. It later grew into a bustling timber and maritime trade hub, leaving behind relics of shipwrecks and colonial heritage.
-        </p>
       </div>
-    </div>
-  </div>
+
+    </div> <!-- /.attractions-grid -->
+  </div> <!-- /.container -->
 </section>
 
-  <!-- Map Section -->
-<section class="map-section">
-  <div class="container">
-    <div class="map-content">
-      <!-- Ensure this div wraps the h2 -->
-      <div class="map-title">
-        <h2>Getting Here</h2>
-      </div>
-      <p>Plettenberg Bay is easily accessible by car and has its own regional airport. Located along the N2 highway, it's approximately 600 km from Cape Town and 210 km from Port Elizabeth.</p>
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.6693760193655!2d23.35386851510717!3d-34.073211180581665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc537c8b0e0af7%3A0x6a33e3d5a7d8a7f7!2sPlettenberg%20Bay%2C%206600%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1616157891234!5m2!1sen!2sza"
-          width="100%"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          title="Plettenberg Bay Map">
-        </iframe>
+
+  <!-- History -->
+  <section class="history">
+    <div class="container">
+      <div class="history-content">
+        <div class="image-container">
+          <img src="../Resources/pics/old-plett-collage.webp" alt="Old Plettenberg Bay">
+        </div>
+        <div class="text-content">
+          <div class="section-heading">
+            <h3 class="history-subtitle">Did You Know?</h3>
+            <h2 class="history-title">Plettenberg Bay History</h2>
+          </div>
+          <p>
+            Originally named Bahia Formosa, or "Beautiful Bay," by Portuguese explorers, Plettenberg Bay has a fascinating history. In 1778, it was renamed after Baron Joachim van Plettenberg, a Dutch governor. It later grew into a bustling timber and maritime trade hub, leaving behind relics of shipwrecks and colonial heritage.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Footer -->
+  <!-- Map -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-content">
+        <div class="map-title">
+          <h2>Getting Here</h2>
+        </div>
+        <p>Plettenberg Bay is easily accessible by car and has its own regional airport. Located along the N2 highway, it's approximately 600 km from Cape Town and 210 km from Port Elizabeth.</p>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.6693760193655!2d23.35386851510717!3d-34.073211180581665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc537c8b0e0af7%3A0x6a33e3d5a7d8a7f7!2sPlettenberg%20Bay%2C%206600%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1616157891234!5m2!1sen!2sza"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            title="Plettenberg Bay Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (markup unchanged; styled by local-area.css to match main site) -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 Calm Waters Plett. All rights reserved.</p>
+      <p>&copy; Calm Waters Plett. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JavaScript for Mobile Navigation Toggle -->
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
   </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<script>
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.learn-btn');
+  if (!btn) return;
 
-    gtag('config', 'G-851ZJ9DJHQ');
-  </script>
+  const card = btn.closest('.attraction-card');
+  const extra = card.querySelector('.attraction-extra');
+  const isOpen = card.classList.toggle('open');
+
+  // set aria attributes
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  extra.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+  // adjust max-height to the content height for smooth animation
+  if (isOpen) {
+    // measure natural height
+    const fullH = extra.scrollHeight;
+    extra.style.maxHeight = fullH + 'px';
+  } else {
+    extra.style.maxHeight = '0';
+  }
+});
+</script>
 
 </body>
 </html>
-
