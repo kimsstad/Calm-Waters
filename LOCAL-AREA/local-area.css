@@ -48,20 +48,114 @@
 /* Basic resets */
 *,
 *::before,
-*::after { box-sizing: border-box; margin:0; padding:0; }
-
-body {
-  font-family: "Poppins", sans-serif;
-  color: var(--body-text-color);
-  background-color: var(--background-color);
-  line-height: 1.4;
+*::after {
+  box-sizing: border-box;
 }
 
-/* Container */
-.container { width:90%; max-width:1200px; margin:0 auto; }
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;       
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height:1.4;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--body-text-color);
+  background-color: var(--background-color);
+}
+
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+  /* Show the hamburger icon */
+  .nav-toggle {
+      display: block;
+  }
+
+  /* Hide navigation links */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Show navigation when active */
+  .nav-links.active {
+      display: flex;
+  }
+
+  /* Adjust navigation links */
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
+
+  .logo-box {
+      margin-left: 0;    /* Remove negative margin */
+      left: 0px;        /* Move the logo box inward */
+       font-family: "Promenade", serif;
+        font-weight: normal;
+        font-size: 2em;
+        letter-spacing: 1px;
+  }
+}
+/* keep large overlapping logo on tablets; only change on very small phones */
+@media (max-width: 768px) {
+  /* keep .logo-box absolute so it stays the same visual size/overlap as desktop */
+  .logo-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: -60px;   /* same offset as desktop */
+    height: 84px;         /* slightly smaller than desktop but still prominent */
+    padding: 16px 26px;   /* slightly reduced padding */
+    font-size: 2.4em;     /* scaled down but still large */
+    line-height: 1.2;
+  }
+
+  /* keep the container offset so the nav isn't covered */
+  header .container{
+    padding-left: calc(60px + 30px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .nav-container{ padding: 0 1rem; }
+  .nav-links{ gap: 12px; margin-left: 8px; padding-left: 8px; }
+}
+
+/* only switch the logo into flow on very narrow phones */
+@media (max-width: 520px) {
+  .logo-box {
+    left: 10px !important;
+    top: 6px !important;
+    padding: 10px 14px !important;
+    font-size: 1.9em !important;
+    height: auto !important;
+  }
+  header .container { padding-left: 10px !important; }
+}
 
 /* --- Header & Navbar (exact match to main site) --- */
-/* Header Styles (exact match to original) */
+/* ================================
+   NAVBAR + HERO (complete)
+   ================================ */
+
+/* Header / Nav */
 header {
   position: fixed;
   top: 0;
@@ -69,11 +163,11 @@ header {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
-  padding: 0px;
   background: var(--white-color);
   border-radius: 0 0 2px 2px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
   z-index: 1000;
+  padding: 0;
 }
 
 header .container {
@@ -85,6 +179,7 @@ header .container {
   position: relative;
 }
 
+/* logo box (left) */
 .logo-box {
   background-color: var(--primary-color);
   color: var(--background-color);
@@ -92,6 +187,7 @@ header .container {
   font-size: 3em;
   font-weight: normal;
   font-family: "Promenade", serif;
+  font-weight: normal;
   letter-spacing: 1px;
   line-height: 1.4rem;
   font-style: normal;
@@ -106,12 +202,14 @@ header .container {
   z-index: 1010;
 }
 
+
 .nav-container {
   margin-left: auto;
-  padding: 15px 2em;
+  padding: 0 2em;
   box-sizing: border-box;
   position: relative;
 }
+
 
 .nav-links {
   list-style: none;
@@ -121,121 +219,112 @@ header .container {
   margin-left: 20px;
 }
 
-.nav-links li {
-  margin: 0 20px;
+.nav-links li { 
+  margin: 0 20px; 
 }
 
 .nav-links a {
-  text-decoration: none;
+text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-weight: 700;      
   font-size: 14px;
   letter-spacing: 2.8px;
-  color: #2A2D36;
+  color:  #2A2D36;          
   text-transform: uppercase;
 }
 
-.nav-links a:hover {
-  color: var(--accent-color);
+
+.nav-links a:hover { 
+  color: var(--accent-color); 
 }
 
+/* hamburger toggle (hidden on desktop) */
 .nav-toggle {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
 }
 
-/* responsive mobile menu */
-@media (max-width: 1340px) {
-  .nav-toggle {
-      display: block;
-  }
 
-  .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--white-color);
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 200px;
-      border-left: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+/* =========================
+   HERO
+   ========================= */
 
-  .nav-links.active {
-      display: flex;
-  }
-
-  .nav-links li {
-      margin: 15px 0;
-      text-align: right;
-      padding-right: 20px;
-  }
-
-  .logo-box {
-      margin-left: 0;
-      left: 0px;
-      font-family: "Promenade", serif;
-      font-weight: normal;
-      font-size: 2em;
-      letter-spacing: 1px;
-  }
-}
-
-
-/* Hero: use same overlay and font styles as main */
 .hero {
   position: relative;
   height: 100vh;
+  min-height: 640px; /* ensures a consistent large hero on desktop */
   background: url('../Resources/pics/local1.webp') no-repeat center center/cover;
   background-size: cover;
-  z-index:1;
+  z-index: 1;
+  display: block;
 }
 
+/* soft gradient fade to page background at bottom */
 
 
-/* hero-content aligned like main site */
-.hero-content {
-  position:absolute;
-  top:50%;
-  left:50%;
+/* optional logo placed on hero (you said you don't want it, keep hidden by default) */
+.logo-on-hero {
+  display: none;
+  position: absolute;
+  top: 43%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  text-align:center;
-  z-index:3;
-  color: var(--white-color);
+  opacity: 0.25;
+  max-width: 40%;
+  min-width: 260px;
+  z-index: 2;
 }
 
+/* hero content centered */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  color: var(--white-color);
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* primary hero heading */
 .hero-content h1 {
   font-family: "Promenade", serif;
-  font-weight: normal;
-  font-size: 6rem;
-  margin-bottom:-30px;
+  font-weight: 400;
+  font-size: clamp(3rem, 10vw, 6rem) !important;
+  line-height: 1;
+  margin: 0 0 10px;
   color: #ffffff;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-  padding:10px 20px;
+  padding: 10px 20px;
 }
 
+/* hero subline (script) */
 .hero-content p {
   font-family: "Peach Flamingo Script", cursive;
-  font-size: 3rem;
-  margin-bottom: 24px;
+  font-size: clamp(2.2rem, 6vw, 3rem) !important;
+  margin: -6px 0 30px;
+  -webkit-text-stroke: 0.3px #ffffff;
   color: #ffffff;
-  -webkit-text-stroke: 0.2px #ffffff;
 }
 
-/* hero button tuned to main site */
+/* hero CTA button */
 .hero .btn {
+  display: inline-block;
   color: var(--white-color);
   border: 1.8px solid var(--white-color);
   border-radius: 30px;
   padding: 12px 25px;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  font-weight:700;
-  font-size:14px;
-  letter-spacing:2.8px;
-  text-transform:uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
   transition: all .3s ease;
 }
 .hero .btn:hover {
@@ -244,11 +333,40 @@ header .container {
   background: transparent;
 }
 
-/* Responsive tweaks */
+/* subtle responsive tweaks — breakpoints tuned to your layout */
+
+/* <= 1111px: reduce hero heading */
+@media (max-width: 1111px) {
+  .hero-content h1 { font-size: 3.2rem; }   /* large tablet */
+  .hero-content p  { font-size: 1.6rem; }
+  .hero { min-height: 560px; }
+}
+
+/* <= 900px: stacked / mobile adjustments */
 @media (max-width: 900px) {
-  .hero-content h1 { font-size: 2.5rem; }
-  .hero-content p { font-size: 1.2rem; }
-  .logo-box { font-size: 2em; margin-left: -30px; height: 72px; padding: 14px 18px; }
+  /* header: show hamburger, collapse links */
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; right: 0; background: var(--white-color); width: 220px; flex-direction: column; border-left: 1px solid #ddd; box-shadow: 0 6px 18px rgba(0,0,0,0.08); padding: 12px; }
+  .nav-links.active { display:flex; }
+  .nav-links li { margin: 10px 0; padding-right: 12px; text-align:right; }
+
+
+  /* hero smaller */
+  .hero { min-height: 520px; height: 80vh; }
+  .hero-content { width: 100%; padding: 0 18px; }
+  .hero-content p { font-size: 1.2rem; margin-bottom: 20px; }
+  /* make CTA easier to tap */
+  .hero .btn { padding: 10px 18px; font-size: 13px; }
+}
+
+/* <= 520px: small phones */
+@media (max-width: 520px) {
+  header .container { padding: 10px 12px; }
+  .logo-box { padding: 14px 20px; height: 72px; margin-left: -48px; }
+  .nav-container { padding: 0 10px; }
+  .hero { min-height: 72vh; }
+  .hero-content p { font-size: 1rem; margin-bottom: 14px; -webkit-text-stroke: 0.2px #ffffff; }
+  .hero .btn { padding: 9px 14px; font-size: 12px; border-width: 1.6px; }
 }
 
 /* Introduction / Attractions / History — main-site colours & fonts */
@@ -295,7 +413,7 @@ header .container {
   color: var(--text-color);
   font-family: "Peach Flamingo Script", cursive;
   font-weight: normal;
-  font-size: 4rem;
+  font-size: clamp(3rem, 9vw, 4rem);
   line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
   letter-spacing: 3px;
   margin-top: -10px;
@@ -307,7 +425,7 @@ header .container {
 }
 
 .intro-title {
-  font-size: 3.5rem;
+  font-size: clamp(3rem, 9vw, 3.5rem);
   color: var(--primary-color);
   margin-bottom: 10px;
   font-family: "Promenade", serif;
@@ -329,8 +447,17 @@ header .container {
   }
   .image-container { height: 320px; }
   .text-content { padding: 20px; }
-  .intro-subtitle { font-size: clamp(1.4rem, 5vw, 2.6rem); }
-  .intro-title { font-size: clamp(1.6rem, 6vw, 2.4rem); margin-top: 6px; }
+  .intro-subtitle {margin-bottom: 0;line-height:1; margin-top: 10px;}
+  .intro-title {margin-top: 0px; margin-bottom: 0; line-height:1;}
+}
+/* Remove top + bottom spacing from intro paragraph on small screens */
+@media (max-width: 520px) {
+  .intro-card .text-content p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 /* Attractions — tablet/listing style like the photo */
@@ -540,8 +667,8 @@ header .container {
   .attraction-thumb img{ height:100%; width:100%; object-fit:cover; }
   .attraction-main { padding:14px; }
   .attraction-num { margin-top: 0; }
-  .attraction-title { font-size: clamp(1.1rem, 4.8vw, 1.7rem); margin-top:8px; }
-  .attractions-title { margin-bottom: 28px; font-size: clamp(1.8rem, 8vw, 2.8rem); }
+  .attraction-title { font-size: clamp(1.1rem, 4.8vw, 1.7rem); margin-top:0px; line-height: 1;}
+  .attractions-title { margin-bottom: 28px; font-size: clamp(1.8rem, 8vw, 2.8rem); line-height: 0}
 }
 
 
@@ -679,11 +806,12 @@ header .container {
 
   .history-subtitle {
     font-size: clamp(2.4rem, 6vw, 3rem);
-    line-height: 1.1;
+    margin-bottom: 0;
   }
 
   .history-title {
     font-size: clamp(2.4rem, 7vw, 3.2rem);
+    margin-bottom: 0;
   }
 
   .history p {
@@ -699,7 +827,7 @@ header .container {
 }
 
 .map-content h2 {
-  font-size: 6rem;
+  font-size: clamp(3rem, 8vw, 6rem); /* responsive scaling */
   color: var(--primary-color);
   margin-bottom: 50px;
   font-family: "Promenade", serif;
@@ -717,6 +845,12 @@ header .container {
   height: 600px;
   border: none;
   border-radius: 8px;
+}
+@media (max-width: 480px) {
+  .map-content h2 {
+    margin-bottom: 0px;     /* smaller gap */
+  gap: 0.5rem;
+  }
 }
 
 /* Footer (matches main site footer look) */
@@ -764,4 +898,36 @@ footer p {
   .hero-content h1 { font-size:1.8rem; }
   .logo-box { display:flex; padding:14px 18px; font-size:1.3em; margin-left: -30px; height:72px; }
   .map iframe { height:400px; }
+}
+@media (max-width: 720px) {
+  .logo-box {
+    position: relative;
+    margin-right: 8px;
+    height: 58px;
+    padding: 10px 18px;
+    font-size: 1.6rem;
+  }
+  header .container { padding: 10px 12px; }
+  .nav-container { padding: 0 8px; }
+}
+
+
+/* tighten spacing on small screens so hero CTA doesn't appear off */
+@media (max-width: 600px) {
+  .hero-content h1 { font-size: 2.4rem; margin-bottom: 6px; }
+  .hero-content p  { font-size: 1.1rem; margin-bottom: 10px; }
+  .hero .btn { font-size: 13px; padding: 8px 18px; }
+  .logo-box { height: 56px; padding: 8px 14px; }
+  header .container { padding: 8px 10px; }
+  /* ensure hero background image doesn't reposition badly */
+  .hero { background-position: center top; }
+}
+@media (max-width: 520px) {
+  .logo-on-hero {
+    width: 50%; /* Make the logo smaller */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .hero-content h1 {
+    font-size: 1.8rem; /* Make the main heading smaller */
+  }
 }
