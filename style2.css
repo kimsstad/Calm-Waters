@@ -157,6 +157,13 @@ header .container {
   z-index: 1010;
 }
 
+@media (max-width: 520px) {
+  .logo-box {
+    padding: 20px 30px !important; /* lock in the same padding */
+  }
+}
+
+
 .nav-container {
   margin-left: auto;
   padding: 0 2em;
@@ -243,7 +250,7 @@ header .container {
   transform: translate(-50%, -50%);
   opacity: 0.3; /* Slight transparency */
   max-width: 40%; /* Adjust as needed for size */
-  min-width: 300px;
+  min-width: 400px;
   width: 100%;
   height: auto;
   z-index: 2;
@@ -258,55 +265,32 @@ header .container {
   color: var(--background-color);
   text-align: center;
   z-index: 3; 
+  width: 100%;
 }
 
-.hero-content h1 {
-  font-size: clamp(3rem, 10vw, 4rem) !important;
-  margin-bottom: 20px;
-  font-family: "Promenade", serif !important;
-  font-weight: normal; 
-  color: var(--background-color); 
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px; 
-}
-
-.hero-content p { 
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-
-
-.hero-content {
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  color: var(--background-color);
-  text-align: center;
-  z-index: 3;
-}
 
 /* Text Styling */
 .hero-content h1 {
-  font-size: 6rem;
-
-  margin-bottom: 10px;
+  font-size: clamp(3.4rem, 10vw, 8rem) !important;
+  margin-bottom: 0px;
   font-family: "Promenade", serif !important;;
   font-weight: normal;
-  font-size: 6rem;            /* scaled size */
-  line-height: 4rem;        /* ~0.8 ratio of font-size, matches 145.6px:182px */
   letter-spacing: 0px;
   color: #ffffff;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px 20px;
 }
+
+@media (max-width: 520px) {
+  .hero-content h1 {
+    margin-bottom: 20px !important;
+  }
+}
+
 
 .hero-content p {
 font-family: "Peach Flamingo Script", cursive;
 color: #ffffff;
-  font-size: 3rem;
-  -webkit-text-stroke: 0.3px #ffffff;
+  font-size: clamp(1.5rem, 10vw, 4rem) !important;
   line-height: 2.4rem;       /* ~0.8 ratio of font-size, matches 36px:45px */
   letter-spacing: 0px;
   margin-top: -10px;
@@ -347,6 +331,7 @@ color: #ffffff;
   display: flex;
   align-items: center;
   gap: 40px;
+  width: 100%;
 }
 
 .about-image {
@@ -361,11 +346,24 @@ color: #ffffff;
   left: -32%;
 }
 
+ @media (max-width: 520px) {
+  .about-image img {
+    content: url("Resources/pics/about\ highlight\ pics\ -\ small.webp");
+    width: 100%;
+    left: 0;
+  }
+  .about-preview {
+    margin-bottom: 0px;
+  }
+}
+
+
 .about-text {
   flex: 1;
   position: relative;
   padding: 20px;
   right: -5%;
+  width: 100%;
 }
 
 
@@ -387,6 +385,7 @@ color: #ffffff;
   padding: 0;
   line-height: 45px;
   position: relative;
+  width: 100%;
 }
 
 .about-text h3 {
@@ -633,8 +632,8 @@ color: #ffffff;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
-  padding: 40px 22px 35px; /* reduced bottom padding */
-  margin: -45px 0 18px 0; /* pulls blue up to cover top of stripes */
+  padding: 40px 22px 0px; /* reduced bottom padding */
+  margin: -45px 0 0 0; /* pulls blue up to cover top of stripes */
   box-sizing: border-box;
   z-index: 2; /* ensure it sits above the stripes */
 }
@@ -674,6 +673,13 @@ color: #ffffff;
   margin-bottom: 50px;
 }
 
+@media (max-width: 520px) {
+  .listings {
+    margin-bottom: 0;
+  }
+}
+
+
 .listings-text {
   position: relative;
   text-align: center;
@@ -686,7 +692,7 @@ color: #ffffff;
   color: var(--text-color);
   font-family: "Peach Flamingo Script", cursive;
   font-weight: normal;
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
   letter-spacing: 3px;
   margin-top: -10px;
@@ -696,7 +702,7 @@ color: #ffffff;
 }
 
 .listings-text h2 {
-  font-size: 5rem;
+ font-size: clamp(3.2rem,5vw, 5rem);
   margin-top: -10px;
   margin-bottom: 10px;
   font-family: "Promenade", serif;
@@ -706,6 +712,39 @@ color: #ffffff;
   line-height: 1.2;
   z-index: 1;
 }
+
+@media (max-width: 520px) {
+  /* remove extra space from the container and its children */
+  .listings-text,
+  .listings-text * {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* tighten the heading */
+  .listings-text h2,
+  .listings-text > h2 {
+    margin: 0 0 4px 0 !important;   /* tiny gap */
+    padding: 0 !important;
+    line-height: 1.05 !important;
+  }
+
+  /* remove any pseudo-element spacing */
+  .listings-text::before,
+  .listings-text::after,
+  .listings-text h2::before,
+  .listings-text h2::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* if parent was using flex/grid gap, force it down */
+  .listings-text {
+    gap: 0 !important;
+  }
+}
+
+
 
 .listings-text a {
   font-family: "Montserrat", sans-serif;
@@ -743,7 +782,7 @@ color: #ffffff;
 
 .listing-images {
   display: flex;
-  height: 250px;
+  height: auto;
   position: relative; 
 }
 
@@ -777,7 +816,7 @@ color: #ffffff;
   font-family: "Promenade", serif;
   color: var(--primary-color);
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   margin-top: 6px;
   margin-bottom: 0px;
   letter-spacing: 1px;
@@ -1427,7 +1466,9 @@ footer p {
     width: 50%; /* Make the logo smaller */
     height: auto; /* Maintain aspect ratio */
   }
-  .hero-content h1 {
-    font-size: 1.8rem; /* Make the main heading smaller */
-  }
+
+ .hero-content h1 {
+  transform: translateY(18px);
+}
+
 }
