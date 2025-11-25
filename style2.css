@@ -1466,7 +1466,9 @@ footer p {
     width: 50%; /* Make the logo smaller */
     height: auto; /* Maintain aspect ratio */
   }
-
+ .hero .btn {
+    padding: 8px 18px;
+ }
  .hero-content h1 {
   transform: translateY(18px);
 }

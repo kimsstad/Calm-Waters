@@ -1,0 +1,951 @@
+/* Import Custom Fonts */
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
+}
+
+/* Promenade Regular — alias both names to the SAME file */
+@font-face {
+  font-family: "Promenade";
+  src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none; /* prevents fake bold/italic */
+}
+
+
+
+/* Paso Robles Regular */
+@font-face {
+  font-family: 'Paso Robles Regular';
+  src: url('../FONTS/PasoRobles-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Sans (OTF + TTF for browser fallback) */
+@font-face {
+  font-family: 'Peach Flamingo Sans';
+  src: url('..FONTS/Peachflamingosans-G3aJO.otf') format('opentype'),
+       url('..FONTS/PeachflamingoSans-j94Z9.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Script */
+@font-face {
+  font-family: 'Peach Flamingo Script';
+  src: url('../FONTS/PeachflamingoScript-zrxdX.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Regular */
+@font-face {
+  font-family: 'Qiblah';
+  src: url('..FONTS/Qiblah-BF6583c4f5d1831.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Italic */
+@font-face {
+  font-family: 'Qiblah Italic';
+  src: url('..FONTS/Qiblah-Italic-BF6583c4f550e78.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Mynabali Script Demo */
+@font-face {
+  font-family: 'Mynabali Script';
+  src: url('..FONTS/utmynabaliscriptdemo-0vbxg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Mynabali Serif Demo */
+@font-face {
+  font-family: 'Mynabali Serif';
+  src: url('..FONTS/utmynabaliserifdemo-wpeao.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #284584;    /* Logo color - Deep Blue */
+  --secondary-color: #aec3d1;  /* Complementary Moderate Blue */
+  --accent-color: #e7e5d8;     /* Accent Color - Soft Orange */
+  --background-color: #eeede6; /* Light Gray Background */
+  --text-color: #2A2D36;       /* Dark Gray for Headings */
+  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
+  --white-color: #FFFFFF;
+}
+html, body {
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;       
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height:1.4;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--body-text-color);
+  background-color: var(--background-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0px;
+  background: var(--white-color);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  position: relative;
+}
+
+.logo-box {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 20px 30px;
+  font-size: 3em;
+  font-weight: normal;
+  font-family: "Promenade", serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1.4rem;
+  font-style: normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -60px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 2px 2px;
+  z-index: 1010;
+}
+
+@media (max-width: 520px) {
+  .logo-box {
+    padding: 20px 30px !important; /* lock in the same padding */
+  }
+}
+
+
+.nav-container {
+  margin-left: auto;
+  padding: 0 2em;
+  box-sizing: border-box;
+  position: relative; /* Added for positioning in media queries */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
+  margin-left: 20px;
+}
+
+.nav-links li {
+  margin: 0 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;        /* Thin */
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  color:  #2A2D36;          /* From your screenshot */
+  text-transform: uppercase; /* optional if you want the same spaced-out look */
+}
+
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+
+/* Nav Toggle for mobile */
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+
+
+/* Hero Section */
+/* Overlapping Content */
+.overlap-content {
+  position: absolute;
+  top: 80%; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; 
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('../Resources/pics/brollie.webp') no-repeat center center/cover;
+  z-index: 1;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
+  z-index: 1;
+}
+
+
+/* Logo on Hero */
+.logo-on-hero {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3; /* Slight transparency */
+  max-width: 40%; /* Adjust as needed for size */
+  min-width: 400px;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+/* Hero Content */
+.hero-content {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: var(--background-color);
+  text-align: center;
+  z-index: 3; 
+  width: 100%;
+}
+
+
+/* Text Styling */
+.hero-content h1 {
+  font-size: clamp(4rem, 10vw, 8rem) !important;
+  margin-bottom: 0px;
+  font-family: "Promenade", serif !important;;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 520px) {
+  .hero-content h1 {
+    margin-bottom: 20px !important;
+  }
+}
+
+
+.hero-content p {
+font-family: "Peach Flamingo Script", cursive;
+color: #ffffff;
+  font-size: clamp(1.5rem, 10vw, 4rem) !important;
+  line-height: 2.4rem;       /* ~0.8 ratio of font-size, matches 36px:45px */
+  letter-spacing: 0px;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+.hero .btn { 
+  color: var(--white-color);
+  border: 1.8px solid var(--white-color);
+  border-radius: 30px;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease; 
+}
+@media (max-width: 520px) {
+  .hero .btn {
+    padding: 8px 18px;
+  }
+}
+.hero .btn:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* -------- SECTION LAYOUT -------- */
+.about-intro {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: center;
+}
+
+/* -------- TEXT -------- */
+.eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  padding-bottom: 8px;        /* space between text and line */
+  border-bottom: 1px solid var(--body-text-color);
+}
+.section-title {
+  font-family: "Promenade", serif;
+  margin: 0 0 18px 0;
+  font-weight: 100;
+  padding: 0;
+  line-height: 45px;
+  font-size: clamp(2rem, 10vw, 4rem) !important;
+  color: var(--primary-color);
+  font-family: "Promenade", serif;
+  letter-spacing: 2px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 24px;
+  max-width: 620px;
+}
+
+/* -------- STATS -------- */
+.about-stats {
+  display: flex;
+  gap: 14px;
+}
+
+.stat {
+  background: var(--background-color);
+  border: 1px solid var(--primary-color);
+  padding: 14px 18px;
+  flex: 1;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.num {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--p-color);
+  margin-top: 6px;
+}
+
+/* -------- IMAGE -------- */
+.about-image {
+  max-width: 420px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 6px solid #fff;
+}
+
+.about-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 980px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 3rem;
+  }
+
+  .about-image {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .about-stats {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+  }
+}
+
+:root{
+  --items-desktop: 8;  /* number of squares visible on big screens */
+  --items-tablet: 5;
+  --items-mobile: 3;
+  --speed: 28s;        /* speed of scrolling */
+}
+
+/* Full bleed */
+.photo-strip {
+  width:100vw;
+  position:relative;
+  left:50%;
+  right:50%;
+  margin-left:-50vw;
+  margin-right:-50vw;
+}
+
+/* Viewport */
+.marquee {
+  width:100%;
+  overflow:hidden;
+  padding:0;      /* no padding so images touch top/bottom */
+}
+
+/* Track of images */
+.marquee-track {
+  display:flex;
+  animation: marquee-scroll var(--speed) linear infinite;
+  will-change: transform;
+}
+
+/* ALL images → SAME WIDTH + HEIGHT */
+.marquee-track img {
+  width: calc(100vw / var(--items-desktop));
+  height: calc(100vw / var(--items-desktop));
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 0;   /* sharp corners */
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  .marquee-track img {
+    width: calc(100vw / var(--items-tablet));
+    height: calc(100vw / var(--items-tablet));
+  }
+  .marquee-track { animation-duration: 22s; }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .marquee-track img {
+    width: calc(100vw / var(--items-mobile));
+    height: calc(100vw / var(--items-mobile));
+  }
+  .marquee-track { animation-duration: 16s; }
+}
+
+/* Animation */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================================
+   ABOUT STORY SECTION
+   ================================ */
+.about-story-section {
+  background-color: var(--secondary-color); /* soft blue */
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* inner border */
+.about-story-section::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid var(--primary-color);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* content wrapper */
+.about-story-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
+
+/* Subtitle (Peach Flamingo) */
+.about-story-subtitle {
+  font-family: "Peach Flamingo Script", cursive;
+  margin: 0 0 10px;
+  color: var(--text-color);
+  font-weight: normal;
+  font-size: clamp(1.5rem, 10vw, 4rem);
+  line-height: 40px;       /* ~0.8 ratio of font-size, matches 36px:45px */
+  letter-spacing: 3px;
+  line-height: 0;
+}
+
+/* Title (Promenade) */
+.about-story-title {
+  font-family: "Promenade", serif;
+  font-size: clamp(2rem, 10vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  margin: 0 0 25px;
+  text-transform: uppercase;
+}
+
+/* Description Paragraph (Poppins) */
+.about-story-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-story-container {
+    padding: 40px 20px;
+  }
+
+  .about-story-subtitle {
+    line-height: 0;
+  }
+
+  .about-story-title {
+    line-height: 1;
+  }
+
+  .about-story-text {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* MEET THE TEAM */
+
+.team-section {
+  padding: 50px 20px 0 20px;
+  background: transparent;
+}
+
+.team-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  align-items: center;
+  gap: 50px;
+}
+
+/* MAIN HEADING – PROMENADE */
+.team-heading {
+  font-family: "Promenade", serif;
+  margin: 0 0 18px 0;
+  font-weight: 100;
+  padding: 0;
+  line-height: 1.2;
+  font-size: clamp(3rem, 10vw, 6rem) !important;
+  color: var(--primary-color);
+  font-family: "Promenade", serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SCRIPT SUBLINE – PEACH FLAMINGO */
+.team-script {
+  font-family: "Peach Flamingo Script", cursive;
+  margin: 0 0 10px;
+  color: var(--text-color);
+  font-weight: normal;
+  font-size: clamp(1.5rem, 10vw, 3rem);
+  line-height: 1.2;  
+  letter-spacing: 3px;
+  line-height: 0;
+}
+
+/* PARAGRAPH – POPPINS */
+.team-desc {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0;
+  padding-top: 30px;
+}
+
+/* RIGHT IMAGE */
+
+.team-photo {
+  max-width: auto;
+  transform: translateX(-40px); /* adjust: try -20px, -30px, -50px */
+}
+
+.team-photo img {
+  width: 600px;
+  height:auto;
+  display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .team-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .team-photo {
+    order: 2;
+        transform: none;
+    margin: 0 auto
+  }
+
+  .team-photo img {
+  width: 350px;
+
+}
+  .team-text {
+    order: 1;
+  }
+
+  .team-desc {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .team-photo img {
+    border-width: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .team-photo {
+    transform: none;      /* centers it */
+    margin: -30px auto 0; /* moves it UP on mobile */
+  }
+}
+
+
+/* ================================
+   VALUES SECTION
+   ================================ */
+.values-preview {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.values-background {
+  background: url("../Resources/pics/ABOUT-PAGE-COVER.webp") no-repeat center center / cover;
+  padding: 60px 0 140px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+/* dark overlay */
+.values-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 0;
+}
+
+/* SCRIPT LINE – Peach Flamingo */
+.values-script {
+  position: relative;
+  z-index: 2;
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(2rem, 10vw, 4rem);
+  color: var(--accent-color);
+  margin: 0;
+
+}
+
+/* PROMENADE TITLE */
+.values-title {
+  position: relative;
+  z-index: 2;
+  font-family: "Promenade", serif;
+  font-weight: 100;
+  font-size: clamp(2rem, 10vw, 6rem);
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  margin-bottom: 60px;
+  margin-top: 0px;
+  text-transform: uppercase; /* optional */
+}
+
+/* BOX CONTAINER */
+.values-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* BOXES (same styling as contact-box) */
+.values-box {
+  border: 1px solid var(--accent-color);
+  flex: 1 1 300px;
+  max-width: 350px;
+  box-sizing: border-box;
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.values-box:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+}
+
+/* BOX CONTENT */
+.values-box h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.values-box p {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--accent-color);
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .values-background {
+    padding: 80px 20px 120px;
+    background-attachment: scroll; /* improves mobile performance */
+  }
+
+  .values-title {
+    font-size: 2.4rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 50px;
+  }
+
+  .values-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .values-box {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+
+/* FOOTER*/
+footer {
+  background: url('Resources/pics/footer.webp') no-repeat center center; /* Set the background image */
+  background-size: cover; /* Scale the image to cover the entire footer */
+  color: var(--background-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  padding: 140px 0; /* Adjust the overall padding of the footer */
+  position: relative; /* Set relative positioning to use absolute positioning inside */
+  z-index: 3;
+  margin-top: -30px; /* adjust overlap height */
+}
+
+.footer-container {
+  margin-top: 100px; /* Add space from the top of the footer */
+}
+
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-links {
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: var(--white-color);
+  margin-right: 15px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-social a {
+  color: var(--white-color);
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+
+.footer-social a:hover {
+  color: var(--secondary-color);
+}
+
+footer p {
+  position: absolute; /* Use absolute positioning */
+  bottom: 20px; /* Adjust this value to move the paragraph up or down */
+  left: 50%; /* Center the paragraph horizontally */
+  transform: translateX(-50%); /* Correct horizontal centering */
+  font-size: 0.9rem;
+  color: var(--white-color);
+  font-weight: normal;
+  text-shadow: #2A2D36;
+}
+
+/* Media Queries */
+
+/* Below 1340px - Enable hamburger menu */
+@media (max-width: 1340px) {
+  /* Show the hamburger icon */
+  .nav-toggle {
+      display: block;
+  }
+
+  /* Hide navigation links */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Show navigation when active */
+  .nav-links.active {
+      display: flex;
+  }
+
+  /* Adjust navigation links */
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
+
+  .logo-box {
+      margin-left: 0;    /* Remove negative margin */
+      left: 0px;        /* Move the logo box inward */
+       font-family: "Promenade", serif;
+        font-weight: normal;
+        font-size: 2em;
+        letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 1111px) {
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjust to a smaller size */
+  }
+  .hero-content {
+    width: 90%; /* Make the container a bit wider */
+  }
+}
+
+
+
+@media (max-width: 520px) {
+  .logo-on-hero {
+    width: 50%; /* Make the logo smaller */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+ .hero-content h1 {
+  transform: translateY(18px);
+}
+
+}
