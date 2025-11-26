@@ -1211,63 +1211,90 @@ p.testimonial-name {
 
 
 
-
-/* Footer Styles */
+/* FOOTER */
 footer {
-  background: url('Resources/pics/footer.webp') no-repeat center center; /* Set the background image */
-  background-size: cover; /* Scale the image to cover the entire footer */
-  color: var(--background-color);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  text-align: center;
-  padding: 140px 0; /* Adjust the overall padding of the footer */
-  position: relative; /* Set relative positioning to use absolute positioning inside */
-  z-index: 3;
-  margin-top: -30px; /* adjust overlap height */
+    width: 100%;
+    margin-top: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2.8px;
 }
 
-.footer-container {
-  margin-top: 100px; /* Add space from the top of the footer */
+/* Top strip */
+.footer-top {
+    background: #f2efe8;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-top: 1px solid var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    flex-wrap: wrap;
+    gap: 6px;
+      font-family: "Poppins", sans-serif;
+  font-weight: 400;       
+  font-size: 14px;
+  letter-spacing: 0px;
 }
 
-.footer-logo img {
-  height: 50px;
+/* Photo strip */
+.footer-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
 }
 
-.footer-links {
-  margin-top: 20px;
+.footer-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
 
-.footer-links a {
-  color: var(--white-color);
-  margin-right: 15px;
-  text-decoration: none;
-  margin-top: 20px;
+/* Bottom strip */
+.footer-bottom {
+    background: var(--primary-color, #0e2a52);
+    color: white;
+    padding: 10px 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    text-transform: uppercase;
 }
 
-.footer-links a:hover {
-  color: var(--primary-color);
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Medium screens – break gallery into 3 columns */
+@media (max-width: 900px) {
+    .footer-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.footer-social a {
-  color: var(--white-color);
-  margin-right: 15px;
-  font-size: 1.5rem;
+/* Small screens – gallery becomes 2 columns */
+@media (max-width: 600px) {
+    .footer-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top,
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
-.footer-social a:hover {
-  color: var(--secondary-color);
+/* Extra small – gallery images stack single-column */
+@media (max-width: 400px) {
+    .footer-gallery {
+        grid-template-columns: 1fr;
+    }
 }
 
-footer p {
-  position: absolute; /* Use absolute positioning */
-  bottom: 20px; /* Adjust this value to move the paragraph up or down */
-  left: 50%; /* Center the paragraph horizontally */
-  transform: translateX(-50%); /* Correct horizontal centering */
-  font-size: 0.9rem;
-  color: var(--white-color);
-  font-weight: normal;
-  text-shadow: #2A2D36;
-}
 
 /* Media Queries */
 
