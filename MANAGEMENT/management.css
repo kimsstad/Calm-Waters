@@ -1,566 +1,1320 @@
-/* Global Styles (management.css) */
-
 /* Import Custom Fonts */
 @font-face {
-    font-family: 'YourCustomFont';
-    src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
+  font-family: 'YourCustomFont';
+  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
+/* Promenade Regular — alias both names to the SAME file */
 @font-face {
-    font-family: 'Georgia Pro';
-    src: url('fonts/GeorgiaPro-Regular.ttf') format('truetype');
+  font-family: "Promenade";
+  src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none; /* prevents fake bold/italic */
+}
+
+
+
+/* Paso Robles Regular */
+@font-face {
+  font-family: 'Paso Robles Regular';
+  src: url('../FONTS/PasoRobles-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Sans (OTF + TTF for browser fallback) */
+@font-face {
+  font-family: 'Peach Flamingo Sans';
+  src: url('..FONTS/Peachflamingosans-G3aJO.otf') format('opentype'),
+       url('..FONTS/PeachflamingoSans-j94Z9.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Script */
+@font-face {
+  font-family: 'Peach Flamingo Script';
+  src: url('../FONTS/PeachflamingoScript-zrxdX.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Regular */
+@font-face {
+  font-family: 'Qiblah';
+  src: url('..FONTS/Qiblah-BF6583c4f5d1831.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Italic */
+@font-face {
+  font-family: 'Qiblah Italic';
+  src: url('..FONTS/Qiblah-Italic-BF6583c4f550e78.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Mynabali Script Demo */
+@font-face {
+  font-family: 'Mynabali Script';
+  src: url('..FONTS/utmynabaliscriptdemo-0vbxg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Mynabali Serif Demo */
+@font-face {
+  font-family: 'Mynabali Serif';
+  src: url('..FONTS/utmynabaliserifdemo-wpeao.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #375163;    /* Logo color - Deep Blue */
-    --secondary-color: #7C96A6;  /* Complementary Moderate Blue */
-    --secondary-color-dark: #6B8494; /* Darker shade for hover effects */
-    --accent-color: #8C6751;     /* Accent Color - Soft Orange */
-    --background-color: #F5F5F5; /* Light Gray Background */
-    --text-color: #2A2D36;       /* Dark Gray for Headings */
-    --body-text-color: #5F6364;  /* Medium Gray for Body Text */
-    --white-color: #FFFFFF;
+  --primary-color: #284584;    /* Logo color - Deep Blue */
+  --secondary-color: #aec3d1;  /* Complementary Moderate Blue */
+  --accent-color: #e7e5d8;     /* Accent Color - Soft Orange */
+  --background-color: #eeede6; /* Light Gray Background */
+  --text-color: #2A2D36;       /* Dark Gray for Headings */
+  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
+  --white-color: #FFFFFF;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-    color: var(--body-text-color);
-    background-color: var(--background-color);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;       
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height:1.4;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--body-text-color);
+  background-color: var(--background-color);
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
 }
+
 
 /* Header Styles */
 header {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1200px;
-    padding: 0px;
-    background: var(--background-color);
-    border-radius: 0 0 2px 2px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0px;
+  background: var(--white-color);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  z-index: 1000;
 }
 
 header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 15px 0;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  position: relative;
 }
 
 .logo-box {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    padding: 20px 30px;
-    font-size: 2em;
-    font-family: "Cardo", serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-style: normal;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-left: -60px;
-    height: 95px;
-    display: flex;
-    align-items: center;
-    border-radius: 0 0 2px 2px;
-    z-index: 1010;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 20px 30px;
+  font-size: 3em;
+  font-weight: normal;
+  font-family: "Promenade", serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1.4rem;
+  font-style: normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: -60px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 2px 2px;
+  z-index: 1010;
 }
 
+@media (max-width: 520px) {
+  .logo-box {
+    padding: 20px 30px !important; /* lock in the same padding */
+  }
+}
+
+
 .nav-container {
-    margin-left: auto;
-    padding: 0 2em;
-    box-sizing: border-box;
-    position: relative; /* Added for positioning in media queries */
+  margin-left: auto;
+  padding: 0 2em;
+  box-sizing: border-box;
+  position: relative; /* Added for positioning in media queries */
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    padding-left: 20px;
-    margin-left: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
+  margin-left: 20px;
 }
 
 .nav-links li {
-    margin: 0 20px;
+  margin: 0 20px;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;        /* Thin */
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  color:  #2A2D36;          /* From your screenshot */
+  text-transform: uppercase; /* optional if you want the same spaced-out look */
 }
 
+
 .nav-links a:hover {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
+
 
 /* Nav Toggle for mobile */
 .nav-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
+
+
 
 /* Hero Section */
+/* Overlapping Content */
+.overlap-content {
+  position: absolute;
+  top: 80%; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; 
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+}
+
 .hero {
-    position: relative;
-    height: 100vh;
-    background: url('../Resources/pics/Management-hero.webp') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
+  position: relative;
+  height: 100vh;
+  background: url('../Resources/pics/services-hero.webp') no-repeat center center/cover;
+  z-index: 1;
+  background-size: cover;
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
+  z-index: 1;
 }
 
+
+/* Logo on Hero */
+.logo-on-hero {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3; /* Slight transparency */
+  max-width: 40%; /* Adjust as needed for size */
+  min-width: 400px;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+/* Hero Content */
 .hero-content {
-    position: relative;
-    z-index: 1;
-    color: var(--white-color);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: var(--background-color);
+  text-align: center;
+  z-index: 3; 
+  width: 100%;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    font-family: 'Cardo', serif;
-    margin-bottom: -20px;
+
+/* Text Styling */
+.hero-content h1 {
+  font-size: clamp(4rem, 10vw, 8rem) !important;
+  margin-bottom: 0px;
+  font-family: "Promenade", serif !important;;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
+@media (max-width: 520px) {
+  .hero-content h1 {
+    margin-bottom: 20px !important;
+  }
 }
 
-.hero .btn {
-    background-color: var(--accent-color);
-    color: var(--white-color);
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+
+.hero-content p {
+font-family: "Peach Flamingo Script", cursive;
+color: #ffffff;
+  font-size: clamp(1.5rem, 10vw, 4rem) !important;
+  line-height: 2.4rem;       /* ~0.8 ratio of font-size, matches 36px:45px */
+  letter-spacing: 0px;
+  margin-top: -10px;
+  margin-bottom: 30px;
 }
 
+.hero .btn { 
+  color: var(--white-color);
+  border: 1.8px solid var(--white-color);
+  border-radius: 30px;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease; 
+}
+@media (max-width: 520px) {
+  .hero .btn {
+    padding: 8px 18px;
+  }
+}
 .hero .btn:hover {
-    background-color: var(--secondary-color);
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
-/* Introduction Section with Three Cards */
-.introduction {
-    position: relative;
-    margin-top: -100px; /* Adjust this value to control overlap */
-    z-index: 2;
+
+
+/* SERVICES */
+/* Services grid continued */
+.services {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.services .grid {
+  display: flex;
+  gap: 0;
+  border-top: 0;
+  padding-bottom: 20px;
 }
 
-.intro-cards {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
+/* Each column */
+.services .col {
+  flex: 1 1 0;
+  padding: 24px 28px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.intro-card {
-    background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    flex: 1;
-    padding: 30px 20px;
+/* vertical divider between columns on wide screens */
+.services .col:not(:last-child) {
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Number above heading */
+.services .num {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Column heading (Promenade substitute) */
+.services .col h3 {
+  font-family: "Promenade", serif;
+  text-transform: uppercase;
+font-size: clamp(1.5rem, 9vw, 3rem);
+  color: var(--primary-color);
+  margin: 0 0 12px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 100;
+}
+
+/* Paragraph text */
+.services .col p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  text-align: center; /* matches the image style */
+  max-width: 320px;
+}
+
+/* SECTION HEADING */
+.section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* SCRIPT WORD ABOVE */
+.section-heading .script-word {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(3rem, 2vw, 4rem);
+  font-weight: 400;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: -10px;   
+  letter-spacing: 3px
+}
+
+/* MAIN PROMENADE WORD */
+.section-heading .main-word {
+  font-family: "Promenade", serif;
+  color: var(--primary-color);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 200;
+  line-height: 1.1;
+  display: block;
+}
+
+
+
+/* RESPONSIVE: on small screens stack columns and switch divider orientation */
+@media (max-width: 780px) {
+  .services .grid {
+    flex-direction: column;
+  }
+
+  .services .col {
+    padding: 18px 16px;
+  }
+
+  /* remove vertical borders, add horizontal divider between items */
+  .services .col:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+}
+
+/* =========================================
+   FULL-WIDTH SPLIT SECTION WRAPPER
+   ========================================= */
+.full-split-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* =========================================
+   GRID LAYOUT (50/50 fullscreen split)
+   ========================================= */
+.full-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* text | image */
+  width: 100%;
+  min-height: 520px;
+}
+
+/* =========================================
+   LEFT SIDE TEXT BLOCK — uses your about-us-text styles
+   ========================================= */
+.full-split-text {
+  background: #aec3d1; /* your chosen colour */
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Apply your existing styles */
+.full-split-text h3 {
+  color: var(--text-color);
+  font-family: "Peach Flamingo Script", cursive;
+  font-weight: normal;
+  font-size: clamp(3rem, 6vw, 4rem) !important;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin: -10px 0 0;
+}
+
+.full-split-text h2 {
+  font-size: clamp(2.2rem, 6vw, 6rem) !important;
+  font-family: "Promenade", serif;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  line-height: 0.8;
+  margin: -10px 0 10px;
+  text-transform: uppercase;
+}
+
+.full-split-text p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+  max-width: 600px;
+}
+
+/* =========================================
+   BUTTON STYLE (MATCHES ABOUT-US BUTTON)
+   ========================================= */
+.full-split-text .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Arrow */
+.full-split-text .btn::after {
+  content: "➔";
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.full-split-text .btn:hover {
+  color: var(--accent-color);
+  background: transparent;
+}
+
+.full-split-text .btn:hover::after {
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   RIGHT SIDE IMAGE — full coverage
+   ========================================= */
+.full-split-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.full-split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   RESPONSIVE — stack on smaller screens
+   ========================================= */
+@media (max-width: 900px) {
+  .full-split-grid {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+
+  .full-split-text {
+    padding: 50px 30px;
     text-align: center;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+
+  .full-split-image {
+    height: 350px;
+  }
+
+
+
+
+  .full-split-text p {
+    max-width: none; /* let it expand */
+  }
 }
 
-/* Hover effect for intro cards */
-.intro-card:hover {
-    transform: translateY(-10px); /* Slight lift on hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+@media (max-width: 480px) {
+  .full-split-text {
+    padding: 35px 20px;
+  }
+
+  .full-split-image {
+    height: 240px;
+  }
 }
 
-/* Icon inside the card */
-.intro-card .card-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+/* =========================================
+   QUOTE DIVIDER — INSET TOP & BOTTOM LINES
+   ========================================= */
+.quote-divider {
+  background: var(--background-color); /* same soft blue as your other section */
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
 }
 
-/* Card heading */
-.intro-card h3 {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
+/* TOP inset line */
+.quote-divider::before {
+  content: "";
+  position: absolute;
+  top: 20px;                 /* distance from top edge */
+  left: 0px;                /* inset distance */
+  right: 0px;               /* inset distance */
+  height: 1px;
+  background: var(--text-color); /* same subtle line tone as screenshot */
 }
 
-/* Card paragraph */
-.intro-card p {
-    font-size: 1rem;
-    color: var(--body-text-color);
-    line-height: 1.6;
+/* BOTTOM inset line */
+.quote-divider::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;              /* distance from bottom edge */
+  left: 0px;
+  right: 0px;
+  height: 1px;
+  background: var(--text-color);
 }
 
-/* General Information Section */
-.general-info {
-    padding: 60px 0;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    margin-top: 2em;
+/* Script text */
+.quote-script {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(4rem, 7vw, 7rem);
+  color: var(--primary-color);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  padding:0;
+  line-height: 0.8;
 }
 
-.content-wrapper {
-    display: flex;
-    align-items: center;
+/* ================================
+   LISTINGS / OUR PROPERTIES
+   ================================ */
+
+/* Section wrapper */
+.listings {
+  position: relative;
+  padding: 80px 0;
+  background-color: var(--background-color);
+  margin-bottom: 50px;
+}
+
+/* Container tweaks */
+.listings .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* ===== Heading: script + promenade ===== */
+.listings-text {
+  position: relative;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.listings-script {
+  color: var(--text-color);
+  font-family: "Peach Flamingo Script", cursive;
+  font-weight: normal;
+  font-size: clamp(3rem, 7vw, 4rem)!important;
+  line-height: 0.5;
+  letter-spacing: 3px;
+  margin: -6px 0 0;
+  display: block;
+  text-decoration: none;
+}
+
+.listings-title {
+  font-size: clamp(2.5rem, 5vw, 6rem)!important;
+  margin: 6px 0 10px;
+  font-family: "Promenade", serif;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* ===== Grid layout for listings (wider cards) ===== */
+.listings-grid {
+  display: grid;
+  /* wider cards: increase min width so cards are roomier on desktop */
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* ===== Individual listing card ===== */
+.listing-item {
+  background-color: var(--white-color);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.listing-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* images row (two images side-by-side) */
+.listing-images {
+  display: flex;
+  width: 100%;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.listing-images img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* price badge */
+.listing-price {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(255,255,255,0.95);
+  padding: 8px 12px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  z-index: 2;
+}
+
+/* details area */
+.listing-details {
+  padding: 18px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 0 auto;
+}
+
+/* title */
+.listing-details h3 {
+  font-family: "Promenade", serif;
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* short description */
+.listing-details p {
+  margin: 0;
+  color: var(--body-text-color);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* features row */
+.listing-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+.listing-features span {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--body-text-color);
+}
+.listing-features i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+/* view details button */
+.listing-details .btn {
+  align-self: flex-start;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  padding: 10px 22px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  transition: all 0.22s ease;
+}
+.listing-details .btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   CONSOLIDATED MEDIA QUERIES (AT BOTTOM)
+   ========================================= */
+
+/* Tablet breakpoint: 2 per row */
+@media (max-width: 1024px) {
+  .listings-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Wider mobile: allow slightly smaller min width */
+@media (max-width: 900px) {
+  .listings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 22px;
+    justify-items: center;
+  }
+}
+
+/* Mobile: single centred column, images stack, second image hidden */
+@media (max-width: 700px) {
+
+  .listings-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 20px;
-}
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
-.text-content {
-    flex: 1;
-}
+  .listing-item {
+    width: 100%;
+    max-width: 460px; /* slightly wider cards on mobile, adjust to 420 if too wide */
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 
-.text-content h2 {
-    font-size: 3rem;
-    font-family: 'Cardo', serif;
-    margin-bottom: 20px;
-}
+  .listing-images {
+    min-height: 200px;
+    flex-direction: column; /* stack images vertically */
+  }
 
-.text-content p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
-.image-content {
-    flex: 1;
-}
-
-.image-content img {
+  .listing-images img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    display: block;
+  }
+
+  .listing-images img + img {
+    display: none; /* hide second image on mobile for cleaner length */
+  }
+
+  .listing-details {
+    padding-left: 14px;
+    padding-right: 14px;
+    text-align: left;
+  }
 }
 
-/* Responsive Styles for General Info */
-@media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column;
-    }
+/* Small phones: tighten spacing */
+@media (max-width: 520px) {
+  .listings {
+    padding: 40px 0;
+  }
 
-    .text-content, .image-content {
-        flex: unset;
-    }
+  .listings-text { margin-bottom: 30px; }
+  .listings-script { font-size: clamp(1.6rem,4vw,2.4rem); }
+  .listings-title { font-size: clamp(1.8rem,5vw,2.8rem); }
 
-    .text-content h2 {
-        text-align: center;
-    }
+  .listing-images { min-height: 180px; }
+  .listing-images img { width: 100%; height: auto; }
+  .listing-images img + img { display: none; }
 
-    .text-content p {
-        text-align: center;
-    }
+  .listing-item {
+    max-width: 420px; /* slightly narrower on smallest phones */
+  }
 }
 
-/* Motto Section */
-.motto-section {
-    position: relative;
-    background: url('../Resources/pics/motto.webp') no-repeat center center/cover;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+
+/* ================================
+   SERVICES SECTION STYLING
+   ================================ */
+.services-preview {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
 }
 
-.motto-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+/* Background image or color */
+.services-background {
+  background: url("../Resources/pics/servicesoffered.webp") no-repeat center/cover;
+  padding: 60px 0 120px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-attachment: fixed;
 }
 
-.motto-section h2 {
-    position: relative;
-    font-size: 5rem;
-    font-family: 'Georgia Pro', serif;
-    font-style: italic;
-    letter-spacing: 5px;
-    color: var(--white-color);
-    text-align: center;
-    z-index: 1;
-    width: 100%;
-    margin: 0;
+/* Dark overlay */
+.services-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 0;
 }
 
-.motto-section h3 {
-    position: relative;
-    font-size: 1.5rem;
-    color: var(--white-color);
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    text-align: center;
-    font-weight: 500;
-    padding: 0;
-    z-index: 2;
+/* Script heading */
+.services-script {
+  position: relative;
+  z-index: 2;
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(3rem, 7vw, 4rem) !important;
+  color: var(--accent-color);
+  margin: 40px 0 0;
+  line-height: 0;
 }
 
-/* Detailed Services Section */
-.detailed-services {
-    padding: 60px 0;
-}
-
-.services-subtitle {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: 500;
-}
-
+/* Promenade heading */
 .services-title {
-    font-size: 3rem;
-    color: var(--text-color);
-    font-family: 'Cardo', serif;
-    margin: 0;
+  position: relative;
+  z-index: 2;
+  font-family: "Promenade", serif;
+  font-size: clamp(3rem, 7vw, 5rem) !important;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  margin-bottom: 60px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   4x2 GRID
+   ========================================= */
+.services-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 per row */
+  gap: 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Each service box */
+.service-box {
+  border: 1px solid var(--accent-color);
+  padding: 40px 28px;
+  text-align: left;
+  background: rgba(255,255,255,0.04);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover lift effect */
+.service-box:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+
+/* Heading inside box */
+.service-box h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+/* Paragraph inside box */
+.service-box p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.9);
+  margin: 0;
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE GRID BREAKPOINTS
+   ========================================= */
+
+/* Tablet: 2 per row */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-box {
     text-align: center;
-    margin-bottom: 0.5em;
+  }
 }
 
-.services-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
+/* =========================================
+   MOBILE FIX FOR SPLIT SECTION HEADINGS
+   ========================================= */
+@media (max-width: 600px) {
 
-.service-item {
+  /* center the text */
+  .full-split-text {
     text-align: center;
-    padding: 20px;
-    background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
+    padding: 40px 20px;   /* equal spacing left/right */
+  }
 
-.service-item:hover {
-    transform: translateY(-10px);
-}
+  /* keep heading inside screen */
+  .full-split-text h2 {
 
-.service-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
+    word-break: break-word; /* prevent overflow */
+    hyphens: auto;
+  }
 
-.service-item h3 {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-
-.service-item p {
-    font-size: 1rem;
-    color: var(--body-text-color);
-    line-height: 1.6;
-}
-
-/* Call-to-Action Section */
-.cta-section {
-    position: relative;
-    margin-top: -120px;
-    padding-bottom: 30px;
-    height: 40%;
-    z-index: 1;
-}
-
-.cta-card {
-    background-color: var(--white-color);
-    padding: 40px;
-    margin: 0 auto;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    position: relative;
-    top: 150px;
+  /* center the script word */
+  .full-split-text h3 {
     text-align: center;
+
+  }
+
+  /* center paragraph + allow wrapping */
+  .full-split-text p {
+    text-align: center;
+  }
+}
+/* Tiny spacing between script + title on mobile */
+@media (max-width: 600px) {
+  .services-title {
+    margin-top: 8px;   /* adjust to 6px or 10px if you want more/less */
+  }
 }
 
-.cta-card h2 {
-    font-size: 2.5rem;
-    font-family: 'Cardo', serif;
-    margin-bottom: 20px;
+
+/* =========================================
+   CTA: READY TO BOOK
+   ========================================= */
+.cta-book {
+  width: 100%;
+  background: url("../Resources/pics/services-contact.webp") center center / cover no-repeat;
+  position: relative;
+  padding: 150px 20px;          /* vertical space */
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.cta-card p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+/* subtle dark overlay for legibility */
+.cta-book::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.20);
+  z-index: 0;
 }
 
+/* content wrapper */
+.cta-overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--primary-color); /* change if you want light text */
+  padding: 40px 20px;
+}
+
+/* script line */
+.cta-script {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(2rem, 7vw, 4rem)!important;
+  margin: 0 0 8px;
+  color: var(--accent-color);
+  opacity: 0.95;
+}
+
+/* big Promenade title */
+.cta-title {
+  font-family: "Promenade", serif;
+  font-size: clamp(3rem, 7vw, 6rem)!important;
+  margin: 0 0 12px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+
+/* short supporting text */
+.cta-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.95rem, 2.2vw, 1rem);
+  color: var(--accent-color);
+  margin: 0 0 22px;
+  opacity: 0.95;
+}
+
+/* CTA button (matches your button style) */
 .cta-btn {
-    background-color: var(--secondary-color);
-    color: var(--white-color);
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s, color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid var(--accent-color);
+  padding: 12px 22px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-color);
+  border-radius: 40px;
+  transition: all .22s ease;
+}
+
+.cta-btn::after {
+  transition: transform .22s ease;
 }
 
 .cta-btn:hover {
-    background-color: var(--secondary-color-dark);
-    color: var(--white-color);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
-/* Footer Styles */
+.cta-btn:hover::after { transform: translateX(6px); }
+
+/* small screens: tighten spacing and size */
+@media (max-width: 768px) {
+  .cta-book { padding: 60px 12px; }
+  .cta-overlay { padding: 30px 12px; }
+  .cta-title { font-size: clamp(2rem, 9vw, 3rem); 
+  line-height: 1;}
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .cta-book { padding: 40px 10px; }
+  .cta-script { font-size: 1.4rem; }
+  .cta-title { font-size: 1.8rem; }
+  .cta-btn { padding: 10px 16px; font-size: 0.85rem; }
+}
+
+
+/* FOOTER */
 footer {
-    background: url('../Resources/pics/footer.webp') no-repeat center center;
-    background-size: cover;
-    height: 400px;
-    color: var(--background-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    padding: 120px 0;
-    padding-top:200px;
-    margin-top: 120px;
-    position: relative;
-    z-index: 1;
+    width: 100%;
+    margin-top: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2.8px;
 }
 
-footer p {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.9rem;
-    color: var(--white-color);
-    font-weight: 500;
-    text-shadow: #2A2D36;
+/* Top strip */
+.footer-top {
+    background: #f2efe8;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-top: 1px solid var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    flex-wrap: wrap;
+    gap: 6px;
+      font-family: "Poppins", sans-serif;
+  font-weight: 400;       
+  font-size: 14px;
+  letter-spacing: 0px;
 }
+
+/* Photo strip */
+.footer-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+}
+
+.footer-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Bottom strip */
+.footer-bottom {
+    background: var(--primary-color, #0e2a52);
+    color: white;
+    padding: 10px 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    text-transform: uppercase;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Medium screens – break gallery into 3 columns */
+@media (max-width: 900px) {
+    .footer-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Small screens – gallery becomes 2 columns */
+@media (max-width: 600px) {
+    .footer-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top,
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Extra small – gallery images stack single-column */
+@media (max-width: 400px) {
+    .footer-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-gallery {
+        display: flex;
+        flex-wrap: nowrap;   /* keep all 5 in one line */
+    }
+
+    .footer-gallery img {
+        width: 20%;          /* each image stays 1/5 of the row */
+        height: auto;
+    }
+}
+
+/* Media Queries */
 
 /* Below 1340px - Enable hamburger menu */
 @media (max-width: 1340px) {
-    /* Show the hamburger icon */
-    .nav-toggle {
-        display: block;
-    }
+  /* Show the hamburger icon */
+  .nav-toggle {
+      display: block;
+  }
 
-    /* Hide navigation links */
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: var(--white-color);
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        border-left: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+  /* Hide navigation links */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-    /* Show navigation when active */
-    .nav-links.active {
-        display: flex;
-    }
+  /* Show navigation when active */
+  .nav-links.active {
+      display: flex;
+  }
 
-    /* Adjust navigation links */
-    .nav-links li {
-        margin: 15px 0;
-        text-align: right;
-        padding-right: 20px;
-    }
+  /* Adjust navigation links */
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
 
-    .logo-box {
-        margin-left: 0;    /* Remove negative margin */
-        left: 0px;        /* Move the logo box inward */
-    }
+  .logo-box {
+      margin-left: 0;    /* Remove negative margin */
+      left: 0px;        /* Move the logo box inward */
+       font-family: "Promenade", serif;
+        font-weight: normal;
+        font-size: 2em;
+        letter-spacing: 1px;
+  }
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: var(--white-color);
-        position: absolute;
-        top: 65px;
-        right: 0;
-        width: 200px;
-        border-left: 1px solid #ccc;
-    }
+@media (max-width: 1111px) {
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjust to a smaller size */
+  }
+  .hero-content {
+    width: 90%; /* Make the container a bit wider */
+  }
+}
 
-    .nav-links.active {
-        display: flex;
-    }
 
-    .nav-links li {
-        margin: 15px 0;
-    }
 
-    .nav-toggle {
-        display: block;
-    }
+@media (max-width: 520px) {
+  .logo-on-hero {
+    width: 50%; /* Make the logo smaller */
+    height: auto; /* Maintain aspect ratio */
+  }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+ .hero-content h1 {
+  transform: translateY(18px);
+}
 
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    .intro-cards {
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .intro-card {
-        margin-bottom: 20px;
-    }
-
-    .services-details {
-        grid-template-columns: 1fr;
-    }
-
-    .motto-section h2 {
-        font-size: 2.5rem;
-    }
-
-    .general-info h2 {
-        font-size: 2.5rem;
-    }
 }
