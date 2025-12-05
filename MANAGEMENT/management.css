@@ -582,49 +582,6 @@ font-size: clamp(1.5rem, 9vw, 3rem);
   }
 }
 
-/* =========================================
-   QUOTE DIVIDER — INSET TOP & BOTTOM LINES
-   ========================================= */
-.quote-divider {
-  background: var(--background-color); /* same soft blue as your other section */
-  padding: 60px 20px;
-  text-align: center;
-  position: relative;
-}
-
-/* TOP inset line */
-.quote-divider::before {
-  content: "";
-  position: absolute;
-  top: 20px;                 /* distance from top edge */
-  left: 0px;                /* inset distance */
-  right: 0px;               /* inset distance */
-  height: 1px;
-  background: var(--text-color); /* same subtle line tone as screenshot */
-}
-
-/* BOTTOM inset line */
-.quote-divider::after {
-  content: "";
-  position: absolute;
-  bottom: 20px;              /* distance from bottom edge */
-  left: 0px;
-  right: 0px;
-  height: 1px;
-  background: var(--text-color);
-}
-
-/* Script text */
-.quote-script {
-  font-family: "Peach Flamingo Script", cursive;
-  font-size: clamp(4rem, 7vw, 7rem);
-  color: var(--primary-color);
-  margin: 0;
-  position: relative;
-  z-index: 2;
-  padding:0;
-  line-height: 0.8;
-}
 
 /* ================================
    LISTINGS / OUR PROPERTIES
@@ -1204,7 +1161,7 @@ footer {
     padding: 10px 20px;
     font-size: 13px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;

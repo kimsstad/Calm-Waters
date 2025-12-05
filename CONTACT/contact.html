@@ -11,20 +11,33 @@
   <!-- Meta tags for responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Discover luxury coastal properties with Calm Waters Plett. Find your perfect seaside retreat today.">
-  <meta name="keywords" content="coastal properties, luxury homes, seaside retreats, home rental, property management">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<meta name="keywords" content="coastal properties, luxury homes, seaside retreats, home rental, property management">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="Resources/pics/favicon.jpg" type="image/jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
+
+
 <body>
 
-  <!-- Header Section -->
+  <!-- Header -->
   <header>
     <div class="container">
+      <!-- Logo Box for "Calm Waters" -->
       <div class="logo-box">
         <span>Calm Waters</span>
       </div>
+      
+      <!-- Navigation Menu -->
       <div class="nav-container">
         <nav>
           <ul class="nav-links">
@@ -33,7 +46,7 @@
             <li><a href="../ABOUT/about.html">ABOUT US</a></li>
             <li><a href="../MANAGEMENT/management.html">SERVICES</a></li>
             <li><a href="../Property/property.html">PROPERTIES</a></li>
-            <li><a href="../CONTACT/contact.html">CONTACT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
           </ul>
           <div class="nav-toggle">
             <i class="fas fa-bars"></i>
@@ -43,95 +56,232 @@
     </div>
   </header>
 
-  <!-- New Hero Section with Heading and Floating Card Design -->
-  <section class="contact-hero">
-    <div class="image-side">
-      <img src="../Resources/pics/Iroko House_094.webp" alt="Calm Waters Contact Image">
+
+<!-- Hero Section -->
+<section class="hero">
+  <!-- Logo on Top of Hero Image -->
+
+  <div class="overlay">
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1>CONTACT US</h1>
+      <p>We are here for you</p>
+      <a href="#contact-info" class="btn">Contact Info</a>
+
     </div>
-    <div class="content-side">
-      <!-- Heading with Pseudo Element -->
-      <div class="hero-heading">
-        <h2 class="heading-sub">GET IN</h2>
-        <h1 class="heading-main">Contact</h1>
-        <p>Feel free to reach out via email, phone, or WhatsApp for inquiries or support.</p>
+  </div>
+</section>
+
+
+<!-- CONTACT INFO (replaces Services block) -->
+<section class="services" id="contact-info">
+  <div class="container">
+
+    <!-- SECTION HEADING -->
+    <div class="section-heading">
+      <h2>
+        <span class="script-word">Reach Out</span>
+        <span class="main-word">CONTACT & INFO</span>
+      </h2>
+
+      <!-- short paragraph below the heading -->
+      <p class="section-note">
+        Feel free to reach out via email, phone, or WhatsApp for enquiries, bookings or support. We're happy to help with availability, 
+        property details, or bespoke requests — or use the contact form below.
+
+    </div>
+
+    <!-- 3 COLUMNS -->
+    <div class="grid">
+
+      <!-- COLUMN 1: CONTACT DETAILS -->
+      <div class="col" aria-labelledby="col-contact">
+        <div class="num"></div>
+        <h3 id="col-contact">Contact Details</h3>
+        <p>
+          <strong>Email Us</strong><br>
+          <a href="mailto:keciacbarry@gmail.com" style="color:var(--muted); text-decoration:none;">keciacbarry@gmail.com</a>
+        </p>
+        <p style="margin-top:10px;">
+          <strong>Call Us</strong><br>
+          <a href="tel:+27845495975" style="color:var(--muted); text-decoration:none;">+27 84 549 5975</a>
+        </p>
+        <p style="margin-top:10px;">
+          <strong>WhatsApp</strong><br>
+          <a href="https://wa.me/27845495975" target="_blank" rel="noopener noreferrer" style="color:var(--muted); text-decoration:none;">Chat on WhatsApp</a>
+        </p>
       </div>
 
-      <!-- Floating Card -->
-      <div class="floating-card">
-        <div class="contact-wrapper">
-          <!-- Left: Contact Buttons -->
-          <div class="contact-options">
-            <!-- Email -->
-            <div class="contact-item">
-              <h3><i class="fas fa-envelope"></i> Email Us</h3>
-              <a href="mailto:keciacbarry@gmail.com?subject=Inquiry%20from%20Website" class="btn">keciacbarry@gmail.com</a>
-            </div>
-
-            <!-- Phone -->
-            <div class="contact-item">
-              <h3><i class="fas fa-phone-alt"></i> Call Us</h3>
-              <a href="tel:+27845495975" class="btn">+27 84 549 5975</a>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="contact-item">
-              <h3><i class="fab fa-whatsapp"></i> WhatsApp Us</h3>
-              <a href="https://wa.me/+27845495975" target="_blank" class="btn">Chat on WhatsApp</a>
-            </div>
-          </div>
-
-          <!-- Right: Address Section -->
-          <div class="address-section">
-            <h3><i class="fas fa-map-marker-alt"></i> Our Office Address</h3>
-            <p>4 Diadem Rd, Robberg Ridge,<br>Plettenberg Bay, 6600, South Africa</p>
-
-            <!-- Opening Hours Section -->
-            <div class="hours-section">
-              <h3><i class="fas fa-clock"></i> Opening Hours</h3>
-              <p>Mon-Fri: 9:00 AM - 5:00 PM</p>
-              <p>Sat-Sun: 10:00 AM - 3:00 PM</p>
-            </div>
-          </div>
-        </div>
+      <!-- COLUMN 2: ADDRESS -->
+      <div class="col" aria-labelledby="col-address">
+        <div class="num"></div>
+        <h3 id="col-address">Our Address</h3>
+        <p>
+          4 Diadem Rd, Robberg Ridge,<br>
+          Plettenberg Bay, 6600<br>
+          South Africa
+        </p>
+        <p style="margin-top:12px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=4+Diadem+Rd+Robberg+Ridge+Plettenberg+Bay+6600" target="_blank" rel="noopener noreferrer" style="color:var(--muted); text-decoration:none;">Open in Maps</a>
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Map Section -->
-  <section class="map-section">
-    <div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3929.54868776258!2d23.3623143231776!3d-34.086342196176744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x1e78e28a70bbfb53%3A0xfef598f34b8389df!2s4%20Diadem%20Rd%2C%20Robberg%20Ridge%2C%20Plettenberg%20Bay%2C%206600%2C%20South%20Africa!3m2!1d-34.0846465!2d23.3622981!5e0!3m2!1sen!2sza!4v1728648556178!5m2!1sen!2sza" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <div class="footer-logo"></div>
-      <div class="footer-social">
-        <div class="footer-links"></div>
+      <!-- COLUMN 3: OPENING HOURS -->
+      <div class="col" aria-labelledby="col-hours">
+        <div class="num"></div>
+        <h3 id="col-hours">Opening Hours</h3>
+        <p>
+          <strong>Mon–Fri:</strong> 9:00 AM – 5:00 PM
+        </p>
+        <p style="margin-top:8px;">
+          <strong>Sat–Sun:</strong> 10:00 AM – 3:00 PM
+        </p>
+        <p style="margin-top:12px; color:var(--muted);">
+          We aim to respond to all enquiries within 24 hours on weekdays.
+        </p>
       </div>
-      <p>&copy; Calm Waters Plett. All rights reserved.</p>
-    </div>
-  </footer>
 
-<script>
-  const toggleButton = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+    </div> <!-- /.grid -->
+
+  </div> <!-- /.container -->
+</section>
+
+
+
+
+<!-- Contact Form Section -->
+<section class="contact-form-beach">
+  <div class="contact-form-overlay"></div>
+
+  <div class="contact-form-inner container">
+    <h2 class="contact-form-heading">Get in Touch</h2>
+    <p class="contact-form-sub">We’d love to help you plan your stay.</p>
+
+    <form action="https://formspree.io/f/xldqllja" method="POST" class="beach-form">
+
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="phone" placeholder="Phone Number (optional)">
+      </div>
+
+      <div class="form-group">
+        <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+      </div>
+
+      <button type="submit" class="contact-btn">Send It</button>
+
+    </form>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          “It was a really great and beautiful stay! Kecia is super nice!! We can recommend 100%.”
+        </p>
+        <p class="testimonial-name">- Calvin</p>
+      </div>
+
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Clear recommendation. We were welcomed with open arms and felt very comfortable. The surroundings seemed safe to us and you can quickly get to the Robberg.”
+        </p>
+        <p class="testimonial-name">- Timo</p>
+      </div>
+
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Kecia is a seriously amazing host. We felt so at home, and love Plett!”
+        </p>
+        <p class="testimonial-name">- Jessie</p>
+      </div>
+
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+
+    <!-- Top strip -->
+    <div class="footer-top">
+        <span>Calm Waters Plett  | Plettenberg Bay, South Africa</span>
+        <span class="footer-email">keciacbarry@gmail.com</span>
+    </div>
+
+    <!-- Photo strip -->
+    <div class="footer-gallery">
+        <img src="../Resources/pics/img1.webp" alt="">
+        <img src="../Resources/pics/img3.webp" alt="">
+        <img src="../Resources/pics/img2.webp" alt="">
+        <img src="../Resources/pics/img4.webp" alt="">
+        <img src="../Resources/pics/img5.webp" alt="">
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="footer-bottom">
+        <span>© 2025 Calm Waters Plett</span>
+        
+    </div>
+
+</footer>
+    
+
+  <!-- JavaScript for Mobile Navigation Toggle -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-851ZJ9DJHQ');
+  </script>
   
-  toggleButton.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % testimonials.length;
+    showTestimonial(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(index);
   });
 </script>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-851ZJ9DJHQ');
-</script>
 
 </body>
 </html>
