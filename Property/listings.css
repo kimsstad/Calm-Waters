@@ -225,7 +225,6 @@ header .container {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('../Resources/5Boardwalk/1.webp') no-repeat center center/cover;
   z-index: 1;
   background-size: cover;
 }
@@ -235,12 +234,21 @@ header .container {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
+  height: 100vh; 
     background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
   z-index: 1;
 }
 
-
+.hero-image {
+  position: absolute;
+  image-rendering: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 /* Logo on Hero */
 .logo-on-hero {
   position: absolute;
@@ -1053,6 +1061,137 @@ width: 300px;
 .gallery-nav.next {
   right: -40px;  /* move RIGHT arrow away from photos */
 }
+
+/* ============================
+   BEACH BACKGROUND CONTACT FORM
+   ============================ */
+
+.contact-form-beach {
+  position: relative;
+  background: url('../Resources/pics/contact-form.webp') center center/cover no-repeat;
+  padding: 120px 0;
+  text-align: center;
+background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact-form-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25); /* soft dim like in your example */
+  z-index: 1;
+}
+
+.contact-form-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* HEADINGS */
+.contact-form-heading {
+font-family: "Promenade", serif;
+  text-transform: uppercase;
+font-size: clamp(4rem, 9vw, 6rem);
+color: var(--background-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 0;
+  font-weight: 100;
+  max-width: 90%;
+  z-index: 5!important;
+  margin: 0 auto;
+  position: relative;
+}
+
+.contact-form-sub {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: clamp(2.5rem, 2vw, 6rem)!important;
+  color: var(--background-color);
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* FORM */
+.beach-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* INPUTS + TEXTAREA */
+.beach-form input,
+.beach-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: 1px solid var(--background-color);
+  border-radius: 1px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.beach-form input::placeholder,
+.beach-form textarea::placeholder {
+  color: var(--background-color);
+  opacity: 0.8;
+}
+
+.beach-form input:focus,
+.beach-form textarea:focus {
+  border-color: var(--white-color);
+  color: var(--white-color);
+}
+
+/* BUTTON */
+.contact-btn {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: 700;
+}
+
+.contact-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .contact-form-beach {
+    padding: 80px 0;
+  }
+
+  .contact-form-inner {
+    width: 90%;
+  }
+  .contact-form-sub {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+    .contact-form-heading {
+    
+    line-height: 1.05
+  }
+}
+
 
 
 /* FOOTER */
