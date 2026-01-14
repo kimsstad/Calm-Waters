@@ -130,6 +130,26 @@
   </div>
 </section>
 
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          “We had a fabulous time in the apartment. Central location with a lovely view. Very well-stocked kitchen. Thank you!”
+        </p>
+        <p class="testimonial-name">- Chantler Family</p>
+      </div>
+
+
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <section class="house-rules">
   <div class="container">
     <h3>House Rules</h3>
@@ -166,7 +186,27 @@
 <footer>
   <p>&copy; 2025 Calm Waters Plett. All rights reserved.</p>
 </footer>
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
 
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % testimonials.length;
+    showTestimonial(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(index);
+  });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <script>
   const navToggle = document.querySelector('.nav-toggle');

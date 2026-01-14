@@ -3,7 +3,82 @@
   font-family: 'YourCustomFont';
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
+/* Import Custom Fonts */
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
+}
 
+/* Promenade Regular — alias both names to the SAME file */
+@font-face {
+  font-family: "Promenade";
+  src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none; /* prevents fake bold/italic */
+}
+
+
+
+/* Paso Robles Regular */
+@font-face {
+  font-family: 'Paso Robles Regular';
+  src: url('../FONTS/PasoRobles-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Sans (OTF + TTF for browser fallback) */
+@font-face {
+  font-family: 'Peach Flamingo Sans';
+  src: url('..FONTS/Peachflamingosans-G3aJO.otf') format('opentype'),
+       url('..FONTS/PeachflamingoSans-j94Z9.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Script */
+@font-face {
+  font-family: 'Peach Flamingo Script';
+  src: url('../FONTS/PeachflamingoScript-zrxdX.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Regular */
+@font-face {
+  font-family: 'Qiblah';
+  src: url('..FONTS/Qiblah-BF6583c4f5d1831.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Italic */
+@font-face {
+  font-family: 'Qiblah Italic';
+  src: url('..FONTS/Qiblah-Italic-BF6583c4f550e78.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Mynabali Script Demo */
+@font-face {
+  font-family: 'Mynabali Script';
+  src: url('..FONTS/utmynabaliscriptdemo-0vbxg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Mynabali Serif Demo */
+@font-face {
+  font-family: 'Mynabali Serif';
+  src: url('..FONTS/utmynabaliserifdemo-wpeao.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 *,
 *::before,
 *::after {
@@ -554,6 +629,174 @@ header .container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* ================================
+   TESTIMONIAL SECTION
+   ================================ */
+.testimonial-section {
+  background-color: #aec3d1; /* soft blue */
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.testimonial-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  box-sizing: border-box;
+}
+
+/* reduce spacing between border and section edge */
+.testimonial-section::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid var(--primary-color);
+  pointer-events: none; /* ensure it doesn’t interfere with content */
+  z-index: 1;
+}
+
+.testimonial-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* TEXT */
+
+.testimonial-heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.testimonial-text {
+    font-family: "Poppins", sans-serif !important;
+  font-weight: 400;       
+  letter-spacing: 0px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+p.testimonial-name {
+  font-family: "Peach Flamingo Script", cursive;
+  font-size: 3rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* === Testimonial Slider Extension === */
+.testimonial-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide all testimonials by default */
+.testimonial-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  max-width: 700px;
+  margin: 0 40px;
+}
+
+/* Active testimonial visible */
+.testimonial-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Navigation Buttons */
+.testimonial-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  z-index: 3; /* keep above border */
+}
+
+.testimonial-btn:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Button positioning */
+.testimonial-btn.prev {
+  position: absolute;
+  left: -60px; /* Move slightly outside the testimonial area */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.testimonial-btn.next {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Keep everything aligned nicely */
+.testimonial-content h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .testimonial-btn.prev {
+    left: 10px;
+  }
+
+  .testimonial-btn.next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-container {
+    padding: 60px 20px;
+  }
+
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-name {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-wrapper {
+    flex-direction: column;
+  }
+
+  .testimonial-btn {
+    position: static;
+    margin: 10px;
+  }
+}
+
 
 /* House Rules Section */
 .house-rules {
