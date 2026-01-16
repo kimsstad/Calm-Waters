@@ -1304,7 +1304,6 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .footer-top,
     .footer-bottom {
         flex-direction: column;
         text-align: center;
@@ -1329,6 +1328,29 @@ footer {
         height: auto;
     }
 }
+@media (max-width: 600px) {
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .booking-icons {
+    justify-content: center;
+  }
+}
+
+
 
 /* Media Queries */
 
