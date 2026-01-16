@@ -1211,7 +1211,8 @@ footer {
     font-size: 14px;
     border-top: 1px solid var(--text-color);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
     align-items: center;
     color: var(--text-color);
     flex-wrap: wrap;
@@ -1248,6 +1249,45 @@ footer {
     gap: 6px;
     text-transform: uppercase;
 }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.footer-left {
+  justify-self: start;
+}
+
+.footer-center {
+  justify-self: center;
+}
+
+.footer-right {
+  justify-self: end;
+}
+
+
+.booking-icons {
+  display: flex;
+  gap: 12px;
+
+  /* true centering inside space-between flex */
+  margin-left: auto;
+  margin-right: auto;
+}
+.booking-icons a img {
+  width: 24px;
+  height: auto;
+  transition: transform 0.2s ease-in-out, opacity 0.3s;
+}
+
+.booking-icons a:hover img {
+  transform: scale(1.08);
+  opacity: 0.85;
+}
+
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
