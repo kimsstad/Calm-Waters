@@ -2,31 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Local Area | Calm Waters Plett</title>
-
-  <!-- Use the same global stylesheet tokens as your main site -->
+  <title>Calm Waters Plett</title>
   <link rel="stylesheet" href="local-area.css">
-
-  <!-- Fonts & icons (matching main site) -->
+  <!-- Link to custom fonts -->
   <link rel="stylesheet" href="fonts/stylesheet.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Meta tags for responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the beauty and attractions of Plettenberg Bay, South Africa. Discover what the local area has to offer with Calm Waters Plett.">
-  <meta name="keywords" content="Plettenberg Bay, Local Area, Calm Waters Plett, South Africa, Attractions">
-  <link rel="icon" href="../Resources/pics/favicon.jpg" type="image/jpg">
+  <meta name="description" content="Discover luxury coastal properties with Calm Waters Plett. Find your perfect seaside retreat today.">
+<meta name="keywords" content="coastal properties, luxury homes, seaside retreats, home rental, property management">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="Resources/pics/favicon.jpg" type="image/jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
+
+
 <body>
 
-  <!-- Header (keeps same structure as original page; styled by local-area.css) -->
+  <!-- Header -->
   <header>
     <div class="container">
+      <!-- Logo Box for "Calm Waters" -->
       <div class="logo-box">
         <span>Calm Waters</span>
       </div>
-
+      
+      <!-- Navigation Menu -->
       <div class="nav-container">
         <nav>
           <ul class="nav-links">
@@ -45,19 +56,23 @@
     </div>
   </header>
 
-  <!-- Hero (visual/markup preserved; styling now matches main site) -->
-  <section class="hero">
-    <!-- optional logo-on-hero if you want the faded logo -->
-    <div class="overlay">
-      <div class="hero-content">
-        <h1>PLETTENBERG BAY</h1>
-        <p>Discover the Jewel of the Garden Route</p>
-        <a href="#explore" class="btn">Explore Now</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- Introduction (layout unchanged) -->
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <!-- Logo on Top of Hero Image -->
+
+  <div class="overlay">
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1>PLETTENBERG BAY</h1>
+      <p>Discover the Jewel of the Garden Route</p>
+      <a href="#explore" class="btn">EXPLORE NOW</a>
+    </div>
+  </div>
+</section>
+
   <section class="introduction">
     <div class="container">
       <div class="intro-card">
@@ -291,8 +306,8 @@
     </div>
   </section>
 
-  <!-- Footer (markup unchanged; styled by local-area.css to match main site) -->
-  <!-- Footer Section -->
+
+<!-- Footer Section -->
 <footer class="footer">
 
     <!-- Top strip -->
@@ -313,18 +328,51 @@
     <!-- Bottom strip -->
     <div class="footer-bottom">
         <span>© 2025 Calm Waters Plett</span>
-        
     </div>
 
 </footer>
+    
 
+  <!-- JavaScript for Mobile Navigation Toggle -->
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
+
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
   </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-851ZJ9DJHQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-851ZJ9DJHQ');
+  </script>
+  
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % testimonials.length;
+    showTestimonial(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(index);
+  });
+</script>
 <script>
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.learn-btn');

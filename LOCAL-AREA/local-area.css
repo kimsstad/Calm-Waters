@@ -1,4 +1,79 @@
-/* Adopted header/hero/footer fonts, colors and variables from main stylesheet */
+/* Import Custom Fonts */
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
+}
+
+/* Promenade Regular — alias both names to the SAME file */
+@font-face {
+  font-family: "Promenade";
+  src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
+       url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none; /* prevents fake bold/italic */
+}
+
+
+
+/* Paso Robles Regular */
+@font-face {
+  font-family: 'Paso Robles Regular';
+  src: url('../FONTS/PasoRobles-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Sans (OTF + TTF for browser fallback) */
+@font-face {
+  font-family: 'Peach Flamingo Sans';
+  src: url('..FONTS/Peachflamingosans-G3aJO.otf') format('opentype'),
+       url('..FONTS/PeachflamingoSans-j94Z9.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Peach Flamingo Script */
+@font-face {
+  font-family: 'Peach Flamingo Script';
+  src: url('../FONTS/PeachflamingoScript-zrxdX.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Regular */
+@font-face {
+  font-family: 'Qiblah';
+  src: url('..FONTS/Qiblah-BF6583c4f5d1831.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Qiblah Italic */
+@font-face {
+  font-family: 'Qiblah Italic';
+  src: url('..FONTS/Qiblah-Italic-BF6583c4f550e78.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Mynabali Script Demo */
+@font-face {
+  font-family: 'Mynabali Script';
+  src: url('..FONTS/utmynabaliscriptdemo-0vbxg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Mynabali Serif Demo */
+@font-face {
+  font-family: 'Mynabali Serif';
+  src: url('..FONTS/utmynabaliserifdemo-wpeao.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Promenade";
@@ -33,25 +108,24 @@
   font-display: swap;
 }
 
-
-/* root colour palette — copied from main site */
-:root {
-  --primary-color: #284584;    /* Deep Blue */
-  --secondary-color: #aec3d1;  /* Moderate Blue */
-  --accent-color: #e7e5d8;     /* Soft accent (kept) */
-  --background-color: #eeede6; /* Light background */
-  --text-color: #2A2D36;
-  --body-text-color: #5F6364;
-  --white-color: #FFFFFF;
-}
-
-/* Basic resets */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #284584;    /* Logo color - Deep Blue */
+  --secondary-color: #aec3d1;  /* Complementary Moderate Blue */
+  --accent-color: #e7e5d8;     /* Accent Color - Soft Orange */
+  --background-color: #eeede6; /* Light Gray Background */
+  --text-color: #2A2D36;       /* Dark Gray for Headings */
+  --body-text-color: #5F6364;  /* Medium Gray for Body Text */
+  --white-color: #FFFFFF;
+}
+html, body {
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -65,97 +139,14 @@ body {
   background-color: var(--background-color);
 }
 
-
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }
 
-/* Below 1340px - Enable hamburger menu */
-@media (max-width: 1340px) {
-  /* Show the hamburger icon */
-  .nav-toggle {
-      display: block;
-  }
 
-  /* Hide navigation links */
-  .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--white-color);
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 200px;
-      border-left: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Show navigation when active */
-  .nav-links.active {
-      display: flex;
-  }
-
-  /* Adjust navigation links */
-  .nav-links li {
-      margin: 15px 0;
-      text-align: right;
-      padding-right: 20px;
-  }
-
-  .logo-box {
-      margin-left: 0;    /* Remove negative margin */
-      left: 0px;        /* Move the logo box inward */
-       font-family: "Promenade", serif;
-        font-weight: normal;
-        font-size: 2em;
-        letter-spacing: 1px;
-  }
-}
-/* keep large overlapping logo on tablets; only change on very small phones */
-@media (max-width: 768px) {
-  /* keep .logo-box absolute so it stays the same visual size/overlap as desktop */
-  .logo-box{
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-left: -60px;   /* same offset as desktop */
-    height: 84px;         /* slightly smaller than desktop but still prominent */
-    padding: 16px 26px;   /* slightly reduced padding */
-    font-size: 2.4em;     /* scaled down but still large */
-    line-height: 1.2;
-  }
-
-  /* keep the container offset so the nav isn't covered */
-  header .container{
-    padding-left: calc(60px + 30px);
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .nav-container{ padding: 0 1rem; }
-  .nav-links{ gap: 12px; margin-left: 8px; padding-left: 8px; }
-}
-
-/* only switch the logo into flow on very narrow phones */
-@media (max-width: 520px) {
-  .logo-box {
-    left: 10px !important;
-    top: 6px !important;
-    padding: 10px 14px !important;
-    font-size: 1.9em !important;
-    height: auto !important;
-  }
-  header .container { padding-left: 10px !important; }
-}
-
-/* --- Header & Navbar (exact match to main site) --- */
-/* ================================
-   NAVBAR + HERO (complete)
-   ================================ */
-
-/* Header / Nav */
+/* Header Styles */
 header {
   position: fixed;
   top: 0;
@@ -163,11 +154,11 @@ header {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
+  padding: 0px;
   background: var(--white-color);
   border-radius: 0 0 2px 2px;
-  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   z-index: 1000;
-  padding: 0;
 }
 
 header .container {
@@ -179,7 +170,6 @@ header .container {
   position: relative;
 }
 
-/* logo box (left) */
 .logo-box {
   background-color: var(--primary-color);
   color: var(--background-color);
@@ -202,14 +192,19 @@ header .container {
   z-index: 1010;
 }
 
+@media (max-width: 520px) {
+  .logo-box {
+    padding: 20px 30px !important; /* lock in the same padding */
+  }
+}
+
 
 .nav-container {
   margin-left: auto;
   padding: 0 2em;
   box-sizing: border-box;
-  position: relative;
+  position: relative; /* Added for positioning in media queries */
 }
-
 
 .nav-links {
   list-style: none;
@@ -219,26 +214,27 @@ header .container {
   margin-left: 20px;
 }
 
-.nav-links li { 
-  margin: 0 20px; 
+.nav-links li {
+  margin: 0 20px;
 }
 
 .nav-links a {
-text-decoration: none;
+  text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;      
+  font-weight: 700;        /* Thin */
   font-size: 14px;
   letter-spacing: 2.8px;
-  color:  #2A2D36;          
-  text-transform: uppercase;
+  color:  #2A2D36;          /* From your screenshot */
+  text-transform: uppercase; /* optional if you want the same spaced-out look */
 }
 
 
-.nav-links a:hover { 
-  color: var(--accent-color); 
+.nav-links a:hover {
+  color: var(--accent-color);
 }
 
-/* hamburger toggle (hidden on desktop) */
+
+/* Nav Toggle for mobile */
 .nav-toggle {
   display: none;
   cursor: pointer;
@@ -246,75 +242,95 @@ text-decoration: none;
 }
 
 
-/* =========================
-   HERO
-   ========================= */
+
+/* Hero Section */
+/* Overlapping Content */
+.overlap-content {
+  position: absolute;
+  top: 80%; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; 
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+}
 
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 640px; /* ensures a consistent large hero on desktop */
   background: url('../Resources/pics/local1.webp') no-repeat center center/cover;
-  background-size: cover;
   z-index: 1;
-  display: block;
+  background-size: cover;
 }
 
-/* soft gradient fade to page background at bottom */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
+  z-index: 1;
+}
 
 
-/* optional logo placed on hero (you said you don't want it, keep hidden by default) */
+/* Logo on Hero */
 .logo-on-hero {
-  display: none;
   position: absolute;
   top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.25;
-  max-width: 40%;
-  min-width: 260px;
+  opacity: 0.3; /* Slight transparency */
+  max-width: 40%; /* Adjust as needed for size */
+  min-width: 400px;
+  width: 100%;
+  height: auto;
   z-index: 2;
 }
 
-/* hero content centered */
+/* Hero Content */
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: var(--background-color);
   text-align: center;
-  z-index: 3;
-  color: var(--white-color);
+  z-index: 3; 
   width: 100%;
-  max-width: 1100px;
-  padding: 0 20px;
-  box-sizing: border-box;
 }
 
-/* primary hero heading */
+
+/* Text Styling */
 .hero-content h1 {
-  font-family: "Promenade", serif;
-  font-weight: 400;
-  font-size: clamp(3.3rem, 10vw, 8rem) !important;
-  line-height: 1;
-  margin: 0px !important;
+  font-size: clamp(3rem, 10vw, 8rem) !important;
+  margin-bottom: 0px;
+  font-family: "Promenade", serif !important;;
+  font-weight: normal;
+  letter-spacing: 0px;
   color: #ffffff;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-  padding: 0 !important;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
 }
 
-/* hero subline (script) */
+@media (max-width: 520px) {
+  .hero-content h1 {
+    margin-bottom: 20px !important;
+  }
+}
+
+
 .hero-content p {
-  font-family: "Peach Flamingo Script", cursive;
-  font-size: clamp(2.2rem, 6vw, 4rem) !important;
-  margin: -10px;
-  padding: 0 !important;
-  color: #ffffff;
+font-family: "Peach Flamingo Script", cursive;
+color: #ffffff;
+  font-size: clamp(1.5rem, 10vw, 4rem) !important;
+  line-height: 2.4rem;       /* ~0.8 ratio of font-size, matches 36px:45px */
+  letter-spacing: 0px;
+  margin-top: -10px;
+  margin-bottom: 30px;
 }
 
-/* hero CTA button */
-.hero .btn {
-  display: inline-block;
+.hero .btn { 
   color: var(--white-color);
   border: 1.8px solid var(--white-color);
   border-radius: 30px;
@@ -325,54 +341,17 @@ text-decoration: none;
   font-size: 14px;
   letter-spacing: 2.8px;
   text-transform: uppercase;
-  transition: all .3s ease;
+  transition: all 0.3s ease; 
+}
+@media (max-width: 520px) {
+  .hero .btn {
+    padding: 8px 18px;
+  }
 }
 .hero .btn:hover {
+  background-color: transparent;
   color: var(--accent-color);
   border-color: var(--accent-color);
-  background: transparent;
-}
-
-/* subtle responsive tweaks — breakpoints tuned to your layout */
-
-/* <= 1111px: reduce hero heading */
-@media (max-width: 1111px) {
-  .hero-content h1 { font-size: 3.2rem; }   /* large tablet */
-  .hero-content p  { font-size: 1.6rem; }
-  .hero { min-height: 560px; }
-}
-
-/* <= 900px: stacked / mobile adjustments */
-@media (max-width: 900px) {
-  /* header: show hamburger, collapse links */
-  .nav-toggle { display: block; }
-  .nav-links { display: none; position: absolute; top: 100%; right: 0; background: var(--white-color); width: 220px; flex-direction: column; border-left: 1px solid #ddd; box-shadow: 0 6px 18px rgba(0,0,0,0.08); padding: 12px; }
-  .nav-links.active { display:flex; }
-  .nav-links li { margin: 10px 0; padding-right: 12px; text-align:right; }
-
-
-  /* hero smaller */
-  .hero { min-height: 520px; height: 80vh; }
-  .hero-content { width: 100%; padding: 0 18px; }
-  .hero-content p { font-size: 1.2rem; margin-bottom: 20px; }
-  /* make CTA easier to tap */
-  .hero .btn { padding: 10px 18px; font-size: 13px; }
-}
-
-/* <= 520px: small phones */
-@media (max-width: 520px) {
-  header .container { padding: 10px 12px; }
-  .logo-box { margin-left: -48px; }
-  .nav-container { padding: 0 10px; }
-  .hero { min-height: 72vh; }
-  .hero-content p { font-size: 1rem; margin-bottom: 0px; -webkit-text-stroke: 0.2px #ffffff; }
-  .hero .btn { padding: 0px; font-size: 12px; border-width: 1.6px; }
-}
-
-@media (max-width: 520px) {
-  .logo-box {
-    padding: 20px 30px !important; /* lock in the same padding */
-  }
 }
 
 
@@ -626,9 +605,21 @@ text-decoration: none;
   text-transform: uppercase;
   color: var(--primary-color);
   cursor: pointer;
-  padding: 8px 6px;
+  padding: 8px 6px !important;
   margin-left: 8px;
+  min-width: 150px;
+  max-width: 100%;
+  width: auto;
 }
+
+@media (max-width: 600px) {
+  .learn-btn {
+    width: 100%;        /* full width on mobile */
+    min-width: unset;
+    padding: 14px 20px; /* slightly tighter sides */
+  }
+}
+
 .attraction-extra p a {
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
@@ -976,89 +967,69 @@ footer {
     }
 }
 
+/* Media Queries */
 
-
-/* Testimonial / other sections not present remain unaffected */
-
-/* Responsive rules — align with main site breakpoints */
+/* Below 1340px - Enable hamburger menu */
 @media (max-width: 1340px) {
-  .nav-toggle { display:block; }
-  .nav-links { display:none; flex-direction:column; background:var(--white-color); position:absolute; top:100%; right:0; width:220px; border-left:1px solid #ccc; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
-  .nav-links.active { display:flex; }
-  .logo-box { margin-left:0; left:0; font-size:1.7em; }
-}
-
-@media (max-width: 900px) {
-  .intro-card { flex-direction:column; height:auto; }
-  .history-content { flex-direction:column; height:auto; align-items:center; }
-  .history .image-container { position:relative; width:100%; left:0; height:auto; }
-  .history .text-content { margin-left:0; width:100%; padding:20px; text-align:center; }
-  .hero-content h1 { font-size:2.5rem; }
-  .hero-content p { font-size:1.2rem; }
-  .logo-on-hero { display:none; }
-}
-
-@media (max-width: 520px) {
-  .hero-content h1 { font-size:1.8rem; }
-  .logo-box { display:flex; padding:14px 18px; font-size:1.3em; margin-left: -30px; height:72px; }
-  .map iframe { height:400px; }
-}
-@media (max-width: 720px) {
-  .logo-box {
-    position: relative;
-    margin-right: 8px;
-    height: 58px;
-    padding: 10px 18px;
-    font-size: 1.6rem;
+  /* Show the hamburger icon */
+  .nav-toggle {
+      display: block;
   }
-  header .container { padding: 10px 12px; }
-  .nav-container { padding: 0 8px; }
+
+  /* Hide navigation links */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--white-color);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 200px;
+      border-left: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Show navigation when active */
+  .nav-links.active {
+      display: flex;
+  }
+
+  /* Adjust navigation links */
+  .nav-links li {
+      margin: 15px 0;
+      text-align: right;
+      padding-right: 20px;
+  }
+
+  .logo-box {
+      margin-left: 0;    /* Remove negative margin */
+      left: 0px;        /* Move the logo box inward */
+       font-family: "Promenade", serif;
+        font-weight: normal;
+        font-size: 2em;
+        letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 1111px) {
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjust to a smaller size */
+  }
+  .hero-content {
+    width: 90%; /* Make the container a bit wider */
+  }
 }
 
 
-/* tighten spacing on small screens so hero CTA doesn't appear off */
-@media (max-width: 600px) {
-  .hero-content h1 { font-size: 2.4rem; margin-bottom: 6px; }
-  .hero-content p  { font-size: 1.1rem; margin-bottom: 10px; }
-  .hero .btn { font-size: 13px; padding: 8px 18px; }
-  .logo-box { height: 56px; padding: 8px 14px; }
-  header .container { padding: 8px 10px; }
-  /* ensure hero background image doesn't reposition badly */
-  .hero { background-position: center top; }
-}
+
 @media (max-width: 520px) {
   .logo-on-hero {
     width: 50%; /* Make the logo smaller */
     height: auto; /* Maintain aspect ratio */
   }
-  .hero-content h1 {
-    font-size: 1.8rem; /* Make the main heading smaller */
-  }
+
+ .hero-content h1 {
+  transform: translateY(18px);
 }
 
-@media (max-width: 520px) {
-  /* make the image full-bleed regardless of parent padding */
-  .history .image-container {
-    width: 100%;
-    max-width: 100%;
-    flex: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .history .image-container img {
-    display: block;
-    width: 100vw;                       /* span the viewport width */
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);      /* center the full-bleed image inside the page */
-    height: auto;                       /* keep aspect ratio */
-    object-fit: cover;
-  }
-
-  /* if the section itself has page padding, remove it on mobile */
-  .history {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-  }
 }
