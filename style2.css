@@ -1295,6 +1295,19 @@ footer {
     }
 }
 
+@media (max-width: 600px) {
+    .footer-gallery {
+        display: flex;
+        flex-wrap: nowrap;   /* keep all 5 in one line */
+    }
+
+    .footer-gallery img {
+        width: 20%;          /* each image stays 1/5 of the row */
+        height: auto;
+    }
+}
+
+
 
 /* Media Queries */
 
