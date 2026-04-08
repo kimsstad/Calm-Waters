@@ -1,0 +1,482 @@
+/* Boardwalk Retreat booking section:
+   compact Calm Waters form styling with an opaque calendar drawer. */
+
+.cw-booking-group {
+  margin: 0;
+}
+
+.cw-booking-widget {
+  width: 100%;
+}
+
+.cw-booking-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cw-booking-kicker {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(238, 237, 230, 0.88);
+}
+
+.cw-booking-selection {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(238, 237, 230, 0.9);
+  text-align: right;
+}
+
+.cw-booking-compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.cw-booking-range-field {
+  min-height: 100%;
+}
+
+.cw-booking-inline-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cw-booking-inline-item {
+  padding: 12px 14px;
+  border: 1px solid rgba(238, 237, 230, 0.24);
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.04);
+  min-width: 0;
+}
+
+.cw-booking-inline-label {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(238, 237, 230, 0.68);
+}
+
+.cw-booking-inline-value {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--background-color);
+  word-break: break-word;
+}
+
+.cw-booking-field {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--background-color);
+  border-radius: 1px;
+  background: transparent;
+  color: var(--background-color);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.cw-booking-date-field {
+  cursor: pointer;
+}
+
+.cw-booking-date-field:hover,
+.cw-booking-date-field.is-active,
+.cw-booking-select-field:focus-within {
+  border-color: var(--white-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cw-booking-field-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(238, 237, 230, 0.68);
+}
+
+.cw-booking-field-value,
+.cw-booking-select-field select {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.35;
+  color: var(--background-color);
+  text-transform: none;
+}
+
+.cw-booking-select-field select {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+.cw-booking-select-field select option {
+  color: #1f2628;
+}
+
+.cw-booking-reveal {
+  display: none;
+}
+
+.cw-booking-widget.is-open .cw-booking-reveal {
+  display: block;
+}
+
+.cw-booking-panel {
+  margin-top: 12px;
+  padding: 18px;
+  border-radius: 1px;
+  background: #f4f1ea;
+  border: 1px solid rgba(40, 69, 132, 0.12);
+  color: #2a2d36;
+  box-shadow: 0 20px 38px rgba(15, 24, 40, 0.18);
+}
+
+.cw-booking-intro {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.cw-booking-intro h3 {
+  margin: 0 0 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.cw-booking-intro p,
+.cw-booking-note,
+.cw-booking-status {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #55606d;
+  text-transform: none;
+}
+
+.cw-booking-status {
+  margin-top: 12px;
+}
+
+.cw-booking-status[data-tone="warning"] {
+  color: #9d5d1a;
+}
+
+.cw-booking-status[data-tone="success"] {
+  color: #2f6957;
+}
+
+.cw-booking-badge {
+  flex-shrink: 0;
+  border: 1px solid rgba(40, 69, 132, 0.16);
+  padding: 10px 12px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  background: #ffffff;
+}
+
+.cw-booking-shell {
+  border: 1px solid rgba(40, 69, 132, 0.12);
+  border-radius: 1px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.cw-booking-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.cw-booking-toolbar-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #60707d;
+}
+
+.cw-booking-toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cw-booking-nav {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(40, 69, 132, 0.16);
+  border-radius: 1px;
+  background: #ffffff;
+  color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, opacity 0.18s ease;
+}
+
+.cw-booking-nav:hover:not(:disabled) {
+  border-color: rgba(40, 69, 132, 0.36);
+  background: #f9f7f2;
+}
+
+.cw-booking-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cw-booking-months {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cw-booking-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cw-booking-month-header h4,
+.cw-booking-month-note,
+.cw-booking-weekday {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+
+.cw-booking-month-header h4 {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--primary-color);
+}
+
+.cw-booking-month-note {
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  color: #80909e;
+}
+
+.cw-booking-weekdays,
+.cw-booking-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.cw-booking-weekdays {
+  margin-bottom: 10px;
+}
+
+.cw-booking-weekday {
+  text-align: center;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #90a0ad;
+}
+
+.cw-booking-pad {
+  min-height: 1px;
+}
+
+.cw-booking-day {
+  min-height: 54px;
+  border: 1px solid rgba(40, 69, 132, 0.1);
+  border-radius: 1px;
+  background: #ffffff;
+  color: #2a2d36;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.cw-booking-day:hover:not(:disabled) {
+  border-color: rgba(40, 69, 132, 0.34);
+  background: #f4f7fb;
+}
+
+.cw-booking-day.is-preview-range,
+.cw-booking-day.is-in-range {
+  background: #e8eef4;
+  border-color: #aec3d1;
+}
+
+.cw-booking-day.is-start,
+.cw-booking-day.is-end {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.cw-booking-day.is-past,
+.cw-booking-day.is-blocked,
+.cw-booking-day.is-range-disabled,
+.cw-booking-day.is-unpriced {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.cw-booking-day.is-blocked {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.cw-booking-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 16px 0 0;
+}
+
+.cw-booking-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6f7a84;
+}
+
+.cw-booking-legend-swatch {
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(40, 69, 132, 0.16);
+  background: #ffffff;
+}
+
+.cw-booking-legend-swatch.is-selected {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.cw-booking-legend-swatch.is-range {
+  background: #e8eef4;
+  border-color: #aec3d1;
+}
+
+.cw-booking-legend-swatch.is-blocked {
+  background: #f0ebe3;
+}
+
+.cw-booking-summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cw-booking-summary-card,
+.cw-booking-summary-total {
+  border: 1px solid rgba(40, 69, 132, 0.12);
+  border-radius: 1px;
+  padding: 12px 14px;
+  background: #ffffff;
+  min-width: 0;
+}
+
+.cw-booking-summary-label {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7f8c97;
+}
+
+.cw-booking-summary-value {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.93rem;
+  line-height: 1.45;
+  color: #2a2d36;
+  word-break: break-word;
+}
+
+.cw-booking-summary-total {
+  background: #f8f5ee;
+}
+
+@media (max-width: 1080px) {
+  .cw-booking-compact,
+  .cw-booking-inline-summary,
+  .cw-booking-summary,
+  .cw-booking-months {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .cw-booking-heading,
+  .cw-booking-intro,
+  .cw-booking-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cw-booking-panel,
+  .cw-booking-shell {
+    padding: 14px;
+  }
+
+  .cw-booking-grid,
+  .cw-booking-weekdays {
+    gap: 6px;
+  }
+
+  .cw-booking-day {
+    min-height: 46px;
+    font-size: 0.84rem;
+  }
+}
