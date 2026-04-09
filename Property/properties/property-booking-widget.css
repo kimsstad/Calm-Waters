@@ -1,4 +1,4 @@
-/* Boardwalk Retreat booking section:
+/* Shared property booking widget:
    compact Calm Waters form styling with an opaque calendar drawer. */
 
 .cw-booking-group {
@@ -356,11 +356,23 @@
 }
 
 .cw-booking-day.is-past,
-.cw-booking-day.is-blocked,
 .cw-booking-day.is-range-disabled,
 .cw-booking-day.is-unpriced {
   opacity: 0.48;
   cursor: not-allowed;
+}
+
+.cw-booking-day.is-past {
+  background: #f6f3ec;
+  border-color: rgba(40, 69, 132, 0.08);
+  color: #a8b0b7;
+}
+
+.cw-booking-day.is-blocked {
+  opacity: 0.62;
+  cursor: not-allowed;
+  background: #ece6de;
+  border-color: rgba(40, 69, 132, 0.14);
 }
 
 .cw-booking-day.is-blocked {

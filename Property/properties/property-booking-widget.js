@@ -1,4 +1,6 @@
 (() => {
+  // Shared booking widget logic. Each property page passes its own
+  // feeds, display name, and workbook source through data attributes.
   const bookingRoot = document.querySelector('[data-cw-booking], [data-boardwalk-booking]');
   if (!bookingRoot) return;
 
@@ -21,7 +23,7 @@
   const totalInput = bookingRoot.querySelector('[data-booking-total-input]');
   const weekdayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const appTimeZone = 'Africa/Johannesburg';
-  const liveSyncApiBaseUrl = 'http://127.0.0.1:4179';
+  const localSyncApiBaseUrl = 'http://127.0.0.1:4179';
 
   const centralTwoBedAirbnbRules = [
     { start: '2026-04-01', end: '2026-04-06', flat: 2420 },
@@ -100,6 +102,10 @@
         booking: {
           publicUrl: '',
           proxyUrl: ''
+        },
+        lekkeslaap: {
+          publicUrl: '',
+          proxyUrl: ''
         }
       },
       blockedDatesEndpoint: '/api/arrowood-blocks',
@@ -116,6 +122,10 @@
         booking: {
           publicUrl: '',
           proxyUrl: ''
+        },
+        lekkeslaap: {
+          publicUrl: '',
+          proxyUrl: ''
         }
       },
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks',
@@ -123,10 +133,22 @@
     }
   };
 
-  const sourceKey = bookingRoot.dataset.bookingSource || 'boardwalk-corner';
-  const workbookSource = workbookPropertySources[sourceKey] || workbookPropertySources['boardwalk-corner'];
+  const sourceKey = bookingRoot.dataset.bookingSource || '';
+  const workbookSource = workbookPropertySources[sourceKey] || {
+    displayName: bookingRoot.dataset.bookingName || 'Property',
+    festivePeak: null,
+    feeds: {
+      airbnb: { publicUrl: '', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
+    },
+    blockedDatesEndpoint: '',
+    baseAirbnbRules: []
+  };
   const propertyConfig = {
+    sourceKey,
     propertyName: bookingRoot.dataset.bookingName || workbookSource.displayName,
+    availabilityApi: bookingRoot.dataset.availabilityApi || '',
     feeds: {
       airbnb: {
         publicUrl: bookingRoot.dataset.airbnbIcalUrl || workbookSource.feeds.airbnb.publicUrl,
@@ -135,6 +157,10 @@
       booking: {
         publicUrl: bookingRoot.dataset.bookingIcalUrl || workbookSource.feeds.booking.publicUrl,
         proxyUrl: bookingRoot.dataset.bookingIcalProxy || workbookSource.feeds.booking.proxyUrl
+      },
+      lekkeslaap: {
+        publicUrl: bookingRoot.dataset.lekkeslaapIcalUrl || workbookSource.feeds.lekkeslaap.publicUrl,
+        proxyUrl: bookingRoot.dataset.lekkeslaapIcalProxy || workbookSource.feeds.lekkeslaap.proxyUrl
       }
     },
     blockedDatesEndpoint: workbookSource.blockedDatesEndpoint,
@@ -150,7 +176,7 @@
     checkIn: '',
     checkOut: '',
     hoverDate: '',
-    guests: Number(guestSelect?.value || 6),
+    guests: Number(guestSelect?.value || 1),
     blockedDates: new Set()
   };
 
@@ -219,34 +245,87 @@
   renderCalendar();
 
   async function loadAvailability() {
-    try {
-      if (hasIcalFeeds()) {
-        const [airbnbResult, bookingResult] = await Promise.all([
-          loadIcalFeed('airbnb'),
-          loadIcalFeed('booking')
-        ]);
-        state.blockedDates = mergeSets(airbnbResult.blockedDates, bookingResult.blockedDates);
-      } else {
-        const url = getAvailabilityUrl();
-        if (url) {
-          const response = await fetch(url, { cache: 'no-store' });
-          if (!response.ok) {
-            throw new Error('HTTP ' + response.status);
-          }
+    let lastError = null;
 
-          const payload = await response.json();
-          state.blockedDates = new Set(payload.blockedDates || []);
+    try {
+      try {
+        const apiBlockedDates = await loadAvailabilityFromApi();
+        if (apiBlockedDates) {
+          state.blockedDates = apiBlockedDates;
+          return;
+        }
+      } catch (error) {
+        lastError = error;
+      }
+
+      const configuredChannels = getConfiguredFeedChannels();
+      if (configuredChannels.length) {
+        const results = await Promise.allSettled(
+          configuredChannels.map((channel) => loadIcalFeed(channel))
+        );
+        const successfulResults = results
+          .filter((result) => result.status === 'fulfilled')
+          .map((result) => result.value.blockedDates);
+
+        if (successfulResults.length) {
+          state.blockedDates = mergeMultipleSets(successfulResults);
+          return;
+        }
+
+        const firstRejected = results.find((result) => result.status === 'rejected');
+        if (firstRejected) {
+          lastError = firstRejected.reason;
         }
       }
+
+      const legacyBlockedDates = await loadAvailabilityFromLegacyEndpoint();
+      if (legacyBlockedDates) {
+        state.blockedDates = legacyBlockedDates;
+        return;
+      }
     } catch (error) {
-      console.warn('Failed to load booking blocks for ' + propertyConfig.propertyName, error);
-    } finally {
-      renderCalendar();
+      lastError = error;
     }
+
+    if (lastError) {
+      console.warn('Failed to load booking blocks for ' + propertyConfig.propertyName, lastError);
+    }
+
+    renderCalendar();
   }
 
-  function hasIcalFeeds() {
-    return hasConfiguredFeed('airbnb') && hasConfiguredFeed('booking');
+  async function loadAvailabilityFromApi() {
+    const url = getAvailabilityApiUrl();
+    if (!url) return null;
+
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error('Availability API HTTP ' + response.status);
+    }
+
+    const payload = await response.json();
+    if (Array.isArray(payload.warnings) && payload.warnings.length) {
+      console.warn('Availability warnings for ' + propertyConfig.propertyName + ':', payload.warnings);
+    }
+
+    return new Set(Array.isArray(payload.blockedDates) ? payload.blockedDates : []);
+  }
+
+  async function loadAvailabilityFromLegacyEndpoint() {
+    const url = getLegacyAvailabilityUrl();
+    if (!url) return null;
+
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error('Legacy availability HTTP ' + response.status);
+    }
+
+    const payload = await response.json();
+    return new Set(Array.isArray(payload.blockedDates) ? payload.blockedDates : []);
+  }
+
+  function getConfiguredFeedChannels() {
+    return ['airbnb', 'booking', 'lekkeslaap'].filter((channel) => hasConfiguredFeed(channel));
   }
 
   function hasConfiguredFeed(channel) {
@@ -256,21 +335,34 @@
 
   async function loadIcalFeed(channel) {
     const feed = propertyConfig.feeds[channel];
-    const url = feed.proxyUrl || feed.publicUrl;
+    const directUrl = feed.publicUrl;
+    const explicitProxyUrl = feed.proxyUrl;
+    const fallbackProxyUrl = directUrl ? getLocalProxyUrl(directUrl) : '';
 
-    if (!url) {
+    if (!directUrl && !explicitProxyUrl && !fallbackProxyUrl) {
       return { blockedDates: new Set() };
     }
 
-    const response = await fetch(url, { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(channel + ' HTTP ' + response.status);
+    const candidateUrls = [explicitProxyUrl, fallbackProxyUrl, directUrl].filter(Boolean);
+    let lastError = null;
+
+    for (const url of candidateUrls) {
+      try {
+        const response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(channel + ' HTTP ' + response.status);
+        }
+
+        const calendarText = await response.text();
+        return {
+          blockedDates: parseIcalBlockedDates(calendarText)
+        };
+      } catch (error) {
+        lastError = error;
+      }
     }
 
-    const calendarText = await response.text();
-    return {
-      blockedDates: parseIcalBlockedDates(calendarText)
-    };
+    throw lastError || new Error(channel + ' feed could not be loaded');
   }
 
   function openCalendar(field) {
@@ -598,12 +690,33 @@
     return datePart.slice(0, 4) + '-' + datePart.slice(4, 6) + '-' + datePart.slice(6, 8);
   }
 
-  function getAvailabilityUrl() {
+  function getAvailabilityApiUrl() {
+    if (!propertyConfig.sourceKey) return '';
+
+    const baseUrl = propertyConfig.availabilityApi || (
+      window.location.protocol === 'http:' || window.location.protocol === 'https:'
+        ? '/api/availability'
+        : ''
+    );
+
+    if (!baseUrl) return '';
+
+    const resolvedUrl = new URL(baseUrl, window.location.href);
+    resolvedUrl.searchParams.set('property', propertyConfig.sourceKey);
+    resolvedUrl.searchParams.set('ts', Date.now());
+    return resolvedUrl.toString();
+  }
+
+  function getLegacyAvailabilityUrl() {
     if (!propertyConfig.blockedDatesEndpoint) return '';
     const baseUrl = window.location.protocol === 'http:' || window.location.protocol === 'https:'
       ? window.location.origin
-      : liveSyncApiBaseUrl;
+      : localSyncApiBaseUrl;
     return baseUrl + propertyConfig.blockedDatesEndpoint + '?ts=' + Date.now();
+  }
+
+  function getLocalProxyUrl(targetUrl) {
+    return localSyncApiBaseUrl + '/api/ical-proxy?url=' + encodeURIComponent(targetUrl);
   }
 
   function roundToNearestTen(amount) {

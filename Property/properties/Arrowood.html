@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./boardwalk-retreat-booking-widget.css">
+<link rel="stylesheet" href="./property-booking-widget.css">
 </head>
 
 
@@ -67,7 +67,7 @@
       <p>Welcome To</p>
       <h1>ARROWOOD APARTMENT</h1>
       
-      <a href="#contact" class="btn">R1,540 - R3,850</a>
+      <a href="#contact" class="btn">Enquire now</a>
 
     </div>
   </div>
@@ -580,10 +580,11 @@
 
       <!-- Arrowood workbook test:
            compact booking section using Arrowood pricing and blocks from the calendar file source. -->
-      <!-- Booking widget hidden until real Arrowood iCal feeds are available. -->
-      <div class="form-group cw-booking-group" hidden>
-        <!-- Paste real Arrowood Airbnb / Booking.com iCal URLs or proxy endpoints
-             into the data-airbnb-ical-* and data-booking-ical-* attributes below, then remove the hidden attribute above. -->
+      <!-- Arrowood booking widget:
+           live availability now comes from the Netlify /api/availability endpoint. -->
+      <div class="form-group cw-booking-group">
+        <!-- Keep the page-level feed attributes empty when using Netlify.
+             Configure the real feeds in the CW_BOOKING_FEEDS environment variable instead. -->
         <section class="cw-booking-widget"
                  data-cw-booking
                  data-booking-source="arrowood"
@@ -591,7 +592,9 @@
                  data-airbnb-ical-url=""
                  data-airbnb-ical-proxy=""
                  data-booking-ical-url=""
-                 data-booking-ical-proxy="">
+                 data-booking-ical-proxy=""
+                 data-lekkeslaap-ical-url=""
+                 data-lekkeslaap-ical-proxy="">
           <div class="cw-booking-heading">
             <span class="cw-booking-kicker">Dates</span>
             <span class="cw-booking-selection" data-booking-toggle-text>Select dates to open the calendar.</span>
@@ -613,7 +616,7 @@
                 <option value="1">1 guest</option>
                 <option value="2">2 guests</option>
                 <option value="3">3 guests</option>
-                <option value="4" selected>4 guests</option>
+                <option value="4">4 guests</option>
               </select>
             </label>
           </div>
@@ -679,7 +682,7 @@
 
           <input type="hidden" name="check_in" value="" data-booking-checkin-input>
           <input type="hidden" name="check_out" value="" data-booking-checkout-input>
-          <input type="hidden" name="guests" value="4" data-booking-guests-input>
+          <input type="hidden" name="guests" value="1" data-booking-guests-input>
           <input type="hidden" name="nights" value="" data-booking-nights-input>
           <input type="hidden" name="accommodation_total" value="" data-booking-total-input>
         </section>
@@ -914,7 +917,8 @@
   });
 </script>
 
-<script src="./boardwalk-retreat-booking-widget.js"></script>
+<script src="./property-booking-widget.js"></script>
 
 </body>
 </html>
+
