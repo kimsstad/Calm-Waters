@@ -54,7 +54,7 @@
           </div>
         </nav>
       </div>
-    </div
+    </div>
   </header>
 
 <!-- Hero Section -->
@@ -581,9 +581,9 @@
       <!-- Arrowood workbook test:
            compact booking section using Arrowood pricing and blocks from the calendar file source. -->
       <!-- Arrowood booking widget:
-           live availability now comes from the Netlify /api/availability endpoint. -->
-      <div class="form-group cw-booking-group" hidden>
-        <!-- Keep the page-level feed attributes empty when using Netlify.
+           live availability now comes from the generated GitHub Pages availability JSON. -->
+      <div class="form-group cw-booking-group">
+        <!-- Keep the page-level feed attributes empty when using GitHub Actions.
              Configure the real feeds in the CW_BOOKING_FEEDS environment variable instead. -->
         <section class="cw-booking-widget"
                  data-cw-booking

@@ -76,24 +76,34 @@
   ];
 
   const festiveHighFactor = 1.18;
-  const arrowoodBaseAirbnbRules = [
-    ...centralTwoBedAirbnbRules
-      .filter((rule) => rule.start < '2026-12-15')
-      .map((rule) => scaleRule(rule, 0.97)),
-    ...centralTwoBedAirbnbRules
-      .filter((rule) => rule.start >= '2026-12-15' && rule.start < '2027-01-13')
-      .map((rule) => scaleRule(rule, festiveHighFactor)),
-    scaleRule({ start: '2027-01-13', end: '2027-01-15', monThu: 2010, friSat: 2130, sun: 2050 }, festiveHighFactor),
-    scaleRule({ start: '2027-01-16', end: '2027-03-18', monThu: 2010, friSat: 2130, sun: 2050 }, 0.97),
-    ...centralTwoBedAirbnbRules
-      .filter((rule) => rule.start > '2027-01-13')
-      .map((rule) => scaleRule(rule, 0.97))
+  const arrowoodWebsitePricingRules = [
+    { start: '2026-01-01', end: '2026-01-05', flat: 3850 },
+    { start: '2026-01-06', end: '2026-01-15', flat: 2805 },
+    { start: '2026-01-16', end: '2026-04-02', flat: 1760 },
+    { start: '2026-04-03', end: '2026-04-06', flat: 1848 },
+    { start: '2026-04-07', end: '2026-04-30', flat: 1760 },
+    { start: '2026-05-01', end: '2026-09-30', flat: 1540 },
+    { start: '2026-10-01', end: '2026-11-26', flat: 1760 },
+    { start: '2026-11-27', end: '2026-12-04', flat: 4235 },
+    { start: '2026-12-05', end: '2026-12-14', flat: 2805 },
+    { start: '2026-12-15', end: '2026-12-31', flat: 3850 },
+    { start: '2027-01-01', end: '2027-01-05', flat: 3850 },
+    { start: '2027-01-06', end: '2027-01-15', flat: 2805 },
+    { start: '2027-01-16', end: '2027-03-25', flat: 1936 },
+    { start: '2027-03-26', end: '2027-03-29', flat: 2033 },
+    { start: '2027-03-30', end: '2027-04-30', flat: 1936 },
+    { start: '2027-05-01', end: '2027-09-30', flat: 1694 },
+    { start: '2027-10-01', end: '2027-11-26', flat: 1936 },
+    { start: '2027-11-27', end: '2027-12-04', flat: 4659 },
+    { start: '2027-12-05', end: '2027-12-14', flat: 3086 },
+    { start: '2027-12-15', end: '2027-12-31', flat: 4235 }
   ];
 
   const workbookPropertySources = {
     arrowood: {
       displayName: 'Arrowood Apartment',
       festivePeak: 3500,
+      websitePricingRules: arrowoodWebsitePricingRules,
       feeds: {
         airbnb: {
           publicUrl: '',
@@ -109,11 +119,12 @@
         }
       },
       blockedDatesEndpoint: '/api/arrowood-blocks',
-      baseAirbnbRules: arrowoodBaseAirbnbRules
+      baseAirbnbRules: []
     },
     'boardwalk-corner': {
       displayName: 'Boardwalk Retreat',
       festivePeak: 8500,
+      websitePricingRules: [],
       feeds: {
         airbnb: {
           publicUrl: '',
@@ -137,6 +148,7 @@
   const workbookSource = workbookPropertySources[sourceKey] || {
     displayName: bookingRoot.dataset.bookingName || 'Property',
     festivePeak: null,
+    websitePricingRules: [],
     feeds: {
       airbnb: { publicUrl: '', proxyUrl: '' },
       booking: { publicUrl: '', proxyUrl: '' },
@@ -165,6 +177,7 @@
       }
     },
     blockedDatesEndpoint: workbookSource.blockedDatesEndpoint,
+    websitePricingRules: workbookSource.websitePricingRules || [],
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
@@ -605,7 +618,7 @@
       .map((dateKey) => getWebsiteNightlyPrice(dateKey))
       .filter((value) => value !== null);
 
-    const hasVerifiedPricing = propertyConfig.airbnbPricingRules.length > 0;
+    const hasVerifiedPricing = propertyConfig.websitePricingRules.length > 0 || propertyConfig.airbnbPricingRules.length > 0;
     const hasCompletePricing = hasVerifiedPricing && nightlyRates.length === stayDates.length && stayDates.length > 0;
 
     return {
@@ -654,7 +667,7 @@
 
   function getTotalPlaceholder(hasDateRange) {
     if (!hasDateRange) return 'Select dates to see total';
-    if (!propertyConfig.airbnbPricingRules.length) return 'Awaiting verified pricing';
+    if (!propertyConfig.websitePricingRules.length && !propertyConfig.airbnbPricingRules.length) return 'Awaiting verified pricing';
     return 'Pricing unavailable';
   }
 
@@ -854,6 +867,11 @@
   }
 
   function getWebsiteNightlyPrice(dateKey) {
+    const directWebsiteNightly = getRuleBasedPrice(dateKey, propertyConfig.websitePricingRules);
+    if (directWebsiteNightly !== null) {
+      return directWebsiteNightly;
+    }
+
     const airbnbNightly = getAirbnbNightlyPrice(dateKey);
     return airbnbNightly === null ? null : Math.round(airbnbNightly * 1.1);
   }
