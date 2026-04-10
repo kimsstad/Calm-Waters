@@ -181,6 +181,7 @@
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
+  const maxDateKey = '2027-12-31';
   const state = {
     todayKey: getTodayKey(),
     viewMonthKey: '',
@@ -219,7 +220,10 @@
   });
 
   nextBtn.addEventListener('click', () => {
-    state.viewMonthKey = dateToKey(addMonths(toUtcDate(state.viewMonthKey), 1));
+    const maxViewKey = getMonthStartKey(maxDateKey);
+    const candidateKey = dateToKey(addMonths(toUtcDate(state.viewMonthKey), 1));
+    if (candidateKey > maxViewKey) return;
+    state.viewMonthKey = candidateKey;
     renderCalendar();
   });
 
@@ -441,14 +445,21 @@
 
     const visibleMonthCount = getVisibleMonthCount();
     const minViewKey = getMonthStartKey(state.todayKey);
+    const maxViewKey = getMonthStartKey(maxDateKey);
     if (state.viewMonthKey < minViewKey) {
       state.viewMonthKey = minViewKey;
     }
+    if (state.viewMonthKey > maxViewKey) {
+      state.viewMonthKey = maxViewKey;
+    }
 
     prevBtn.disabled = state.viewMonthKey <= minViewKey;
+    nextBtn.disabled = state.viewMonthKey >= maxViewKey;
 
     for (let monthOffset = 0; monthOffset < visibleMonthCount; monthOffset += 1) {
       const monthDate = addMonths(toUtcDate(state.viewMonthKey), monthOffset);
+      const monthKey = dateToKey(monthDate);
+      if (monthKey > maxViewKey) break;
       monthsEl.appendChild(createMonthCard(monthDate));
     }
   }
@@ -514,15 +525,17 @@
     const isEnd = state.checkOut === dateKey;
     const isInRange = Boolean(state.checkIn && state.checkOut && dateKey > state.checkIn && dateKey < state.checkOut);
     const isDisabledRangeStep = state.activeField === 'checkout' && state.checkIn && dateKey > state.checkIn && !isSelectableCheckout(dateKey);
+    const isBeyondMax = dateKey > maxDateKey;
 
     if (isPast) button.classList.add('is-past');
     if (isBlocked) button.classList.add('is-blocked');
+    if (isBeyondMax) button.classList.add('is-disabled');
     if (isStart) button.classList.add('is-start');
     if (isEnd) button.classList.add('is-end');
     if (isInRange) button.classList.add('is-in-range');
     if (isDisabledRangeStep) button.classList.add('is-range-disabled');
 
-    const isDisabled = isPast || isBlocked;
+    const isDisabled = isPast || isBlocked || isBeyondMax;
     if (isDisabled) {
       button.disabled = true;
     } else {
