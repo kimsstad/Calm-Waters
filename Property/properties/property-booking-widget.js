@@ -149,6 +149,7 @@
     sourceKey,
     propertyName: bookingRoot.dataset.bookingName || workbookSource.displayName,
     availabilityApi: bookingRoot.dataset.availabilityApi || '',
+    availabilityJson: bookingRoot.dataset.availabilityJson || '',
     feeds: {
       airbnb: {
         publicUrl: bookingRoot.dataset.airbnbIcalUrl || workbookSource.feeds.airbnb.publicUrl,
@@ -249,9 +250,21 @@
 
     try {
       try {
+        const staticBlockedDates = await loadAvailabilityFromJson();
+        if (staticBlockedDates) {
+          state.blockedDates = staticBlockedDates;
+          renderCalendar();
+          return;
+        }
+      } catch (error) {
+        lastError = error;
+      }
+
+      try {
         const apiBlockedDates = await loadAvailabilityFromApi();
         if (apiBlockedDates) {
           state.blockedDates = apiBlockedDates;
+          renderCalendar();
           return;
         }
       } catch (error) {
@@ -281,6 +294,7 @@
       const legacyBlockedDates = await loadAvailabilityFromLegacyEndpoint();
       if (legacyBlockedDates) {
         state.blockedDates = legacyBlockedDates;
+        renderCalendar();
         return;
       }
     } catch (error) {
@@ -292,6 +306,23 @@
     }
 
     renderCalendar();
+  }
+
+  async function loadAvailabilityFromJson() {
+    const url = getStaticAvailabilityUrl();
+    if (!url) return null;
+
+    const response = await fetch(url, { cache: 'no-store' });
+    if (response.status === 404) {
+      return null;
+    }
+
+    if (!response.ok) {
+      throw new Error('Static availability HTTP ' + response.status);
+    }
+
+    const payload = await response.json();
+    return new Set(Array.isArray(payload.blockedDates) ? payload.blockedDates : []);
   }
 
   async function loadAvailabilityFromApi() {
@@ -705,6 +736,25 @@
     resolvedUrl.searchParams.set('property', propertyConfig.sourceKey);
     resolvedUrl.searchParams.set('ts', Date.now());
     return resolvedUrl.toString();
+  }
+
+  function getStaticAvailabilityUrl() {
+    if (!propertyConfig.sourceKey) return '';
+
+    const explicitUrl = propertyConfig.availabilityJson;
+    if (explicitUrl) {
+      const resolvedExplicitUrl = new URL(explicitUrl, window.location.href);
+      resolvedExplicitUrl.searchParams.set('ts', Date.now());
+      return resolvedExplicitUrl.toString();
+    }
+
+    if (window.location.protocol !== 'http:' && window.location.protocol !== 'https:') {
+      return '';
+    }
+
+    const relativeUrl = new URL('../../generated/availability/' + propertyConfig.sourceKey + '.json', window.location.href);
+    relativeUrl.searchParams.set('ts', Date.now());
+    return relativeUrl.toString();
   }
 
   function getLegacyAvailabilityUrl() {
