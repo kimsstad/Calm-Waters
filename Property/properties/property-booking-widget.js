@@ -106,15 +106,15 @@
       websitePricingRules: arrowoodWebsitePricingRules,
       feeds: {
         airbnb: {
-          publicUrl: '',
+          publicUrl: 'https://www.airbnb.co.za/calendar/ical/866493429255914128.ics?t=537892a729b24860a00d65301a57f470',
           proxyUrl: ''
         },
         booking: {
-          publicUrl: '',
+          publicUrl: 'https://ical.booking.com/v1/export?t=1b6205fd-a5f4-40d1-bb96-747454d6d983',
           proxyUrl: ''
         },
         lekkeslaap: {
-          publicUrl: '',
+          publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dUNzVGZDR1hORVd6Sis0aXAxZzF4QT09',
           proxyUrl: ''
         }
       },

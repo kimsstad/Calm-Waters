@@ -1,6 +1,10 @@
 const http = require('http');
 const https = require('https');
 const { URL } = require('url');
+const {
+  getPropertyFeedConfig,
+  mergeAvailabilityForProperty
+} = require('./scripts/availability-core');
 
 const PORT = 4179;
 const HOST = '127.0.0.1';
@@ -68,6 +72,34 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (requestUrl.pathname === '/api/availability') {
+    const property = (requestUrl.searchParams.get('property') || '').trim();
+    if (!property) {
+      send(res, 400, JSON.stringify({
+        error: 'Missing property query parameter'
+      }), 'application/json; charset=utf-8');
+      return;
+    }
+
+    const feedConfig = getPropertyFeedConfig(property);
+    if (!feedConfig) {
+      send(res, 404, JSON.stringify({
+        error: 'No availability feed configuration found for "' + property + '"'
+      }), 'application/json; charset=utf-8');
+      return;
+    }
+
+    try {
+      const payload = await mergeAvailabilityForProperty(property);
+      send(res, 200, JSON.stringify(payload), 'application/json; charset=utf-8');
+    } catch (error) {
+      send(res, 500, JSON.stringify({
+        error: error.message || 'Availability request failed'
+      }), 'application/json; charset=utf-8');
+    }
+    return;
+  }
+
   if (requestUrl.pathname !== '/api/ical-proxy') {
     send(res, 404, 'Not found');
     return;
@@ -101,5 +133,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`iCal proxy listening on http://${HOST}:${PORT}`);
+  console.log(`Local availability server listening on http://${HOST}:${PORT}`);
 });

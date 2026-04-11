@@ -45,6 +45,7 @@ jobs:
             --exclude='.github/' \
             --exclude='site-dist/' \
             --exclude='netlify/' \
+            --exclude='booking-feeds.json' \
             --exclude='GITHUB_ACTIONS_BOOKING_SETUP.md' \
             --exclude='github-actions-booking-feeds.example.json' \
             --exclude='NETLIFY_BOOKING_SETUP.md' \
