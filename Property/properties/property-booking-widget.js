@@ -3,6 +3,11 @@
   // feeds, display name, and workbook source through data attributes.
   const bookingRoot = document.querySelector('[data-cw-booking], [data-boardwalk-booking]');
   if (!bookingRoot) return;
+  const calendarsEnabled = false;
+  if (!calendarsEnabled) {
+    bookingRoot.closest('.cw-booking-group')?.setAttribute('hidden', 'hidden');
+    return;
+  }
 
   const form = bookingRoot.closest('form');
   const dateTriggers = Array.from(bookingRoot.querySelectorAll('[data-date-trigger]'));
