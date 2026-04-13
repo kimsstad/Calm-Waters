@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='./property-booking-widget.css'>
 </head>
 <body>
 
@@ -588,6 +589,108 @@ nearby beaches, scenic walks, and peaceful surroundings.
 <div class="form-group">
   <input type="text" name="property" value="ROBBERG STUDIO SUITE" readonly>
 </div>
+            <div class="form-group cw-booking-group">
+        <section class="cw-booking-widget"
+                 data-cw-booking
+                 data-booking-source="robberg-room"
+                 data-booking-name="Robberg Room"
+                 data-airbnb-ical-url=""
+                 data-airbnb-ical-proxy=""
+                 data-booking-ical-url=""
+                 data-booking-ical-proxy=""
+                 data-lekkeslaap-ical-url=""
+                 data-lekkeslaap-ical-proxy="">
+          <div class="cw-booking-heading">
+            <span class="cw-booking-kicker">Dates</span>
+            <span class="cw-booking-selection" data-booking-toggle-text>Select dates to open the calendar.</span>
+          </div>
+
+          <div class="cw-booking-compact">
+            <button type="button"
+                    class="cw-booking-field cw-booking-date-field cw-booking-range-field"
+                    data-date-trigger="dates"
+                    aria-expanded="false"
+                    aria-controls="datesPanel-robberg-room">
+              <span class="cw-booking-field-label">Dates</span>
+              <span class="cw-booking-field-value" data-field-dates>Select check-in and check-out</span>
+            </button>
+
+            <label class="cw-booking-field cw-booking-select-field">
+              <span class="cw-booking-field-label">Guests</span>
+              <select data-guest-select aria-label="Select number of guests">
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="cw-booking-inline-summary" data-inline-summary hidden>
+            <div class="cw-booking-inline-item">
+              <span class="cw-booking-inline-label">Nights</span>
+              <span class="cw-booking-inline-value" data-inline-nights>Select dates</span>
+            </div>
+            <div class="cw-booking-inline-item">
+              <span class="cw-booking-inline-label">Total</span>
+              <span class="cw-booking-inline-value" data-inline-total>Select dates to see total</span>
+            </div>
+          </div>
+
+          <div class="cw-booking-reveal" id="datesPanel-robberg-room">
+            <div class="cw-booking-reveal-inner">
+              <div class="cw-booking-panel">
+                <div class="cw-booking-intro">
+                  <div>
+                    <h3>DATES</h3>
+                    <p>Choose your check-in and check-out dates for Robberg Room.</p>
+                  </div>
+                </div>
+
+                <div class="cw-booking-shell">
+                  <div class="cw-booking-toolbar">
+                    <span class="cw-booking-toolbar-label">Select your stay</span>
+                    <span class="cw-booking-toolbar-actions">
+                      <button type="button" class="cw-booking-nav" data-booking-prev aria-label="Show previous month">
+                        <i class="fas fa-chevron-left"></i>
+                      </button>
+                      <button type="button" class="cw-booking-nav" data-booking-next aria-label="Show next month">
+                        <i class="fas fa-chevron-right"></i>
+                      </button>
+                    </span>
+                  </div>
+
+                  <div class="cw-booking-months" data-booking-months></div>
+
+                  <div class="cw-booking-legend" aria-hidden="true">
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch"></span>
+                      Available
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-selected"></span>
+                      Selected dates
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-range"></span>
+                      Selected stay
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-blocked"></span>
+                      Blocked
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" name="check_in" value="" data-booking-checkin-input>
+          <input type="hidden" name="check_out" value="" data-booking-checkout-input>
+          <input type="hidden" name="guests" value="1" data-booking-guests-input>
+          <input type="hidden" name="nights" value="" data-booking-nights-input>
+          <input type="hidden" name="accommodation_total" value="" data-booking-total-input>
+        </section>
+      </div>
+
       <div class="form-group">
         <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
       </div>
@@ -817,5 +920,6 @@ nearby beaches, scenic walks, and peaceful surroundings.
   });
 </script>
 
+  <script src='./property-booking-widget.js'></script>
 </body>
 </html>

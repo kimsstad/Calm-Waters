@@ -75,80 +75,206 @@
     { start: '2027-03-26', end: '2027-03-31', monThu: 3680, friSat: 3820, sun: 3720 }
   ];
 
-  const festiveHighFactor = 1.18;
-  const arrowoodWebsitePricingRules = [
-    { start: '2026-01-01', end: '2026-01-05', flat: 3850 },
-    { start: '2026-01-06', end: '2026-01-15', flat: 2805 },
-    { start: '2026-01-16', end: '2026-04-02', flat: 1760 },
-    { start: '2026-04-03', end: '2026-04-06', flat: 1848 },
-    { start: '2026-04-07', end: '2026-04-30', flat: 1760 },
-    { start: '2026-05-01', end: '2026-09-30', flat: 1540 },
-    { start: '2026-10-01', end: '2026-11-26', flat: 1760 },
-    { start: '2026-11-27', end: '2026-12-04', flat: 4235 },
-    { start: '2026-12-05', end: '2026-12-14', flat: 2805 },
-    { start: '2026-12-15', end: '2026-12-31', flat: 3850 },
-    { start: '2027-01-01', end: '2027-01-05', flat: 3850 },
-    { start: '2027-01-06', end: '2027-01-15', flat: 2805 },
-    { start: '2027-01-16', end: '2027-03-25', flat: 1936 },
-    { start: '2027-03-26', end: '2027-03-29', flat: 2033 },
-    { start: '2027-03-30', end: '2027-04-30', flat: 1936 },
-    { start: '2027-05-01', end: '2027-09-30', flat: 1694 },
-    { start: '2027-10-01', end: '2027-11-26', flat: 1936 },
-    { start: '2027-11-27', end: '2027-12-04', flat: 4659 },
-    { start: '2027-12-05', end: '2027-12-14', flat: 3086 },
-    { start: '2027-12-15', end: '2027-12-31', flat: 4235 }
+  const seasonSchedule2026 = [
+    { start: '2026-01-01', end: '2026-01-05', key: 'high' },
+    { start: '2026-01-06', end: '2026-01-15', key: 'prePost' },
+    { start: '2026-01-16', end: '2026-04-02', key: 'mid' },
+    { start: '2026-04-03', end: '2026-04-06', key: 'easter' },
+    { start: '2026-04-07', end: '2026-04-30', key: 'mid' },
+    { start: '2026-05-01', end: '2026-09-30', key: 'low' },
+    { start: '2026-10-01', end: '2026-11-26', key: 'mid' },
+    { start: '2026-11-27', end: '2026-12-04', key: 'rage' },
+    { start: '2026-12-05', end: '2026-12-14', key: 'prePost' },
+    { start: '2026-12-15', end: '2026-12-31', key: 'high' }
+  ];
+  const seasonSchedule2027 = [
+    { start: '2027-01-01', end: '2027-01-05', key: 'high', use2026: true },
+    { start: '2027-01-06', end: '2027-01-15', key: 'prePost', use2026: true },
+    { start: '2027-01-16', end: '2027-03-25', key: 'mid' },
+    { start: '2027-03-26', end: '2027-03-29', key: 'easter' },
+    { start: '2027-03-30', end: '2027-04-30', key: 'mid' },
+    { start: '2027-05-01', end: '2027-09-30', key: 'low' },
+    { start: '2027-10-01', end: '2027-11-26', key: 'mid' },
+    { start: '2027-11-27', end: '2027-12-04', key: 'rage' },
+    { start: '2027-12-05', end: '2027-12-14', key: 'prePost' },
+    { start: '2027-12-15', end: '2027-12-31', key: 'high' }
   ];
 
-  const workbookPropertySources = {
-    arrowood: {
-      displayName: 'Arrowood Apartment',
-      festivePeak: 3500,
-      websitePricingRules: arrowoodWebsitePricingRules,
-      feeds: {
-        airbnb: {
-          publicUrl: 'https://www.airbnb.co.za/calendar/ical/866493429255914128.ics?t=537892a729b24860a00d65301a57f470',
-          proxyUrl: ''
-        },
-        booking: {
-          publicUrl: 'https://ical.booking.com/v1/export?t=1b6205fd-a5f4-40d1-bb96-747454d6d983',
-          proxyUrl: ''
-        },
-        lekkeslaap: {
-          publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dUNzVGZDR1hORVd6Sis0aXAxZzF4QT09',
-          proxyUrl: ''
-        }
-      },
-      blockedDatesEndpoint: '/api/arrowood-blocks',
-      baseAirbnbRules: []
-    },
-    'boardwalk-corner': {
-      displayName: 'Boardwalk Retreat',
-      festivePeak: 8500,
-      websitePricingRules: [],
-      feeds: {
-        airbnb: {
-          publicUrl: '',
-          proxyUrl: ''
-        },
-        booking: {
-          publicUrl: '',
-          proxyUrl: ''
-        },
-        lekkeslaap: {
-          publicUrl: '',
-          proxyUrl: ''
-        }
-      },
-      blockedDatesEndpoint: '/api/boardwalk-corner-blocks',
-      baseAirbnbRules: scaleRuleSet(centralThreeBedAirbnbRules, 1.08)
-    }
+  const websiteRates2026 = {
+    'robberg-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
+    'lookout-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
+    'sanctuary-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
+    wildside: { low: 2420, mid: 3080, high: 4400, prePost: 3740, easter: 3234, rage: 4840 },
+    clifftop: { low: 2420, mid: 3080, high: 4400, prePost: 3740, easter: 3234, rage: 4840 },
+    'hill-penthouse-plett': { low: 4070, mid: 4950, high: 13750, prePost: 9350, easter: 5198, rage: 15125 },
+    'hill-and-tides': { low: 3300, mid: 4675, high: 8800, prePost: 6738, easter: 4909, rage: 9680 },
+    'plett-escape': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
+    'the-place-to-stay': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
+    arrowood: { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
+    'little-lincoln': { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
+    'sound-of-silence': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
+    'stillwater-haven': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
+    'rivers-drift': { low: 1980, mid: 2200, high: 4620, prePost: 3410, easter: 2310, rage: 5082 },
+    watersong: { low: 1980, mid: 2200, high: 4620, prePost: 3410, easter: 2310, rage: 5082 },
+    'seasalt-rest': { low: 1760, mid: 2200, high: 4180, prePost: 3190, easter: 2310, rage: 4598 },
+    'sandy-fingers': { low: 1760, mid: 2200, high: 0, prePost: 1100, easter: 2310, rage: 0 },
+    'sandy-toes': { low: 3520, mid: 4400, high: 13200, prePost: 8800, easter: 4620, rage: 14520 },
+    farallon: { low: 4950, mid: 6600, high: 22000, prePost: 14300, easter: 6930, rage: 24200 },
+    toplis: { low: 3850, mid: 4950, high: 13200, prePost: 9075, easter: 5198, rage: 14520 },
+    panorama: { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
+    'sea-esta': { low: 4180, mid: 4950, high: 13750, prePost: 9350, easter: 5198, rage: 15125 },
+    'goose-valley': { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
+    'boardwalk-retreat': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
+    'boardwalk-corner': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
+    'magnificent-view': { low: 2420, mid: 3300, high: 6600, prePost: 4950, easter: 3465, rage: 7260 },
+    'sanctuary-hideaway': { low: 5500, mid: 5500, high: 13200, prePost: 9350, easter: 5775, rage: 14520 },
+    'la-lapa': { low: 2200, mid: 2750, high: 4070, prePost: 3410, easter: 2888, rage: 4477 },
+    'la-med': { low: 3300, mid: 3850, high: 5170, prePost: 4510, easter: 4043, rage: 5687 },
+    tremezzo: { low: 7700, mid: 8800, high: 30800, prePost: 19800, easter: 9240, rage: 33880 }
   };
 
+  const websiteRates2027 = {
+    'robberg-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
+    'lookout-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
+    'sanctuary-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
+    wildside: { low: 2662, mid: 3388, high: 4840, prePost: 4114, easter: 3558, rage: 5324 },
+    clifftop: { low: 2662, mid: 3388, high: 4840, prePost: 4114, easter: 3558, rage: 5324 },
+    'hill-penthouse-plett': { low: 4477, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
+    'hill-and-tides': { low: 3630, mid: 5143, high: 9680, prePost: 7412, easter: 5400, rage: 10648 },
+    'plett-escape': { low: 1694, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
+    'the-place-to-stay': { low: 1694, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
+    arrowood: { low: 1694, mid: 1936, high: 4235, prePost: 3086, easter: 2033, rage: 4659 },
+    'little-lincoln': { low: 1694, mid: 1936, high: 4235, prePost: 3086, easter: 2033, rage: 4659 },
+    'sound-of-silence': { low: 2420, mid: 2662, high: 5324, prePost: 3993, easter: 2796, rage: 5857 },
+    'stillwater-haven': { low: 2420, mid: 2662, high: 5324, prePost: 3993, easter: 2796, rage: 5857 },
+    'rivers-drift': { low: 2178, mid: 2420, high: 5082, prePost: 3751, easter: 2541, rage: 5591 },
+    watersong: { low: 2178, mid: 2420, high: 5082, prePost: 3751, easter: 2541, rage: 5591 },
+    'seasalt-rest': { low: 1936, mid: 2420, high: 4598, prePost: 3509, easter: 2541, rage: 5058 },
+    'sandy-fingers': { low: 1936, mid: 2420, high: 0, prePost: 1210, easter: 2541, rage: 0 },
+    'sandy-toes': { low: 3872, mid: 4840, high: 14520, prePost: 9680, easter: 5082, rage: 15972 },
+    farallon: { low: 5445, mid: 7260, high: 24200, prePost: 15730, easter: 7623, rage: 26620 },
+    toplis: { low: 4235, mid: 5445, high: 14520, prePost: 9983, easter: 5718, rage: 15972 },
+    panorama: { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
+    'sea-esta': { low: 4598, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
+    'goose-valley': { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
+    'boardwalk-retreat': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
+    'boardwalk-corner': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
+    'magnificent-view': { low: 2662, mid: 3630, high: 7260, prePost: 5445, easter: 3812, rage: 7986 },
+    'sanctuary-hideaway': { low: 6050, mid: 6050, high: 14520, prePost: 10285, easter: 6353, rage: 15972 },
+    'la-lapa': { low: 2420, mid: 3025, high: 4477, prePost: 3751, easter: 3177, rage: 4925 },
+    'la-med': { low: 3630, mid: 4235, high: 5687, prePost: 4961, easter: 4447, rage: 6256 },
+    tremezzo: { low: 8470, mid: 9680, high: 33880, prePost: 21780, easter: 10164, rage: 37268 }
+  };
+
+  function buildSeasonRules(rates2026, rates2027) {
+    if (!rates2026 && !rates2027) return [];
+    const rules = [];
+
+    seasonSchedule2026.forEach((segment) => {
+      const rate = rates2026 ? rates2026[segment.key] : null;
+      if (Number.isFinite(rate)) {
+        rules.push({ start: segment.start, end: segment.end, flat: rate });
+      }
+    });
+
+    seasonSchedule2027.forEach((segment) => {
+      const sourceRates = segment.use2026 ? rates2026 : rates2027;
+      const rate = sourceRates ? sourceRates[segment.key] : null;
+      if (Number.isFinite(rate)) {
+        rules.push({ start: segment.start, end: segment.end, flat: rate });
+      }
+    });
+
+    return rules;
+  }
+
+  const emptyFeeds = {
+    airbnb: { publicUrl: '', proxyUrl: '' },
+    booking: { publicUrl: '', proxyUrl: '' },
+    lekkeslaap: { publicUrl: '', proxyUrl: '' }
+  };
+
+  function buildPropertySource(key, displayName, options = {}) {
+    return {
+      displayName,
+      festivePeak: null,
+      websitePricingRules: buildSeasonRules(websiteRates2026[key], websiteRates2027[key]),
+      cleaningFee: Number.isFinite(options.cleaningFee) ? options.cleaningFee : 0,
+      feeds: emptyFeeds,
+      blockedDatesEndpoint: options.blockedDatesEndpoint || '',
+      baseAirbnbRules: []
+    };
+  }
+
+  const workbookPropertySources = {
+    arrowood: buildPropertySource('arrowood', 'Arrowood Apartment', {
+      cleaningFee: 330,
+      blockedDatesEndpoint: '/api/arrowood-blocks'
+    }),
+    'robberg-room': buildPropertySource('robberg-room', 'Robberg Room'),
+    'lookout-room': buildPropertySource('lookout-room', 'Lookout Room'),
+    'sanctuary-room': buildPropertySource('sanctuary-room', 'Sanctuary Room'),
+    wildside: buildPropertySource('wildside', 'Wildside Cabin'),
+    clifftop: buildPropertySource('clifftop', 'Clifftop Cabin'),
+    'hill-penthouse-plett': buildPropertySource('hill-penthouse-plett', 'Hill Penthouse Plett'),
+    'hill-and-tides': buildPropertySource('hill-and-tides', 'Hill & Tides'),
+    'plett-escape': buildPropertySource('plett-escape', 'Plett Escape'),
+    'the-place-to-stay': buildPropertySource('the-place-to-stay', 'The Place to Stay'),
+    'little-lincoln': buildPropertySource('little-lincoln', 'Little Lincoln'),
+    'sound-of-silence': buildPropertySource('sound-of-silence', 'Sound of Silence'),
+    'stillwater-haven': buildPropertySource('stillwater-haven', 'Stillwater Haven'),
+    'rivers-drift': buildPropertySource('rivers-drift', 'River\'s Drift'),
+    watersong: buildPropertySource('watersong', 'Watersong'),
+    'seasalt-rest': buildPropertySource('seasalt-rest', 'SeaSalt Rest'),
+    'sandy-fingers': buildPropertySource('sandy-fingers', 'Sandy Fingers'),
+    'sandy-toes': buildPropertySource('sandy-toes', 'Sandy Toes'),
+    farallon: buildPropertySource('farallon', 'Farallon'),
+    toplis: buildPropertySource('toplis', 'Toplis'),
+    panorama: buildPropertySource('panorama', 'Panorama'),
+    'sea-esta': buildPropertySource('sea-esta', 'Sea Esta'),
+    'goose-valley': buildPropertySource('goose-valley', 'Goose Valley'),
+    'boardwalk-retreat': buildPropertySource('boardwalk-retreat', 'Boardwalk Retreat'),
+    'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
+      blockedDatesEndpoint: '/api/boardwalk-corner-blocks'
+    }),
+    'magnificent-view': buildPropertySource('magnificent-view', 'Magnificent View'),
+    'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
+    'la-lapa': buildPropertySource('la-lapa', 'La Lapa'),
+    'la-med': buildPropertySource('la-med', 'La Med'),
+    tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
+  };
+
+  // Only show calendars for properties that currently have live iCal feeds
+  // configured in GitHub Actions. Everything else stays hidden until feeds exist.
+  const enabledCalendarSources = new Set([
+    'arrowood',
+    'lookout-room',
+    'sanctuary-room',
+    'wildside',
+    'clifftop',
+    'hill-penthouse-plett',
+    'plett-escape',
+    'the-place-to-stay',
+    'little-lincoln',
+    'sound-of-silence',
+    'stillwater-haven',
+    'rivers-drift',
+    'watersong',
+    'sandy-fingers',
+    'sandy-toes'
+  ]);
+
   const sourceKey = bookingRoot.dataset.bookingSource || '';
+  if (!enabledCalendarSources.has(sourceKey)) {
+    bookingRoot.closest('.cw-booking-group')?.setAttribute('hidden', 'hidden');
+    return;
+  }
+
   const workbookSource = workbookPropertySources[sourceKey] || {
     displayName: bookingRoot.dataset.bookingName || 'Property',
     festivePeak: null,
     websitePricingRules: [],
+    cleaningFee: 0,
     feeds: {
       airbnb: { publicUrl: '', proxyUrl: '' },
       booking: { publicUrl: '', proxyUrl: '' },
@@ -178,6 +304,7 @@
     },
     blockedDatesEndpoint: workbookSource.blockedDatesEndpoint,
     websitePricingRules: workbookSource.websitePricingRules || [],
+    cleaningFee: Number.isFinite(workbookSource.cleaningFee) ? workbookSource.cleaningFee : 0,
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
@@ -636,7 +763,9 @@
 
     return {
       nights: stayDates.length,
-      total: hasCompletePricing ? nightlyRates.reduce((sum, value) => sum + value, 0) : null,
+      total: hasCompletePricing
+        ? nightlyRates.reduce((sum, value) => sum + value, 0) + propertyConfig.cleaningFee
+        : null,
       nightlyLabel: buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayDates.length)
     };
   }
