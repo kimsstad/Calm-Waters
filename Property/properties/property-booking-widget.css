@@ -356,6 +356,7 @@
 }
 
 .cw-booking-day.is-past,
+.cw-booking-day.is-not-yet-open,
 .cw-booking-day.is-range-disabled,
 .cw-booking-day.is-unpriced {
   opacity: 0.48;
@@ -366,6 +367,13 @@
   background: #f6f3ec;
   border-color: rgba(40, 69, 132, 0.08);
   color: #a8b0b7;
+}
+
+.cw-booking-day.is-not-yet-open {
+  background: #f1f4f1;
+  border-color: rgba(116, 135, 119, 0.18);
+  color: #a1aa9f;
+  opacity: 0.72;
 }
 
 .cw-booking-day.is-blocked {
