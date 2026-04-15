@@ -1,10 +1,10 @@
-/* Import Custom Fonts */
+﻿/* Import Custom Fonts */
 @font-face {
   font-family: 'YourCustomFont';
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
-/* Promenade Regular — alias both names to the SAME file */
+/* Promenade Regular - alias both names to the SAME file */
 @font-face {
   font-family: "Promenade";
   src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
@@ -236,7 +236,7 @@ header .container {
   left: 0;
   width: 100%;
   height: 100%; 
-    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
+    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2-0.5 */
   z-index: 1;
 }
 
@@ -472,7 +472,7 @@ color: #ffffff;
   will-change: transform;
 }
 
-/* ALL images → SAME WIDTH + HEIGHT */
+/* ALL images > SAME WIDTH + HEIGHT */
 .marquee-track img {
   width: calc(100vw / var(--items-desktop));
   height: calc(100vw / var(--items-desktop));
@@ -610,7 +610,7 @@ color: #ffffff;
   gap: 50px;
 }
 
-/* MAIN HEADING – PROMENADE */
+/* MAIN HEADING - PROMENADE */
 .team-heading {
   font-family: "Promenade", serif;
   margin: 0 0 18px 0;
@@ -624,7 +624,7 @@ color: #ffffff;
   text-transform: uppercase;
 }
 
-/* SCRIPT SUBLINE – PEACH FLAMINGO */
+/* SCRIPT SUBLINE - PEACH FLAMINGO */
 .team-script {
   font-family: "Peach Flamingo Script", cursive;
   margin: 0 0 10px;
@@ -636,7 +636,7 @@ color: #ffffff;
   line-height: 0;
 }
 
-/* PARAGRAPH – POPPINS */
+/* PARAGRAPH - POPPINS */
 .team-desc {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -747,7 +747,7 @@ color: #ffffff;
   z-index: 0;
 }
 
-/* SCRIPT LINE – Peach Flamingo */
+/* SCRIPT LINE - Peach Flamingo */
 .values-script {
   position: relative;
   z-index: 2;
@@ -916,14 +916,14 @@ footer {
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
-/* Medium screens – break gallery into 3 columns */
+/* Medium screens - break gallery into 3 columns */
 @media (max-width: 900px) {
     .footer-gallery {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Small screens – gallery becomes 2 columns */
+/* Small screens - gallery becomes 2 columns */
 @media (max-width: 600px) {
     .footer-gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -936,7 +936,7 @@ footer {
     }
 }
 
-/* Extra small – gallery images stack single-column */
+/* Extra small - gallery images stack single-column */
 @media (max-width: 400px) {
     .footer-gallery {
         grid-template-columns: 1fr;

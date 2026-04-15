@@ -1,10 +1,10 @@
-/* Import Custom Fonts */
+﻿/* Import Custom Fonts */
 @font-face {
   font-family: 'YourCustomFont';
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
-/* Promenade Regular — alias both names to the SAME file */
+/* Promenade Regular - alias both names to the SAME file */
 @font-face {
   font-family: "Promenade";
   src: url("/FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
@@ -298,6 +298,9 @@ color: #ffffff;
 }
 
 .hero .btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--white-color);
   border: 1.8px solid var(--white-color);
   border-radius: 30px;
@@ -311,10 +314,15 @@ color: #ffffff;
   transition: all 0.3s ease;
 }
 
+
 .hero .btn:hover {
   background-color: transparent;
   color: var(--accent-color);
   border-color: var(--accent-color);
+}
+
+.hero .btn:hover::after {
+  transform: translateX(4px);
 }
 
 
@@ -1071,7 +1079,7 @@ color: #ffffff;
   right: 20px;
   bottom: 20px;
   border: 1px solid var(--primary-color);
-  pointer-events: none; /* ensure it doesn’t interfere with content */
+  pointer-events: none; /* ensure it doesn't interfere with content */
   z-index: 1;
 }
 
@@ -1268,14 +1276,14 @@ footer {
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
-/* Medium screens – break gallery into 3 columns */
+/* Medium screens - break gallery into 3 columns */
 @media (max-width: 900px) {
     .footer-gallery {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Small screens – gallery becomes 2 columns */
+/* Small screens - gallery becomes 2 columns */
 @media (max-width: 600px) {
     .footer-gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -1288,7 +1296,7 @@ footer {
     }
 }
 
-/* Extra small – gallery images stack single-column */
+/* Extra small - gallery images stack single-column */
 @media (max-width: 400px) {
     .footer-gallery {
         grid-template-columns: 1fr;

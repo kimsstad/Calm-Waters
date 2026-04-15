@@ -1,10 +1,10 @@
-/* Import Custom Fonts */
+﻿/* Import Custom Fonts */
 @font-face {
   font-family: 'YourCustomFont';
   src: url('fonts/YourCustomFont-Regular.ttf') format('truetype');
 }
 
-/* Promenade Regular — alias both names to the SAME file */
+/* Promenade Regular - alias both names to the SAME file */
 @font-face {
   font-family: "Promenade";
   src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
@@ -235,7 +235,7 @@ header .container {
   left: 0;
   width: 100%;
   height: 100vh; 
-    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2–0.5 */
+    background: rgba(0, 0, 0, 0.1); /* adjust opacity 0.2-0.5 */
   z-index: 1;
 }
 
@@ -329,6 +329,80 @@ color: #ffffff;
   border-color: var(--accent-color);
 }
 
+.hero-info-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 24px;
+  box-sizing: border-box;
+  transform: translateY(50%);
+  pointer-events: none;
+}
+
+.hero-info-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px 56px;
+  padding: 22px 44px;
+  background: var(--white-color);
+  color: var(--text-color);
+  box-shadow: 0 18px 40px rgba(42, 45, 54, 0.16);
+  border: 1px solid rgba(40, 69, 132, 0.08);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero-info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.hero-info-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #b79a66;
+}
+
+@media (max-width: 768px) {
+  .hero-info-strip {
+    padding: 0 14px;
+  }
+
+  .hero-info-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100%, 360px);
+    gap: 10px;
+    padding: 16px 14px;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-info-item {
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .hero-info-dot {
+    width: 4px;
+    height: 4px;
+  }
+}
+
 
 /* -------- SECTION LAYOUT -------- */
 .about-intro {
@@ -371,6 +445,20 @@ color: #ffffff;
   color: #444;
   margin-bottom: 24px;
   max-width: 620px;
+}
+
+.property-note {
+  margin: 22px 0 0;
+  margin-bottom: 26px;
+  padding: 4px 0 4px 16px;
+  border-left: 2px solid #b79a66;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 /* -------- STATS -------- */
@@ -808,7 +896,7 @@ width: 300px;
   margin: 0 auto;
 }
 
-/* 2 rows × 4 columns */
+/* 2 rows &times; 4 columns */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -875,7 +963,7 @@ width: 300px;
     right: 0;
   }
 }
-/* ===== GALLERY – MOBILE LAYOUT ===== */
+/* ===== GALLERY - MOBILE LAYOUT ===== */
 @media (max-width: 768px) {
 
   /* make the gallery use full width with some side padding */
@@ -921,7 +1009,7 @@ width: 300px;
 }
 
 }
-/* ===== GALLERY MODAL – MOBILE ===== */
+/* ===== GALLERY MODAL - MOBILE ===== */
 @media (max-width: 768px) {
 
   .gallery-modal {
@@ -994,7 +1082,7 @@ width: 300px;
 
 
 /* ============================
-   GALLERY MODAL – MATCH TESTIMONIAL ARROWS
+   GALLERY MODAL - MATCH TESTIMONIAL ARROWS
    ============================ */
 
 .gallery-modal-nav {
@@ -1220,7 +1308,7 @@ color: var(--background-color);
   right: 20px;
   bottom: 20px;
   border: 1px solid var(--primary-color);
-  pointer-events: none; /* ensure it doesn’t interfere with content */
+  pointer-events: none; /* ensure it doesn't interfere with content */
   z-index: 1;
 }
 
@@ -1360,12 +1448,17 @@ p.testimonial-name {
 
 /* FOOTER */
 footer {
-    width: 100%;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     margin-top: 40px;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 2.8px;
+    overflow: hidden;
 }
 
 /* Top strip */
@@ -1390,11 +1483,15 @@ footer {
 /* Photo strip */
 .footer-gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    gap: 0;
 }
 
 .footer-gallery img {
+    display: block;
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -1455,14 +1552,14 @@ footer {
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
-/* Medium screens – break gallery into 3 columns */
+/* Medium screens - break gallery into 3 columns */
 @media (max-width: 900px) {
     .footer-gallery {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Small screens – gallery becomes 2 columns */
+/* Small screens - gallery becomes 2 columns */
 @media (max-width: 600px) {
     .footer-gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -1474,7 +1571,7 @@ footer {
     }
 }
 
-/* Extra small – gallery images stack single-column */
+/* Extra small - gallery images stack single-column */
 @media (max-width: 400px) {
     .footer-gallery {
         grid-template-columns: 1fr;
@@ -1583,3 +1680,31 @@ footer {
 
 }
 
+/* Property hero image overlay: 30% opaque black. */
+.hero > .overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Immersive property page widths */
+.container,
+.footer-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.property-gallery .container,
+.gallery-window {
+  max-width: 1400px !important;
+  width: min(96%, 1400px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form-inner,
+.contact-form-inner.container {
+  max-width: 600px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
