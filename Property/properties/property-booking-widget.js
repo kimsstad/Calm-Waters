@@ -199,12 +199,29 @@
     lekkeslaap: { publicUrl: '', proxyUrl: '' }
   };
 
+  const cleaningFees = {
+    'robberg-room': 330,
+    'boardwalk-retreat': 350,
+    'boardwalk-corner': 330,
+    'hill-and-tides': 330,
+    'seasalt-rest': 330,
+    'magnificent-view': 330,
+    'sanctuary-hideaway': 330,
+    tremezzo: 330,
+    'plett-escape': 330,
+    'the-place-to-stay': 330,
+    arrowood: 330,
+    'little-lincoln': 330,
+    'lookout-room': 275,
+    'sanctuary-room': 275
+  };
+
   function buildPropertySource(key, displayName, options = {}) {
     return {
       displayName,
       festivePeak: null,
       websitePricingRules: buildSeasonRules(websiteRates2026[key], websiteRates2027[key]),
-      cleaningFee: Number.isFinite(options.cleaningFee) ? options.cleaningFee : 0,
+      cleaningFee: Number.isFinite(options.cleaningFee) ? options.cleaningFee : (cleaningFees[key] || 0),
       feeds: emptyFeeds,
       blockedDatesEndpoint: options.blockedDatesEndpoint || '',
       baseAirbnbRules: []
@@ -213,7 +230,6 @@
 
   const workbookPropertySources = {
     arrowood: buildPropertySource('arrowood', 'Arrowood Apartment', {
-      cleaningFee: 330,
       blockedDatesEndpoint: '/api/arrowood-blocks'
     }),
     'robberg-room': buildPropertySource('robberg-room', 'Robberg Room'),
