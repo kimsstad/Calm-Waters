@@ -965,6 +965,7 @@ footer p {
 }
 
 .hero-info-strip {
+  display: none !important;
   position: absolute;
   left: 0;
   right: 0;

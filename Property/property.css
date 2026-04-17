@@ -462,6 +462,292 @@ color: #ffffff;
   text-transform: uppercase;
 }
 
+.listings-toolbar {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 42px;
+  padding: 24px 26px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(40, 69, 132, 0.12);
+  box-shadow: 0 18px 36px rgba(42, 45, 54, 0.08);
+}
+
+.listings-toolbar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.listings-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listings-control-search {
+  grid-column: span 2;
+}
+
+.listings-control-price {
+  position: relative;
+}
+
+.listings-control-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.listings-control input:not([type="range"]),
+.listings-control select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(42, 45, 54, 0.16);
+  border-radius: 0;
+  background: var(--white-color);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.96rem;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.listings-control input:not([type="range"])::placeholder {
+  color: #8b8f95;
+}
+
+.listings-control input:not([type="range"]):focus,
+.listings-control select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 69, 132, 0.1);
+}
+
+.price-filter-dropdown {
+  position: relative;
+}
+
+.price-filter-trigger {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(42, 45, 54, 0.16);
+  border-radius: 0;
+  background: var(--white-color);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.96rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.price-filter-trigger:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 69, 132, 0.1);
+}
+
+.price-filter-trigger-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-filter-trigger-icon {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  transform: rotate(45deg) translateY(-2px);
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.price-filter-dropdown.is-open .price-filter-trigger {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(40, 69, 132, 0.1);
+}
+
+.price-filter-dropdown.is-open .price-filter-trigger-icon {
+  transform: rotate(-135deg) translateY(-1px);
+}
+
+.price-filter-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: min(360px, 100%);
+  z-index: 20;
+}
+
+.price-range-group {
+  padding: 14px 16px 16px;
+  border: 1px solid rgba(42, 45, 54, 0.16);
+  background: var(--white-color);
+  box-shadow: 0 18px 36px rgba(42, 45, 54, 0.12);
+}
+
+.price-range-values {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.price-range-slider {
+  position: relative;
+  height: 26px;
+}
+
+.price-range-track,
+.price-range-progress {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  border-radius: 999px;
+}
+
+.price-range-track {
+  left: 0;
+  right: 0;
+  background: rgba(42, 45, 54, 0.12);
+}
+
+.price-range-progress {
+  background: var(--primary-color);
+}
+
+.price-range-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 26px;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.price-range-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.price-range-slider input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: transparent;
+  border: none;
+}
+
+.price-range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: var(--white-color);
+  box-shadow: 0 4px 10px rgba(42, 45, 54, 0.18);
+  cursor: pointer;
+  pointer-events: auto;
+  margin-top: -7px;
+}
+
+.price-range-slider input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: var(--white-color);
+  box-shadow: 0 4px 10px rgba(42, 45, 54, 0.18);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.listings-toolbar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.listings-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.listings-results {
+  margin: 0;
+  color: var(--body-text-color);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.98rem;
+}
+
+.listings-apply {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
+  color: var(--white-color);
+  min-height: 44px;
+  padding: 0 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.listings-apply:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.listings-reset {
+  border: none;
+  background: transparent;
+  color: var(--primary-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+}
+
+.listings-reset:hover {
+  color: var(--accent-color);
+}
+
+.listings-empty {
+  margin: 28px 0 0;
+  text-align: center;
+  color: var(--body-text-color);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
 /* Grid layout: roomy cards, 3 per row on wide screens */
 .listings-grid {
   display: grid;
@@ -480,6 +766,10 @@ color: #ffffff;
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.listing-item[hidden] {
+  display: none !important;
 }
 
 .listing-item:hover {
@@ -598,6 +888,19 @@ color: #ffffff;
 
 /* Large tablet / small desktop: prefer two columns if not enough room */
 @media (max-width: 1200px) {
+  .listings-toolbar-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
+  .listings-control-search,
+  .listings-control-price {
+    grid-column: span 2;
+  }
+
+  .price-filter-panel {
+    width: 100%;
+  }
+
   .listings-grid {
     grid-template-columns: repeat(2, minmax(320px, 1fr));
     gap: 26px;
@@ -615,6 +918,41 @@ color: #ffffff;
 
 /* Mobile: single centred column, stack images vertically and hide second image */
 @media (max-width: 700px) {
+  .listings-toolbar {
+    padding: 20px 18px;
+  }
+
+  .listings-toolbar-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+  }
+
+  .listings-control-search,
+  .listings-control-price {
+      grid-column: span 1;
+  }
+
+  .price-filter-panel {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .price-range-group {
+    box-shadow: none;
+  }
+
+  .listings-toolbar-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .listings-toolbar-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .listings-grid {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -658,6 +996,10 @@ color: #ffffff;
   .listings { padding: 40px 0; }
   .listings-script { font-size: clamp(1.6rem, 4vw, 2.4rem); }
   .listings-title { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+  .listings-toolbar {
+    margin-bottom: 28px;
+    padding: 18px 14px;
+  }
 
   .listing-images { min-height: 180px; }
   .listing-item { max-width: 440px; }

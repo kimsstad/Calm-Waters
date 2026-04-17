@@ -108,15 +108,92 @@
       <h2 class="listings-title">OUR PROPERTIES</h2> 
     </div>
 
+    <div class="listings-toolbar" aria-label="Sort and filter properties">
+      <div class="listings-toolbar-grid">
+        <label class="listings-control listings-control-search">
+          <span class="listings-control-label">Search</span>
+          <input type="search" id="propertySearch" placeholder="Search by property or keyword">
+        </label>
+
+        <label class="listings-control">
+          <span class="listings-control-label">Guests</span>
+          <select id="guestFilter">
+            <option value="">Any</option>
+            <option value="2">2 guests</option>
+            <option value="4">4 guests</option>
+            <option value="6">6 guests</option>
+            <option value="8">8+ guests</option>
+          </select>
+        </label>
+
+        <label class="listings-control">
+          <span class="listings-control-label">Bedrooms</span>
+          <select id="bedroomFilter">
+            <option value="">Any</option>
+            <option value="1">1 bedroom</option>
+            <option value="2">2 bedrooms</option>
+            <option value="3">3 bedrooms</option>
+            <option value="4">4 bedrooms</option>
+            <option value="5">5+ bedrooms</option>
+          </select>
+        </label>
+
+        <div class="listings-control listings-control-price">
+          <span class="listings-control-label">Price per night</span>
+          <div class="price-filter-dropdown" id="priceFilterDropdown">
+            <button type="button" class="price-filter-trigger" id="priceFilterTrigger" aria-expanded="false" aria-controls="priceFilterPanel">
+              <span class="price-filter-trigger-text" id="priceFilterTriggerText">R0 - R40,000</span>
+              <span class="price-filter-trigger-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="price-filter-panel" id="priceFilterPanel" hidden>
+              <div class="price-range-group">
+                <div class="price-range-values" aria-live="polite">
+                  <span id="priceRangeMinLabel">R0</span>
+                  <span id="priceRangeMaxLabel">R40,000</span>
+                </div>
+                <div class="price-range-slider">
+                  <div class="price-range-track"></div>
+                  <div class="price-range-progress" id="priceRangeProgress"></div>
+                  <input type="range" id="priceMinFilter" min="0" max="40000" step="500" value="0" aria-label="Minimum nightly price">
+                  <input type="range" id="priceMaxFilter" min="0" max="40000" step="500" value="40000" aria-label="Maximum nightly price">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label class="listings-control">
+          <span class="listings-control-label">Sort By</span>
+          <select id="propertySort">
+            <option value="featured">Featured</option>
+            <option value="name-asc">Name: A to Z</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="guests-desc">Guests: Most First</option>
+            <option value="beds-desc">Bedrooms: Most First</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="listings-toolbar-footer">
+        <p class="listings-results" id="propertyResults">Showing all properties</p>
+        <div class="listings-toolbar-actions">
+          <button type="button" class="listings-apply" id="propertyApply">Apply filters</button>
+          <button type="button" class="listings-reset" id="propertyReset">Reset filters</button>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== GRID: ALL PROPERTY CARDS ===== -->
-    <div class="listings-grid">
+    <div class="listings-grid" id="propertyListingsGrid">
 
       <!-- Robberg Studio Suite -->
       <div class="listing-item">
         <div class="listing-images">
           <img src="../Resources/pics/RobberRoom1.webp" alt="Robberg Room - Main View">
           <img src="../Resources/pics/RobberRoom2.webp" alt="Robberg Room - Alternate View">
-          <div class="listing-price">R1,320 - R2,420</div>
+          <div class="listing-price">R1,320 - R2,662</div>
         </div>
         <div class="listing-details">
           <h3>Robberg Studio Suite</h3>
@@ -135,7 +212,7 @@
         <div class="listing-images">
           <img src="../Resources/pics/LookoutRoom1.webp" alt="Lookout Studio Suite - Main View">
           <img src="../Resources/pics/LookoutRoom2.webp" alt="Lookout Studio Suite - Alternate View">
-          <div class="listing-price">R1,320 - R2,420</div>
+          <div class="listing-price">R1,320 - R2,662</div>
         </div>
         <div class="listing-details">
           <h3>Lookout Studio Suite</h3>
@@ -154,7 +231,7 @@
         <div class="listing-images">
           <img src="../Resources/Sanctuary/1.webp" alt="Sanctuary Studio Suite - Main View">
           <img src="../Resources/Robberg/12.webp" alt="Sanctuary Studio Suite - Alternate View">
-          <div class="listing-price">R1,320 - R2,420</div>
+          <div class="listing-price">R1,320 - R2,662</div>
         </div>
         <div class="listing-details">
           <h3>Sanctuary Studio Suite</h3>
@@ -173,7 +250,7 @@
         <div class="listing-images">
           <img src="../Resources/pics/arrowood 1.webp" alt="Arrowood Apartment Exterior">
           <img src="../Resources/pics/arrowood 2.webp" alt="Arrowood Apartment Interior">
-          <div class="listing-price">R1,540 - R3,850</div>
+          <div class="listing-price">R1,540 - R4,235</div>
         </div>
         <div class="listing-details">
           <h3>Arrowood Apartment</h3>
@@ -192,7 +269,7 @@
         <div class="listing-images">
           <img src="../Resources/Clifftop/11.webp" alt="Clifftop Cabin Exterior">
           <img src="../Resources/pics/clifftop2.webp" alt="Clifftop Cabin Interior">
-          <div class="listing-price">R2,420 - R4,400</div>
+          <div class="listing-price">R2,420 - R4,840</div>
         </div>
         <div class="listing-details">
           <h3>Clifftop Cabin</h3>
@@ -211,7 +288,7 @@
         <div class="listing-images">
           <img src="../Resources/pics/wildside1.webp" alt="Wildside Cabin Exterior">
           <img src="../Resources/pics/wildside2.webp" alt="Inside Wildside Cabin">
-          <div class="listing-price">R2,420 - R4,400</div>
+          <div class="listing-price">R2,420 - R4,840</div>
         </div>
         <div class="listing-details">
           <h3>Wildside Cabin</h3>
@@ -230,7 +307,7 @@
         <div class="listing-images">
           <img src="../Resources/HillPenthouse/1.webp" alt="Hill Penthouse Plett Exterior">
           <img src="../Resources/HillPenthouse/5.webp" alt="Hill Penthouse Plett Interior">
-          <div class="listing-price">R4,070 - R13,750</div>
+          <div class="listing-price">R4,070 - R15,125</div>
         </div>
         <div class="listing-details">
           <h3>Hill Penthouse Plett</h3>
@@ -250,7 +327,7 @@
   <div class="listing-images">
     <img src="../Resources/HillandTides/2.webp" alt="Hill and Tides Exterior">
     <img src="../Resources/HillandTides/5.webp" alt="Hill and Tides Interior">
-    <div class="listing-price">R3,300 - R8,800</div>
+    <div class="listing-price">R3,300 - R9,680</div>
   </div>
   <div class="listing-details">
     <h3>Hill and Tides</h3>
@@ -269,7 +346,7 @@
   <div class="listing-images">
     <img src="../Resources/BoardwalkCorner/hero.webp" alt="Boardwalk Corner - Exterior">
     <img src="../Resources/BoardwalkCorner/1.webp" alt="Boardwalk Corner - Outdoor patio">
-    <div class="listing-price">R3,300 - R9,350</div>
+    <div class="listing-price">R3,300 - R10,285</div>
   </div>
   <div class="listing-details">
     <h3>Boardwalk Corner</h3>
@@ -289,7 +366,7 @@
         <div class="listing-images">
           <img src="../Resources/5Boardwalk/1.webp" alt="5 Boardwalk Front Exterior">
           <img src="../Resources/5Boardwalk/12.webp" alt="5 Boardwalk Living Area">
-          <div class="listing-price">R3,300 - R9,350</div>
+          <div class="listing-price">R3,300 - R10,285</div>
         </div>
         <div class="listing-details">
           <h3>Boardwalk Retreat</h3>
@@ -309,7 +386,7 @@
         <div class="listing-images">
           <img src="../Resources/FarallonPlace/18. Pool (2).webp" alt="Farallon Place - Pool & Garden">
           <img src="../Resources/FarallonPlace/3. Lounge (3).webp" alt="Farallon Place - Lounge & Fireplace">
-          <div class="listing-price">R4,950 - R22,000</div>
+          <div class="listing-price">R4,950 - R24,200</div>
         </div>
         <div class="listing-details">
           <h3>Farallon Place</h3>
@@ -350,7 +427,7 @@
   <div class="listing-images">
     <img src="../Resources/LaLapa/1.webp" alt="La-Lapa - Main View">
     <img src="../Resources/LaLapa/10.webp" alt="La-Lapa - Alternate View">
-    <div class="listing-price">R2,200 - R4,070</div>
+    <div class="listing-price">R2,200 - R4,477</div>
   </div>
   <div class="listing-details">
     <h3>La-Lapa</h3>
@@ -368,7 +445,7 @@
   <div class="listing-images">
     <img src="../Resources/LaMed/1.webp" alt="La Med - Main View">
     <img src="../Resources/LaMed/17.webp" alt="La Med - Alternate View">
-    <div class="listing-price">R3,300 - R5,170</div>
+    <div class="listing-price">R3,300 - R5,687</div>
   </div>
   <div class="listing-details">
     <h3>La Med</h3>
@@ -387,7 +464,7 @@
         <div class="listing-images">
           <img src="../Resources/LittleLincoln/1.webp" alt="Little Lincoln - Main View">
           <img src="../Resources/LittleLincoln/2.webp" alt="Little Lincoln - Alternate View">
-          <div class="listing-price">R1,540 - R3,850</div>
+          <div class="listing-price">R1,540 - R4,235</div>
         </div>
         <div class="listing-details">
           <h3>Little Lincoln</h3>
@@ -407,7 +484,7 @@
   <div class="listing-images">
     <img src="../Resources/Magnificent-View/1.webp" alt="Magnificent View - Sea View">
     <img src="../Resources/Magnificent-View/19.webp" alt="Magnificent View - Living Area">
-    <div class="listing-price">R2,420 - R6,600</div>
+    <div class="listing-price">R2,420 - R7,260</div>
   </div>
   <div class="listing-details">
     <h3>Magnificent View</h3>
@@ -427,7 +504,7 @@
         <div class="listing-images">
           <img src="../Resources/Panorama/1.webp" alt="Panorama Sea-View Apartment - Main View">
           <img src="../Resources/Panorama/2.webp" alt="Panorama Sea-View Apartment - Alternate View">
-          <div class="listing-price">R1,980 - R5,500</div>
+          <div class="listing-price">R1,980 - R6,050</div>
         </div>
         <div class="listing-details">
           <h3>Panorama Sea-View Apartment</h3>
@@ -447,7 +524,7 @@
         <div class="listing-images">
           <img src="../Resources/PlettEscape/4. Main bedroom (5).webp" alt="Plett Escape Flat - Main View">
           <img src="../Resources/PlettEscape/8. Balcony (4).webp" alt="Plett Escape Flat - Alternate View">
-          <div class="listing-price">R1,540 - R4,400</div>
+          <div class="listing-price">R1,540 - R4,840</div>
         </div>
         <div class="listing-details">
           <h3>Plett Escape Flat</h3>
@@ -467,7 +544,7 @@
   <div class="listing-images">
     <img src="../Resources/RiversDrift/1.webp" alt="River's Drift - Main View">
     <img src="../Resources/RiversDrift/2.webp" alt="River's Drift - Alternate View">
-    <div class="listing-price">R1,980 - R4,620</div>
+    <div class="listing-price">R1,980 - R5,082</div>
   </div>
   <div class="listing-details">
     <h3>River's Drift</h3>
@@ -487,7 +564,7 @@
   <div class="listing-images">
     <img src="../Resources/Sanctuary-Hideaway/1.webp" alt="Sanctuary Hideaway - Coastal View">
     <img src="../Resources/Sanctuary-Hideaway/3.webp" alt="Sanctuary Hideaway - Living Area">
-    <div class="listing-price">R3,960 - R13,200</div>
+    <div class="listing-price">R5,500 - R14,520</div>
   </div>
   <div class="listing-details">
     <h3>Sanctuary Hideaway</h3>
@@ -507,7 +584,7 @@
         <div class="listing-images">
           <img src="../Resources/SandyFingers/2.webp" alt="Sandy Fingers Apartment Exterior">
           <img src="../Resources/SandyFingers/10.webp" alt="Sandy Fingers Apartment Interior">
-          <div class="listing-price">R1,760 - R2,800</div>
+          <div class="listing-price">R1,100 - R2,310</div>
         </div>
         <div class="listing-details">
           <h3>Sandy Fingers Apartment</h3>
@@ -526,7 +603,7 @@
         <div class="listing-images">
           <img src="../Resources/SandyToes/13.webp" alt="Sandy Toes Home - Main View">
           <img src="../Resources/SandyToes/16.webp" alt="Sandy Toes Home - Pool View">
-          <div class="listing-price">R3,600 - R13,200</div>
+          <div class="listing-price">R3,520 - R14,520</div>
         </div>
         <div class="listing-details">
           <h3>Sandy Toes Home</h3>
@@ -545,7 +622,7 @@
         <div class="listing-images">
           <img src="../Resources/SeaEsta/2.webp" alt="Sea Esta Front Exterior">
           <img src="../Resources/SeaEsta/9.webp" alt="Sea Esta Patio and BBQ Area">
-          <div class="listing-price">R4,180 - R13,750</div>
+          <div class="listing-price">R4,180 - R15,125</div>
         </div>
         <div class="listing-details">
           <h3>Sea Esta</h3>
@@ -565,7 +642,7 @@
         <div class="listing-images">
           <img src="../Resources/SeaSaltRest/8.webp" alt="SeaSalt Rest Front Exterior">
           <img src="../Resources/SeaSaltRest/14.webp" alt="SeaSalt Rest Patio and Garden">
-          <div class="listing-price">R1,760 - R4,180</div>
+          <div class="listing-price">R1,760 - R4,598</div>
         </div>
         <div class="listing-details">
           <h3>SeaSalt Rest</h3>
@@ -585,7 +662,7 @@
   <div class="listing-images">
     <img src="../Resources/Stillwater/1.webp" alt="Stillwater Haven Exterior">
     <img src="../Resources/Stillwater/2.webp" alt="Stillwater Haven Living Area">
-    <div class="listing-price">R2,200 - R4,840</div>
+    <div class="listing-price">R2,200 - R5,324</div>
   </div>
   <div class="listing-details">
     <h3>Stillwater Haven</h3>
@@ -605,7 +682,7 @@
         <div class="listing-images">
           <img src="../Resources/SoundofSilence/15.webp" alt="Sound of Silence River View">
           <img src="../Resources/SoundofSilence/4.webp" alt="Sound of Silence Living Area">
-          <div class="listing-price">R2,200 - R4,840</div>
+          <div class="listing-price">R2,200 - R5,324</div>
         </div>
         <div class="listing-details">
           <h3>Sound of Silence</h3>
@@ -624,7 +701,7 @@
         <div class="listing-images">
           <img src="../Resources/ThePlaceToStay/1.webp" alt="The Place to Stay - Living Area">
           <img src="../Resources/ThePlaceToStay/16.webp" alt="The Place to Stay - Main Bedroom">
-          <div class="listing-price">R1,540 - R4,400</div>
+          <div class="listing-price">R1,540 - R4,840</div>
         </div>
         <div class="listing-details">
           <h3>The Place to Stay</h3>
@@ -643,7 +720,7 @@
         <div class="listing-images">
           <img src="../Resources/pics/toplis1.webp" alt="Toplis Sea & Mountain Vista Exterior">
           <img src="../Resources/pics/toplis2.webp" alt="Toplis Sea & Mountain Vista Interior">
-          <div class="listing-price">R3,850 - R13,200</div>
+          <div class="listing-price">R3,850 - R14,520</div>
         </div>
         <div class="listing-details">
           <h3>Toplis Sea & Mountain Vista</h3>
@@ -662,7 +739,7 @@
         <div class="listing-images">
           <img src="../Resources/Goose-Valley/1.webp" alt="Tranquility Place - Main View">
           <img src="../Resources/Goose-Valley/7.webp" alt="Tranquility Place - Garden View">
-          <div class="listing-price">R1,980 - R5,500</div>
+          <div class="listing-price">R1,980 - R6,050</div>
         </div>
         <div class="listing-details">
           <h3>Tranquility Place</h3>
@@ -681,7 +758,7 @@
         <div class="listing-images">
           <img src="../Resources/Tremezzo/14. Roof Lookout Point (2).webp" alt="Tremezzo Villa Ocean View">
           <img src="../Resources/Tremezzo/7. Upstairs Lounge (3).webp" alt="Tremezzo Villa Pool">
-          <div class="listing-price">R7,700 - R30,800</div>
+          <div class="listing-price">R7,700 - R33,880</div>
         </div>
         <div class="listing-details">
           <h3>Tremezzo Villa</h3>
@@ -699,7 +776,7 @@
   <div class="listing-images">
     <img src="../Resources/WaterSong/1.webp" alt="Watersong Apartment - Main View">
     <img src="../Resources/WaterSong/2.webp" alt="Watersong Apartment - Alternate View">
-    <div class="listing-price">R1,980 - R4,620</div>
+    <div class="listing-price">R1,980 - R5,082</div>
   </div>
   <div class="listing-details">
     <h3>Watersong Apartment</h3>
@@ -714,6 +791,8 @@
 </div>
 
     </div> <!-- /.listings-grid -->
+
+    <p class="listings-empty" id="propertyEmptyState" hidden>No properties match those filters right now.</p>
 
   </div> <!-- /.container -->
 </section>
@@ -768,22 +847,290 @@
   const testimonials = document.querySelectorAll('.testimonial-content');
   const nextBtn = document.querySelector('.testimonial-btn.next');
   const prevBtn = document.querySelector('.testimonial-btn.prev');
-  let index = 0;
 
-  function showTestimonial(i) {
-    testimonials.forEach(t => t.classList.remove('active'));
-    testimonials[i].classList.add('active');
+  if (testimonials.length && nextBtn && prevBtn) {
+    let index = 0;
+
+    function showTestimonial(i) {
+      testimonials.forEach((testimonial) => testimonial.classList.remove('active'));
+      testimonials[i].classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(index);
+    });
   }
+</script>
 
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % testimonials.length;
-    showTestimonial(index);
-  });
+<script>
+  const propertyGrid = document.getElementById('propertyListingsGrid');
 
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(index);
-  });
+  if (propertyGrid) {
+    const propertyCards = Array.from(propertyGrid.querySelectorAll('.listing-item'));
+    const searchInput = document.getElementById('propertySearch');
+    const guestFilter = document.getElementById('guestFilter');
+    const bedroomFilter = document.getElementById('bedroomFilter');
+    const priceMinFilter = document.getElementById('priceMinFilter');
+    const priceMaxFilter = document.getElementById('priceMaxFilter');
+    const priceRangeMinLabel = document.getElementById('priceRangeMinLabel');
+    const priceRangeMaxLabel = document.getElementById('priceRangeMaxLabel');
+    const priceRangeProgress = document.getElementById('priceRangeProgress');
+    const priceFilterDropdown = document.getElementById('priceFilterDropdown');
+    const priceFilterTrigger = document.getElementById('priceFilterTrigger');
+    const priceFilterTriggerText = document.getElementById('priceFilterTriggerText');
+    const priceFilterPanel = document.getElementById('priceFilterPanel');
+    const sortSelect = document.getElementById('propertySort');
+    const resultsLabel = document.getElementById('propertyResults');
+    const applyButton = document.getElementById('propertyApply');
+    const resetButton = document.getElementById('propertyReset');
+    const emptyState = document.getElementById('propertyEmptyState');
+
+    const parseNumber = (text) => {
+      const match = text.match(/[\d.]+/);
+      return match ? Number(match[0]) : 0;
+    };
+
+    const normalizeSearchText = (text) => {
+      return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const parseBedrooms = (text) => {
+      if (/studio/i.test(text)) {
+        return 1;
+      }
+
+      return parseNumber(text);
+    };
+
+    const parsePrice = (text) => {
+      const match = text.match(/R([\d,]+)/i);
+      return match ? Number(match[1].replace(/,/g, '')) : 0;
+    };
+
+    const parsePriceRange = (text) => {
+      const matches = Array.from(text.matchAll(/R([\d,]+)/g)).map((match) => Number(match[1].replace(/,/g, '')));
+      if (!matches.length) return { min: 0, max: 0 };
+      if (matches.length === 1) return { min: matches[0], max: matches[0] };
+      return { min: matches[0], max: matches[1] };
+    };
+
+    const formatCurrency = (value) => `R${Number(value).toLocaleString('en-ZA')}`;
+
+    propertyCards.forEach((card, index) => {
+      const title = card.querySelector('h3')?.textContent.trim() || '';
+      const description = card.querySelector('.listing-details p')?.textContent.trim() || '';
+      const featureItems = Array.from(card.querySelectorAll('.listing-features span'));
+      const bedText = featureItems.find((item) => item.textContent.includes('Bed'))?.textContent || '';
+      const guestText = featureItems.find((item) => item.textContent.includes('Sleeps'))?.textContent || '';
+      const priceText = card.querySelector('.listing-price')?.textContent.trim() || '';
+      const cardLink = card.querySelector('.btn')?.getAttribute('href') || '';
+      const imageAltText = Array.from(card.querySelectorAll('img'))
+        .map((image) => image.getAttribute('alt') || '')
+        .join(' ');
+      const searchableText = [
+        title,
+        description,
+        card.innerText || card.textContent || '',
+        cardLink,
+        imageAltText
+      ].join(' ');
+      const priceRange = parsePriceRange(priceText);
+
+      card.dataset.index = String(index);
+      card.dataset.title = normalizeSearchText(title);
+      card.dataset.description = normalizeSearchText(description);
+      card.dataset.search = normalizeSearchText(searchableText);
+      card.dataset.beds = String(parseBedrooms(bedText));
+      card.dataset.guests = String(parseNumber(guestText));
+      card.dataset.price = String(priceRange.min);
+      card.dataset.minPrice = String(priceRange.min);
+      card.dataset.maxPrice = String(priceRange.max);
+    });
+
+    const highestListedPrice = propertyCards.reduce((highest, card) => {
+      return Math.max(highest, Number(card.dataset.maxPrice) || 0);
+    }, 0);
+    const sliderCeiling = Math.max(40000, Math.ceil(highestListedPrice / 5000) * 5000);
+    const sliderStep = Number(priceMinFilter.step || 500);
+
+    priceMinFilter.max = String(sliderCeiling);
+    priceMaxFilter.max = String(sliderCeiling);
+    priceMinFilter.value = '0';
+    priceMaxFilter.value = String(sliderCeiling);
+
+    const setPriceDropdownOpen = (isOpen) => {
+      priceFilterDropdown.classList.toggle('is-open', isOpen);
+      priceFilterTrigger.setAttribute('aria-expanded', String(isOpen));
+      priceFilterPanel.hidden = !isOpen;
+    };
+
+    const updatePriceSliderUI = (activeHandle) => {
+      let minValue = Number(priceMinFilter.value);
+      let maxValue = Number(priceMaxFilter.value);
+
+      if (maxValue - minValue < sliderStep) {
+        if (activeHandle === 'min') {
+          minValue = Math.max(0, maxValue - sliderStep);
+        } else {
+          maxValue = Math.min(sliderCeiling, minValue + sliderStep);
+        }
+      }
+
+      priceMinFilter.value = String(minValue);
+      priceMaxFilter.value = String(maxValue);
+      priceRangeMinLabel.textContent = formatCurrency(minValue);
+      priceRangeMaxLabel.textContent = formatCurrency(maxValue);
+      priceFilterTriggerText.textContent = `${formatCurrency(minValue)} - ${formatCurrency(maxValue)}`;
+
+      const minPercent = (minValue / sliderCeiling) * 100;
+      const maxPercent = (maxValue / sliderCeiling) * 100;
+      priceRangeProgress.style.left = `${minPercent}%`;
+      priceRangeProgress.style.width = `${maxPercent - minPercent}%`;
+    };
+
+    const sortCards = (cards, sortValue) => {
+      const sorted = [...cards];
+
+      sorted.sort((a, b) => {
+        if (sortValue === 'name-asc') {
+          return a.dataset.title.localeCompare(b.dataset.title);
+        }
+
+        if (sortValue === 'price-asc') {
+          return Number(a.dataset.price) - Number(b.dataset.price);
+        }
+
+        if (sortValue === 'price-desc') {
+          return Number(b.dataset.price) - Number(a.dataset.price);
+        }
+
+        if (sortValue === 'guests-desc') {
+          return Number(b.dataset.guests) - Number(a.dataset.guests);
+        }
+
+        if (sortValue === 'beds-desc') {
+          return Number(b.dataset.beds) - Number(a.dataset.beds);
+        }
+
+        return Number(a.dataset.index) - Number(b.dataset.index);
+      });
+
+      return sorted;
+    };
+
+    const applyPropertyFilters = () => {
+      const searchValue = normalizeSearchText(searchInput.value);
+      const selectedGuests = Number(guestFilter.value || 0);
+      const selectedBedrooms = Number(bedroomFilter.value || 0);
+      const selectedMinPrice = Number(priceMinFilter.value || 0);
+      const selectedMaxPrice = Number(priceMaxFilter.value || sliderCeiling);
+      const sortValue = sortSelect.value;
+
+      const visibleCards = propertyCards.filter((card) => {
+        const matchesSearch = !searchValue ||
+          card.dataset.search.includes(searchValue);
+        const matchesGuests = !selectedGuests ||
+          (selectedGuests === 8
+            ? Number(card.dataset.guests) >= 8
+            : Number(card.dataset.guests) === selectedGuests);
+        const matchesBedrooms = !selectedBedrooms ||
+          (selectedBedrooms === 5
+            ? Number(card.dataset.beds) >= 5
+            : Number(card.dataset.beds) === selectedBedrooms);
+        const matchesPrice =
+          Number(card.dataset.price) >= selectedMinPrice &&
+          Number(card.dataset.price) <= selectedMaxPrice;
+
+        return matchesSearch && matchesGuests && matchesBedrooms && matchesPrice;
+      });
+
+      const sortedVisibleCards = sortCards(visibleCards, sortValue);
+
+      propertyCards.forEach((card) => {
+        card.hidden = !visibleCards.includes(card);
+      });
+
+      sortedVisibleCards.forEach((card) => {
+        propertyGrid.appendChild(card);
+      });
+
+      const visibleCount = visibleCards.length;
+      resultsLabel.textContent = visibleCount === propertyCards.length
+        ? `Showing all ${visibleCount} properties`
+        : `Showing ${visibleCount} of ${propertyCards.length} properties`;
+
+      emptyState.hidden = visibleCount !== 0;
+    };
+
+    applyButton.addEventListener('click', () => {
+      applyPropertyFilters();
+      setPriceDropdownOpen(false);
+    });
+    priceFilterTrigger.addEventListener('click', () => {
+      setPriceDropdownOpen(priceFilterPanel.hidden);
+    });
+
+    [guestFilter, bedroomFilter, sortSelect].forEach((control) => {
+      control.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          applyPropertyFilters();
+        }
+      });
+    });
+
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        applyPropertyFilters();
+      }
+    });
+
+    searchInput.addEventListener('input', applyPropertyFilters);
+
+    priceMinFilter.addEventListener('input', () => updatePriceSliderUI('min'));
+    priceMaxFilter.addEventListener('input', () => updatePriceSliderUI('max'));
+
+    resetButton.addEventListener('click', () => {
+      searchInput.value = '';
+      guestFilter.value = '';
+      bedroomFilter.value = '';
+      priceMinFilter.value = '0';
+      priceMaxFilter.value = String(sliderCeiling);
+      sortSelect.value = 'featured';
+      updatePriceSliderUI();
+      setPriceDropdownOpen(false);
+      applyPropertyFilters();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!priceFilterDropdown.contains(event.target)) {
+        setPriceDropdownOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setPriceDropdownOpen(false);
+      }
+    });
+
+    updatePriceSliderUI();
+    setPriceDropdownOpen(false);
+    applyPropertyFilters();
+  }
 </script>
 
 
