@@ -1050,8 +1050,8 @@
             ? Number(card.dataset.beds) >= 5
             : Number(card.dataset.beds) === selectedBedrooms);
         const matchesPrice =
-          Number(card.dataset.price) >= selectedMinPrice &&
-          Number(card.dataset.price) <= selectedMaxPrice;
+          Number(card.dataset.maxPrice) >= selectedMinPrice &&
+          Number(card.dataset.minPrice) <= selectedMaxPrice;
 
         return matchesSearch && matchesGuests && matchesBedrooms && matchesPrice;
       });
