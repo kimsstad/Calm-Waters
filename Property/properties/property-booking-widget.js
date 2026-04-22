@@ -3,7 +3,39 @@
   // feeds, display name, and workbook source through data attributes.
   const bookingRoot = document.querySelector('[data-cw-booking], [data-boardwalk-booking]');
   if (!bookingRoot) return;
-  const previewCalendarSources = new Set(['arrowood']);
+  const visibleCalendarSources = new Set([
+    'arrowood',
+    'robberg-room',
+    'lookout-room',
+    'sanctuary-room',
+    'wildside',
+    'clifftop',
+    'hill-penthouse-plett',
+    'hill-and-tides',
+    'plett-escape',
+    'the-place-to-stay',
+    'little-lincoln',
+    'sound-of-silence',
+    'stillwater-haven',
+    'rivers-drift',
+    'watersong',
+    'seasalt-rest',
+    'sandy-fingers',
+    'sandy-toes',
+    'farallon',
+    'toplis',
+    'panorama',
+    'sea-esta',
+    'goose-valley',
+    'boardwalk-retreat',
+    'boardwalk-corner',
+    'magnificent-view',
+    'sanctuary-hideaway',
+    'la-lapa',
+    'la-med',
+    'tremezzo'
+  ]);
+  const previewCalendarSources = visibleCalendarSources;
   const activeSourceKey = bookingRoot.dataset.bookingSource || '';
   if (!previewCalendarSources.has(activeSourceKey)) {
     bookingRoot.closest('.cw-booking-group')?.setAttribute('hidden', 'hidden');
@@ -200,6 +232,159 @@
     lekkeslaap: { publicUrl: '', proxyUrl: '' }
   };
 
+  const workbookFeeds = {
+    'robberg-room': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1057078726114049454.ics?t=44780bae9ba74a2da0c98a432b8f9920', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=f6f7867c-3bc8-4af9-b69e-ce3de3e7bbb8', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar?t=R1RIQy9YVWE3WEpnVkhwYmVXY0swQT09&rt=387388', proxyUrl: '' }
+    },
+    'boardwalk-retreat': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1544030442364219781.ics?t=a02b9d61eb784293898688c7348cd48a', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export/t/24a9ac78-f475-4793-adaa-eb74a4981ecc.ics', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=UTRCNGg5cVdYV0ZySVhlUHlEbDFsdz09', proxyUrl: '' }
+    },
+    'boardwalk-corner': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1594163527975673800.ics?t=2f394e9ee4a84f0c9a415378cfaffb65', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=6a96eccf-cb98-464b-8bcb-56a3a580bb92', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=UE00ZVMrN05QSDNPeThrZ1JtVWZYUT09', proxyUrl: '' }
+    },
+    'hill-and-tides': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/17194325.ics?t=5e69ea4862214825971565c84b28b114', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export/t/95c65b37-e8c4-46f4-bfd0-541e19665374.ics', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=eEtMK1lObmUrV0diSU5qZnAyMGI2Zz09', proxyUrl: '' }
+    },
+    'sea-esta': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1537570888660495827.ics?t=007b18e3de0c4e3f965743c141955955', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=dd4acdd3-d054-424a-b703-40bcd7087e56', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=bWVURk9iMGszWHRwTk1TSDlPOWsvdz09', proxyUrl: '' }
+    },
+    'seasalt-rest': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1543351929942232045.ics?t=45af6218bf584e2da4eba37890e7c629', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=cc5b6867-d634-4d0e-a8cf-c56de59d87aa', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=RHJ4bXRocWVPekFtWk1MdjBqcnJtUT09', proxyUrl: '' }
+    },
+    panorama: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1273769707855170935.ics?t=370e01c5a30a4b82b055effa514abc11', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=cd425806-498d-44b7-a244-d39363b93343', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=V3h0T3hnRzJNVzRON0ZFaUJKbzVXZz09', proxyUrl: '' }
+    },
+    'magnificent-view': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/815780029709459988.ics?t=8fa120e2fd4a4522be17e826e8495274', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=baacc4f2-93a4-4ee6-ae44-5459af18f264', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=RGpPR1IyWjErTTU3MG5Xd1F2Qmd6Zz09', proxyUrl: '' }
+    },
+    'sanctuary-hideaway': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1594810862740171954.ics?t=8dd2a5ce0a964925afa1c2e4c98db027', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=df634b96-b1fc-41aa-8739-eb93b542400c', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=L09CalRjaS9JS29ualhBNjQ1aExRUT09', proxyUrl: '' }
+    },
+    'la-lapa': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1632477552314385539.ics?t=37c292c4edde4cedbdc09c3d211e2390', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export/t/dac27f8c-9b34-4699-9aee-51cfb1f77409.ics', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=K1lRN3dWWFczRW1XRDhMTzY1eUUwZz09', proxyUrl: '' }
+    },
+    'la-med': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1632507681869025301.ics?t=80e40c0b817c4a4c9e74f7a27fa386d4', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=c34a37f7-7e74-445d-b563-5234b37f0070', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ajlobVQwd3JhdWRrVHE2ODRQSHZwZz09', proxyUrl: '' }
+    },
+    tremezzo: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1449790786900033073.ics?t=1a7df908d1504694a03ef2e1136ea235', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7310918d-fba5-4222-bb61-31db389e68ee', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ditIU0RWN1RWcWxCTDU2ZVdiejlHdz09', proxyUrl: '' }
+    },
+    farallon: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1432408628554735932.ics?t=d2c24b2d04fb4e3f8833ee67ef137746', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=47aceb86-0313-4a49-9484-2355dadf1733', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=cjVkaHVybEhJcU8yd3pTTDd6aG1Jdz09', proxyUrl: '' }
+    },
+    toplis: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/42305882.ics?t=e06e580a2db3489db20b53fe850afd8d', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=549e5b28-e998-4d4b-adb5-6bd1efe74300', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=Q2xhUGZJa1VwWnBzVDlvVWdHME5Gdz09', proxyUrl: '' }
+    },
+    'goose-valley': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1289587900991700333.ics?t=aaddd8ed369c44268b8cb8586c1bbf2a', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=4c781b53-86da-47a4-8d32-aff8d77e70a6', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=aW5RQ1FSVFFzbzhjenAzc1JxaWlnZz09', proxyUrl: '' }
+    },
+    'lookout-room': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1270916152598267325.ics?t=5918b28c8b824e2fb511d80b316c6e5d', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7ecde551-10b0-4d40-b77d-dbdc02cfd62b', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=R1RIQy9YVWE3WEpnVkhwYmVXY0swQT09&rt=431368', proxyUrl: '' }
+    },
+    'sanctuary-room': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1320220730315653920.ics?t=ff1ad21061054a5890078cf8dcd4025d', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7d5b2799-cf08-4b91-87d2-ef141168f1dd', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=R1RIQy9YVWE3WEpnVkhwYmVXY0swQT09&rt=431471', proxyUrl: '' }
+    },
+    wildside: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/974398045462404014.ics?t=d2723b6eeef4410995c7283a21bf5504', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=26b3ff7e-2818-4537-aecd-5253f8b525b7', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=VXpFMnNjbHpqMlFDV1ZadWpFdFJtUT09', proxyUrl: '' }
+    },
+    clifftop: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/963460723943649165.ics?t=28cb996b99ef4ce1b209fae88830a9fc', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=c0a90f7d-d389-4c03-b8aa-a9c0a11f45d3', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=aVZ3aWJjeHlpTTV6cUxXNUIzK0cwQT09', proxyUrl: '' }
+    },
+    'hill-penthouse-plett': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1112131891991302824.ics?t=a5fa7265615e4449a588490304ce437e', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=d522623d-7e65-4e0a-827a-06a07f74e6aa', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=aDJpaXpXTm16andmdW02YjUxOVNXQT09', proxyUrl: '' }
+    },
+    'plett-escape': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1450044015443213703.ics?t=bb16b85d0bb443f58c5871d546a923a8', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=ff2c61c2-6ef0-496b-a950-199536049e91', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=Y1QxdUdkVndzVVd6WjE0VVJ1THZGQT09', proxyUrl: '' }
+    },
+    'the-place-to-stay': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1625181361211091031.ics?t=9cd1920ede8d467bb1e8aff0ceeb318d', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=0f6717d6-0738-4d30-a5e8-58a8f502273a', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dHhwczFKcm92a0NSV29EQW5uL0pIUT09', proxyUrl: '' }
+    },
+    arrowood: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/866493429255914128.ics?t=537892a729b24860a00d65301a57f470', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=b71893e2-7826-4f0a-acd5-962d5ab506c9', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dUNzVGZDR1hORVd6Sis0aXAxZzF4QT09', proxyUrl: '' }
+    },
+    'little-lincoln': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1452009096746457071.ics?t=6681645d227e481c82e847ce6f4beb71', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=eb04aa54-fef9-4429-85bc-9fc956aa9100', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=SC9JVXBoTTVJdGRWTDExZFVZUjNkUT09', proxyUrl: '' }
+    },
+    'sound-of-silence': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1444707311871428890.ics?t=087246a20bab439197d5687bc17f926c', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=78e2de7d-89f9-4cfb-9a41-a5c4401ddb40', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=a2NqUzhQcG8rMjBkc0ZFbE5XdUxzdz09', proxyUrl: '' }
+    },
+    'stillwater-haven': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1593403423819671903.ics?t=00048409b7654ed7a374fcd0452081a9', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7de05f13-3841-491f-840c-d1a01d041206', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dXp5OWhwcUU3NzU4SVYxQVpNTjJwdz09', proxyUrl: '' }
+    },
+    'rivers-drift': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1599061852478668259.ics?t=4990ee792dae4fd5adc8d2191524df9c', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=cd2c45a8-5e00-47ec-8b4e-37a3d77dcd7e', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=Y0FPTnZ2eVlUeEZFdG5qN1BsN2FjQT09', proxyUrl: '' }
+    },
+    watersong: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1599091848916000968.ics?t=02654c8d2cfc4ae6a94ded72545b8c02', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=RzFoTEJ4S2UwZ2VGcnZGNU9XMFFYZz09', proxyUrl: '' }
+    },
+    'sandy-fingers': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1344704902522360024.ics?t=e34af01baf3f45ff8878044b2014d44e', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ZU5kNmJXR0NsZDlGQWtBWWd2TnFxdz09&rt=458660', proxyUrl: '' }
+    },
+    'sandy-toes': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1315094071847316143.ics?t=bc5bcbea770f421983d4fc0a64313af3', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=04c6a1c3-4c3c-4bf4-b53f-09fb5daab3a4', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ZU5kNmJXR0NsZDlGQWtBWWd2TnFxdz09&rt=432312', proxyUrl: '' }
+    }
+  };
+
   const cleaningFees = {
     'robberg-room': 330,
     'boardwalk-retreat': 350,
@@ -215,6 +400,51 @@
     'little-lincoln': 330,
     'lookout-room': 275,
     'sanctuary-room': 275
+  };
+
+  const seasonalMinStayRules = {
+    'boardwalk-corner': [
+      { start: '2026-12-01', end: '2026-12-04', minStayNights: 7 },
+      { start: '2026-12-15', end: '2027-01-05', minStayNights: 7 }
+    ],
+    'hill-and-tides': [
+      { start: '2026-12-01', end: '2026-12-04', minStayNights: 7 },
+      { start: '2026-12-15', end: '2027-01-05', minStayNights: 7 }
+    ],
+    'la-med': [
+      { start: '2026-12-01', end: '2026-12-04', minStayNights: 7 },
+      { start: '2026-12-15', end: '2027-01-05', minStayNights: 7 }
+    ],
+    'magnificent-view': [
+      { start: '2026-11-27', end: '2027-01-05', minStayNights: 7 }
+    ],
+    'plett-escape': [
+      { start: '2026-11-28', end: '2027-01-15', minStayNights: 2 }
+    ],
+    'rivers-drift': [
+      { start: '2026-11-27', end: '2026-12-04', minStayNights: 7 }
+    ],
+    'sandy-toes': [
+      { start: '2026-12-14', end: '2026-12-19', minStayNights: 6 }
+    ],
+    'sea-esta': [
+      { start: '2026-01-16', end: '2026-07-01', minStayNights: 3 },
+      { start: '2026-07-02', end: '2026-07-10', minStayNights: 5 },
+      { start: '2026-07-11', end: '2026-09-30', minStayNights: 3 },
+      { start: '2026-10-01', end: '2026-11-30', minStayNights: 4 },
+      { start: '2026-12-01', end: '2027-01-15', minStayNights: 14 }
+    ],
+    'sound-of-silence': [
+      { start: '2026-12-01', end: '2026-12-04', minStayNights: 7 },
+      { start: '2027-01-01', end: '2027-01-05', minStayNights: 7 }
+    ],
+    'the-place-to-stay': [
+      { start: '2026-11-28', end: '2027-01-15', minStayNights: 2 }
+    ],
+    watersong: [
+      { start: '2026-12-01', end: '2026-12-04', minStayNights: 7 },
+      { start: '2026-12-15', end: '2027-01-05', minStayNights: 7 }
+    ]
   };
 
   const stayRules = {
@@ -261,7 +491,10 @@
       minStayNights: Number.isFinite(options.minStayNights) ? options.minStayNights : (defaultStayRule.minStayNights || 1),
       maxStayNights: Number.isFinite(options.maxStayNights) ? options.maxStayNights : (defaultStayRule.maxStayNights || 365),
       advanceNoticeDays: Number.isFinite(options.advanceNoticeDays) ? options.advanceNoticeDays : (defaultStayRule.advanceNoticeDays || 0),
-      feeds: emptyFeeds,
+      seasonalMinStayRules: Array.isArray(options.seasonalMinStayRules)
+        ? options.seasonalMinStayRules
+        : (seasonalMinStayRules[key] || []),
+      feeds: options.feeds || workbookFeeds[key] || emptyFeeds,
       blockedDatesEndpoint: options.blockedDatesEndpoint || '',
       baseAirbnbRules: []
     };
@@ -306,23 +539,7 @@
 
   // Only show calendars for properties that currently have live iCal feeds
   // configured in GitHub Actions. Everything else stays hidden until feeds exist.
-  const enabledCalendarSources = new Set([
-    'arrowood',
-    'lookout-room',
-    'sanctuary-room',
-    'wildside',
-    'clifftop',
-    'hill-penthouse-plett',
-    'plett-escape',
-    'the-place-to-stay',
-    'little-lincoln',
-    'sound-of-silence',
-    'stillwater-haven',
-    'rivers-drift',
-    'watersong',
-    'sandy-fingers',
-    'sandy-toes'
-  ]);
+  const enabledCalendarSources = visibleCalendarSources;
 
   const sourceKey = bookingRoot.dataset.bookingSource || '';
   if (!enabledCalendarSources.has(sourceKey)) {
@@ -344,6 +561,7 @@
     minStayNights: 1,
     maxStayNights: 365,
     advanceNoticeDays: 0,
+    seasonalMinStayRules: [],
     baseAirbnbRules: []
   };
   const propertyConfig = {
@@ -371,6 +589,7 @@
     minStayNights: Number.isFinite(workbookSource.minStayNights) ? workbookSource.minStayNights : 1,
     maxStayNights: Number.isFinite(workbookSource.maxStayNights) ? workbookSource.maxStayNights : 365,
     advanceNoticeDays: Number.isFinite(workbookSource.advanceNoticeDays) ? workbookSource.advanceNoticeDays : 0,
+    seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
@@ -852,14 +1071,24 @@
     return dateToKey(addDays(toUtcDate(state.todayKey), propertyConfig.advanceNoticeDays));
   }
 
-  function isStayLengthAllowed(checkIn, checkOut) {
-    const nights = getStayDates(checkIn, checkOut).length;
-    return nights >= propertyConfig.minStayNights && nights <= propertyConfig.maxStayNights;
+  function getMinimumStayNights(checkIn) {
+    const matchingRule = propertyConfig.seasonalMinStayRules.find((rule) => {
+      return checkIn >= rule.start && checkIn <= rule.end && Number.isFinite(rule.minStayNights);
+    });
+
+    return matchingRule ? matchingRule.minStayNights : propertyConfig.minStayNights;
   }
 
-  function buildStayLengthMessage(nights) {
-    if (nights < propertyConfig.minStayNights) {
-      return 'Please select at least ' + propertyConfig.minStayNights + ' night' + (propertyConfig.minStayNights === 1 ? '' : 's') + '.';
+  function isStayLengthAllowed(checkIn, checkOut) {
+    const nights = getStayDates(checkIn, checkOut).length;
+    return nights >= getMinimumStayNights(checkIn) && nights <= propertyConfig.maxStayNights;
+  }
+
+  function buildStayLengthMessage(nights, checkIn = state.checkIn) {
+    const minimumStayNights = checkIn ? getMinimumStayNights(checkIn) : propertyConfig.minStayNights;
+
+    if (nights < minimumStayNights) {
+      return 'Please select at least ' + minimumStayNights + ' night' + (minimumStayNights === 1 ? '' : 's') + '.';
     }
 
     return 'Please select no more than ' + propertyConfig.maxStayNights + ' night' + (propertyConfig.maxStayNights === 1 ? '' : 's') + '.';
