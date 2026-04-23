@@ -386,7 +386,7 @@
   };
 
   const cleaningFees = {
-    'robberg-room': 330,
+    'robberg-room': 275,
     'boardwalk-retreat': 350,
     'boardwalk-corner': 330,
     'hill-and-tides': 330,
