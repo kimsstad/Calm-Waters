@@ -9,7 +9,31 @@
     'lookout-room',
     'sanctuary-room',
     'wildside',
-    'clifftop'
+    'clifftop',
+    'hill-penthouse-plett',
+    'hill-and-tides',
+    'plett-escape',
+    'the-place-to-stay',
+    'little-lincoln',
+    'sound-of-silence',
+    'stillwater-haven',
+    'rivers-drift',
+    'watersong',
+    'seasalt-rest',
+    'sandy-fingers',
+    'sandy-toes',
+    'farallon',
+    'toplis',
+    'panorama',
+    'sea-esta',
+    'goose-valley',
+    'boardwalk-retreat',
+    'boardwalk-corner',
+    'magnificent-view',
+    'sanctuary-hideaway',
+    'la-lapa',
+    'la-med',
+    'tremezzo'
   ]);
   const previewCalendarSources = visibleCalendarSources;
   const activeSourceKey = bookingRoot.dataset.bookingSource || '';
