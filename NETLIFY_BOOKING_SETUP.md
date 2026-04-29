@@ -29,7 +29,6 @@ This avoids the browser CORS problem that was preventing the blocked dates from 
 
 - `arrowood`
 - `boardwalk-corner`
-- `clifftop`
 - `hill-penthouse-plett`
 - `little-lincoln`
 - `lookout-room`
@@ -42,7 +41,6 @@ This avoids the browser CORS problem that was preventing the blocked dates from 
 - `stillwater-haven`
 - `the-place-to-stay`
 - `watersong`
-- `wildside`
 
 ## Notes
 

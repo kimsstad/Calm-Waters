@@ -8,8 +8,6 @@
     'robberg-room',
     'lookout-room',
     'sanctuary-room',
-    'wildside',
-    'clifftop',
     'hill-penthouse-plett',
     'hill-and-tides',
     'plett-escape',
@@ -142,8 +140,6 @@
     'robberg-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
     'lookout-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
     'sanctuary-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
-    wildside: { low: 2420, mid: 3080, high: 4400, prePost: 3740, easter: 3234, rage: 4840 },
-    clifftop: { low: 2420, mid: 3080, high: 4400, prePost: 3740, easter: 3234, rage: 4840 },
     'hill-penthouse-plett': { low: 4070, mid: 4950, high: 13750, prePost: 9350, easter: 5198, rage: 15125 },
     'hill-and-tides': { low: 3300, mid: 4675, high: 8800, prePost: 6738, easter: 4909, rage: 9680 },
     'plett-escape': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
@@ -175,8 +171,6 @@
     'robberg-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
     'lookout-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
     'sanctuary-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
-    wildside: { low: 2662, mid: 3388, high: 4840, prePost: 4114, easter: 3558, rage: 5324 },
-    clifftop: { low: 2662, mid: 3388, high: 4840, prePost: 4114, easter: 3558, rage: 5324 },
     'hill-penthouse-plett': { low: 4477, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
     'hill-and-tides': { low: 3630, mid: 5143, high: 9680, prePost: 7412, easter: 5400, rage: 10648 },
     'plett-escape': { low: 1694, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
@@ -318,16 +312,6 @@
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7d5b2799-cf08-4b91-87d2-ef141168f1dd', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=R1RIQy9YVWE3WEpnVkhwYmVXY0swQT09&rt=431471', proxyUrl: '' }
     },
-    wildside: {
-      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/974398045462404014.ics?t=d2723b6eeef4410995c7283a21bf5504', proxyUrl: '' },
-      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=26b3ff7e-2818-4537-aecd-5253f8b525b7', proxyUrl: '' },
-      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=VXpFMnNjbHpqMlFDV1ZadWpFdFJtUT09', proxyUrl: '' }
-    },
-    clifftop: {
-      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/963460723943649165.ics?t=28cb996b99ef4ce1b209fae88830a9fc', proxyUrl: '' },
-      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=c0a90f7d-d389-4c03-b8aa-a9c0a11f45d3', proxyUrl: '' },
-      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=aVZ3aWJjeHlpTTV6cUxXNUIzK0cwQT09', proxyUrl: '' }
-    },
     'hill-penthouse-plett': {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1112131891991302824.ics?t=a5fa7265615e4449a588490304ce437e', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=d522623d-7e65-4e0a-827a-06a07f74e6aa', proxyUrl: '' },
@@ -466,8 +450,6 @@
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
     'lookout-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
     'sanctuary-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
-    wildside: { minStayNights: 2, maxStayNights: 15, advanceNoticeDays: 1 },
-    clifftop: { minStayNights: 2, maxStayNights: 15, advanceNoticeDays: 1 },
     'hill-penthouse-plett': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 2 },
     'plett-escape': { minStayNights: 1, maxStayNights: 60, advanceNoticeDays: 0 },
     'the-place-to-stay': { minStayNights: 1, maxStayNights: 60, advanceNoticeDays: 0 },
@@ -507,8 +489,6 @@
     'robberg-room': buildPropertySource('robberg-room', 'Robberg Room'),
     'lookout-room': buildPropertySource('lookout-room', 'Lookout Room'),
     'sanctuary-room': buildPropertySource('sanctuary-room', 'Sanctuary Room'),
-    wildside: buildPropertySource('wildside', 'Wildside Cabin'),
-    clifftop: buildPropertySource('clifftop', 'Clifftop Cabin'),
     'hill-penthouse-plett': buildPropertySource('hill-penthouse-plett', 'Hill Penthouse Plett'),
     'hill-and-tides': buildPropertySource('hill-and-tides', 'Hill & Tides'),
     'plett-escape': buildPropertySource('plett-escape', 'Plett Escape'),

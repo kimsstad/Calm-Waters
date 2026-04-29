@@ -11,7 +11,6 @@ const PROPERTY_KEYS = [
   'arrowood',
   'boardwalk-retreat',
   'boardwalk-corner',
-  'clifftop',
   'farallon',
   'goose-valley',
   'hill-and-tides',
@@ -36,8 +35,7 @@ const PROPERTY_KEYS = [
   'the-place-to-stay',
   'toplis',
   'tremezzo',
-  'watersong',
-  'wildside'
+  'watersong'
 ];
 
 const outputDir = path.join(process.cwd(), 'generated', 'availability');
