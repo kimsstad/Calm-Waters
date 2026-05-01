@@ -14,7 +14,6 @@ const PROPERTY_KEYS = [
   'farallon',
   'goose-valley',
   'hill-and-tides',
-  'hill-penthouse-plett',
   'la-lapa',
   'la-med',
   'little-lincoln',

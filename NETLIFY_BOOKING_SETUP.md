@@ -29,7 +29,6 @@ This avoids the browser CORS problem that was preventing the blocked dates from 
 
 - `arrowood`
 - `boardwalk-corner`
-- `hill-penthouse-plett`
 - `little-lincoln`
 - `lookout-room`
 - `plett-escape`
