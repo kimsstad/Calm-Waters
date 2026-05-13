@@ -1235,16 +1235,46 @@ footer {
     padding: 8px 20px;
     font-size: 14px;
     border-top: 1px solid var(--text-color);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     color: var(--text-color);
-    flex-wrap: wrap;
     gap: 6px;
       font-family: "Poppins", sans-serif;
   font-weight: 400;       
   font-size: 14px;
   letter-spacing: 0px;
+}
+
+.footer-left {
+    justify-self: start;
+}
+
+.footer-center {
+    justify-self: center;
+}
+
+.footer-right {
+    justify-self: end;
+}
+
+.footer-instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-instagram-link img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+}
+
+.footer-instagram-link:hover img {
+    transform: scale(1.08);
+    opacity: 0.85;
 }
 
 /* Photo strip */
@@ -1291,8 +1321,19 @@ footer {
 
     .footer-top,
     .footer-bottom {
-        flex-direction: column;
         text-align: center;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 10px;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        justify-self: center;
     }
 }
 
