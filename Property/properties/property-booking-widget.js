@@ -24,6 +24,7 @@
     'panorama',
     'sea-esta',
     'goose-valley',
+    'lagoon-breeze',
     'boardwalk-retreat',
     'boardwalk-corner',
     'magnificent-view',
@@ -156,6 +157,7 @@
     panorama: { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
     'sea-esta': { low: 4180, mid: 4950, high: 13750, prePost: 9350, easter: 5198, rage: 15125 },
     'goose-valley': { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
+    'lagoon-breeze': { low: 2520, mid: 2860, high: 4560, prePost: 3620, easter: 3560, rage: 4720 },
     'boardwalk-retreat': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
     'boardwalk-corner': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
     'magnificent-view': { low: 2420, mid: 3300, high: 6600, prePost: 4950, easter: 3465, rage: 7260 },
@@ -186,6 +188,7 @@
     panorama: { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
     'sea-esta': { low: 4598, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
     'goose-valley': { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
+    'lagoon-breeze': { low: 2772, mid: 3146, high: 5016, prePost: 3982, easter: 3916, rage: 5192 },
     'boardwalk-retreat': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
     'boardwalk-corner': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
     'magnificent-view': { low: 2662, mid: 3630, high: 7260, prePost: 5445, easter: 3812, rage: 7986 },
@@ -299,6 +302,11 @@
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=4c781b53-86da-47a4-8d32-aff8d77e70a6', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=aW5RQ1FSVFFzbzhjenAzc1JxaWlnZz09', proxyUrl: '' }
     },
+    'lagoon-breeze': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/567283432932835665.ics?t=8a71b6341d2a421ea1f6060d2820d25c', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
+    },
     'lookout-room': {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1270916152598267325.ics?t=5918b28c8b824e2fb511d80b316c6e5d', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=7ecde551-10b0-4d40-b77d-dbdc02cfd62b', proxyUrl: '' },
@@ -375,7 +383,8 @@
     arrowood: 330,
     'little-lincoln': 330,
     'lookout-room': 275,
-    'sanctuary-room': 275
+    'sanctuary-room': 275,
+    'lagoon-breeze': 330
   };
 
   const seasonalMinStayRules = {
@@ -440,6 +449,7 @@
     farallon: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     toplis: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
+    'lagoon-breeze': { minStayNights: 2, maxStayNights: 50, advanceNoticeDays: 1 },
     'lookout-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
     'sanctuary-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
     'plett-escape': { minStayNights: 1, maxStayNights: 60, advanceNoticeDays: 0 },
@@ -496,6 +506,7 @@
     panorama: buildPropertySource('panorama', 'Panorama'),
     'sea-esta': buildPropertySource('sea-esta', 'Sea Esta'),
     'goose-valley': buildPropertySource('goose-valley', 'Goose Valley'),
+    'lagoon-breeze': buildPropertySource('lagoon-breeze', 'Lagoon Breeze Apartment'),
     'boardwalk-retreat': buildPropertySource('boardwalk-retreat', 'Boardwalk Retreat'),
     'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks'

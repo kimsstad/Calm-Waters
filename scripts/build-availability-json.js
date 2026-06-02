@@ -13,6 +13,7 @@ const PROPERTY_KEYS = [
   'boardwalk-corner',
   'farallon',
   'goose-valley',
+  'lagoon-breeze',
   'hill-and-tides',
   'la-lapa',
   'la-med',
