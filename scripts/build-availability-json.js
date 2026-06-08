@@ -29,7 +29,6 @@ const PROPERTY_KEYS = [
   'sandy-fingers',
   'sandy-toes',
   'sea-esta',
-  'seasalt-rest',
   'sound-of-silence',
   'stillwater-haven',
   'the-place-to-stay',
