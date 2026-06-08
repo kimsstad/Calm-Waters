@@ -157,7 +157,6 @@
     panorama: { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
     'sea-esta': { low: 4180, mid: 4950, high: 13750, prePost: 9350, easter: 5198, rage: 15125 },
     'goose-valley': { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
-    'lagoon-breeze': { low: 2520, mid: 2860, high: 4560, prePost: 3620, easter: 3560, rage: 4720 },
     'boardwalk-retreat': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
     'boardwalk-corner': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
     'magnificent-view': { low: 2420, mid: 3300, high: 6600, prePost: 4950, easter: 3465, rage: 7260 },
@@ -188,7 +187,6 @@
     panorama: { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
     'sea-esta': { low: 4598, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
     'goose-valley': { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
-    'lagoon-breeze': { low: 2772, mid: 3146, high: 5016, prePost: 3982, easter: 3916, rage: 5192 },
     'boardwalk-retreat': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
     'boardwalk-corner': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
     'magnificent-view': { low: 2662, mid: 3630, high: 7260, prePost: 5445, easter: 3812, rage: 7986 },
@@ -219,6 +217,47 @@
 
     return rules;
   }
+
+  function buildLagoonBreezeSeasonRules(baseYear, yearsToGenerate = 6) {
+    const baseRates = { low: 2000, mid: 2500, high: 5500 };
+    const rules = [
+      { start: baseYear + '-01-01', end: baseYear + '-01-15', flat: baseRates.high }
+    ];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const low = Math.round(baseRates.low * multiplier);
+      const mid = Math.round(baseRates.mid * multiplier);
+      const high = Math.round(baseRates.high * multiplier);
+
+      rules.push(
+        { start: year + '-01-16', end: year + '-04-30', flat: mid },
+        { start: year + '-05-01', end: year + '-09-30', flat: low },
+        { start: year + '-10-01', end: year + '-11-30', flat: mid },
+        { start: year + '-12-01', end: (year + 1) + '-01-15', flat: high }
+      );
+    }
+
+    return rules;
+  }
+
+  function buildLagoonBreezeDecemberMinStayRules(baseYear, yearsToGenerate = 6) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-01',
+        end: year + '-12-31',
+        minStayNights: 7
+      });
+    }
+
+    return rules;
+  }
+
+  const lagoonBreezeWebsitePricingRules = buildLagoonBreezeSeasonRules(2026);
+  const lagoonBreezeSeasonalMinStayRules = buildLagoonBreezeDecemberMinStayRules(2026);
+  const lagoonBreezeMaxBookableDateKey = '2027-12-31';
 
   const emptyFeeds = {
     airbnb: { publicUrl: '', proxyUrl: '' },
@@ -469,11 +508,14 @@
     return {
       displayName,
       festivePeak: null,
-      websitePricingRules: buildSeasonRules(websiteRates2026[key], websiteRates2027[key]),
+      websitePricingRules: Array.isArray(options.websitePricingRules)
+        ? options.websitePricingRules
+        : buildSeasonRules(websiteRates2026[key], websiteRates2027[key]),
       cleaningFee: Number.isFinite(options.cleaningFee) ? options.cleaningFee : (cleaningFees[key] || 0),
       minStayNights: Number.isFinite(options.minStayNights) ? options.minStayNights : (defaultStayRule.minStayNights || 1),
       maxStayNights: Number.isFinite(options.maxStayNights) ? options.maxStayNights : (defaultStayRule.maxStayNights || 365),
       advanceNoticeDays: Number.isFinite(options.advanceNoticeDays) ? options.advanceNoticeDays : (defaultStayRule.advanceNoticeDays || 0),
+      maxBookableDateKey: options.maxBookableDateKey || '',
       seasonalMinStayRules: Array.isArray(options.seasonalMinStayRules)
         ? options.seasonalMinStayRules
         : (seasonalMinStayRules[key] || []),
@@ -506,7 +548,11 @@
     panorama: buildPropertySource('panorama', 'Panorama'),
     'sea-esta': buildPropertySource('sea-esta', 'Sea Esta'),
     'goose-valley': buildPropertySource('goose-valley', 'Goose Valley'),
-    'lagoon-breeze': buildPropertySource('lagoon-breeze', 'Lagoon Breeze Apartment'),
+    'lagoon-breeze': buildPropertySource('lagoon-breeze', 'Lagoon Breeze Apartment', {
+      websitePricingRules: lagoonBreezeWebsitePricingRules,
+      maxBookableDateKey: lagoonBreezeMaxBookableDateKey,
+      seasonalMinStayRules: lagoonBreezeSeasonalMinStayRules
+    }),
     'boardwalk-retreat': buildPropertySource('boardwalk-retreat', 'Boardwalk Retreat'),
     'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks'
@@ -570,13 +616,14 @@
     minStayNights: Number.isFinite(workbookSource.minStayNights) ? workbookSource.minStayNights : 1,
     maxStayNights: Number.isFinite(workbookSource.maxStayNights) ? workbookSource.maxStayNights : 365,
     advanceNoticeDays: Number.isFinite(workbookSource.advanceNoticeDays) ? workbookSource.advanceNoticeDays : 0,
+    maxBookableDateKey: workbookSource.maxBookableDateKey || '',
     seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
   const todayKey = getTodayKey();
-  const maxBookingDateKey = dateToKey(addYears(toUtcDate(todayKey), 1));
-  const maxCalendarDateKey = '2027-12-31';
+  const maxBookingDateKey = propertyConfig.maxBookableDateKey || dateToKey(addYears(toUtcDate(todayKey), 1));
+  const maxCalendarDateKey = propertyConfig.maxBookableDateKey || '2027-12-31';
   const state = {
     todayKey,
     viewMonthKey: '',
@@ -643,6 +690,8 @@
 
   if (form) {
     form.addEventListener('submit', (event) => {
+      const stay = getStayDetails();
+
       if (state.checkIn && !state.checkOut) {
         event.preventDefault();
         openCalendar('checkout');
@@ -654,7 +703,10 @@
         event.preventDefault();
         openCalendar('checkout');
         setStatus(buildStayLengthMessage(getStayDates(state.checkIn, state.checkOut).length), 'warning');
+        return;
       }
+
+      totalInput.value = stay.total !== null ? currency(stay.total) : '';
     });
   }
 
@@ -1125,7 +1177,7 @@
     checkOutInput.value = state.checkOut || '';
     guestsInput.value = String(state.guests);
     nightsInput.value = hasRange ? String(stay.nights) : '';
-    totalInput.value = stay.total !== null ? String(stay.total) : '';
+    totalInput.value = stay.total !== null ? currency(stay.total) : '';
   }
 
   function buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayLength) {
