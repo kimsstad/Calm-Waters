@@ -7,9 +7,7 @@
 /* Promenade Regular - alias both names to the SAME file */
 @font-face {
   font-family: "Promenade";
-  src: url("../FONTS/Jen-Wagner-Promenade-Regular.woff2") format("woff2"),
-       url("../FONTS/Jen-Wagner-Promenade-Regular.woff") format("woff"),
-       url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
+  src: url("../FONTS/Jen-Wagner-Promenade-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

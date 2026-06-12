@@ -27,6 +27,8 @@ This setup keeps the site on GitHub Pages and refreshes blocked dates with GitHu
 6. Add one repository variable named `CW_BOOKING_FEEDS`.
 7. Copy `github-actions-booking-feeds.example.json`, replace the empty strings with your real iCal URLs, and paste the full JSON into that variable.
 
+Baycrest is already wired into the site code and the GitHub Actions build script, but it will only sync on GitHub once its feed is included in the `CW_BOOKING_FEEDS` repository variable. Because `booking-feeds.json` is ignored locally, adding it there is not enough for the hosted site.
+
 ## Starting small
 
 You do not need to fill every property immediately.
@@ -44,6 +46,18 @@ For example, to start with Arrowood only, you can use:
 ```
 
 Then replace the empty strings with Arrowood's real feed URLs.
+
+For Baycrest, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
+
+```json
+{
+  "baycrest": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1705657368873018958.ics?t=de66d1c052674c079d3fd9ee6459a2de",
+    "booking": "",
+    "lekkeslaap": ""
+  }
+}
+```
 
 ## After setup
 

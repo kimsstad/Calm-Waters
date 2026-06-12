@@ -30,6 +30,7 @@
     'sanctuary-hideaway',
     'la-lapa',
     'la-med',
+    'baycrest',
     'tremezzo'
   ]);
   const previewCalendarSources = visibleCalendarSources;
@@ -42,6 +43,8 @@
   const form = bookingRoot.closest('form');
   const dateTriggers = Array.from(bookingRoot.querySelectorAll('[data-date-trigger]'));
   const monthsEl = bookingRoot.querySelector('[data-booking-months]');
+  const bookingPanel = bookingRoot.querySelector('.cw-booking-panel');
+  const bookingShell = bookingRoot.querySelector('.cw-booking-shell');
   const prevBtn = bookingRoot.querySelector('[data-booking-prev]');
   const nextBtn = bookingRoot.querySelector('[data-booking-next]');
   const guestSelect = bookingRoot.querySelector('[data-guest-select]');
@@ -252,9 +255,29 @@
     return rules;
   }
 
+  function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 6) {
+    const baseRate = 22000;
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const rate = Math.round(baseRate * multiplier);
+
+      rules.push({
+        start: year + '-12-05',
+        end: (year + 1) + '-01-05',
+        flat: rate
+      });
+    }
+
+    return rules;
+  }
+
   const lagoonBreezeWebsitePricingRules = buildLagoonBreezeSeasonRules(2026);
   const lagoonBreezeSeasonalMinStayRules = buildLagoonBreezeDecemberMinStayRules(2026);
   const lagoonBreezeMaxBookableDateKey = '2027-12-31';
+  const baycrestWebsitePricingRules = buildBaycrestFestivePricingRules(2026);
+  const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
 
   const emptyFeeds = {
     airbnb: { publicUrl: '', proxyUrl: '' },
@@ -312,6 +335,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1632507681869025301.ics?t=80e40c0b817c4a4c9e74f7a27fa386d4', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=c34a37f7-7e74-445d-b563-5234b37f0070', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ajlobVQwd3JhdWRrVHE2ODRQSHZwZz09', proxyUrl: '' }
+    },
+    baycrest: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1705657368873018958.ics?t=de66d1c052674c079d3fd9ee6459a2de', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
     },
     tremezzo: {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1449790786900033073.ics?t=1a7df908d1504694a03ef2e1136ea235', proxyUrl: '' },
@@ -407,6 +435,7 @@
     'hill-and-tides': 330,
     'magnificent-view': 330,
     'sanctuary-hideaway': 330,
+    baycrest: 330,
     tremezzo: 330,
     'plett-escape': 330,
     'the-place-to-stay': 330,
@@ -475,6 +504,7 @@
     'sanctuary-hideaway': { minStayNights: 3, maxStayNights: 365, advanceNoticeDays: 2 },
     'la-lapa': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     'la-med': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
+    baycrest: { minStayNights: 14, maxStayNights: 31, advanceNoticeDays: 2 },
     farallon: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     toplis: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
@@ -497,6 +527,7 @@
 
     return {
       displayName,
+      availabilityMode: options.availabilityMode || 'hybrid',
       festivePeak: null,
       websitePricingRules: Array.isArray(options.websitePricingRules)
         ? options.websitePricingRules
@@ -505,6 +536,7 @@
       minStayNights: Number.isFinite(options.minStayNights) ? options.minStayNights : (defaultStayRule.minStayNights || 1),
       maxStayNights: Number.isFinite(options.maxStayNights) ? options.maxStayNights : (defaultStayRule.maxStayNights || 365),
       advanceNoticeDays: Number.isFinite(options.advanceNoticeDays) ? options.advanceNoticeDays : (defaultStayRule.advanceNoticeDays || 0),
+      preparationTimeNights: Number.isFinite(options.preparationTimeNights) ? options.preparationTimeNights : 0,
       maxBookableDateKey: options.maxBookableDateKey || '',
       seasonalMinStayRules: Array.isArray(options.seasonalMinStayRules)
         ? options.seasonalMinStayRules
@@ -550,6 +582,12 @@
     'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
     'la-lapa': buildPropertySource('la-lapa', 'La Lapa'),
     'la-med': buildPropertySource('la-med', 'La Med'),
+    baycrest: buildPropertySource('baycrest', 'Baycrest Villa', {
+      availabilityMode: 'static-json-only',
+      websitePricingRules: baycrestWebsitePricingRules,
+      maxBookableDateKey: baycrestMaxBookableDateKey,
+      preparationTimeNights: 2
+    }),
     tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
   };
 
@@ -565,6 +603,7 @@
 
   const workbookSource = workbookPropertySources[sourceKey] || {
     displayName: bookingRoot.dataset.bookingName || 'Property',
+    availabilityMode: 'hybrid',
     festivePeak: null,
     websitePricingRules: [],
     cleaningFee: 0,
@@ -577,12 +616,14 @@
     minStayNights: 1,
     maxStayNights: 365,
     advanceNoticeDays: 0,
+    preparationTimeNights: 0,
     seasonalMinStayRules: [],
     baseAirbnbRules: []
   };
   const propertyConfig = {
     sourceKey,
     propertyName: bookingRoot.dataset.bookingName || workbookSource.displayName,
+    availabilityMode: bookingRoot.dataset.availabilityMode || workbookSource.availabilityMode || 'hybrid',
     availabilityApi: bookingRoot.dataset.availabilityApi || '',
     availabilityJson: bookingRoot.dataset.availabilityJson || '',
     feeds: {
@@ -605,6 +646,7 @@
     minStayNights: Number.isFinite(workbookSource.minStayNights) ? workbookSource.minStayNights : 1,
     maxStayNights: Number.isFinite(workbookSource.maxStayNights) ? workbookSource.maxStayNights : 365,
     advanceNoticeDays: Number.isFinite(workbookSource.advanceNoticeDays) ? workbookSource.advanceNoticeDays : 0,
+    preparationTimeNights: Number.isFinite(workbookSource.preparationTimeNights) ? workbookSource.preparationTimeNights : 0,
     maxBookableDateKey: workbookSource.maxBookableDateKey || '',
     seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
@@ -701,6 +743,7 @@
 
   window.addEventListener('resize', debounce(renderCalendar, 120));
 
+  renderBookingRules();
   loadAvailability();
   updateSummary();
   renderCalendar();
@@ -718,6 +761,11 @@
         }
       } catch (error) {
         lastError = error;
+      }
+
+      if (usesStaticJsonOnlyAvailability()) {
+        handleStrictAvailabilityFailure(lastError);
+        return;
       }
 
       try {
@@ -765,6 +813,20 @@
       console.warn('Failed to load booking blocks for ' + propertyConfig.propertyName, lastError);
     }
 
+    renderCalendar();
+  }
+
+  function usesStaticJsonOnlyAvailability() {
+    return propertyConfig.availabilityMode === 'static-json-only';
+  }
+
+  function handleStrictAvailabilityFailure(error) {
+    if (error) {
+      console.warn('Failed to load GitHub availability for ' + propertyConfig.propertyName, error);
+    }
+
+    state.blockedDates = buildBlockedDateSet(state.todayKey, maxBookingDateKey);
+    setStatus('Availability is syncing from GitHub. Please enquire and we will confirm the dates.', 'warning');
     renderCalendar();
   }
 
@@ -967,6 +1029,7 @@
     const isStart = state.checkIn === dateKey;
     const isEnd = state.checkOut === dateKey;
     const isInRange = Boolean(state.checkIn && state.checkOut && dateKey > state.checkIn && dateKey < state.checkOut);
+    const isCheckoutOnly = state.activeField === 'checkout' && state.checkIn && dateKey > state.checkIn && isBlocked && isSelectableCheckout(dateKey);
     const isCheckInStep =
       state.selectionIntent === 'checkin' ||
       !state.checkIn ||
@@ -977,7 +1040,8 @@
     const isBeyondMax = dateKey > maxBookingDateKey;
 
     if (isPast) button.classList.add('is-past');
-    if (isBlocked) button.classList.add('is-blocked');
+    if (isBlocked && !isCheckoutOnly) button.classList.add('is-blocked');
+    if (isCheckoutOnly) button.classList.add('is-checkout-only');
     if (isBeyondMax) button.classList.add('is-not-yet-open');
     if (isAdvanceNoticeBlocked) button.classList.add('is-disabled');
     if (isStart) button.classList.add('is-start');
@@ -985,7 +1049,7 @@
     if (isInRange) button.classList.add('is-in-range');
     if (isDisabledRangeStep) button.classList.add('is-range-disabled');
 
-    const isHardDisabled = isPast || isBlocked || isBeyondMax || isDisabledRangeStep;
+    const isHardDisabled = isPast || (isBlocked && !isCheckoutOnly) || isBeyondMax || isDisabledRangeStep;
     if (isHardDisabled) {
       button.disabled = true;
     } else {
@@ -1000,7 +1064,7 @@
       });
     }
 
-    button.setAttribute('aria-label', buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked));
+    button.setAttribute('aria-label', buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked, isCheckoutOnly));
     return button;
   }
 
@@ -1140,6 +1204,85 @@
         : null,
       nightlyLabel: buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayDates.length)
     };
+  }
+
+  function renderBookingRules() {
+    if (!bookingPanel || !bookingShell) {
+      return;
+    }
+
+    const ruleItems = buildBookingRuleItems();
+    if (!ruleItems.length) return;
+
+    let rulesPanel = bookingPanel.querySelector('[data-booking-rules]');
+    let rulesGrid = rulesPanel?.querySelector('.cw-booking-rules-grid');
+
+    if (!rulesPanel) {
+      rulesPanel = document.createElement('div');
+      rulesPanel.className = 'cw-booking-rules';
+      rulesPanel.setAttribute('data-booking-rules', '');
+
+      const title = document.createElement('p');
+      title.className = 'cw-booking-rules-title';
+      title.textContent = 'Booking rules';
+
+      rulesGrid = document.createElement('div');
+      rulesGrid.className = 'cw-booking-rules-grid';
+
+      rulesPanel.append(title, rulesGrid);
+      bookingPanel.insertBefore(rulesPanel, bookingShell);
+    }
+
+    if (!rulesGrid) return;
+    rulesGrid.replaceChildren();
+
+    ruleItems.forEach((item) => {
+      const rule = document.createElement('div');
+      rule.className = 'cw-booking-rule';
+
+      const label = document.createElement('span');
+      label.className = 'cw-booking-rule-label';
+      label.textContent = item.label;
+
+      const value = document.createElement('span');
+      value.className = 'cw-booking-rule-value';
+      value.textContent = item.value;
+
+      rule.append(label, value);
+      rulesGrid.append(rule);
+    });
+  }
+
+  function buildBookingRuleItems() {
+    const items = [];
+    const minimumStayValue = propertyConfig.seasonalMinStayRules.length
+      ? 'Varies by date'
+      : formatNights(propertyConfig.minStayNights);
+
+    if (minimumStayValue) {
+      items.push({ label: 'Min stay', value: minimumStayValue });
+    }
+
+    if (Number.isFinite(propertyConfig.maxStayNights) && propertyConfig.maxStayNights > 0) {
+      items.push({ label: 'Max stay', value: formatNights(propertyConfig.maxStayNights) });
+    }
+
+    if (Number.isFinite(propertyConfig.advanceNoticeDays) && propertyConfig.advanceNoticeDays > 0) {
+      items.push({ label: 'Advance notice', value: formatDays(propertyConfig.advanceNoticeDays) });
+    }
+
+    if (Number.isFinite(propertyConfig.preparationTimeNights) && propertyConfig.preparationTimeNights > 0) {
+      items.push({
+        label: 'Prep time',
+        value: formatNights(propertyConfig.preparationTimeNights) + ' before and after'
+      });
+    }
+
+    if (Number.isFinite(propertyConfig.cleaningFee) && propertyConfig.cleaningFee > 0) {
+      items.push({ label: 'Cleaning fee', value: currency(propertyConfig.cleaningFee) + ' per booking' });
+    }
+
+    return items;
   }
 
   function updateSummary() {
@@ -1296,6 +1439,23 @@
     return localSyncApiBaseUrl + '/api/ical-proxy?url=' + encodeURIComponent(targetUrl);
   }
 
+  function buildBlockedDateSet(startKey, endKey) {
+    if (!startKey || !endKey || endKey < startKey) {
+      return new Set();
+    }
+
+    const blockedDates = new Set();
+    let cursor = toUtcDate(startKey);
+    const stop = toUtcDate(endKey);
+
+    while (cursor <= stop) {
+      blockedDates.add(dateToKey(cursor));
+      cursor = addDays(cursor, 1);
+    }
+
+    return blockedDates;
+  }
+
   function roundToNearestTen(amount) {
     return Math.round(amount / 10) * 10;
   }
@@ -1404,9 +1564,10 @@
     return null;
   }
 
-  function buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked) {
+  function buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked, isCheckoutOnly) {
     const formattedDate = formatLongDate(dateKey);
     if (isPast) return formattedDate + ', past date';
+    if (isCheckoutOnly) return formattedDate + ', available for checkout only';
     if (isBlocked) return formattedDate + ', blocked';
     if (isAdvanceNoticeBlocked) return formattedDate + ', unavailable due to advance notice';
     return formattedDate + ', available';
@@ -1486,6 +1647,16 @@
 
   function currency(amount) {
     return 'R' + amount.toLocaleString('en-ZA');
+  }
+
+  function formatDays(count) {
+    if (!Number.isFinite(count) || count <= 0) return '';
+    return count + ' day' + (count === 1 ? '' : 's');
+  }
+
+  function formatNights(count) {
+    if (!Number.isFinite(count) || count <= 0) return '';
+    return count + ' night' + (count === 1 ? '' : 's');
   }
 
   function inRange(dateKey, start, end) {
