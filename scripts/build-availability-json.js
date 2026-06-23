@@ -10,6 +10,7 @@ const {
 const PROPERTY_KEYS = [
   'arrowood',
   'baycrest',
+  'captains-quarters',
   'boardwalk-retreat',
   'boardwalk-corner',
   'farallon',

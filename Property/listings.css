@@ -1264,6 +1264,9 @@ color: var(--background-color);
 @media (max-width: 600px) {
   .contact-form-beach {
     padding: 80px 0;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
   }
 
   .contact-form-inner {

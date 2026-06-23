@@ -167,7 +167,7 @@
           <span class="listings-control-label">Sort By</span>
           <select id="propertySort">
             <option value="featured">Featured</option>
-            <option value="name-asc">Name: A to Z</option>
+            <option value="name-asc" selected>Name: A to Z</option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
             <option value="guests-desc">Guests: Most First</option>
@@ -242,6 +242,25 @@
             <span><i class="fas fa-users"></i> Sleeps 2</span>
           </div>
           <a href="properties/Sanctuary-Studio-Suite.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <!-- Captain's Quarters -->
+      <div class="listing-item">
+        <div class="listing-images">
+          <img src="../Resources/CaptainsQuarters/living room (1).webp" alt="Captain's Quarters living room">
+          <img src="../Resources/CaptainsQuarters/patio (3).webp" alt="Captain's Quarters patio and garden">
+          <div class="listing-price">R1,320 - R3,520</div>
+        </div>
+        <div class="listing-details">
+          <h3>Captain's Quarters</h3>
+          <p>Newly renovated ground-floor retreat with private garden, patio and pool access</p>
+          <div class="listing-features">
+            <span><i class="fas fa-bed"></i> 1 Bed</span>
+            <span><i class="fas fa-bath"></i> 1 Bath</span>
+            <span><i class="fas fa-users"></i> Sleeps 2</span>
+          </div>
+          <a href="properties/Captains-Quarters.html" class="btn">View Details</a>
         </div>
       </div>
 
@@ -385,8 +404,8 @@
       <!-- La-Lapa -->
       <div class="listing-item">
   <div class="listing-images">
-    <img src="../Resources/LaLapa/1.webp" alt="La-Lapa - Main View">
-    <img src="../Resources/LaLapa/10.webp" alt="La-Lapa - Alternate View">
+    <img src="../Resources/LaLapa/10.webp" alt="La-Lapa - Main View">
+    <img src="../Resources/LaLapa/1.webp" alt="La-Lapa - Alternate View">
     <div class="listing-price">R2,200 - R4,477</div>
   </div>
   <div class="listing-details">
@@ -462,8 +481,8 @@
       <!-- Panorama Sea-View Apartment -->
       <div class="listing-item">
         <div class="listing-images">
-          <img src="../Resources/Panorama/1.webp" alt="Panorama Sea-View Apartment - Main View">
-          <img src="../Resources/Panorama/2.webp" alt="Panorama Sea-View Apartment - Alternate View">
+          <img src="../Resources/Panorama/2.webp" alt="Panorama Sea-View Apartment - Main View">
+          <img src="../Resources/Panorama/1.webp" alt="Panorama Sea-View Apartment - Alternate View">
           <div class="listing-price">R1,980 - R6,050</div>
         </div>
         <div class="listing-details">
@@ -502,8 +521,8 @@
 <!-- River's Drift -->
 <div class="listing-item">
   <div class="listing-images">
-    <img src="../Resources/RiversDrift/1.webp" alt="River's Drift - Main View">
-    <img src="../Resources/RiversDrift/2.webp" alt="River's Drift - Alternate View">
+    <img src="../Resources/RiversDrift/2.webp" alt="River's Drift - Main View">
+    <img src="../Resources/RiversDrift/1.webp" alt="River's Drift - Alternate View">
     <div class="listing-price">R1,980 - R5,082</div>
   </div>
   <div class="listing-details">
@@ -580,8 +599,8 @@
       <!-- Sea Esta -->
       <div class="listing-item">
         <div class="listing-images">
-          <img src="../Resources/SeaEsta/2.webp" alt="Sea Esta Front Exterior">
           <img src="../Resources/SeaEsta/9.webp" alt="Sea Esta Patio and BBQ Area">
+          <img src="../Resources/SeaEsta/2.webp" alt="Sea Esta Front Exterior">
           <div class="listing-price">R4,180 - R15,125</div>
         </div>
         <div class="listing-details">
@@ -695,8 +714,8 @@
       <!-- Lagoon Breeze Apartment -->
       <div class="listing-item">
         <div class="listing-images">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-567283432932835665/original/afcc43fd-8360-468d-8104-58ff4fded74c.png" alt="Lagoon Breeze Apartment exterior">
-          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-567283432932835665/original/66b83b4d-5aa5-4dad-8977-a23d7397746a.png" alt="Lagoon Breeze Apartment patio">
+          <img src="../Resources/LagoonBreeze/1.webp" alt="Lagoon Breeze Apartment preview photo 1">
+          <img src="../Resources/LagoonBreeze/2.webp" alt="Lagoon Breeze Apartment preview photo 2">
           <div class="listing-price">R2,000 - R5,500</div>
         </div>
         <div class="listing-details">
@@ -1072,7 +1091,7 @@
       bedroomFilter.value = '';
       priceMinFilter.value = '0';
       priceMaxFilter.value = String(sliderCeiling);
-      sortSelect.value = 'featured';
+      sortSelect.value = 'name-asc';
       updatePriceSliderUI();
       setPriceDropdownOpen(false);
       applyPropertyFilters();

@@ -4,6 +4,11 @@
     "booking": "",
     "lekkeslaap": ""
   },
+  "captains-quarters": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1708541986364844815.ics?t=758a324eb2cf4a598d32da01e340e561",
+    "booking": "https://ical.booking.com/v1/export?t=8ee8cc25-159e-4bec-b8e4-3ed64993f314",
+    "lekkeslaap": ""
+  },
   "boardwalk-corner": {
     "airbnb": "",
     "booking": "",

@@ -31,6 +31,7 @@
     'la-lapa',
     'la-med',
     'baycrest',
+    'captains-quarters',
     'tremezzo'
   ]);
   const previewCalendarSources = visibleCalendarSources;
@@ -255,6 +256,29 @@
     return rules;
   }
 
+  function buildCaptainsQuartersSeasonRules(baseYear, yearsToGenerate = 6) {
+    const baseRates = { low: 1320, mid: 1980, high: 3520 };
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const low = Math.round(baseRates.low * multiplier);
+      const mid = Math.round(baseRates.mid * multiplier);
+      const high = Math.round(baseRates.high * multiplier);
+
+      rules.push(
+        { start: year + '-01-01', end: year + '-01-15', flat: high },
+        // April was not specified separately, so it follows mid season to keep pricing continuous.
+        { start: year + '-01-16', end: year + '-04-30', flat: mid },
+        { start: year + '-05-01', end: year + '-09-30', flat: low },
+        { start: year + '-10-01', end: year + '-11-30', flat: mid },
+        { start: year + '-12-01', end: year + '-12-31', flat: high }
+      );
+    }
+
+    return rules;
+  }
+
   function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 6) {
     const baseRate = 22000;
     const rules = [];
@@ -278,6 +302,8 @@
   const lagoonBreezeMaxBookableDateKey = '2027-12-31';
   const baycrestWebsitePricingRules = buildBaycrestFestivePricingRules(2026);
   const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
+  const captainsQuartersWebsitePricingRules = buildCaptainsQuartersSeasonRules(2026);
+  const captainsQuartersMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
 
   const emptyFeeds = {
     airbnb: { publicUrl: '', proxyUrl: '' },
@@ -339,6 +365,11 @@
     baycrest: {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1705657368873018958.ics?t=de66d1c052674c079d3fd9ee6459a2de', proxyUrl: '' },
       booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
+    },
+    'captains-quarters': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1708541986364844815.ics?t=758a324eb2cf4a598d32da01e340e561', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=8ee8cc25-159e-4bec-b8e4-3ed64993f314', proxyUrl: '' },
       lekkeslaap: { publicUrl: '', proxyUrl: '' }
     },
     tremezzo: {
@@ -505,6 +536,7 @@
     'la-lapa': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     'la-med': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     baycrest: { minStayNights: 14, maxStayNights: 31, advanceNoticeDays: 2 },
+    'captains-quarters': { minStayNights: 1, maxStayNights: 365, advanceNoticeDays: 0 },
     farallon: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     toplis: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
@@ -536,6 +568,7 @@
       minStayNights: Number.isFinite(options.minStayNights) ? options.minStayNights : (defaultStayRule.minStayNights || 1),
       maxStayNights: Number.isFinite(options.maxStayNights) ? options.maxStayNights : (defaultStayRule.maxStayNights || 365),
       advanceNoticeDays: Number.isFinite(options.advanceNoticeDays) ? options.advanceNoticeDays : (defaultStayRule.advanceNoticeDays || 0),
+      sameDayCutoffMinutes: Number.isFinite(options.sameDayCutoffMinutes) ? options.sameDayCutoffMinutes : null,
       preparationTimeNights: Number.isFinite(options.preparationTimeNights) ? options.preparationTimeNights : 0,
       maxBookableDateKey: options.maxBookableDateKey || '',
       seasonalMinStayRules: Array.isArray(options.seasonalMinStayRules)
@@ -588,6 +621,11 @@
       maxBookableDateKey: baycrestMaxBookableDateKey,
       preparationTimeNights: 2
     }),
+    'captains-quarters': buildPropertySource('captains-quarters', 'Captain\'s Quarters', {
+      websitePricingRules: captainsQuartersWebsitePricingRules,
+      maxBookableDateKey: captainsQuartersMaxBookableDateKey,
+      sameDayCutoffMinutes: 12 * 60
+    }),
     tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
   };
 
@@ -616,6 +654,7 @@
     minStayNights: 1,
     maxStayNights: 365,
     advanceNoticeDays: 0,
+    sameDayCutoffMinutes: null,
     preparationTimeNights: 0,
     seasonalMinStayRules: [],
     baseAirbnbRules: []
@@ -646,6 +685,7 @@
     minStayNights: Number.isFinite(workbookSource.minStayNights) ? workbookSource.minStayNights : 1,
     maxStayNights: Number.isFinite(workbookSource.maxStayNights) ? workbookSource.maxStayNights : 365,
     advanceNoticeDays: Number.isFinite(workbookSource.advanceNoticeDays) ? workbookSource.advanceNoticeDays : 0,
+    sameDayCutoffMinutes: Number.isFinite(workbookSource.sameDayCutoffMinutes) ? workbookSource.sameDayCutoffMinutes : null,
     preparationTimeNights: Number.isFinite(workbookSource.preparationTimeNights) ? workbookSource.preparationTimeNights : 0,
     maxBookableDateKey: workbookSource.maxBookableDateKey || '',
     seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
@@ -1154,7 +1194,18 @@
   }
 
   function getEarliestCheckInKey() {
-    return dateToKey(addDays(toUtcDate(state.todayKey), propertyConfig.advanceNoticeDays));
+    if (propertyConfig.advanceNoticeDays > 0) {
+      return dateToKey(addDays(toUtcDate(state.todayKey), propertyConfig.advanceNoticeDays));
+    }
+
+    if (Number.isFinite(propertyConfig.sameDayCutoffMinutes)) {
+      const nowMinutes = getCurrentTimeMinutes();
+      if (Number.isFinite(nowMinutes) && nowMinutes >= propertyConfig.sameDayCutoffMinutes) {
+        return dateToKey(addDays(toUtcDate(state.todayKey), 1));
+      }
+    }
+
+    return state.todayKey;
   }
 
   function getMinimumStayNights(checkIn) {
@@ -1181,6 +1232,10 @@
   }
 
   function buildAdvanceNoticeMessage() {
+    if (propertyConfig.advanceNoticeDays <= 0 && Number.isFinite(propertyConfig.sameDayCutoffMinutes)) {
+      return 'Same-day check-in closes at ' + formatTimeFromMinutes(propertyConfig.sameDayCutoffMinutes) + '.';
+    }
+
     if (propertyConfig.advanceNoticeDays <= 0) {
       return 'This date is not available for check-in.';
     }
@@ -1269,6 +1324,10 @@
 
     if (Number.isFinite(propertyConfig.advanceNoticeDays) && propertyConfig.advanceNoticeDays > 0) {
       items.push({ label: 'Advance notice', value: formatDays(propertyConfig.advanceNoticeDays) });
+    }
+
+    if (propertyConfig.advanceNoticeDays <= 0 && Number.isFinite(propertyConfig.sameDayCutoffMinutes)) {
+      items.push({ label: 'Same-day cutoff', value: formatTimeFromMinutes(propertyConfig.sameDayCutoffMinutes) });
     }
 
     if (Number.isFinite(propertyConfig.preparationTimeNights) && propertyConfig.preparationTimeNights > 0) {
@@ -1602,6 +1661,20 @@
     return year + '-' + month + '-' + day;
   }
 
+  function getCurrentTimeMinutes() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: appTimeZone,
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).formatToParts(new Date());
+
+    const hour = Number(parts.find((part) => part.type === 'hour')?.value);
+    const minute = Number(parts.find((part) => part.type === 'minute')?.value);
+    if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+    return hour * 60 + minute;
+  }
+
   function toUtcDate(dateKey) {
     return new Date(dateKey + 'T00:00:00Z');
   }
@@ -1643,6 +1716,14 @@
       month: 'short',
       timeZone: 'UTC'
     });
+  }
+
+  function formatTimeFromMinutes(totalMinutes) {
+    const hours24 = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    const suffix = hours24 >= 12 ? 'PM' : 'AM';
+    const hours12 = hours24 % 12 || 12;
+    return String(hours12) + ':' + String(minutes).padStart(2, '0') + ' ' + suffix;
   }
 
   function currency(amount) {

@@ -1098,6 +1098,15 @@ overflow: hidden;
 
 .cta-btn:hover::after { transform: translateX(6px); }
 
+@media (max-width: 900px) {
+  .services-background,
+  .cta-book {
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
 /* small screens: tighten spacing and size */
 @media (max-width: 768px) {
   .cta-book { padding: 60px 12px; }
