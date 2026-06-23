@@ -975,6 +975,10 @@ footer {
     .footer-right {
         justify-self: center;
     }
+
+    .footer-center { order: 1; }
+    .footer-left { order: 2; }
+    .footer-right { order: 3; }
 }
 
 /* Extra small - gallery images stack single-column */

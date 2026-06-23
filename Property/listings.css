@@ -1608,6 +1608,10 @@ footer {
     text-align: center;
   }
 
+  .footer-center { order: 1; }
+  .footer-left { order: 2; }
+  .footer-right { order: 3; }
+
   .booking-icons {
     justify-content: center;
   }
