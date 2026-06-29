@@ -613,8 +613,8 @@
     }),
     'magnificent-view': buildPropertySource('magnificent-view', 'Magnificent View'),
     'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
-    'la-lapa': buildPropertySource('la-lapa', 'La Lapa'),
-    'la-med': buildPropertySource('la-med', 'La Med'),
+    'la-lapa': buildPropertySource('la-lapa', 'La-Lapa'),
+    'la-med': buildPropertySource('la-med', 'La-Med'),
     baycrest: buildPropertySource('baycrest', 'Baycrest Villa', {
       availabilityMode: 'static-json-only',
       websitePricingRules: baycrestWebsitePricingRules,
