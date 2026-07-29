@@ -611,6 +611,7 @@
     'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks'
     }),
+    'clementine-cottage': buildPropertySource('clementine-cottage', 'Clementine Cottage'),
     'magnificent-view': buildPropertySource('magnificent-view', 'Magnificent View'),
     'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
     'la-lapa': buildPropertySource('la-lapa', 'La-Lapa'),
