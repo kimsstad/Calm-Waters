@@ -90,6 +90,7 @@ function getPropertyFeedConfig(propertyKey, options = {}) {
 async function fetchFeed(channel, url, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
   const timeoutMs = options.timeoutMs || 15000;
+  const preparationTimeNights = normalizePreparationTimeNights(options.preparationTimeNights);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -108,7 +109,7 @@ async function fetchFeed(channel, url, options = {}) {
     const calendarText = await response.text();
     return {
       channel,
-      blockedDates: parseIcalBlockedDates(calendarText)
+      blockedDates: parseIcalBlockedDates(calendarText, { preparationTimeNights })
     };
   } finally {
     clearTimeout(timeout);
@@ -139,8 +140,12 @@ async function mergeAvailabilityForProperty(propertyKey, options = {}) {
     };
   }
 
+  const preparationTimeNights = normalizePreparationTimeNights(options.preparationTimeNights);
   const results = await Promise.allSettled(
-    configuredFeeds.map(({ channel, url }) => fetchFeed(channel, url, options))
+    configuredFeeds.map(({ channel, url }) => fetchFeed(channel, url, {
+      ...options,
+      preparationTimeNights
+    }))
   );
 
   const blockedDates = new Set();
@@ -165,8 +170,9 @@ async function mergeAvailabilityForProperty(propertyKey, options = {}) {
   };
 }
 
-function parseIcalBlockedDates(calendarText) {
+function parseIcalBlockedDates(calendarText, options = {}) {
   const blockedDates = new Set();
+  const preparationTimeNights = normalizePreparationTimeNights(options.preparationTimeNights);
   const lines = unfoldIcalLines(calendarText);
   let currentEvent = null;
 
@@ -180,9 +186,11 @@ function parseIcalBlockedDates(calendarText) {
       if (currentEvent && currentEvent.start) {
         const startDate = toUtcDate(currentEvent.start);
         const endDate = currentEvent.end ? toUtcDate(currentEvent.end) : addDays(startDate, 1);
-        let cursor = new Date(startDate.getTime());
+        const blockStartDate = addDays(startDate, -preparationTimeNights);
+        const blockEndDate = addDays(endDate, preparationTimeNights);
+        let cursor = new Date(blockStartDate.getTime());
 
-        while (cursor < endDate) {
+        while (cursor < blockEndDate) {
           blockedDates.add(dateToKey(cursor));
           cursor = addDays(cursor, 1);
         }
@@ -204,6 +212,11 @@ function parseIcalBlockedDates(calendarText) {
   }
 
   return blockedDates;
+}
+
+function normalizePreparationTimeNights(value) {
+  const numericValue = Number(value);
+  return Number.isFinite(numericValue) && numericValue > 0 ? Math.floor(numericValue) : 0;
 }
 
 function unfoldIcalLines(calendarText) {

@@ -11,6 +11,7 @@ const PROPERTY_KEYS = [
   'arrowood',
   'baycrest',
   'captains-quarters',
+  'clementine-cottage',
   'boardwalk-retreat',
   'boardwalk-corner',
   'farallon',
@@ -39,6 +40,10 @@ const PROPERTY_KEYS = [
   'watersong'
 ];
 
+const PROPERTY_PREPARATION_TIME_NIGHTS = {
+  'clementine-cottage': 1
+};
+
 const outputDir = path.join(process.cwd(), 'generated', 'availability');
 
 async function main() {
@@ -49,11 +54,13 @@ async function main() {
 
   for (const propertyKey of PROPERTY_KEYS) {
     const availability = await mergeAvailabilityForProperty(propertyKey, {
-      feedConfigJson
+      feedConfigJson,
+      preparationTimeNights: PROPERTY_PREPARATION_TIME_NIGHTS[propertyKey] || 0
     });
     const payload = {
       property: propertyKey,
       generatedAt,
+      preparationTimeNights: PROPERTY_PREPARATION_TIME_NIGHTS[propertyKey] || 0,
       blockedDates: availability.blockedDates,
       channelsLoaded: availability.channelsLoaded,
       warnings: availability.warnings

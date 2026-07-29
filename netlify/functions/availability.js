@@ -17,6 +17,10 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8'
 };
 
+const PROPERTY_PREPARATION_TIME_NIGHTS = {
+  'clementine-cottage': 1
+};
+
 exports.handler = async function handler(event) {
   if (event.httpMethod === 'OPTIONS') {
     return buildJsonResponse(204, {});
@@ -42,7 +46,9 @@ exports.handler = async function handler(event) {
     });
   }
 
-  const payload = await mergeAvailabilityForProperty(property);
+  const payload = await mergeAvailabilityForProperty(property, {
+    preparationTimeNights: PROPERTY_PREPARATION_TIME_NIGHTS[property] || 0
+  });
   return buildJsonResponse(200, payload);
 };
 

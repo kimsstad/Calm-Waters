@@ -523,6 +523,74 @@
   background: #f8f5ee;
 }
 
+.cw-booking-breakdown {
+  margin-top: 18px;
+}
+
+.cw-booking-breakdown-title {
+  margin: 0 0 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.cw-booking-rate-breakdown {
+  margin-top: 12px;
+}
+
+.cw-booking-rate-list {
+  border: 1px solid rgba(40, 69, 132, 0.12);
+  background: #ffffff;
+}
+
+.cw-booking-rate-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(40, 69, 132, 0.1);
+}
+
+.cw-booking-rate-row:last-child {
+  border-bottom: 0;
+}
+
+.cw-booking-rate-row.is-total {
+  background: #f8f5ee;
+}
+
+.cw-booking-rate-season,
+.cw-booking-rate-detail,
+.cw-booking-rate-value,
+.cw-booking-rate-note {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.45;
+  color: #2a2d36;
+}
+
+.cw-booking-rate-season {
+  font-weight: 600;
+}
+
+.cw-booking-rate-detail {
+  color: #60707d;
+}
+
+.cw-booking-rate-value {
+  font-weight: 600;
+  text-align: right;
+}
+
+.cw-booking-rate-note {
+  margin: 10px 0 0;
+  font-size: 0.84rem;
+  color: #667480;
+}
+
 @media (max-width: 1080px) {
   .cw-booking-compact,
   .cw-booking-inline-summary,
@@ -557,5 +625,14 @@
 
   .cw-booking-rules-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cw-booking-rate-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .cw-booking-rate-value {
+    text-align: left;
   }
 }

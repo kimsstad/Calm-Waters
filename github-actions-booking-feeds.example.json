@@ -14,6 +14,11 @@
     "booking": "https://ical.booking.com/v1/export?t=8ee8cc25-159e-4bec-b8e4-3ed64993f314",
     "lekkeslaap": ""
   },
+  "clementine-cottage": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1739001401218091718.ics?t=90882ba6158448a2b5a02bfbdf163f3f",
+    "booking": "https://ical.booking.com/v1/export?t=e4c8764c-0404-431b-ab07-90770c55a25e",
+    "lekkeslaap": "https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=Mk9VNEs5T2NqMVNHTis4SUIyMm5TZz09"
+  },
   "boardwalk-corner": {
     "airbnb": "",
     "booking": "",

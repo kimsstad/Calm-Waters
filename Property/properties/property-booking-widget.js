@@ -32,6 +32,7 @@
     'la-med',
     'baycrest',
     'captains-quarters',
+    'clementine-cottage',
     'tremezzo'
   ]);
   const previewCalendarSources = visibleCalendarSources;
@@ -279,6 +280,42 @@
     return rules;
   }
 
+  function buildClementineSeasonRules(baseYear, yearsToGenerate = 8) {
+    const rates = {
+      low: 1749,
+      mid: 2475,
+      high: 4862
+    };
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push(
+        { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
+        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'Low season' },
+        { start: year + '-10-01', end: year + '-11-26', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-11-27', end: (year + 1) + '-01-15', flat: rates.high, label: 'High season' }
+      );
+    }
+
+    return rules;
+  }
+
+  function buildClementineFestiveMinStayRules(baseYear, yearsToGenerate = 8) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-13',
+        end: (year + 1) + '-01-09',
+        minStayNights: 7,
+        label: 'Festive season'
+      });
+    }
+
+    return rules;
+  }
+
   function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 6) {
     const baseRate = 22000;
     const rules = [];
@@ -304,6 +341,10 @@
   const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
   const captainsQuartersWebsitePricingRules = buildCaptainsQuartersSeasonRules(2026);
   const captainsQuartersMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
+  const clementineBaseYear = Number(getTodayKey().slice(0, 4)) - 1;
+  const clementineWebsitePricingRules = buildClementineSeasonRules(clementineBaseYear);
+  const clementineSeasonalMinStayRules = buildClementineFestiveMinStayRules(clementineBaseYear);
+  const clementineMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
 
   const emptyFeeds = {
     airbnb: { publicUrl: '', proxyUrl: '' },
@@ -371,6 +412,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1708541986364844815.ics?t=758a324eb2cf4a598d32da01e340e561', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=8ee8cc25-159e-4bec-b8e4-3ed64993f314', proxyUrl: '' },
       lekkeslaap: { publicUrl: '', proxyUrl: '' }
+    },
+    'clementine-cottage': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1739001401218091718.ics?t=90882ba6158448a2b5a02bfbdf163f3f', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=e4c8764c-0404-431b-ab07-90770c55a25e', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=Mk9VNEs5T2NqMVNHTis4SUIyMm5TZz09', proxyUrl: '' }
     },
     tremezzo: {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1449790786900033073.ics?t=1a7df908d1504694a03ef2e1136ea235', proxyUrl: '' },
@@ -537,6 +583,7 @@
     'la-med': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     baycrest: { minStayNights: 14, maxStayNights: 31, advanceNoticeDays: 2 },
     'captains-quarters': { minStayNights: 1, maxStayNights: 365, advanceNoticeDays: 0 },
+    'clementine-cottage': { minStayNights: 2, maxStayNights: 31, advanceNoticeDays: 1 },
     farallon: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     toplis: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
@@ -574,6 +621,7 @@
       seasonalMinStayRules: Array.isArray(options.seasonalMinStayRules)
         ? options.seasonalMinStayRules
         : (seasonalMinStayRules[key] || []),
+      seasonalMinStayMode: options.seasonalMinStayMode || 'checkin',
       feeds: options.feeds || workbookFeeds[key] || emptyFeeds,
       blockedDatesEndpoint: options.blockedDatesEndpoint || '',
       baseAirbnbRules: []
@@ -611,7 +659,14 @@
     'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks'
     }),
-    'clementine-cottage': buildPropertySource('clementine-cottage', 'Clementine Cottage'),
+    'clementine-cottage': buildPropertySource('clementine-cottage', 'Clementine Cottage', {
+      availabilityMode: 'static-json-only',
+      websitePricingRules: clementineWebsitePricingRules,
+      maxBookableDateKey: clementineMaxBookableDateKey,
+      preparationTimeNights: 1,
+      seasonalMinStayRules: clementineSeasonalMinStayRules,
+      seasonalMinStayMode: 'stay-overlap'
+    }),
     'magnificent-view': buildPropertySource('magnificent-view', 'Magnificent View'),
     'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
     'la-lapa': buildPropertySource('la-lapa', 'La-Lapa'),
@@ -658,6 +713,7 @@
     sameDayCutoffMinutes: null,
     preparationTimeNights: 0,
     seasonalMinStayRules: [],
+    seasonalMinStayMode: 'checkin',
     baseAirbnbRules: []
   };
   const propertyConfig = {
@@ -690,6 +746,7 @@
     preparationTimeNights: Number.isFinite(workbookSource.preparationTimeNights) ? workbookSource.preparationTimeNights : 0,
     maxBookableDateKey: workbookSource.maxBookableDateKey || '',
     seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
+    seasonalMinStayMode: workbookSource.seasonalMinStayMode || 'checkin',
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
@@ -774,7 +831,7 @@
       if (state.checkIn && state.checkOut && !isStayLengthAllowed(state.checkIn, state.checkOut)) {
         event.preventDefault();
         openCalendar('checkout');
-        setStatus(buildStayLengthMessage(getStayDates(state.checkIn, state.checkOut).length), 'warning');
+        setStatus(buildStayLengthMessage(getStayDates(state.checkIn, state.checkOut).length, state.checkIn, state.checkOut), 'warning');
         return;
       }
 
@@ -949,7 +1006,9 @@
 
         const calendarText = await response.text();
         return {
-          blockedDates: parseIcalBlockedDates(calendarText)
+          blockedDates: parseIcalBlockedDates(calendarText, {
+            preparationTimeNights: propertyConfig.preparationTimeNights
+          })
         };
       } catch (error) {
         lastError = error;
@@ -1144,7 +1203,7 @@
     if (!isSelectableCheckout(dateKey)) {
       const selectedNights = getStayDates(state.checkIn, dateKey).length;
       if (selectedNights > 0 && !isStayLengthAllowed(state.checkIn, dateKey)) {
-        setStatus(buildStayLengthMessage(selectedNights), 'warning');
+        setStatus(buildStayLengthMessage(selectedNights, state.checkIn, dateKey), 'warning');
         return;
       }
 
@@ -1209,21 +1268,33 @@
     return state.todayKey;
   }
 
-  function getMinimumStayNights(checkIn) {
-    const matchingRule = propertyConfig.seasonalMinStayRules.find((rule) => {
-      return checkIn >= rule.start && checkIn <= rule.end && Number.isFinite(rule.minStayNights);
+  function getMinimumStayNights(checkIn, checkOut = '') {
+    let minimumStayNights = propertyConfig.minStayNights;
+    const shouldCheckStayOverlap = propertyConfig.seasonalMinStayMode === 'stay-overlap' && checkOut;
+    const stayDates = shouldCheckStayOverlap ? getStayDates(checkIn, checkOut) : [];
+
+    propertyConfig.seasonalMinStayRules.forEach((rule) => {
+      if (!Number.isFinite(rule.minStayNights)) return;
+
+      const ruleApplies = shouldCheckStayOverlap
+        ? stayDates.some((dateKey) => dateKey >= rule.start && dateKey <= rule.end)
+        : checkIn >= rule.start && checkIn <= rule.end;
+
+      if (ruleApplies) {
+        minimumStayNights = Math.max(minimumStayNights, rule.minStayNights);
+      }
     });
 
-    return matchingRule ? matchingRule.minStayNights : propertyConfig.minStayNights;
+    return minimumStayNights;
   }
 
   function isStayLengthAllowed(checkIn, checkOut) {
     const nights = getStayDates(checkIn, checkOut).length;
-    return nights >= getMinimumStayNights(checkIn) && nights <= propertyConfig.maxStayNights;
+    return nights >= getMinimumStayNights(checkIn, checkOut) && nights <= propertyConfig.maxStayNights;
   }
 
-  function buildStayLengthMessage(nights, checkIn = state.checkIn) {
-    const minimumStayNights = checkIn ? getMinimumStayNights(checkIn) : propertyConfig.minStayNights;
+  function buildStayLengthMessage(nights, checkIn = state.checkIn, checkOut = state.checkOut) {
+    const minimumStayNights = checkIn ? getMinimumStayNights(checkIn, checkOut) : propertyConfig.minStayNights;
 
     if (nights < minimumStayNights) {
       return 'Please select at least ' + minimumStayNights + ' night' + (minimumStayNights === 1 ? '' : 's') + '.';
@@ -1246,19 +1317,27 @@
 
   function getStayDetails() {
     const stayDates = getStayDates(state.checkIn, state.checkOut);
-    const nightlyRates = stayDates
-      .map((dateKey) => getWebsiteNightlyPrice(dateKey))
+    const rateDetails = stayDates.map((dateKey) => getWebsiteNightlyRateDetail(dateKey));
+    const nightlyRates = rateDetails
+      .map((detail) => detail.rate)
       .filter((value) => value !== null);
 
     const hasVerifiedPricing = propertyConfig.websitePricingRules.length > 0 || propertyConfig.airbnbPricingRules.length > 0;
     const hasCompletePricing = hasVerifiedPricing && nightlyRates.length === stayDates.length && stayDates.length > 0;
+    const accommodationTotal = hasCompletePricing
+      ? nightlyRates.reduce((sum, value) => sum + value, 0)
+      : null;
 
     return {
       nights: stayDates.length,
-      total: hasCompletePricing
-        ? nightlyRates.reduce((sum, value) => sum + value, 0) + propertyConfig.cleaningFee
+      accommodationTotal,
+      total: accommodationTotal !== null
+        ? accommodationTotal + propertyConfig.cleaningFee
         : null,
-      nightlyLabel: buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayDates.length)
+      nightlyLabel: buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayDates.length),
+      rateDetails,
+      rateGroups: buildRateGroups(rateDetails),
+      hasCompletePricing
     };
   }
 
@@ -1311,8 +1390,16 @@
 
   function buildBookingRuleItems() {
     const items = [];
-    const minimumStayValue = propertyConfig.seasonalMinStayRules.length
-      ? 'Varies by date'
+    const seasonalMinimumStayNights = propertyConfig.seasonalMinStayRules
+      .map((rule) => rule.minStayNights)
+      .filter((value) => Number.isFinite(value));
+    const highestSeasonalMinimum = seasonalMinimumStayNights.length
+      ? Math.max(...seasonalMinimumStayNights)
+      : 0;
+    const minimumStayValue = highestSeasonalMinimum > propertyConfig.minStayNights
+      ? propertyConfig.seasonalMinStayMode === 'stay-overlap'
+        ? formatNights(propertyConfig.minStayNights) + '; ' + formatNights(highestSeasonalMinimum) + ' festive'
+        : 'Varies by date'
       : formatNights(propertyConfig.minStayNights);
 
     if (minimumStayValue) {
@@ -1370,6 +1457,157 @@
     guestsInput.value = String(state.guests);
     nightsInput.value = hasRange ? String(stay.nights) : '';
     totalInput.value = stay.total !== null ? currency(stay.total) : '';
+    renderPriceBreakdown(stay, hasRange);
+  }
+
+  function renderPriceBreakdown(stay, hasRange) {
+    if (!bookingPanel) return;
+
+    let breakdown = bookingPanel.querySelector('[data-price-breakdown]');
+    if (!breakdown) {
+      breakdown = document.createElement('section');
+      breakdown.className = 'cw-booking-breakdown';
+      breakdown.setAttribute('data-price-breakdown', '');
+      breakdown.hidden = true;
+
+      const title = document.createElement('p');
+      title.className = 'cw-booking-breakdown-title';
+      title.textContent = 'Stay breakdown';
+
+      const summary = document.createElement('div');
+      summary.className = 'cw-booking-summary';
+      summary.setAttribute('data-price-summary', '');
+
+      const rates = document.createElement('div');
+      rates.className = 'cw-booking-rate-breakdown';
+      rates.setAttribute('data-rate-breakdown', '');
+
+      breakdown.append(title, summary, rates);
+      bookingPanel.appendChild(breakdown);
+    }
+
+    breakdown.hidden = !hasRange;
+    if (!hasRange) return;
+
+    const summary = breakdown.querySelector('[data-price-summary]');
+    const rates = breakdown.querySelector('[data-rate-breakdown]');
+    if (!summary || !rates) return;
+
+    summary.replaceChildren(
+      createSummaryCard('Check-in', formatLongDate(state.checkIn)),
+      createSummaryCard('Check-out', formatLongDate(state.checkOut)),
+      createSummaryCard('Nights', formatNights(stay.nights)),
+      createSummaryCard('Nightly rates', stay.nightlyLabel),
+      createSummaryCard('Accommodation total', stay.accommodationTotal !== null ? currency(stay.accommodationTotal) : getTotalPlaceholder(true), true)
+    );
+
+    rates.replaceChildren();
+
+    if (!stay.hasCompletePricing) {
+      const unavailable = document.createElement('p');
+      unavailable.className = 'cw-booking-rate-note';
+      unavailable.textContent = getTotalPlaceholder(true);
+      rates.appendChild(unavailable);
+      return;
+    }
+
+    const list = document.createElement('div');
+    list.className = 'cw-booking-rate-list';
+
+    stay.rateGroups.forEach((group) => {
+      list.appendChild(createRateRow(
+        group.label || 'Nightly rate',
+        formatChargedNightSpan(group.start, group.end) + ' | ' + formatNights(group.count),
+        currency(group.rate) + ' x ' + group.count + ' = ' + currency(group.rate * group.count)
+      ));
+    });
+
+    if (propertyConfig.cleaningFee > 0) {
+      list.appendChild(createRateRow(
+        'Cleaning fee',
+        'Per booking',
+        currency(propertyConfig.cleaningFee)
+      ));
+    }
+
+    if (propertyConfig.cleaningFee > 0) {
+      list.appendChild(createRateRow(
+        'Total',
+        'Accommodation and cleaning',
+        currency(stay.total),
+        true
+      ));
+    }
+
+    rates.appendChild(list);
+
+    const note = document.createElement('p');
+    note.className = 'cw-booking-rate-note';
+    note.textContent = stay.rateGroups.length > 1
+      ? 'Seasonal rate changes are reflected above. Checkout is not charged as a night.'
+      : 'Checkout is not charged as a night.';
+    rates.appendChild(note);
+  }
+
+  function createSummaryCard(labelText, valueText, isTotal = false) {
+    const card = document.createElement('div');
+    card.className = isTotal ? 'cw-booking-summary-total' : 'cw-booking-summary-card';
+
+    const label = document.createElement('span');
+    label.className = 'cw-booking-summary-label';
+    label.textContent = labelText;
+
+    const value = document.createElement('span');
+    value.className = 'cw-booking-summary-value';
+    value.textContent = valueText;
+
+    card.append(label, value);
+    return card;
+  }
+
+  function createRateRow(labelText, detailText, valueText, isTotal = false) {
+    const row = document.createElement('div');
+    row.className = 'cw-booking-rate-row';
+    if (isTotal) row.classList.add('is-total');
+
+    const label = document.createElement('span');
+    label.className = 'cw-booking-rate-season';
+    label.textContent = labelText;
+
+    const detail = document.createElement('span');
+    detail.className = 'cw-booking-rate-detail';
+    detail.textContent = detailText;
+
+    const value = document.createElement('span');
+    value.className = 'cw-booking-rate-value';
+    value.textContent = valueText;
+
+    row.append(label, detail, value);
+    return row;
+  }
+
+  function buildRateGroups(rateDetails) {
+    const groups = [];
+
+    rateDetails.forEach((detail) => {
+      if (detail.rate === null) return;
+      const previous = groups[groups.length - 1];
+      if (previous && previous.rate === detail.rate && previous.label === detail.label) {
+        previous.end = detail.dateKey;
+        previous.count += 1;
+        return;
+      }
+
+      groups.push({
+        start: detail.dateKey,
+        end: detail.dateKey,
+        label: detail.label,
+        rate: detail.rate,
+        count: 1
+      });
+    });
+
+    return groups;
   }
 
   function buildNightlyRateLabel(nightlyRates, hasVerifiedPricing, stayLength) {
@@ -1388,8 +1626,9 @@
     return 'Pricing unavailable';
   }
 
-  function parseIcalBlockedDates(calendarText) {
+  function parseIcalBlockedDates(calendarText, options = {}) {
     const blockedDates = new Set();
+    const preparationTimeNights = normalizePreparationTimeNights(options.preparationTimeNights);
     const lines = unfoldIcalLines(calendarText);
     let currentEvent = null;
 
@@ -1403,9 +1642,11 @@
         if (currentEvent && currentEvent.start) {
           const startDate = toUtcDate(currentEvent.start);
           const endDate = currentEvent.end ? toUtcDate(currentEvent.end) : addDays(startDate, 1);
-          let cursor = new Date(startDate.getTime());
+          const blockStartDate = addDays(startDate, -preparationTimeNights);
+          const blockEndDate = addDays(endDate, preparationTimeNights);
+          let cursor = new Date(blockStartDate.getTime());
 
-          while (cursor < endDate) {
+          while (cursor < blockEndDate) {
             blockedDates.add(dateToKey(cursor));
             cursor = addDays(cursor, 1);
           }
@@ -1516,6 +1757,11 @@
     return blockedDates;
   }
 
+  function normalizePreparationTimeNights(value) {
+    const numericValue = Number(value);
+    return Number.isFinite(numericValue) && numericValue > 0 ? Math.floor(numericValue) : 0;
+  }
+
   function roundToNearestTen(amount) {
     return Math.round(amount / 10) * 10;
   }
@@ -1601,24 +1847,69 @@
   }
 
   function getWebsiteNightlyPrice(dateKey) {
-    const directWebsiteNightly = getRuleBasedPrice(dateKey, propertyConfig.websitePricingRules);
-    if (directWebsiteNightly !== null) {
-      return directWebsiteNightly;
+    return getWebsiteNightlyRateDetail(dateKey).rate;
+  }
+
+  function getWebsiteNightlyRateDetail(dateKey) {
+    const directWebsiteNightly = getRuleBasedPriceDetail(dateKey, propertyConfig.websitePricingRules);
+    if (directWebsiteNightly) {
+      return {
+        dateKey,
+        rate: directWebsiteNightly.price,
+        label: directWebsiteNightly.label || 'Nightly rate'
+      };
     }
 
-    const airbnbNightly = getAirbnbNightlyPrice(dateKey);
-    return airbnbNightly === null ? null : Math.round(airbnbNightly * 1.1);
+    const airbnbNightly = getRuleBasedPriceDetail(dateKey, propertyConfig.airbnbPricingRules);
+    if (!airbnbNightly) {
+      return {
+        dateKey,
+        rate: null,
+        label: 'Pricing unavailable'
+      };
+    }
+
+    return {
+      dateKey,
+      rate: Math.round(airbnbNightly.price * 1.1),
+      label: airbnbNightly.label || 'Nightly rate'
+    };
   }
 
   function getRuleBasedPrice(dateKey, rules) {
+    const detail = getRuleBasedPriceDetail(dateKey, rules);
+    return detail ? detail.price : null;
+  }
+
+  function getRuleBasedPriceDetail(dateKey, rules) {
     for (const rule of rules) {
       if (!inRange(dateKey, rule.start, rule.end)) continue;
-      if (typeof rule.flat === 'number') return rule.flat;
+      if (typeof rule.flat === 'number') {
+        return {
+          price: rule.flat,
+          label: rule.label || ''
+        };
+      }
 
       const day = toUtcDate(dateKey).getUTCDay();
-      if (day === 0 && typeof rule.sun === 'number') return rule.sun;
-      if ((day === 5 || day === 6) && typeof rule.friSat === 'number') return rule.friSat;
-      if (typeof rule.monThu === 'number') return rule.monThu;
+      if (day === 0 && typeof rule.sun === 'number') {
+        return {
+          price: rule.sun,
+          label: rule.label || ''
+        };
+      }
+      if ((day === 5 || day === 6) && typeof rule.friSat === 'number') {
+        return {
+          price: rule.friSat,
+          label: rule.label || ''
+        };
+      }
+      if (typeof rule.monThu === 'number') {
+        return {
+          price: rule.monThu,
+          label: rule.label || ''
+        };
+      }
     }
 
     return null;
@@ -1717,6 +2008,12 @@
       month: 'short',
       timeZone: 'UTC'
     });
+  }
+
+  function formatChargedNightSpan(startKey, endKey) {
+    return startKey === endKey
+      ? formatShortDate(startKey)
+      : formatShortDate(startKey) + ' - ' + formatShortDate(endKey);
   }
 
   function formatTimeFromMinutes(totalMinutes) {
