@@ -185,6 +185,14 @@
   text-transform: none;
 }
 
+.cw-booking-panel > .cw-booking-note {
+  margin: -4px 0 16px;
+  padding: 12px 14px;
+  border-left: 3px solid #b79a66;
+  background: rgba(255, 255, 255, 0.68);
+  color: #2a2d36;
+}
+
 .cw-booking-rules {
   margin: 0 0 16px;
   padding: 14px 16px;

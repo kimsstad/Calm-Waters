@@ -33,6 +33,7 @@
     'baycrest',
     'captains-quarters',
     'clementine-cottage',
+    'iroko',
     'tremezzo'
   ]);
   const previewCalendarSources = visibleCalendarSources;
@@ -115,31 +116,6 @@
     { start: '2027-03-26', end: '2027-03-31', monThu: 3680, friSat: 3820, sun: 3720 }
   ];
 
-  const seasonSchedule2026 = [
-    { start: '2026-01-01', end: '2026-01-05', key: 'high' },
-    { start: '2026-01-06', end: '2026-01-15', key: 'prePost' },
-    { start: '2026-01-16', end: '2026-04-02', key: 'mid' },
-    { start: '2026-04-03', end: '2026-04-06', key: 'easter' },
-    { start: '2026-04-07', end: '2026-04-30', key: 'mid' },
-    { start: '2026-05-01', end: '2026-09-30', key: 'low' },
-    { start: '2026-10-01', end: '2026-11-26', key: 'mid' },
-    { start: '2026-11-27', end: '2026-12-04', key: 'rage' },
-    { start: '2026-12-05', end: '2026-12-14', key: 'prePost' },
-    { start: '2026-12-15', end: '2026-12-31', key: 'high' }
-  ];
-  const seasonSchedule2027 = [
-    { start: '2027-01-01', end: '2027-01-05', key: 'high', use2026: true },
-    { start: '2027-01-06', end: '2027-01-15', key: 'prePost', use2026: true },
-    { start: '2027-01-16', end: '2027-03-25', key: 'mid' },
-    { start: '2027-03-26', end: '2027-03-29', key: 'easter' },
-    { start: '2027-03-30', end: '2027-04-30', key: 'mid' },
-    { start: '2027-05-01', end: '2027-09-30', key: 'low' },
-    { start: '2027-10-01', end: '2027-11-26', key: 'mid' },
-    { start: '2027-11-27', end: '2027-12-04', key: 'rage' },
-    { start: '2027-12-05', end: '2027-12-14', key: 'prePost' },
-    { start: '2027-12-15', end: '2027-12-31', key: 'high' }
-  ];
-
   const websiteRates2026 = {
     'robberg-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
     'lookout-room': { low: 1320, mid: 1430, high: 2420, prePost: 1925, easter: 1502, rage: 2662 },
@@ -169,58 +145,73 @@
     tremezzo: { low: 7700, mid: 8800, high: 30800, prePost: 19800, easter: 9240, rage: 33880 }
   };
 
-  const websiteRates2027 = {
-    'robberg-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
-    'lookout-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
-    'sanctuary-room': { low: 1452, mid: 1573, high: 2662, prePost: 2118, easter: 1652, rage: 2929 },
-    'hill-and-tides': { low: 3630, mid: 5143, high: 9680, prePost: 7412, easter: 5400, rage: 10648 },
-    'plett-escape': { low: 1694, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
-    'the-place-to-stay': { low: 1694, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
-    arrowood: { low: 1694, mid: 1936, high: 4235, prePost: 3086, easter: 2033, rage: 4659 },
-    'little-lincoln': { low: 1694, mid: 1936, high: 4235, prePost: 3086, easter: 2033, rage: 4659 },
-    'sound-of-silence': { low: 2420, mid: 2662, high: 5324, prePost: 3993, easter: 2796, rage: 5857 },
-    'stillwater-haven': { low: 2420, mid: 2662, high: 5324, prePost: 3993, easter: 2796, rage: 5857 },
-    'rivers-drift': { low: 2178, mid: 2420, high: 5082, prePost: 3751, easter: 2541, rage: 5591 },
-    watersong: { low: 2178, mid: 2420, high: 5082, prePost: 3751, easter: 2541, rage: 5591 },
-    'sandy-fingers': { low: 1936, mid: 2420, high: 0, prePost: 1210, easter: 2541, rage: 0 },
-    'sandy-toes': { low: 3872, mid: 4840, high: 14520, prePost: 9680, easter: 5082, rage: 15972 },
-    farallon: { low: 5445, mid: 7260, high: 24200, prePost: 15730, easter: 7623, rage: 26620 },
-    toplis: { low: 4235, mid: 5445, high: 14520, prePost: 9983, easter: 5718, rage: 15972 },
-    panorama: { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
-    'sea-esta': { low: 4598, mid: 5445, high: 15125, prePost: 10285, easter: 5718, rage: 16638 },
-    'goose-valley': { low: 2178, mid: 2662, high: 6050, prePost: 4356, easter: 2796, rage: 6655 },
-    'boardwalk-retreat': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
-    'boardwalk-corner': { low: 3630, mid: 4840, high: 10285, prePost: 7563, easter: 5082, rage: 11314 },
-    'magnificent-view': { low: 2662, mid: 3630, high: 7260, prePost: 5445, easter: 3812, rage: 7986 },
-    'sanctuary-hideaway': { low: 6050, mid: 6050, high: 14520, prePost: 10285, easter: 6353, rage: 15972 },
-    'la-lapa': { low: 2420, mid: 3025, high: 4477, prePost: 3751, easter: 3177, rage: 4925 },
-    'la-med': { low: 3630, mid: 4235, high: 5687, prePost: 4961, easter: 4447, rage: 6256 },
-    tremezzo: { low: 8470, mid: 9680, high: 33880, prePost: 21780, easter: 10164, rage: 37268 }
-  };
+  function getEasterSundayDate(year) {
+    const goldenNumber = year % 19;
+    const century = Math.floor(year / 100);
+    const skippedLeapYears = Math.floor(century / 4);
+    const correction = Math.floor((century + 8) / 25);
+    const moonCorrection = Math.floor((century - correction + 1) / 3);
+    const epact = (19 * goldenNumber + century - skippedLeapYears - moonCorrection + 15) % 30;
+    const leapRemainder = Math.floor((year % 100) / 4);
+    const weekdayCorrection = (32 + 2 * (century % 4) + 2 * leapRemainder - epact - (year % 100) % 4) % 7;
+    const daysToSunday = Math.floor((goldenNumber + 11 * epact + 22 * weekdayCorrection) / 451);
+    const month = Math.floor((epact + weekdayCorrection - 7 * daysToSunday + 114) / 31);
+    const day = ((epact + weekdayCorrection - 7 * daysToSunday + 114) % 31) + 1;
+    return new Date(Date.UTC(year, month - 1, day));
+  }
 
-  function buildSeasonRules(rates2026, rates2027) {
-    if (!rates2026 && !rates2027) return [];
+  function buildGeneratedSeasonSchedule(year, baseYear) {
+    const easterSunday = getEasterSundayDate(year);
+    const easterStart = dateToKey(addDays(easterSunday, -2));
+    const easterEnd = dateToKey(addDays(easterSunday, 1));
+    const afterEaster = dateToKey(addDays(easterSunday, 2));
+    const janRateYear = year > baseYear ? year - 1 : year;
+
+    return [
+      { start: year + '-01-01', end: year + '-01-05', key: 'high', rateYear: janRateYear },
+      { start: year + '-01-06', end: year + '-01-15', key: 'prePost', rateYear: janRateYear },
+      { start: year + '-01-16', end: dateToKey(addDays(toUtcDate(easterStart), -1)), key: 'mid', rateYear: year },
+      { start: easterStart, end: easterEnd, key: 'easter', rateYear: year },
+      { start: afterEaster, end: year + '-04-30', key: 'mid', rateYear: year },
+      { start: year + '-05-01', end: year + '-09-30', key: 'low', rateYear: year },
+      { start: year + '-10-01', end: year + '-11-26', key: 'mid', rateYear: year },
+      { start: year + '-11-27', end: year + '-12-04', key: 'rage', rateYear: year },
+      { start: year + '-12-05', end: year + '-12-14', key: 'prePost', rateYear: year },
+      { start: year + '-12-15', end: year + '-12-31', key: 'high', rateYear: year }
+    ];
+  }
+
+  function getAnnualSeasonRates(baseRates, rateYear, baseYear) {
+    if (!baseRates) return null;
+    const multiplier = Math.pow(1.1, rateYear - baseYear);
+
+    return Object.entries(baseRates).reduce((annualRates, [key, value]) => {
+      annualRates[key] = Math.round(value * multiplier);
+      return annualRates;
+    }, {});
+  }
+
+  function buildSeasonRules(rates2026) {
+    const baseRates = rates2026;
+    if (!baseRates) return [];
+    const baseYear = 2026;
+    const yearsToGenerate = 20;
     const rules = [];
 
-    seasonSchedule2026.forEach((segment) => {
-      const rate = rates2026 ? rates2026[segment.key] : null;
-      if (Number.isFinite(rate)) {
-        rules.push({ start: segment.start, end: segment.end, flat: rate });
-      }
-    });
-
-    seasonSchedule2027.forEach((segment) => {
-      const sourceRates = segment.use2026 ? rates2026 : rates2027;
-      const rate = sourceRates ? sourceRates[segment.key] : null;
-      if (Number.isFinite(rate)) {
-        rules.push({ start: segment.start, end: segment.end, flat: rate });
-      }
-    });
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      buildGeneratedSeasonSchedule(year, baseYear).forEach((segment) => {
+        const rates = getAnnualSeasonRates(baseRates, segment.rateYear, baseYear);
+        const rate = rates ? rates[segment.key] : null;
+        if (Number.isFinite(rate)) {
+          rules.push({ start: segment.start, end: segment.end, flat: rate });
+        }
+      });
+    }
 
     return rules;
   }
 
-  function buildLagoonBreezeSeasonRules(baseYear, yearsToGenerate = 6) {
+  function buildLagoonBreezeSeasonRules(baseYear, yearsToGenerate = 20) {
     const baseRates = { low: 2000, mid: 2500, high: 5500 };
     const rules = [
       { start: baseYear + '-01-01', end: baseYear + '-01-15', flat: baseRates.high }
@@ -257,7 +248,7 @@
     return rules;
   }
 
-  function buildCaptainsQuartersSeasonRules(baseYear, yearsToGenerate = 6) {
+  function buildCaptainsQuartersSeasonRules(baseYear, yearsToGenerate = 20) {
     const baseRates = { low: 1320, mid: 1980, high: 3520 };
     const rules = [];
 
@@ -280,8 +271,8 @@
     return rules;
   }
 
-  function buildClementineSeasonRules(baseYear, yearsToGenerate = 8) {
-    const rates = {
+  function buildClementineSeasonRules(baseYear, yearsToGenerate = 20) {
+    const baseRates = {
       low: 1749,
       mid: 2475,
       high: 4862
@@ -289,6 +280,13 @@
     const rules = [];
 
     for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const rates = {
+        low: Math.round(baseRates.low * multiplier),
+        mid: Math.round(baseRates.mid * multiplier),
+        high: Math.round(baseRates.high * multiplier)
+      };
+
       rules.push(
         { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
         { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
@@ -301,7 +299,36 @@
     return rules;
   }
 
-  function buildClementineFestiveMinStayRules(baseYear, yearsToGenerate = 8) {
+  function buildIrokoSeasonRules(baseYear, yearsToGenerate = 20) {
+    const baseRates = {
+      low: 9000,
+      mid: 13500,
+      pre: 13500,
+      high: 33450
+    };
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const rates = {
+        low: Math.round(baseRates.low * multiplier),
+        mid: Math.round(baseRates.mid * multiplier),
+        pre: Math.round(baseRates.pre * multiplier),
+        high: Math.round(baseRates.high * multiplier)
+      };
+
+      rules.push(
+        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'MID ' + year },
+        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'LOW ' + year },
+        { start: year + '-10-01', end: year + '-12-14', flat: rates.pre, label: 'PRE ' + year },
+        { start: year + '-12-15', end: (year + 1) + '-01-15', flat: rates.high, label: 'HIGH ' + year }
+      );
+    }
+
+    return rules;
+  }
+
+  function buildClementineFestiveMinStayRules(baseYear, yearsToGenerate = 20) {
     const rules = [];
 
     for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
@@ -316,7 +343,7 @@
     return rules;
   }
 
-  function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 6) {
+  function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 20) {
     const baseRate = 22000;
     const rules = [];
 
@@ -341,10 +368,12 @@
   const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
   const captainsQuartersWebsitePricingRules = buildCaptainsQuartersSeasonRules(2026);
   const captainsQuartersMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
-  const clementineBaseYear = Number(getTodayKey().slice(0, 4)) - 1;
+  const clementineBaseYear = 2026;
   const clementineWebsitePricingRules = buildClementineSeasonRules(clementineBaseYear);
   const clementineSeasonalMinStayRules = buildClementineFestiveMinStayRules(clementineBaseYear);
   const clementineMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
+  const irokoWebsitePricingRules = buildIrokoSeasonRules(2026);
+  const irokoMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 2));
 
   const emptyFeeds = {
     airbnb: { publicUrl: '', proxyUrl: '' },
@@ -584,6 +613,7 @@
     baycrest: { minStayNights: 14, maxStayNights: 31, advanceNoticeDays: 2 },
     'captains-quarters': { minStayNights: 1, maxStayNights: 365, advanceNoticeDays: 0 },
     'clementine-cottage': { minStayNights: 2, maxStayNights: 31, advanceNoticeDays: 1 },
+    iroko: { minStayNights: 3, maxStayNights: 31, advanceNoticeDays: 2 },
     farallon: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     toplis: { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'goose-valley': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
@@ -610,7 +640,7 @@
       festivePeak: null,
       websitePricingRules: Array.isArray(options.websitePricingRules)
         ? options.websitePricingRules
-        : buildSeasonRules(websiteRates2026[key], websiteRates2027[key]),
+        : buildSeasonRules(websiteRates2026[key]),
       cleaningFee: Number.isFinite(options.cleaningFee) ? options.cleaningFee : (cleaningFees[key] || 0),
       minStayNights: Number.isFinite(options.minStayNights) ? options.minStayNights : (defaultStayRule.minStayNights || 1),
       maxStayNights: Number.isFinite(options.maxStayNights) ? options.maxStayNights : (defaultStayRule.maxStayNights || 365),
@@ -622,6 +652,7 @@
         ? options.seasonalMinStayRules
         : (seasonalMinStayRules[key] || []),
       seasonalMinStayMode: options.seasonalMinStayMode || 'checkin',
+      staticBlockedDateRanges: Array.isArray(options.staticBlockedDateRanges) ? options.staticBlockedDateRanges : [],
       feeds: options.feeds || workbookFeeds[key] || emptyFeeds,
       blockedDatesEndpoint: options.blockedDatesEndpoint || '',
       baseAirbnbRules: []
@@ -682,11 +713,36 @@
       maxBookableDateKey: captainsQuartersMaxBookableDateKey,
       sameDayCutoffMinutes: 12 * 60
     }),
+    iroko: buildPropertySource('iroko', 'Iroko Luxury Mansion', {
+      availabilityMode: 'query-only',
+      websitePricingRules: irokoWebsitePricingRules,
+      cleaningFee: 0,
+      preparationTimeNights: 2,
+      maxBookableDateKey: irokoMaxBookableDateKey,
+      staticBlockedDateRanges: [
+        { start: '2026-01-01', end: '2026-01-02' },
+        { start: '2026-01-06', end: '2026-01-12' },
+        { start: '2026-01-31', end: '2026-01-31' },
+        { start: '2026-02-01', end: '2026-02-09' },
+        { start: '2026-02-11', end: '2026-02-18' },
+        { start: '2026-03-19', end: '2026-03-24' },
+        { start: '2026-03-29', end: '2026-03-31' },
+        { start: '2026-04-01', end: '2026-04-04' },
+        { start: '2026-06-28', end: '2026-06-30' },
+        { start: '2026-07-01', end: '2026-07-04' },
+        { start: '2026-07-23', end: '2026-07-29' },
+        { start: '2026-07-31', end: '2026-07-31' },
+        { start: '2026-08-01', end: '2026-08-19' },
+        { start: '2026-09-20', end: '2026-09-27' },
+        { start: '2026-11-13', end: '2026-11-16' },
+        { start: '2026-11-28', end: '2026-12-04' },
+        { start: '2027-01-13', end: '2027-03-22' }
+      ]
+    }),
     tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
   };
 
-  // Only show calendars for properties that currently have live iCal feeds
-  // configured in GitHub Actions. Everything else stays hidden until feeds exist.
+  // Only show calendars for properties that are configured for live or query-only calendars.
   const enabledCalendarSources = visibleCalendarSources;
 
   const sourceKey = bookingRoot.dataset.bookingSource || '';
@@ -712,6 +768,7 @@
     advanceNoticeDays: 0,
     sameDayCutoffMinutes: null,
     preparationTimeNights: 0,
+    staticBlockedDateRanges: [],
     seasonalMinStayRules: [],
     seasonalMinStayMode: 'checkin',
     baseAirbnbRules: []
@@ -747,12 +804,13 @@
     maxBookableDateKey: workbookSource.maxBookableDateKey || '',
     seasonalMinStayRules: Array.isArray(workbookSource.seasonalMinStayRules) ? workbookSource.seasonalMinStayRules : [],
     seasonalMinStayMode: workbookSource.seasonalMinStayMode || 'checkin',
+    staticBlockedDateRanges: Array.isArray(workbookSource.staticBlockedDateRanges) ? workbookSource.staticBlockedDateRanges : [],
     airbnbPricingRules: applyWorkbookFestiveCurve(workbookSource.baseAirbnbRules, workbookSource.festivePeak)
   };
 
   const todayKey = getTodayKey();
   const maxBookingDateKey = propertyConfig.maxBookableDateKey || dateToKey(addYears(toUtcDate(todayKey), 1));
-  const maxCalendarDateKey = propertyConfig.maxBookableDateKey || '2027-12-31';
+  const maxCalendarDateKey = maxBookingDateKey;
   const state = {
     todayKey,
     viewMonthKey: '',
@@ -847,6 +905,15 @@
   renderCalendar();
 
   async function loadAvailability() {
+    if (usesQueryOnlyAvailability()) {
+      state.blockedDates = buildBlockedDateRangesSet(
+        propertyConfig.staticBlockedDateRanges,
+        propertyConfig.preparationTimeNights
+      );
+      renderCalendar();
+      return;
+    }
+
     let lastError = null;
 
     try {
@@ -916,6 +983,10 @@
 
   function usesStaticJsonOnlyAvailability() {
     return propertyConfig.availabilityMode === 'static-json-only';
+  }
+
+  function usesQueryOnlyAvailability() {
+    return propertyConfig.availabilityMode === 'query-only';
   }
 
   function handleStrictAvailabilityFailure(error) {
@@ -1738,6 +1809,21 @@
 
   function getLocalProxyUrl(targetUrl) {
     return localSyncApiBaseUrl + '/api/ical-proxy?url=' + encodeURIComponent(targetUrl);
+  }
+
+  function buildBlockedDateRangesSet(ranges, preparationTimeNights = 0) {
+    const blockedDates = new Set();
+    if (!Array.isArray(ranges)) return blockedDates;
+    const prepNights = Number.isFinite(preparationTimeNights) ? preparationTimeNights : 0;
+
+    ranges.forEach((range) => {
+      const rangeStart = dateToKey(addDays(toUtcDate(range.start), -prepNights));
+      const rangeEnd = dateToKey(addDays(toUtcDate(range.end), prepNights));
+      const rangeDates = buildBlockedDateSet(rangeStart, rangeEnd);
+      rangeDates.forEach((dateKey) => blockedDates.add(dateKey));
+    });
+
+    return blockedDates;
   }
 
   function buildBlockedDateSet(startKey, endKey) {
