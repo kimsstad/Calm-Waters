@@ -713,7 +713,7 @@
       maxBookableDateKey: captainsQuartersMaxBookableDateKey,
       sameDayCutoffMinutes: 12 * 60
     }),
-    iroko: buildPropertySource('iroko', 'Iroko Luxury Mansion', {
+    iroko: buildPropertySource('iroko', 'Iroko House', {
       availabilityMode: 'query-only',
       websitePricingRules: irokoWebsitePricingRules,
       cleaningFee: 0,
