@@ -27,7 +27,7 @@ This setup keeps the site on GitHub Pages and refreshes blocked dates with GitHu
 6. Add one repository variable named `CW_BOOKING_FEEDS`.
 7. Copy `github-actions-booking-feeds.example.json`, replace the empty strings with your real iCal URLs, and paste the full JSON into that variable.
 
-Baycrest, Captain's Quarters, and Clementine Cottage are already wired into the site code and the GitHub Actions build script, but they will only sync on GitHub once their feeds are included in the `CW_BOOKING_FEEDS` repository variable. Because `booking-feeds.json` is ignored locally, adding them there is not enough for the hosted site.
+Baycrest, Captain's Quarters, Clementine Cottage, and Boardwalk Reverie are already wired into the site code and the GitHub Actions build script, but they will only sync on GitHub once their feeds are included in the `CW_BOOKING_FEEDS` repository variable. Because `booking-feeds.json` is ignored locally, adding them there is not enough for the hosted site.
 
 ## Starting small
 
@@ -83,6 +83,18 @@ For Clementine Cottage, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
 }
 ```
 
+For Boardwalk Reverie, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
+
+```json
+{
+  "boardwalk-reverie": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1715819548125251580.ics?t=fa2b1817532843d9af4397bedfc9f641",
+    "booking": "https://ical.booking.com/v1/export?t=bf92b54c-6342-4cf9-be85-03b58a6552c7",
+    "lekkeslaap": "https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=RUM2SzVWWVgwUld0QXZTc01jeWxVUT09"
+  }
+}
+```
+
 ## After setup
 
 - Keep committing and pushing exactly the way you already do with Git Bash.
@@ -93,5 +105,5 @@ For Clementine Cottage, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
 
 - Scheduled workflows run on the default branch and GitHub may delay them slightly under load.
 - If a property has no Booking.com feed yet, leave `"booking": ""`.
-- Clementine Cottage blocks 1 preparation night before and after imported iCal bookings during the GitHub availability build.
+- Clementine Cottage and Boardwalk Reverie block 1 preparation night before and after imported iCal bookings during the GitHub availability build.
 - The Arrowood calendar is currently hidden in the page markup. Unhide it when you are ready to show it again.

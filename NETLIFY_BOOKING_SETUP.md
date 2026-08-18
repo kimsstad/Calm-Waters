@@ -29,6 +29,7 @@ This avoids the browser CORS problem that was preventing the blocked dates from 
 
 - `arrowood`
 - `boardwalk-corner`
+- `boardwalk-reverie`
 - `little-lincoln`
 - `lookout-room`
 - `plett-escape`
@@ -45,7 +46,7 @@ This avoids the browser CORS problem that was preventing the blocked dates from 
 
 - `boardwalk-corner` is still only a temporary test source for the Boardwalk page.
 - If a property does not have a Booking.com feed yet, leave `"booking": ""`.
-- Clementine Cottage blocks 1 preparation night before and after imported iCal bookings when the availability proxy builds its response.
+- Clementine Cottage and Boardwalk Reverie block 1 preparation night before and after imported iCal bookings when the availability proxy builds its response.
 - If you prefer separate environment variables instead of one JSON blob, the function also supports:
   - `<PROPERTY_KEY>_AIRBNB_ICAL`
   - `<PROPERTY_KEY>_BOOKING_ICAL`

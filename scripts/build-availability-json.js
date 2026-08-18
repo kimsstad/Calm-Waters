@@ -14,6 +14,7 @@ const PROPERTY_KEYS = [
   'clementine-cottage',
   'boardwalk-retreat',
   'boardwalk-corner',
+  'boardwalk-reverie',
   'farallon',
   'goose-valley',
   'lagoon-breeze',
@@ -41,6 +42,7 @@ const PROPERTY_KEYS = [
 ];
 
 const PROPERTY_PREPARATION_TIME_NIGHTS = {
+  'boardwalk-reverie': 1,
   'clementine-cottage': 1
 };
 

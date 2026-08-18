@@ -19,6 +19,11 @@
     "booking": "",
     "lekkeslaap": ""
   },
+  "boardwalk-reverie": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1715819548125251580.ics?t=fa2b1817532843d9af4397bedfc9f641",
+    "booking": "https://ical.booking.com/v1/export?t=bf92b54c-6342-4cf9-be85-03b58a6552c7",
+    "lekkeslaap": "https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=RUM2SzVWWVgwUld0QXZTc01jeWxVUT09"
+  },
   "lagoon-breeze": {
     "airbnb": "",
     "booking": "",

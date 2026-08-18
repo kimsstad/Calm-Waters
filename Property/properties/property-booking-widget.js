@@ -26,6 +26,7 @@
     'lagoon-breeze',
     'boardwalk-retreat',
     'boardwalk-corner',
+    'boardwalk-reverie',
     'magnificent-view',
     'sanctuary-hideaway',
     'la-lapa',
@@ -138,6 +139,7 @@
     'goose-valley': { low: 1980, mid: 2420, high: 5500, prePost: 3960, easter: 2541, rage: 6050 },
     'boardwalk-retreat': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
     'boardwalk-corner': { low: 3300, mid: 4400, high: 9350, prePost: 6875, easter: 4620, rage: 10285 },
+    'boardwalk-reverie': { low: 3456, mid: 4860, high: 10800 },
     'magnificent-view': { low: 2420, mid: 3300, high: 6600, prePost: 4950, easter: 3465, rage: 7260 },
     'sanctuary-hideaway': { low: 5500, mid: 5500, high: 13200, prePost: 9350, easter: 5775, rage: 14520 },
     'la-lapa': { low: 2200, mid: 2750, high: 4070, prePost: 3410, easter: 2888, rage: 4477 },
@@ -299,6 +301,25 @@
     return rules;
   }
 
+  function buildBoardwalkReverieSeasonRules(baseYear, yearsToGenerate = 20) {
+    const baseRates = websiteRates2026['boardwalk-reverie'];
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const rates = getAnnualSeasonRates(baseRates, year, baseYear);
+
+      rules.push(
+        { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
+        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'Low season' },
+        { start: year + '-10-01', end: year + '-11-26', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-11-27', end: year + '-12-31', flat: rates.high, label: 'High season' }
+      );
+    }
+
+    return rules;
+  }
+
   function buildIrokoSeasonRules(baseYear, yearsToGenerate = 20) {
     const baseRates = {
       low: 9000,
@@ -343,6 +364,21 @@
     return rules;
   }
 
+  function buildBoardwalkReverieDecemberMinStayRules(baseYear, yearsToGenerate = 20) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-14',
+        end: year + '-12-19',
+        minStayNights: 6,
+        label: 'December minimum stay'
+      });
+    }
+
+    return rules;
+  }
+
   function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 20) {
     const baseRate = 22000;
     const rules = [];
@@ -372,6 +408,8 @@
   const clementineWebsitePricingRules = buildClementineSeasonRules(clementineBaseYear);
   const clementineSeasonalMinStayRules = buildClementineFestiveMinStayRules(clementineBaseYear);
   const clementineMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
+  const boardwalkReverieWebsitePricingRules = buildBoardwalkReverieSeasonRules(2026);
+  const boardwalkReverieSeasonalMinStayRules = buildBoardwalkReverieDecemberMinStayRules(2026);
   const irokoWebsitePricingRules = buildIrokoSeasonRules(2026);
   const irokoMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 2));
 
@@ -396,6 +434,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1594163527975673800.ics?t=2f394e9ee4a84f0c9a415378cfaffb65', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=6a96eccf-cb98-464b-8bcb-56a3a580bb92', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=UE00ZVMrN05QSDNPeThrZ1JtVWZYUT09', proxyUrl: '' }
+    },
+    'boardwalk-reverie': {
+      airbnb: { publicUrl: '', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
     },
     'hill-and-tides': {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/17194325.ics?t=5e69ea4862214825971565c84b28b114', proxyUrl: '' },
@@ -602,6 +645,7 @@
     arrowood: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     'boardwalk-corner': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     'boardwalk-retreat': { minStayNights: 3, maxStayNights: 365, advanceNoticeDays: 1 },
+    'boardwalk-reverie': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
     'robberg-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
     'hill-and-tides': { minStayNights: 3, maxStayNights: 365, advanceNoticeDays: 2 },
     'sea-esta': { minStayNights: 5, maxStayNights: 30, advanceNoticeDays: 2 },
@@ -689,6 +733,12 @@
     'boardwalk-retreat': buildPropertySource('boardwalk-retreat', 'Boardwalk Retreat'),
     'boardwalk-corner': buildPropertySource('boardwalk-corner', 'Boardwalk Corner', {
       blockedDatesEndpoint: '/api/boardwalk-corner-blocks'
+    }),
+    'boardwalk-reverie': buildPropertySource('boardwalk-reverie', 'Boardwalk Reverie', {
+      websitePricingRules: boardwalkReverieWebsitePricingRules,
+      preparationTimeNights: 1,
+      seasonalMinStayRules: boardwalkReverieSeasonalMinStayRules,
+      seasonalMinStayMode: 'stay-overlap'
     }),
     'clementine-cottage': buildPropertySource('clementine-cottage', 'Clementine Cottage', {
       availabilityMode: 'static-json-only',

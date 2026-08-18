@@ -18,6 +18,7 @@ const DEFAULT_HEADERS = {
 };
 
 const PROPERTY_PREPARATION_TIME_NIGHTS = {
+  'boardwalk-reverie': 1,
   'clementine-cottage': 1
 };
 
