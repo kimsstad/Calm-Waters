@@ -114,8 +114,8 @@ Before you leave:
 - Gather used towels
 - Throw trash away
 - Turn things off
-- Return keys
 - Lock up
+- Return keys
 - Additional request: Please wash any dirty dishes, or load the dishwasher and switch it on before departure.
 
 ## Notes to verify in Airbnb
