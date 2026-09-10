@@ -578,21 +578,22 @@
   };
 
   const cleaningFees = {
-    'robberg-room': 275,
-    'boardwalk-retreat': 350,
-    'boardwalk-corner': 330,
-    'hill-and-tides': 330,
-    'magnificent-view': 330,
-    'sanctuary-hideaway': 330,
-    baycrest: 330,
-    tremezzo: 330,
-    'plett-escape': 330,
-    'the-place-to-stay': 330,
-    arrowood: 330,
-    'little-lincoln': 330,
-    'lookout-room': 275,
-    'sanctuary-room': 275,
-    'lagoon-breeze': 330
+    'robberg-room': 300,
+    'boardwalk-retreat': 360,
+    'boardwalk-corner': 360,
+    'hill-and-tides': 360,
+    'magnificent-view': 360,
+    'sanctuary-hideaway': 360,
+    baycrest: 360,
+    tremezzo: 360,
+    'plett-escape': 360,
+    'the-place-to-stay': 360,
+    arrowood: 360,
+    'little-lincoln': 360,
+    'lookout-room': 300,
+    'sanctuary-room': 300,
+    'lagoon-breeze': 360,
+    'clementine-cottage': 400
   };
 
   const seasonalMinStayRules = {
