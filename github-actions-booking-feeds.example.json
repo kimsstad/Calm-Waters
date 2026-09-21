@@ -69,6 +69,11 @@
     "booking": "",
     "lekkeslaap": ""
   },
+  "serendipity": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1775321027593181871.ics?t=5c65ebb1cc384717a3f01188d5d13dfe",
+    "booking": "",
+    "lekkeslaap": "https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=eDI5N3BuQ1dUbjdCYTZOM0dnUlp1Zz09"
+  },
   "sound-of-silence": {
     "airbnb": "",
     "booking": "",

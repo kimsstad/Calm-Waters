@@ -18,6 +18,7 @@
     'watersong',
     'sandy-fingers',
     'sandy-toes',
+    'serendipity',
     'farallon',
     'toplis',
     'panorama',
@@ -125,6 +126,7 @@
     'plett-escape': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
     'the-place-to-stay': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
     arrowood: { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
+    serendipity: { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
     'little-lincoln': { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
     'sound-of-silence': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
     'stillwater-haven': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
@@ -379,6 +381,21 @@
     return rules;
   }
 
+  function buildSerendipityFestiveMinStayRules(baseYear, yearsToGenerate = 20) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-07',
+        end: (year + 1) + '-01-10',
+        minStayNights: 7,
+        label: 'Festive season'
+      });
+    }
+
+    return rules;
+  }
+
   function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 20) {
     const baseRate = 22000;
     const rules = [];
@@ -410,6 +427,7 @@
   const clementineMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
   const boardwalkReverieWebsitePricingRules = buildBoardwalkReverieSeasonRules(2026);
   const boardwalkReverieSeasonalMinStayRules = buildBoardwalkReverieDecemberMinStayRules(2026);
+  const serendipitySeasonalMinStayRules = buildSerendipityFestiveMinStayRules(2026);
   const irokoWebsitePricingRules = buildIrokoSeasonRules(2026);
   const irokoMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 2));
 
@@ -574,6 +592,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1315094071847316143.ics?t=bc5bcbea770f421983d4fc0a64313af3', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=04c6a1c3-4c3c-4bf4-b53f-09fb5daab3a4', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=ZU5kNmJXR0NsZDlGQWtBWWd2TnFxdz09&rt=432312', proxyUrl: '' }
+    },
+    serendipity: {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1775321027593181871.ics?t=5c65ebb1cc384717a3f01188d5d13dfe', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=eDI5N3BuQ1dUbjdCYTZOM0dnUlp1Zz09', proxyUrl: '' }
     }
   };
 
@@ -593,7 +616,8 @@
     'lookout-room': 300,
     'sanctuary-room': 300,
     'lagoon-breeze': 360,
-    'clementine-cottage': 400
+    'clementine-cottage': 400,
+    serendipity: 360
   };
 
   const seasonalMinStayRules = {
@@ -673,7 +697,8 @@
     'rivers-drift': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 2 },
     watersong: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 2 },
     'sandy-toes': { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
-    'sandy-fingers': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 }
+    'sandy-fingers': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
+    serendipity: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 }
   };
 
   function buildPropertySource(key, displayName, options = {}) {
@@ -789,6 +814,10 @@
         { start: '2026-11-28', end: '2026-12-04' },
         { start: '2027-01-13', end: '2027-03-22' }
       ]
+    }),
+    serendipity: buildPropertySource('serendipity', 'Serendipity - Ocean View Apartment', {
+      seasonalMinStayRules: serendipitySeasonalMinStayRules,
+      seasonalMinStayMode: 'stay-overlap'
     }),
     tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
   };

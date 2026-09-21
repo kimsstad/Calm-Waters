@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./property-booking-widget.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -344,15 +345,16 @@
 <h3>Bedroom and laundry</h3>
 <ul>
   <li>Washer</li>
-  <li>Dryer</li>
-  <li>Essentials</li>
-  <li>Towels, bed sheets, soap, and toilet paper</li>
+  <li>Tumble dryer</li>
+  <li>Essentials - towels, bed sheets, soap, and toilet paper</li>
   <li>Hangers</li>
   <li>Bed linens</li>
   <li>Extra pillows and blankets</li>
   <li>Room-darkening shades</li>
   <li>Drying rack for clothing</li>
   <li>Clothing storage</li>
+  <li>Iron</li>
+  <li>Ironing board</li>
 </ul>
 
 <h3>Entertainment</h3>
@@ -380,14 +382,11 @@
 
 <h3>Kitchen and dining</h3>
 <ul>
-  <li>Kitchen</li>
-  <li>Space where guests can cook their own meals</li>
+  <li>Fully equipped kitchen</li>
   <li>Hisense refrigerator</li>
   <li>Microwave</li>
-  <li>Cooking basics</li>
-  <li>Pots and pans, oil, salt and pepper</li>
-  <li>Dishes and silverware</li>
-  <li>Bowls, chopsticks, plates, cups, etc.</li>
+  <li>Cooking basics - pots and pans, oil, salt and pepper</li>
+  <li>Dishes and silverware - bowls, plates, cups, etc.</li>
   <li>Freezer</li>
   <li>Bosch electric stove</li>
   <li>Bosch stainless steel single oven</li>
@@ -397,24 +396,20 @@
   <li>Toaster</li>
   <li>Baking sheet</li>
   <li>Barbecue utensils</li>
-  <li>Grill, charcoal, bamboo skewers/iron skewers, etc.</li>
   <li>Dining table</li>
-  <li>Coffee</li>
+  <li>Coffee, tea and sugar</li>
 </ul>
 
 <h3>Location features</h3>
 <ul>
-  <li>Shared beach access</li>
-  <li>Guests can enjoy a nearby beach</li>
-  <li>Private entrance</li>
-  <li>Separate street or building entrance</li>
+  <li>Shared beach access - guests can enjoy a nearby beach</li>
+  <li>Private entrance - separate street or building entrance</li>
   <li>Laundromat nearby</li>
 </ul>
 
 <h3>Outdoor</h3>
 <ul>
-  <li>Private patio or balcony</li>
-  <li>Outdoor furniture</li>
+  <li>Private balcony</li>
   <li>Outdoor dining area</li>
   <li>BBQ grill</li>
 </ul>
@@ -422,7 +417,7 @@
 <h3>Parking and facilities</h3>
 <ul>
   <li>Free carport on premises – 1 space</li>
-  <li>Shared outdoor pool - available all year, open 24 hours</li>
+  <li>Shared outdoor pool</li>
   <li>Gated community</li>
 </ul>
 
@@ -433,12 +428,10 @@
 
 <h3>Not included</h3>
 <ul>
-  <li>Unavailable: Exterior security cameras on propertyExterior security cameras on property</li>
-  <li>Unavailable: Air conditioningAir conditioning</li>
-  <li>Unavailable: Smoke alarmSmoke alarm</li>
-  <li>There is no smoke alarm on the property.</li>
-  <li>Unavailable: Carbon monoxide alarmCarbon monoxide alarm</li>
-  <li>Host has indicated no carbon monoxide detector is necessary. Reach out to the host with any questions.</li>
+  <li>Exterior security cameras on property</li>
+  <li>Air conditioning</li>
+  <li>Smoke alarm</li>
+  <li>Carbon monoxide alarm</li>
 </ul>
 
   </div>
@@ -664,12 +657,108 @@
         <input type="text" name="property" value="Serendipity - Ocean View Apartment" readonly>
       </div>
 
-      <div class="form-group">
-        <input type="text" name="preferred_dates" placeholder="Preferred dates (optional)">
-      </div>
+      <div class="form-group cw-booking-group">
+        <section class="cw-booking-widget"
+                 data-cw-booking
+                 data-booking-source="serendipity"
+                 data-booking-name="Serendipity - Ocean View Apartment"
+                 data-airbnb-ical-url=""
+                 data-airbnb-ical-proxy=""
+                 data-booking-ical-url=""
+                 data-booking-ical-proxy=""
+                 data-lekkeslaap-ical-url=""
+                 data-lekkeslaap-ical-proxy="">
+          <div class="cw-booking-heading">
+            <span class="cw-booking-kicker">Dates</span>
+            <span class="cw-booking-selection" data-booking-toggle-text>Select dates to open the calendar.</span>
+          </div>
 
-      <div class="form-group">
-        <input type="text" name="guests" placeholder="Number of guests (optional)">
+          <div class="cw-booking-compact">
+            <button type="button"
+                    class="cw-booking-field cw-booking-date-field cw-booking-range-field"
+                    data-date-trigger="dates"
+                    aria-expanded="false"
+                    aria-controls="serendipityDatesPanel">
+              <span class="cw-booking-field-label">Dates</span>
+              <span class="cw-booking-field-value" data-field-dates>Select check-in and check-out</span>
+            </button>
+
+            <label class="cw-booking-field cw-booking-select-field">
+              <span class="cw-booking-field-label">Guests</span>
+              <select data-guest-select aria-label="Select number of guests">
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="cw-booking-inline-summary" data-inline-summary hidden>
+            <div class="cw-booking-inline-item">
+              <span class="cw-booking-inline-label">Nights</span>
+              <span class="cw-booking-inline-value" data-inline-nights>Select dates</span>
+            </div>
+            <div class="cw-booking-inline-item">
+              <span class="cw-booking-inline-label">Total</span>
+              <span class="cw-booking-inline-value" data-inline-total>Select dates to see total</span>
+            </div>
+          </div>
+
+          <div class="cw-booking-reveal" id="serendipityDatesPanel">
+            <div class="cw-booking-reveal-inner">
+              <div class="cw-booking-panel">
+                <div class="cw-booking-intro">
+                  <div>
+                    <h3>DATES</h3>
+                    <p>Choose your check-in and check-out dates for Serendipity - Ocean View Apartment.</p>
+                  </div>
+                </div>
+
+                <div class="cw-booking-shell">
+                  <div class="cw-booking-toolbar">
+                    <span class="cw-booking-toolbar-label">Select your stay</span>
+                    <span class="cw-booking-toolbar-actions">
+                      <button type="button" class="cw-booking-nav" data-booking-prev aria-label="Show previous month">
+                        <i class="fas fa-chevron-left"></i>
+                      </button>
+                      <button type="button" class="cw-booking-nav" data-booking-next aria-label="Show next month">
+                        <i class="fas fa-chevron-right"></i>
+                      </button>
+                    </span>
+                  </div>
+
+                  <div class="cw-booking-months" data-booking-months></div>
+
+                  <div class="cw-booking-legend" aria-hidden="true">
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch"></span>
+                      Available
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-selected"></span>
+                      Selected dates
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-range"></span>
+                      Selected stay
+                    </span>
+                    <span class="cw-booking-legend-item">
+                      <span class="cw-booking-legend-swatch is-blocked"></span>
+                      Blocked
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" name="check_in" value="" data-booking-checkin-input>
+          <input type="hidden" name="check_out" value="" data-booking-checkout-input>
+          <input type="hidden" name="guests" value="1" data-booking-guests-input>
+          <input type="hidden" name="nights" value="" data-booking-nights-input>
+          <input type="hidden" name="accommodation_total" value="" data-booking-total-input>
+        </section>
       </div>
 
       <div class="form-group">
@@ -689,7 +778,12 @@
     </div>
 
   <div class="footer-center booking-icons">
- <span>Serendipity - Ocean View Apartment</span>
+    <a href="https://www.airbnb.co.za/rooms/1775321027593181871?guests=1&adults=1&s=67&unique_share_id=6b11fa61-eacd-4168-957b-476b782a6029" target="_blank">
+      <img src="../../Resources/pics/airbnb-icon-2048x2048-kuw3ebuv.png" alt="Airbnb">
+    </a>
+    <a href="https://www.lekkeslaap.co.za/accommodation/4-arrowood-14" target="_blank">
+      <img src="../../Resources/pics/lekkeslaaplogo.png" alt="LekkeSlaap">
+    </a>
   </div>
 
     <div class="footer-right footer-email">
@@ -853,6 +947,8 @@
     }
   });
 </script>
+
+<script src="./property-booking-widget.js"></script>
 
 </body>
 </html>

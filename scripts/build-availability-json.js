@@ -32,6 +32,7 @@ const PROPERTY_KEYS = [
   'sanctuary-room',
   'sandy-fingers',
   'sandy-toes',
+  'serendipity',
   'sea-esta',
   'sound-of-silence',
   'stillwater-haven',
