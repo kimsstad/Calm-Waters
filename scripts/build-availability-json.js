@@ -19,6 +19,7 @@ const PROPERTY_KEYS = [
   'goose-valley',
   'lagoon-breeze',
   'hill-and-tides',
+  'jays-place',
   'la-lapa',
   'la-med',
   'little-lincoln',

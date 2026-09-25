@@ -442,15 +442,6 @@
   text-decoration-thickness: 2px;
 }
 
-.cw-booking-day.is-checkout-only {
-  opacity: 1;
-  cursor: pointer;
-  background: #fff6e8;
-  border-color: rgba(157, 93, 26, 0.28);
-  color: #8b5a22;
-  text-decoration: none;
-}
-
 .cw-booking-legend {
   display: flex;
   flex-wrap: wrap;

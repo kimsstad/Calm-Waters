@@ -11,6 +11,7 @@
     'hill-and-tides',
     'plett-escape',
     'the-place-to-stay',
+    'jays-place',
     'little-lincoln',
     'sound-of-silence',
     'stillwater-haven',
@@ -275,6 +276,30 @@
     return rules;
   }
 
+  function buildJaysPlaceSeasonRules(baseYear, yearsToGenerate = 20) {
+    const baseRates = { low: 1500, mid: 2300, high: 4500 };
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const multiplier = Math.pow(1.1, year - baseYear);
+      const rates = {
+        low: Math.round(baseRates.low * multiplier),
+        mid: Math.round(baseRates.mid * multiplier),
+        high: Math.round(baseRates.high * multiplier)
+      };
+
+      rules.push(
+        { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
+        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'Low season' },
+        { start: year + '-10-01', end: year + '-11-30', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-12-01', end: year + '-12-31', flat: rates.high, label: 'High season' }
+      );
+    }
+
+    return rules;
+  }
+
   function buildClementineSeasonRules(baseYear, yearsToGenerate = 20) {
     const baseRates = {
       low: 1749,
@@ -396,6 +421,21 @@
     return rules;
   }
 
+  function buildJaysPlaceFestiveMinStayRules(baseYear, yearsToGenerate = 20) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-13',
+        end: (year + 1) + '-01-10',
+        minStayNights: 7,
+        label: 'Festive season'
+      });
+    }
+
+    return rules;
+  }
+
   function buildBaycrestFestivePricingRules(baseYear, yearsToGenerate = 20) {
     const baseRate = 22000;
     const rules = [];
@@ -421,6 +461,7 @@
   const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
   const captainsQuartersWebsitePricingRules = buildCaptainsQuartersSeasonRules(2026);
   const captainsQuartersMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
+  const jaysPlaceWebsitePricingRules = buildJaysPlaceSeasonRules(2026);
   const clementineBaseYear = 2026;
   const clementineWebsitePricingRules = buildClementineSeasonRules(clementineBaseYear);
   const clementineSeasonalMinStayRules = buildClementineFestiveMinStayRules(clementineBaseYear);
@@ -428,6 +469,7 @@
   const boardwalkReverieWebsitePricingRules = buildBoardwalkReverieSeasonRules(2026);
   const boardwalkReverieSeasonalMinStayRules = buildBoardwalkReverieDecemberMinStayRules(2026);
   const serendipitySeasonalMinStayRules = buildSerendipityFestiveMinStayRules(2026);
+  const jaysPlaceSeasonalMinStayRules = buildJaysPlaceFestiveMinStayRules(2026);
   const irokoWebsitePricingRules = buildIrokoSeasonRules(2026);
   const irokoMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 2));
 
@@ -552,6 +594,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1625181361211091031.ics?t=9cd1920ede8d467bb1e8aff0ceeb318d', proxyUrl: '' },
       booking: { publicUrl: 'https://ical.booking.com/v1/export?t=0f6717d6-0738-4d30-a5e8-58a8f502273a', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=dHhwczFKcm92a0NSV29EQW5uL0pIUT09', proxyUrl: '' }
+    },
+    'jays-place': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1582391908129378509.ics?t=ebbe2b42730b41bab9aac58464caef6a', proxyUrl: '' },
+      booking: { publicUrl: '', proxyUrl: '' },
+      lekkeslaap: { publicUrl: '', proxyUrl: '' }
     },
     arrowood: {
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/866493429255914128.ics?t=537892a729b24860a00d65301a57f470', proxyUrl: '' },
@@ -691,6 +738,7 @@
     'sanctuary-room': { minStayNights: 1, maxStayNights: 30, advanceNoticeDays: 0 },
     'plett-escape': { minStayNights: 1, maxStayNights: 60, advanceNoticeDays: 0 },
     'the-place-to-stay': { minStayNights: 1, maxStayNights: 60, advanceNoticeDays: 0 },
+    'jays-place': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
     'little-lincoln': { minStayNights: 1, maxStayNights: 20, advanceNoticeDays: 0 },
     'sound-of-silence': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 2 },
     'stillwater-haven': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 2 },
@@ -739,6 +787,11 @@
     'hill-and-tides': buildPropertySource('hill-and-tides', 'Hill & Tides'),
     'plett-escape': buildPropertySource('plett-escape', 'Plett Escape'),
     'the-place-to-stay': buildPropertySource('the-place-to-stay', 'The Place to Stay'),
+    'jays-place': buildPropertySource('jays-place', 'Jay\'s Place', {
+      websitePricingRules: jaysPlaceWebsitePricingRules,
+      seasonalMinStayRules: jaysPlaceSeasonalMinStayRules,
+      seasonalMinStayMode: 'stay-overlap'
+    }),
     'little-lincoln': buildPropertySource('little-lincoln', 'Little Lincoln'),
     'sound-of-silence': buildPropertySource('sound-of-silence', 'Sound of Silence'),
     'stillwater-haven': buildPropertySource('stillwater-haven', 'Stillwater Haven'),
@@ -1280,7 +1333,6 @@
     const isStart = state.checkIn === dateKey;
     const isEnd = state.checkOut === dateKey;
     const isInRange = Boolean(state.checkIn && state.checkOut && dateKey > state.checkIn && dateKey < state.checkOut);
-    const isCheckoutOnly = state.activeField === 'checkout' && state.checkIn && dateKey > state.checkIn && isBlocked && isSelectableCheckout(dateKey);
     const isCheckInStep =
       state.selectionIntent === 'checkin' ||
       !state.checkIn ||
@@ -1291,8 +1343,7 @@
     const isBeyondMax = dateKey > maxBookingDateKey;
 
     if (isPast) button.classList.add('is-past');
-    if (isBlocked && !isCheckoutOnly) button.classList.add('is-blocked');
-    if (isCheckoutOnly) button.classList.add('is-checkout-only');
+    if (isBlocked) button.classList.add('is-blocked');
     if (isBeyondMax) button.classList.add('is-not-yet-open');
     if (isAdvanceNoticeBlocked) button.classList.add('is-disabled');
     if (isStart) button.classList.add('is-start');
@@ -1300,7 +1351,7 @@
     if (isInRange) button.classList.add('is-in-range');
     if (isDisabledRangeStep) button.classList.add('is-range-disabled');
 
-    const isHardDisabled = isPast || (isBlocked && !isCheckoutOnly) || isBeyondMax || isDisabledRangeStep;
+    const isHardDisabled = isPast || isBlocked || isBeyondMax || isDisabledRangeStep;
     if (isHardDisabled) {
       button.disabled = true;
     } else {
@@ -1315,7 +1366,7 @@
       });
     }
 
-    button.setAttribute('aria-label', buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked, isCheckoutOnly));
+    button.setAttribute('aria-label', buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked));
     return button;
   }
 
@@ -1375,6 +1426,7 @@
 
   function isSelectableCheckout(dateKey) {
     if (!state.checkIn || dateKey <= state.checkIn) return false;
+    if (state.blockedDates.has(dateKey)) return false;
     return isStayLengthAllowed(state.checkIn, dateKey) && isRangeAllowed(state.checkIn, dateKey);
   }
 
@@ -2081,10 +2133,9 @@
     return null;
   }
 
-  function buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked, isCheckoutOnly) {
+  function buildDayLabel(dateKey, isPast, isBlocked, isAdvanceNoticeBlocked) {
     const formattedDate = formatLongDate(dateKey);
     if (isPast) return formattedDate + ', past date';
-    if (isCheckoutOnly) return formattedDate + ', available for checkout only';
     if (isBlocked) return formattedDate + ', blocked';
     if (isAdvanceNoticeBlocked) return formattedDate + ', unavailable due to advance notice';
     return formattedDate + ', available';

@@ -27,7 +27,7 @@ This setup keeps the site on GitHub Pages and refreshes blocked dates with GitHu
 6. Add one repository variable named `CW_BOOKING_FEEDS`.
 7. Copy `github-actions-booking-feeds.example.json`, replace the empty strings with your real iCal URLs, and paste the full JSON into that variable.
 
-Baycrest, Captain's Quarters, Clementine Cottage, Boardwalk Reverie, and Serendipity are already wired into the site code and the GitHub Actions build script, but they will only sync on GitHub once their feeds are included in the `CW_BOOKING_FEEDS` repository variable. Because `booking-feeds.json` is ignored locally, adding them there is not enough for the hosted site.
+Baycrest, Captain's Quarters, Clementine Cottage, Boardwalk Reverie, Serendipity, and Jay's Place are already wired into the site code and the GitHub Actions build script, but they will only sync on GitHub once their feeds are included in the `CW_BOOKING_FEEDS` repository variable. Because `booking-feeds.json` is ignored locally, adding them there is not enough for the hosted site.
 
 ## Starting small
 
@@ -103,6 +103,18 @@ For Serendipity, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
     "airbnb": "https://www.airbnb.co.za/calendar/ical/1775321027593181871.ics?t=5c65ebb1cc384717a3f01188d5d13dfe",
     "booking": "",
     "lekkeslaap": "https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=eDI5N3BuQ1dUbjdCYTZOM0dnUlp1Zz09"
+  }
+}
+```
+
+For Jay's Place, this is the minimum JSON you need in `CW_BOOKING_FEEDS`:
+
+```json
+{
+  "jays-place": {
+    "airbnb": "https://www.airbnb.co.za/calendar/ical/1582391908129378509.ics?t=ebbe2b42730b41bab9aac58464caef6a",
+    "booking": "",
+    "lekkeslaap": ""
   }
 }
 ```
