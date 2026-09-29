@@ -798,7 +798,25 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          "Excellent! Will definitely recommend and use again. Best in Plett."
+        </p>
+        <p class="testimonial-name">- Jacobus K</p>
+      </div>
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
     <div class="footer-top">
       <div class="footer-left">
         Calm Waters Plett | Plettenberg Bay, South Africa
@@ -987,5 +1005,29 @@
     });
   </script>
   <script src="./property-booking-widget.js"></script>
+
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  if (nextBtn && prevBtn && testimonials.length) {
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(index);
+    });
+  }
+</script>
 </body>
 </html>

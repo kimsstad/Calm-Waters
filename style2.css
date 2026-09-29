@@ -772,84 +772,97 @@ color: #ffffff;
 /* Grid Layout for Listings */
 .listings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  gap: 28px;
+  align-items: start;
+  justify-content: center;
 }
 
 .listing-item {
   background-color: var(--white-color);
-  border-radius: px;
+  border-radius: 1px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.28s, box-shadow 0.28s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .listing-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .listing-images {
   display: flex;
-  height: auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: 200px;
   position: relative; 
+  overflow: hidden;
 }
 
 .listing-images img {
   width: 50%;
   height: auto; 
+  object-fit: cover;
+  display: block;
 }
 
 .listing-price {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 10px 15px;
-  border-radius: 2px;
-  font-weight: bold;
+  bottom: 14px;
+  right: 14px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px;
+  border-radius: 1px;
+  font-weight: 700;
   font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
   color: var(--primary-color);
-  text-decoration: none;
   z-index: 2; 
 }
 
 .listing-details {
-  padding: 18px 20px 22px;
-  top: -5px; 
+  padding: 18px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 0 auto;
 }
 
 .listing-details h3 {
   font-family: "Promenade", serif;
   color: var(--primary-color);
   font-weight: 400;
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-top: 6px;
-  margin-bottom: 0px;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  margin: 0;
   letter-spacing: 1px;
-  line-height: 1.1;
-  top: -5px;
+  line-height: 1.05;
+  text-transform: uppercase;
 }
 
 .listing-details p {
-  margin-top: 6px;
-  margin-bottom: 8px;
+  margin: 0;
   color: var(--body-text-color);
-  line-height: 1.7;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  font-size: 0.97rem;
 }
 
 .listing-features {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 10px 16px;
+  margin-top: 6px;
+  margin-bottom: 8px;
 }
 
 .listing-features span {
   display: flex;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--body-text-color);
 }
 
@@ -860,18 +873,19 @@ color: #ffffff;
 
 /* Listing "View Details" Button */
 .listing-details .btn {
+  align-self: flex-start;
   background-color: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
   border-radius: 50px;
-  padding: 12px 25px;
+  padding: 10px 22px;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2.8px;
+  font-size: 13px;
+  letter-spacing: 2.4px;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.22s ease;
   display: inline-block;
 }
 .listing-details .btn:hover {
@@ -879,6 +893,72 @@ color: #ffffff;
   border-color: var(--accent-color);
   background: transparent;
   transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+  .listings-grid {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 26px;
+  }
+}
+
+@media (max-width: 900px) {
+  .listings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 22px;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .listings-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .listing-item {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .listing-images {
+    min-height: 220px;
+    flex-direction: column;
+  }
+
+  .listing-images img {
+    width: 100%;
+    height: auto;
+  }
+
+  .listing-images img + img {
+    display: none;
+  }
+
+  .listing-details {
+    padding-left: 14px;
+    padding-right: 14px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 520px) {
+  .listings {
+    padding: 40px 0;
+  }
+
+  .listing-images {
+    min-height: 180px;
+  }
+
+  .listing-item {
+    max-width: 440px;
+  }
 }
 
 

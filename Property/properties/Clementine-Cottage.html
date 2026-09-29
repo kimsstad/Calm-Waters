@@ -765,6 +765,24 @@
   </div>
 </section>
 
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          "Exceptional. Very nice building in a very good location."
+        </p>
+        <p class="testimonial-name">- Bjørkedal</p>
+      </div>
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-left">
@@ -775,7 +793,7 @@
       <a href="https://www.airbnb.co.za/h/clementinecottageplett" target="_blank" rel="noopener noreferrer" title="View on Airbnb">
         <img src="../../Resources/pics/airbnb-icon-2048x2048-kuw3ebuv.png" alt="Airbnb">
       </a>
-      <a href="https://www.booking.com/hotel/za/clementine-cottage.html" target="_blank" rel="noopener noreferrer" title="View on Booking.com">
+      <a href="https://www.booking.com/Share-19RE4R" target="_blank" rel="noopener noreferrer" title="View on Booking.com">
         <img src="../../Resources/pics/Booking.com_Icon_2022.svg" alt="Booking.com">
       </a>
       <a href="https://www.lekkeslaap.co.za/accommodation/clementine-cottage" target="_blank" rel="noopener noreferrer" title="View on LekkeSlaap">
@@ -949,5 +967,29 @@
 
 <script src="./property-booking-widget.js"></script>
 
+
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  if (nextBtn && prevBtn && testimonials.length) {
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(index);
+    });
+  }
+</script>
 </body>
 </html>

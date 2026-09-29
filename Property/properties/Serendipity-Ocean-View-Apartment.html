@@ -496,7 +496,7 @@
 
 <h3>Additional rules</h3>
 <p>
-  Guests must please bring their own beach towels.  Please be respectful of the neighbours, as some of the people in the complex are permanent residents.  We cannot accommodate parties, Rage weekend bookings, matric groups, or school leavers during late November and early December, as this is strictly against the complex rules. We also do not allow bookings made by parents on behalf of school leavers, whether the parents are staying with them or not.  Should you proceed with an instant booking despite these rules, you will be responsible for cancelling the booking.  The unit is cleaned thoroughly before your arrival. Should you require any additional cleaning during your stay, please contact your host, and we can arrange a cleaner for a small additional fee.  ⚠️ Disclaimer: Guests stay at their own risk. The owners and host are not liable for any injury, accident, loss, theft, or damage during the stay. Use of the pool, stairs, and all facilities is entirely at your own discretion.
+Please be respectful of the neighbours, as some of the people in the complex are permanent residents.  We cannot accommodate parties, Rage weekend bookings, matric groups, or school leavers during late November and early December, as this is strictly against the complex rules. We also do not allow bookings made by parents on behalf of school leavers, whether the parents are staying with them or not.  Should you proceed with an instant booking despite these rules, you will be responsible for cancelling the booking.  The unit is cleaned thoroughly before your arrival. Should you require any additional cleaning during your stay, please contact your host, and we can arrange a cleaner for a small additional fee.  ⚠️ Disclaimer: Guests stay at their own risk. The owners and host are not liable for any injury, accident, loss, theft, or damage during the stay. Use of the pool, stairs, and all facilities is entirely at your own discretion.
 </p>
 
 <h3>Before you leave</h3>
@@ -771,6 +771,24 @@
   </div>
 </section>
 
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <h4 class="testimonial-heading">KIND WORDS FROM PAST GUESTS:</h4>
+
+    <div class="testimonial-wrapper">
+      <button class="testimonial-btn prev">&#8592;</button>
+
+      <div class="testimonial-content active">
+        <p class="testimonial-text">
+          "Arrowood 4 is a beautiful place. It is ideally located and within walking distance of the shops."
+        </p>
+        <p class="testimonial-name">- Marina V</p>
+      </div>
+      <button class="testimonial-btn next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-left">
@@ -950,5 +968,29 @@
 
 <script src="./property-booking-widget.js"></script>
 
+
+<script>
+  const testimonials = document.querySelectorAll('.testimonial-content');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  let index = 0;
+
+  function showTestimonial(i) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[i].classList.add('active');
+  }
+
+  if (nextBtn && prevBtn && testimonials.length) {
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(index);
+    });
+  }
+</script>
 </body>
 </html>
