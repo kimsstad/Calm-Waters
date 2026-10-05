@@ -34,6 +34,7 @@ const PROPERTY_KEYS = [
   'sandy-fingers',
   'sandy-toes',
   'serendipity',
+  'ocean-echo',
   'sea-esta',
   'sound-of-silence',
   'stillwater-haven',

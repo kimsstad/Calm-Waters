@@ -20,6 +20,7 @@
     'sandy-fingers',
     'sandy-toes',
     'serendipity',
+    'ocean-echo',
     'farallon',
     'toplis',
     'panorama',
@@ -127,7 +128,8 @@
     'plett-escape': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
     'the-place-to-stay': { low: 1540, mid: 2200, high: 4400, prePost: 3300, easter: 2310, rage: 4840 },
     arrowood: { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
-    serendipity: { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
+    serendipity: { low: 1540, mid: 1760, high: 3850 },
+    'ocean-echo': { low: 2200, mid: 2600, high: 5200 },
     'little-lincoln': { low: 1540, mid: 1760, high: 3850, prePost: 2805, easter: 1848, rage: 4235 },
     'sound-of-silence': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
     'stillwater-haven': { low: 2200, mid: 2420, high: 4840, prePost: 3630, easter: 2541, rage: 5324 },
@@ -216,6 +218,25 @@
     return rules;
   }
 
+  function buildThreeSeasonRules(rates2026, baseYear = 2026, yearsToGenerate = 20) {
+    if (!rates2026) return [];
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      const rates = getAnnualSeasonRates(rates2026, year, baseYear);
+
+      rules.push(
+        { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
+        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'Low season' },
+        { start: year + '-10-01', end: year + '-11-26', flat: rates.mid, label: 'Mid season' },
+        { start: year + '-11-27', end: year + '-12-31', flat: rates.high, label: 'High season' }
+      );
+    }
+
+    return rules;
+  }
+
   function buildLagoonBreezeSeasonRules(baseYear, yearsToGenerate = 20) {
     const baseRates = { low: 2000, mid: 2500, high: 5500 };
     const rules = [
@@ -270,30 +291,6 @@
         { start: year + '-05-01', end: year + '-09-30', flat: low },
         { start: year + '-10-01', end: year + '-11-30', flat: mid },
         { start: year + '-12-01', end: year + '-12-31', flat: high }
-      );
-    }
-
-    return rules;
-  }
-
-  function buildJaysPlaceSeasonRules(baseYear, yearsToGenerate = 20) {
-    const baseRates = { low: 1500, mid: 2300, high: 4500 };
-    const rules = [];
-
-    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
-      const multiplier = Math.pow(1.1, year - baseYear);
-      const rates = {
-        low: Math.round(baseRates.low * multiplier),
-        mid: Math.round(baseRates.mid * multiplier),
-        high: Math.round(baseRates.high * multiplier)
-      };
-
-      rules.push(
-        { start: year + '-01-01', end: year + '-01-15', flat: rates.high, label: 'High season' },
-        { start: year + '-01-16', end: year + '-04-30', flat: rates.mid, label: 'Mid season' },
-        { start: year + '-05-01', end: year + '-09-30', flat: rates.low, label: 'Low season' },
-        { start: year + '-10-01', end: year + '-11-30', flat: rates.mid, label: 'Mid season' },
-        { start: year + '-12-01', end: year + '-12-31', flat: rates.high, label: 'High season' }
       );
     }
 
@@ -421,6 +418,21 @@
     return rules;
   }
 
+  function buildOceanEchoDecemberMinStayRules(baseYear, yearsToGenerate = 20) {
+    const rules = [];
+
+    for (let year = baseYear; year < baseYear + yearsToGenerate; year += 1) {
+      rules.push({
+        start: year + '-12-13',
+        end: year + '-12-19',
+        minStayNights: 7,
+        label: 'December minimum stay'
+      });
+    }
+
+    return rules;
+  }
+
   function buildJaysPlaceFestiveMinStayRules(baseYear, yearsToGenerate = 20) {
     const rules = [];
 
@@ -461,7 +473,7 @@
   const baycrestMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
   const captainsQuartersWebsitePricingRules = buildCaptainsQuartersSeasonRules(2026);
   const captainsQuartersMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 1));
-  const jaysPlaceWebsitePricingRules = buildJaysPlaceSeasonRules(2026);
+  const jaysPlaceWebsitePricingRules = buildThreeSeasonRules({ low: 1500, mid: 2300, high: 4500 });
   const clementineBaseYear = 2026;
   const clementineWebsitePricingRules = buildClementineSeasonRules(clementineBaseYear);
   const clementineSeasonalMinStayRules = buildClementineFestiveMinStayRules(clementineBaseYear);
@@ -469,6 +481,7 @@
   const boardwalkReverieWebsitePricingRules = buildBoardwalkReverieSeasonRules(2026);
   const boardwalkReverieSeasonalMinStayRules = buildBoardwalkReverieDecemberMinStayRules(2026);
   const serendipitySeasonalMinStayRules = buildSerendipityFestiveMinStayRules(2026);
+  const oceanEchoSeasonalMinStayRules = buildOceanEchoDecemberMinStayRules(2026);
   const jaysPlaceSeasonalMinStayRules = buildJaysPlaceFestiveMinStayRules(2026);
   const irokoWebsitePricingRules = buildIrokoSeasonRules(2026);
   const irokoMaxBookableDateKey = dateToKey(addYears(toUtcDate(getTodayKey()), 2));
@@ -644,6 +657,11 @@
       airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1775321027593181871.ics?t=5c65ebb1cc384717a3f01188d5d13dfe', proxyUrl: '' },
       booking: { publicUrl: '', proxyUrl: '' },
       lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=eDI5N3BuQ1dUbjdCYTZOM0dnUlp1Zz09', proxyUrl: '' }
+    },
+    'ocean-echo': {
+      airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1786050268754871299.ics?t=c3557cd875ed410fb7b773ee90d8ad7e', proxyUrl: '' },
+      booking: { publicUrl: 'https://ical.booking.com/v1/export?t=b3c52056-8b1b-4141-8d8d-4e9f2e253f65', proxyUrl: '' },
+      lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=U0xKTW10UTdFb2trbTFxd1YrTTg3UT09', proxyUrl: '' }
     }
   };
 
@@ -664,7 +682,8 @@
     'sanctuary-room': 300,
     'lagoon-breeze': 360,
     'clementine-cottage': 400,
-    serendipity: 360
+    serendipity: 360,
+    'ocean-echo': 360
   };
 
   const seasonalMinStayRules = {
@@ -746,7 +765,8 @@
     watersong: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 2 },
     'sandy-toes': { minStayNights: 3, maxStayNights: 30, advanceNoticeDays: 2 },
     'sandy-fingers': { minStayNights: 2, maxStayNights: 30, advanceNoticeDays: 1 },
-    serendipity: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 }
+    serendipity: { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 },
+    'ocean-echo': { minStayNights: 2, maxStayNights: 365, advanceNoticeDays: 1 }
   };
 
   function buildPropertySource(key, displayName, options = {}) {
@@ -869,7 +889,13 @@
       ]
     }),
     serendipity: buildPropertySource('serendipity', 'Serendipity - Ocean View Apartment', {
+      websitePricingRules: buildThreeSeasonRules(websiteRates2026.serendipity),
       seasonalMinStayRules: serendipitySeasonalMinStayRules,
+      seasonalMinStayMode: 'stay-overlap'
+    }),
+    'ocean-echo': buildPropertySource('ocean-echo', 'Ocean Echo Apartment', {
+      websitePricingRules: buildThreeSeasonRules(websiteRates2026['ocean-echo']),
+      seasonalMinStayRules: oceanEchoSeasonalMinStayRules,
       seasonalMinStayMode: 'stay-overlap'
     }),
     tremezzo: buildPropertySource('tremezzo', 'Tremezzo')
