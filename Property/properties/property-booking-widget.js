@@ -15,6 +15,7 @@
     'little-lincoln',
     'sound-of-silence',
     'stillwater-haven',
+    'sweet-streams',
     'rivers-drift',
     'watersong',
     'sandy-fingers',
@@ -34,6 +35,7 @@
     'sanctuary-hideaway',
     'la-lapa',
     'la-med',
+    'la-zen',
     'baycrest',
     'captains-quarters',
     'clementine-cottage',
@@ -815,6 +817,27 @@
     'little-lincoln': buildPropertySource('little-lincoln', 'Little Lincoln'),
     'sound-of-silence': buildPropertySource('sound-of-silence', 'Sound of Silence'),
     'stillwater-haven': buildPropertySource('stillwater-haven', 'Stillwater Haven'),
+    'sweet-streams': buildPropertySource('sweet-streams', 'Sweet Streams Apartment', {
+      availabilityMode: 'static-json-only',
+      websitePricingRules: buildSeasonRules(websiteRates2026['stillwater-haven']),
+      cleaningFee: cleaningFees['stillwater-haven'] || 0,
+      minStayNights: 2,
+      maxStayNights: 365,
+      advanceNoticeDays: 2,
+      preparationTimeNights: 2,
+      maxBookableDateKey: dateToKey(addYears(toUtcDate(getTodayKey()), 1)),
+      seasonalMinStayRules: Array.from({ length: 20 }, (_, index) => ({
+        start: (2026 + index) + '-12-20',
+        end: (2026 + index) + '-12-26',
+        minStayNights: 7
+      })),
+      seasonalMinStayMode: 'stay-overlap',
+      feeds: {
+        airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1799867871713265118.ics?t=8111dad630c942b59cd7901fd7ed2b1e', proxyUrl: '' },
+        booking: { publicUrl: 'https://ical.booking.com/v1/export?t=dd7390bc-8010-4ab8-8f3f-954b87e37483', proxyUrl: '' },
+        lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=YmV6Ui9POWIzaHlSdnVRN1RJY3JpQT09', proxyUrl: '' }
+      }
+    }),
     'rivers-drift': buildPropertySource('rivers-drift', 'River\'s Drift'),
     watersong: buildPropertySource('watersong', 'Watersong'),
     'sandy-fingers': buildPropertySource('sandy-fingers', 'Sandy Fingers'),
@@ -851,6 +874,25 @@
     'sanctuary-hideaway': buildPropertySource('sanctuary-hideaway', 'Sanctuary Hideaway'),
     'la-lapa': buildPropertySource('la-lapa', 'La-Lapa'),
     'la-med': buildPropertySource('la-med', 'La-Med'),
+    'la-zen': buildPropertySource('la-zen', 'La-Zen', {
+      websitePricingRules: buildSeasonRules(websiteRates2026['la-lapa']),
+      cleaningFee: cleaningFees['la-lapa'] || 0,
+      minStayNights: 2,
+      maxStayNights: 60,
+      advanceNoticeDays: 1,
+      maxBookableDateKey: dateToKey(addYears(toUtcDate(getTodayKey()), 1)),
+      seasonalMinStayRules: Array.from({ length: 20 }, (_, index) => ({
+        start: (2026 + index) + '-12-20',
+        end: (2027 + index) + '-01-05',
+        minStayNights: 7
+      })),
+      seasonalMinStayMode: 'stay-overlap',
+      feeds: {
+        airbnb: { publicUrl: 'https://www.airbnb.co.za/calendar/ical/1799939106500405186.ics?t=1de723921b834e7fb0a93fe8ebc277c8', proxyUrl: '' },
+        booking: { publicUrl: 'https://ical.booking.com/v1/export?t=ead20d64-fff4-4f1a-a66e-0ab8d2a3fd2c', proxyUrl: '' },
+        lekkeslaap: { publicUrl: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=cnJuREw5ZjBxNW0yVUF6cnZuNUJJdz09', proxyUrl: '' }
+      }
+    }),
     baycrest: buildPropertySource('baycrest', 'Baycrest Villa', {
       availabilityMode: 'static-json-only',
       websitePricingRules: baycrestWebsitePricingRules,
@@ -1727,7 +1769,7 @@
       createSummaryCard('Check-out', formatLongDate(state.checkOut)),
       createSummaryCard('Nights', formatNights(stay.nights)),
       createSummaryCard('Nightly rates', stay.nightlyLabel),
-      createSummaryCard('Accommodation total', stay.accommodationTotal !== null ? currency(stay.accommodationTotal) : getTotalPlaceholder(true), true)
+      createSummaryCard('Total', stay.accommodationTotal !== null ? currency(stay.accommodationTotal) : getTotalPlaceholder(true), true)
     );
 
     rates.replaceChildren();

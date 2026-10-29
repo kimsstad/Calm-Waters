@@ -22,6 +22,7 @@ const PROPERTY_KEYS = [
   'jays-place',
   'la-lapa',
   'la-med',
+  'la-zen',
   'little-lincoln',
   'lookout-room',
   'magnificent-view',
@@ -38,6 +39,7 @@ const PROPERTY_KEYS = [
   'sea-esta',
   'sound-of-silence',
   'stillwater-haven',
+  'sweet-streams',
   'the-place-to-stay',
   'toplis',
   'tremezzo',
@@ -46,7 +48,8 @@ const PROPERTY_KEYS = [
 
 const PROPERTY_PREPARATION_TIME_NIGHTS = {
   'boardwalk-reverie': 1,
-  'clementine-cottage': 1
+  'clementine-cottage': 1,
+  'sweet-streams': 2
 };
 
 const outputDir = path.join(process.cwd(), 'generated', 'availability');
@@ -55,7 +58,19 @@ async function main() {
   fs.mkdirSync(outputDir, { recursive: true });
 
   const generatedAt = new Date().toISOString();
-  const feedConfigJson = parseFeedsJson(process.env.CW_BOOKING_FEEDS);
+  const feedConfigJson = {
+    'la-zen': {
+      airbnb: 'https://www.airbnb.co.za/calendar/ical/1799939106500405186.ics?t=1de723921b834e7fb0a93fe8ebc277c8',
+      booking: 'https://ical.booking.com/v1/export?t=ead20d64-fff4-4f1a-a66e-0ab8d2a3fd2c',
+      lekkeslaap: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=cnJuREw5ZjBxNW0yVUF6cnZuNUJJdz09'
+    },
+    'sweet-streams': {
+      airbnb: 'https://www.airbnb.co.za/calendar/ical/1799867871713265118.ics?t=8111dad630c942b59cd7901fd7ed2b1e',
+      booking: 'https://ical.booking.com/v1/export?t=dd7390bc-8010-4ab8-8f3f-954b87e37483',
+      lekkeslaap: 'https://www.lekkeslaap.co.za/suppliers/icalendar.ics?t=YmV6Ui9POWIzaHlSdnVRN1RJY3JpQT09'
+    },
+    ...parseFeedsJson(process.env.CW_BOOKING_FEEDS)
+  };
 
   for (const propertyKey of PROPERTY_KEYS) {
     const availability = await mergeAvailabilityForProperty(propertyKey, {
