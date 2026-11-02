@@ -1,0 +1,48 @@
+.footer-social-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social-link img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.65;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.footer-airbnb-link {
+  width: 24px;
+  height: 24px;
+  border-radius: 22%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Fit the supplied icon's black tile inside the same 24px frame as its neighbours. */
+.footer-airbnb-link img {
+  width: calc(24px * 800 / 680);
+  height: calc(24px * 800 / 680);
+  max-width: none;
+  flex-shrink: 0;
+}
+
+.footer-social-link:hover img,
+.footer-social-link:focus-visible img {
+  transform: scale(1.08);
+  opacity: 0.85;
+}
+
+.footer-social-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}

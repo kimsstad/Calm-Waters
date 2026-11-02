@@ -422,6 +422,10 @@ color: #ffffff;
   margin: 14px auto 0;
 }
 
+#contact-info .section-note + .section-note {
+  margin-top: 20px;
+}
+
 /* Clickable links inside columns */
 #contact-info .col a {
   color: var(--muted);

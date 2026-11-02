@@ -72,14 +72,6 @@ Open only this period as bookable:
 
 Leave all other dates blocked/unavailable.
 
-This open window matches the current Airbnb iCal feed:
-- Unavailable through 2026-12-04
-- Available from 2026-12-05 to 2027-01-05
-- Unavailable again from 2027-01-06 onward
-
-Source iCal:
-- https://www.airbnb.co.za/calendar/ical/1705657368873018958.ics?t=de66d1c052674c079d3fd9ee6459a2de
-
 ## House rules from the source listing
 
 Checking in and out:

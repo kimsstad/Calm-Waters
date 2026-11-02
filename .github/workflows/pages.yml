@@ -1,12 +1,10 @@
-name: Build and deploy Pages with availability sync
+name: Deploy website to GitHub Pages
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-  schedule:
-    - cron: '*/5 * * * *'
 
 permissions:
   contents: read
@@ -20,22 +18,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CW_BOOKING_FEEDS: ${{ vars.CW_BOOKING_FEEDS }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Generate availability JSON
-        run: node scripts/build-availability-json.js
 
       - name: Stage site files
         run: |
@@ -44,15 +32,9 @@ jobs:
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='site-dist/' \
-            --exclude='netlify/' \
-            --exclude='booking-feeds.json' \
-            --exclude='GITHUB_ACTIONS_BOOKING_SETUP.md' \
-            --exclude='github-actions-booking-feeds.example.json' \
-            --exclude='NETLIFY_BOOKING_SETUP.md' \
-            --exclude='netlify.toml' \
-            --exclude='netlify-booking-feeds.example.json' \
-            --exclude='ical-proxy-server.js' \
-            --exclude='scripts/' \
+            --exclude='node_modules/' \
+            --exclude='generated/' \
+            --exclude='test-results/' \
             ./ site-dist/
 
       - name: Upload Pages artifact

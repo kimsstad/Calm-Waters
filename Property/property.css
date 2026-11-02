@@ -332,7 +332,7 @@ color: #ffffff;
 .intro-card {
   display: flex;
   max-width:1000px;
-  height: 400px;
+  min-height: 400px;
   margin: auto;
   border-radius: 0px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -342,10 +342,14 @@ color: #ffffff;
 
 .text-content {
   flex: 1;
-  padding: 40px;
+  padding: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.intro-card .text-content p:last-child {
+  margin-bottom: 0;
 }
 
 .image-container {
@@ -397,18 +401,9 @@ color: #ffffff;
     height: auto;
   }
   .image-container { height: 320px; }
-  .text-content { padding: 20px; }
+  .text-content { padding: 32px 24px; }
   .intro-subtitle {margin-bottom: 0;line-height:1; margin-top: 10px;}
   .intro-title {margin-top: 0px; margin-bottom: 0; line-height:1;}
-}
-/* Remove top + bottom spacing from intro paragraph on small screens */
-@media (max-width: 520px) {
-  .intro-card .text-content p {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
 }
 
 
