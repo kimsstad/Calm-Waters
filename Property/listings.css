@@ -589,6 +589,12 @@ color: #ffffff;
 
 }
 
+.about-modal .list-detail {
+  display: block;
+  font-size: 0.93em;
+  color: #6a6a6a;
+}
+
 .about-modal p,
 .about-modal ul {
   font-size: 15px;

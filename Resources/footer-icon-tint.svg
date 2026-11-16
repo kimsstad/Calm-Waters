@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <filter id="footer-icon-tint" color-interpolation-filters="sRGB">
+    <feColorMatrix type="saturate" values="0"/>
+    <!-- Map black to the footer text colour (#2A2D36), preserving white details. -->
+    <feComponentTransfer>
+      <feFuncR type="linear" slope="0.835294118" intercept="0.164705882"/>
+      <feFuncG type="linear" slope="0.823529412" intercept="0.176470588"/>
+      <feFuncB type="linear" slope="0.788235294" intercept="0.211764706"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
